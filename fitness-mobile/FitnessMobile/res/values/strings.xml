@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, FitnessMobileActivity!</string>
+    <string name="app_name">FitnessMobile</string>
+    <string name="programa">Programa</string>
+    <string name="exercicio">Exercicio</string>
+    <string name="Medidas">Medidas</string>
+    <string name="Configuracao">Configuração</string>
+    <string name="Altura">Altura</string>
+    <string name="Peso">Peso</string>
+    <string name="Biceps_esq">Bíceps Esq</string>
+    <string name="Biceps_dir">Bíceps Dir</string>
+    <string name="Triceps_esq">Tríceps Esq</string>
+    <string name="Triceps_dir">Tríceps Dir</string>
+    <string name="Cintura">Cintura</string>
+    <string name="Peitoral">Peitoral</string>
+    <string name="Coxa_esq">Coxa esq</string>
+    <string name="Coxa_dir">Coxa dir</string>
+    <string name="Panturrilha_esq">Panturrilha Esq</string>
+    <string name="Panturrilha_dir">Panturrilha Dir</string>
+    <string name="Quadril">Quadril</string>
+    <string name="Antebraco_esq">Antebraço Esq</string>
+    <string name="Antebraco_dir">Antebraço Dir</string>
+    <string name="Ombro">Ombro</string>
+    <string name="Data_medida">Data da Medida:</string>
+    <string name="Data">Data</string>
+    <string name="Salvar">Salvar</string>
+    <string name="Hoje">Hoje</string>
+    
+    
+</resources>
