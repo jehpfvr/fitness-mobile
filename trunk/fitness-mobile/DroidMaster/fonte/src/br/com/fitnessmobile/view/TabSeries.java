@@ -6,16 +6,19 @@ import java.util.List;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapters.SeriesAdapter;
 import br.com.fitnessmobile.model.Exercicio;
+import br.com.fitnessmobile.model.ExercicioAerobico;
 import br.com.fitnessmobile.model.Musculo;
 import br.com.fitnessmobile.model.Serie;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.ListView;
 
-public class TabSeries extends Activity implements OnClickListener{
+public class TabSeries extends Activity implements OnClickListener, OnItemSelectedListener{
 	private ListView listView;
 	private Button btn_add;
 	private Button btn_edit;
@@ -55,8 +58,16 @@ public class TabSeries extends Activity implements OnClickListener{
 		exercicio.setGrupoMuscular(listMusculo);
 		exercicio.setMusculoPrincipal(musculo);
 		exercicio.setNome("Supino Reto");
+		
+		ExercicioAerobico corrida = new ExercicioAerobico();
+		corrida.setDescricao("Corrida");
+		corrida.setGrupoMuscular(listMusculo);
+		corrida.setMusculoPrincipal(musculo);
+		corrida.setNome("Corrida");
+		
 		List<Exercicio> listExercicio= new ArrayList<Exercicio>();
 		listExercicio.add(exercicio);
+		listExercicio.add(corrida);
 		
 		Serie serie = new Serie();
 		serie.setNome("Peito e Triceps");
@@ -65,9 +76,10 @@ public class TabSeries extends Activity implements OnClickListener{
 		serie.setRepeticao(3);
 		List<Serie> listSerie = new ArrayList<Serie>();
 		listSerie.add(serie);
-		listSerie.add(serie);
+
 		
 		this.listView.setAdapter(new SeriesAdapter(this, listSerie));
+		this.listView.setOnItemSelectedListener(this);
 	}
 
 	public void onClick(View v) {
@@ -95,6 +107,17 @@ public class TabSeries extends Activity implements OnClickListener{
 		}else if (v == btn_add){
 			
 		}
+	}
+
+	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
+			long arg3) {
+		
+		
+	}
+
+	public void onNothingSelected(AdapterView<?> arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
