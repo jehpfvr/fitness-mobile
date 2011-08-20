@@ -40,6 +40,12 @@
     <string name="Editar">Editar</string>
     <string name="Excluir">Excluir</string>
     <string name="Voltar">Voltar</string>
+    <string name="Duracao">Duração</string>
+    <string name="Distancia">Distância</string>
+    <string name="Velocidade">Velocidade</string>
+    <string name="Iniciar">Iniciar</string>
+    <string name="Pausar">Pausar</string>
+    <string name="Parar">Parar</string>
     <string-array name="array_grupo_muscular">
    	    <item>todos</item>>
     	<item>Bíceps</item>
