@@ -16,17 +16,17 @@ import android.widget.TextView;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.model.*;
 
-public class SeriesAdapter extends BaseAdapter implements OnClickListener {
+public class ProgramaAdapter extends BaseAdapter implements OnClickListener {
 	
 	private Button btn_edit;
 	private Button btn_del;
 	
 	private Context context;
-	private List<Serie> lista;
+	private List<Programa> lista;
 	
 	private List<View> listaView;
 
-	public SeriesAdapter(Context context, List<Serie> lista) {
+	public ProgramaAdapter(Context context, List<Programa> lista) {
 		super();
 		this.context = context;
 		this.lista = lista;
@@ -46,9 +46,9 @@ public class SeriesAdapter extends BaseAdapter implements OnClickListener {
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
-		Serie serie = lista.get(position);
+		Programa serie = lista.get(position);
 		LayoutInflater inflate = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View v = inflate.inflate(R.layout.adapter_serie_layout, null);
+		View v = inflate.inflate(R.layout.adapter_programa_layout, null);
 		
 		this.btn_edit = (Button) v.findViewById(R.id.serie_adp_edit);
 		this.btn_edit.setOnClickListener(this);

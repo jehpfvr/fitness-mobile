@@ -17,6 +17,9 @@
                 <Button android:id="@+id/btn_main_medidas" style="@style/btn_main" android:text="@string/Medidas"     ></Button>
                 <Button android:id="@+id/btn_main_conf"    style="@style/btn_main" android:text="@string/Configuracao"></Button>
             </TableRow>
+            <TableRow style="@style/default_wrap_content">
+                <Button android:id="@+id/btn_main_teste" style="@style/btn_main" android:text="teste"     ></Button>
+            </TableRow>
         </TableLayout>
     </LinearLayout>
 </LinearLayout>

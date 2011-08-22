@@ -22,8 +22,8 @@ public class FitnessMobileTab extends TabActivity implements OnTabChangeListener
         mTabHost.addTab(mTabHost.newTabSpec("tab_home").setIndicator("Home",getResources().getDrawable(android.R.drawable.ic_dialog_dialer)).setContent(intent));
         
 
-        intent = new Intent(this, TabSeries.class);
-        mTabHost.addTab(mTabHost.newTabSpec("tab_Series").setIndicator("Series",getResources().getDrawable(android.R.drawable.ic_menu_agenda)).setContent(intent));
+        intent = new Intent(this, TabPrograma.class);
+        mTabHost.addTab(mTabHost.newTabSpec("tab_Programa").setIndicator("Programa",getResources().getDrawable(android.R.drawable.ic_menu_agenda)).setContent(intent));
         
         intent = new Intent(this,TabMedidas.class);
         mTabHost.addTab(mTabHost.newTabSpec("tab_medidas").setIndicator("Medidas",getResources().getDrawable(R.drawable.ico_tab1)).setContent(intent));
@@ -31,8 +31,10 @@ public class FitnessMobileTab extends TabActivity implements OnTabChangeListener
         intent = new Intent(this,TabExercicios.class);
         mTabHost.addTab(mTabHost.newTabSpec("tab_exercicios").setIndicator("Exercicios",getResources().getDrawable(R.drawable.ico_tab_exer)).setContent(intent));
         
-        intent = new Intent(this,ExercicioAerobico.class);
+        /*
+        intent = new Intent(this,ExercicioAerobicoView.class);
         mTabHost.addTab(mTabHost.newTabSpec("tab_corrida").setIndicator("Corrida",getResources().getDrawable(R.drawable.ico_tab_exer)).setContent(intent));
+        */
        
         mTabHost.setCurrentTab( getIntent().getIntExtra("aba", 0));
         
