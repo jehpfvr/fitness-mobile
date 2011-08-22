@@ -2,14 +2,14 @@ package br.com.fitnessmobile.model;
 
 import java.util.List;
 
-public class Serie {
+public class Programa {
 	
 	private String nome;
 	private List<Exercicio> exercicio;
 	private Double peso;
 	private int repeticao;
 	
-	public Serie() {
+	public Programa() {
 	}
 
 	public Double getPeso() {
