@@ -46,8 +46,19 @@
     <string name="Iniciar">Iniciar</string>
     <string name="Pausar">Pausar</string>
     <string name="Parar">Parar</string>
+    <string name="Dialog_exer_titulo">Exercicios por Etapa</string>
+    <string name="Exercicio">Exercicio</string>
+    <string name="Repeticao">Repetição</string>
+    <string name="Opcoes">Opções</string>
+    
+    <string-array name="array_opcoes">
+    	<item>Selecionar</item>
+    	<item>Editar</item>
+    	<item>Excluir</item>
+    </string-array>
+    
     <string-array name="array_grupo_muscular">
-   	    <item>todos</item>>
+   	    <item>todos</item>
     	<item>Bíceps</item>
     	<item>Tríceps</item>
     	<item>Costa</item>
