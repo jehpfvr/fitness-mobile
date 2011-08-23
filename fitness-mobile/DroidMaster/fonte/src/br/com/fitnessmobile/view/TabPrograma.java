@@ -2,28 +2,29 @@ package br.com.fitnessmobile.view;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.adapters.ProgramaAdapter;
+import br.com.fitnessmobile.adapters.EtapaAdapter;
+import br.com.fitnessmobile.model.Etapa;
 import br.com.fitnessmobile.model.Exercicio;
 import br.com.fitnessmobile.model.ExercicioAerobico;
 import br.com.fitnessmobile.model.Musculo;
 import br.com.fitnessmobile.model.Programa;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.Button;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class TabPrograma extends Activity implements OnClickListener, OnItemSelectedListener{
+public class TabPrograma extends Activity implements OnItemLongClickListener, OnItemClickListener{
+	private final int DIALOG_SELECIONAR = 1;
 	private ListView listView;
-	private Button btn_add;
-	private Button btn_edit;
-	private Button btn_del;
 	private TextView tv_prog_nome;
 	
 	@Override
@@ -37,15 +38,6 @@ public class TabPrograma extends Activity implements OnClickListener, OnItemSele
 	private void instanciarViews() {
 		
 		this.tv_prog_nome = (TextView) findViewById(R.id.programa_nome);
-		
-		this.btn_edit = (Button) findViewById(R.id.series_btn_edit);
-		this.btn_edit.setOnClickListener(this);
-		
-		this.btn_del = (Button) findViewById(R.id.series_btn_del);
-		this.btn_del.setOnClickListener(this);
-		
-		this.btn_add = (Button) findViewById(R.id.series_btn_add);
-		this.btn_add.setOnClickListener(this);
 		
 		this.listView = (ListView) findViewById(R.id.series_listview);
 		
@@ -71,55 +63,57 @@ public class TabPrograma extends Activity implements OnClickListener, OnItemSele
 		listExercicio.add(exercicio);
 		listExercicio.add(corrida);
 		
-		Programa serie = new Programa();
-		serie.setNome("Peito e Triceps");
-		serie.setExercicio(listExercicio);
-		serie.setPeso(70.00);
-		serie.setRepeticao(3);
+		Etapa etapa = new Etapa();
+		etapa.setExercicios(listExercicio);
+		etapa.setNome("Peito e Corrida");
+		
+		List<Etapa> listaEtapa = new ArrayList<Etapa>();
+		listaEtapa.add(etapa);
+		
+		Programa programa = new Programa();
+		programa.setNome("Hipertrofia");
+		programa.setEtapas(listaEtapa);
+		
 		List<Programa> listSerie = new ArrayList<Programa>();
-		listSerie.add(serie);
-
+		listSerie.add(programa);
 		
-		this.listView.setAdapter(new ProgramaAdapter(this, listSerie));
-		this.listView.setOnItemSelectedListener(this);
+		
+		this.tv_prog_nome.setText(programa.getNome());
+		
+		this.listView.setAdapter(new EtapaAdapter(this, listaEtapa));
+		this.listView.setOnItemClickListener(this);
+		this.listView.setOnItemLongClickListener(this);
 	}
 
-	public void onClick(View v) {
-		Button button = (Button) v;
-		
-		if(button.getText().equals(getString(R.string.Voltar))){
-			ProgramaAdapter sa =  (ProgramaAdapter) this.listView.getAdapter();
-			sa.desativarBotoes();
-			this.btn_add.setText(R.string.Adicionar);
-			this.btn_edit.setText(R.string.Editar);
-			this.btn_del.setText(R.string.Excluir);
-		}else if(v == btn_edit){
-			ProgramaAdapter sa =  (ProgramaAdapter) this.listView.getAdapter();
-			sa.ativarEdit();
-			this.btn_add.setText(R.string.Voltar);
-			this.btn_edit.setText(R.string.Voltar);
-			this.btn_del.setText(R.string.Voltar);
-		}else if(v == btn_del){
-			ProgramaAdapter sa =  (ProgramaAdapter) this.listView.getAdapter();
-			sa.ativarDel();
-			this.btn_add.setText(R.string.Voltar);
-			this.btn_edit.setText(R.string.Voltar);
-			this.btn_del.setText(R.string.Voltar);
-			
-		}else if (v == btn_add){
-			
+	public boolean onItemLongClick(AdapterView<?> adapter, View v, int pos, long id) {
+		final CharSequence[] items = getResources().getTextArray(R.array.array_opcoes);
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(R.string.Opcoes);
+		builder.setItems(items, new DialogInterface.OnClickListener() {
+		    public void onClick(DialogInterface dialog, int item) {
+		        if(item == 0){
+		        	showDialog(DIALOG_SELECIONAR);
+		        }
+		    }
+		});
+		AlertDialog alert = builder.create();
+		alert.show();
+		return true;
+	}
+
+	public void onItemClick(AdapterView<?> adapter, View v, int pos, long id) {
+		showDialog(DIALOG_SELECIONAR);	
+	}
+	
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		DialogExercicios dialogExercicio = null;
+		if(id == DIALOG_SELECIONAR){
+			dialogExercicio = new DialogExercicios(this);
+			dialogExercicio.show();
 		}
-	}
-
-	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
-			long arg3) {
-		
-		
-	}
-
-	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
-		
+		return dialogExercicio;
 	}
 
 }

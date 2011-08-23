@@ -5,27 +5,10 @@ import java.util.List;
 public class Programa {
 	
 	private String nome;
-	private List<Exercicio> exercicio;
-	private Double peso;
-	private int repeticao;
+	private List<Etapa> etapas;
+
 	
 	public Programa() {
-	}
-
-	public Double getPeso() {
-		return peso;
-	}
-
-	public void setPeso(Double peso) {
-		this.peso = peso;
-	}
-
-	public int getRepeticao() {
-		return repeticao;
-	}
-
-	public void setRepeticao(int repeticao) {
-		this.repeticao = repeticao;
 	}
 
 	public String getNome() {
@@ -36,12 +19,12 @@ public class Programa {
 		this.nome = nome;
 	}
 
-	public List<Exercicio> getExercicio() {
-		return exercicio;
+	public List<Etapa> getEtapas() {
+		return etapas;
 	}
 
-	public void setExercicio(List<Exercicio> exercicio) {
-		this.exercicio = exercicio;
+	public void setEtapas(List<Etapa> etapas) {
+		this.etapas = etapas;
 	}
 	
 }
