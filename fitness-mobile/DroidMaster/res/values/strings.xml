@@ -43,6 +43,7 @@
     <string name="Duracao">Duração</string>
     <string name="Distancia">Distância</string>
     <string name="Velocidade">Velocidade</string>
+    <string name="Aceleracao">Aceleracao</string>
     <string name="Iniciar">Iniciar</string>
     <string name="Pausar">Pausar</string>
     <string name="Parar">Parar</string>
