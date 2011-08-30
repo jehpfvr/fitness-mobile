@@ -11,6 +11,8 @@ import android.location.LocationManager;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.SystemClock;
+import android.text.format.DateFormat;
 import android.util.Log;
 
 
@@ -29,6 +31,7 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 	private double aceleracao;
 	private OnControladorGPSListener listener;
 	private DecimalFormat df;
+	private EstatisticaGPS estatisticaGPS;
 
 	@Override
 	public void onCreate() {
@@ -39,6 +42,7 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 		this.distancia = 0;
 		this.velocidade = 0;
 		this.df = new DecimalFormat("0.00");
+		this.estatisticaGPS = new EstatisticaGPS();
 	}
 	
 
@@ -51,23 +55,33 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 		if(ultimoLocation == null){
 			ultimoLocation = location;
 		}else{
-			Log.v("gps", "latitude atual"+location.getLatitude());
-			Log.v("gps", "longitude atual"+location.getLongitude());
+			//Log.v("gps", "latitude atual"+location.getLatitude());
+			//Log.v("gps", "longitude atual"+location.getLongitude());
 			
-			Log.v("gps", "latitude anterior"+ultimoLocation.getLatitude());
-			Log.v("gps", "longitude anterior"+ultimoLocation.getLongitude());
+			//Log.v("gps", "latitude anterior"+ultimoLocation.getLatitude());
+			//Log.v("gps", "longitude anterior"+ultimoLocation.getLongitude());
+		
 			
-			Log.v("gps", "distancia"+distancia);
+			Log.v("gps","tempo"+DateFormat.format("mm:ss", location.getTime()));
 			
-			this.distancia += this.geoUtils.geoDistanceInMetros(ultimoLocation, location);
-			this.velocidade = this.calcularVelocidade(distancia, this.cronometro.getSegundos());
+			//this.distancia += this.ultimoLocation.distanceTo(location)*3.6;
+			this.estatisticaGPS.setTempoEmMovimento(location.getTime()-ultimoLocation.getTime());
+			this.estatisticaGPS.setDistancia(this.ultimoLocation.distanceTo(location));
 			
-			this.aceleracao = this.calcularAceleracao(velocidade,cronometro.getSegundos());
+			Log.v("gps", "distancia"+estatisticaGPS.getDistancia());
+			Log.v("gps", "velocidade"+estatisticaGPS.getVelocidadeMovimento());
+			Log.v("gps","velocidade location"+location.getSpeed());
 			
-			this.velocidadeMedia = this.velocidadeMedia(aceleracao,cronometro.getSegundos());
+			//this.distancia += this.geoUtils.geoDistanceInKm(ultimoLocation, location);
+			//this.velocidade = this.calcularVelocidade(distancia, this.cronometro.getHoras());
+			this.velocidade = location.getSpeed();
+			
+			//this.aceleracao = this.calcularAceleracao(velocidade,cronometro.getHoras());
+			
+			//this.velocidadeMedia = this.velocidadeMedia(aceleracao,cronometro.getHoras());
 			
 			this.ultimoLocation = location;
-			this.ultimoTempo = cronometro.getSegundos();
+			this.ultimoTempo = cronometro.getHoras();
 			this.ultimaDistancia = this.distancia;
 			this.ultimaVelocidade = this.velocidade;
 			
@@ -75,15 +89,15 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 
 	}
 
-	private double velocidadeMedia(double aceleracao, long segundos) {
+	private double velocidadeMedia(double aceleracao, long tempo) {
 		//V = V0 + a.(t – t0)
-		return ultimaVelocidade+aceleracao*(segundos-ultimoTempo);
+		return ultimaVelocidade+aceleracao*(tempo-ultimoTempo);
 	}
 
 
-	private double calcularAceleracao(double velocidade, long segundos) {
+	private double calcularAceleracao(double velocidade, long tempo) {
 		// a=(V – V0) / (t – t0) ;
-		return (velocidade-ultimaVelocidade)/(segundos-ultimoTempo);
+		return (velocidade-ultimaVelocidade)/(tempo-ultimoTempo);
 	}
 
 
@@ -105,11 +119,13 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 	public void startGPS() {
 		this.getLocationManager().requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
 		this.cronometro.startCronometro();
+		this.estatisticaGPS.setTempoInicial(System.currentTimeMillis());
 	}
 
 	public void stopGPS() {
 		getLocationManager().removeUpdates(this);
 		this.cronometro.stopCronometro();
+		this.estatisticaGPS.setTempoFinal(System.currentTimeMillis());
 	}
 	
 	private LocationManager getLocationManager(){
@@ -145,13 +161,8 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 
 
 	public void onCronometro(Cronometro cronometo) {
-		
-		DadosGPS dados = new DadosGPS();
-		dados.setDistancia(df.format(distancia));
-		dados.setVelocidade(df.format(velocidadeMedia));
-		dados.setDuracao(cronometo.getText());
-		dados.setAceleracao(df.format(aceleracao));
-		if(listener != null) listener.onControladorGPS(dados);
+		estatisticaGPS.setTempoEmAndamento(cronometo.getMilissegundos());
+		if(listener != null) listener.onControladorGPS(estatisticaGPS);
 		
 	}
 }

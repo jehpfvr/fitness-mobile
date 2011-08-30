@@ -2,7 +2,7 @@ package br.com.fitnessmobile.view;
 
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.service.ControladorGPS;
-import br.com.fitnessmobile.service.DadosGPS;
+import br.com.fitnessmobile.service.EstatisticaGPS;
 import br.com.fitnessmobile.service.OnControladorGPSListener;
 import br.com.fitnessmobile.service.ServiceGPS.LocalBinder;
 import android.app.Activity;
@@ -29,7 +29,7 @@ public class ExercicioAerobicoView extends Activity implements OnClickListener,S
 	private TextView tv_aceleracao;
 	private Button btn_iniciar;
 	private Button btn_parar;
-	private DadosGPS dados;
+	private EstatisticaGPS dados;
 	private ControladorGPS controlador;
 	
 	@Override
@@ -92,7 +92,7 @@ public class ExercicioAerobicoView extends Activity implements OnClickListener,S
 	}
 	
 	
-	public void onControladorGPS(DadosGPS dados) {	
+	public void onControladorGPS(EstatisticaGPS dados) {	
 		this.dados = dados;
 		handler.sendEmptyMessage(0);
 	}
@@ -100,9 +100,9 @@ public class ExercicioAerobicoView extends Activity implements OnClickListener,S
 	private Handler handler = new Handler() {
         public void  handleMessage(Message msg) {
         	tv_distancia.setText(dados.getDistancia());
-    		tv_velocidade.setText(dados.getVelocidade());
-    		tv_duracao.setText(dados.getDuracao());
-    		tv_aceleracao.setText(dados.getAceleracao());
+    		tv_velocidade.setText(dados.getVelocidadeMovimento());
+    		tv_duracao.setText(dados.getTempoEmAndamento());
+
         }
    };
 
