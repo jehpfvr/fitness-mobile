@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class FitnessMobileMain extends Activity implements OnClickListener{
 	
@@ -38,7 +39,7 @@ public class FitnessMobileMain extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		
 		if(v == btn_teste){
-			startActivity(new Intent(this, ExercicioAerobicoView.class));
+			startActivityForResult(new Intent(this, ExercicioAerobicoView.class), 1);
 		}else if(v == btn_programa){
 			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 1));
 		}else if(v == btn_medidas){
@@ -48,5 +49,12 @@ public class FitnessMobileMain extends Activity implements OnClickListener{
 		}
 		
 	}
-
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent it) {
+		Bundle params = it != null ? it.getExtras(): null;
+		String resultadoTeste = "distancia: " + params.getDouble("distancia")+"\n velocidade: "+ params.getDouble("velocidade") + "\n Tempo: "+ params.getLong("tempo");
+		
+		Toast.makeText(this, resultadoTeste, Toast.LENGTH_LONG).show();
+	}
 }

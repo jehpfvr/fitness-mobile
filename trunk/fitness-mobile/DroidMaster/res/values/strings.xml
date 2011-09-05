@@ -51,6 +51,8 @@
     <string name="Exercicio">Exercicio</string>
     <string name="Repeticao">Repetição</string>
     <string name="Opcoes">Opções</string>
+    <string name="Km">km</string>
+    <string name="Km_h">km/h</string>
     
     <string-array name="array_opcoes">
     	<item>Selecionar</item>

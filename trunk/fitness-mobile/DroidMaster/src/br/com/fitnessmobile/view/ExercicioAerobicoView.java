@@ -1,11 +1,16 @@
 package br.com.fitnessmobile.view;
 
+import java.text.DecimalFormat;
+import com.google.android.maps.MapActivity;
+import com.google.android.maps.MapController;
+import com.google.android.maps.MapView;
+import com.google.android.maps.MyLocationOverlay;
+
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.service.ControladorGPS;
 import br.com.fitnessmobile.service.EstatisticaGPS;
 import br.com.fitnessmobile.service.OnControladorGPSListener;
 import br.com.fitnessmobile.service.ServiceGPS.LocalBinder;
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -14,42 +19,60 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
 
-public class ExercicioAerobicoView extends Activity implements OnClickListener,ServiceConnection, OnControladorGPSListener{
+public class ExercicioAerobicoView extends MapActivity implements OnClickListener,ServiceConnection, OnControladorGPSListener{
 
 	protected static final int MSG_ATUALIZAR = 1;
 	private TextView tv_distancia;
 	private TextView tv_velocidade;
 	private TextView tv_duracao;
-	private TextView tv_aceleracao;
+	private MapView mapView;
+	private MapController mapController;
 	private Button btn_iniciar;
 	private Button btn_parar;
 	private EstatisticaGPS dados;
 	private ControladorGPS controlador;
+	private DecimalFormat df;
+	private MyLocationOverlay overlay;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.exercicio_aerobico);
-		this.instanciarViews();
+		this.dados = new EstatisticaGPS();
 
 		bindService(new Intent("SERVICO_GPS"), this, Context.BIND_AUTO_CREATE);
+		
+		this.instanciarViews();
 	}
  
 
 	private void instanciarViews() {
+		this.df = new DecimalFormat("0.00");
 		this.tv_distancia = (TextView) findViewById(R.id.exer_aero_display_distancia);
 		this.tv_velocidade = (TextView) findViewById(R.id.exer_aero_display_velocidade);
 		this.tv_duracao = (TextView) findViewById(R.id.exer_aero_display_duracao);
-		this.tv_aceleracao = (TextView) findViewById(R.id.exer_aero_display_aceleracao);
 		
 		this.btn_iniciar = (Button) findViewById(R.id.exer_aero_btn_iniciar);
 		this.btn_parar = (Button) findViewById(R.id.exer_aero_btn_parar);
+		
+		this.mapView = (MapView) findViewById(R.id.mapview);
+		this.mapView.setClickable(true);
+		this.mapController = this.mapView.getController();
+		//this.mapController.setCenter(controlador.ultimaLocalizacao());
+		
+		
+		
+		this.overlay = new MyLocationOverlay(this, mapView);
+		this.overlay.enableCompass();
+		this.overlay.enableMyLocation();
+		this.mapView.getOverlays().add(overlay);
 		
 		this.btn_iniciar.setOnClickListener(this);
 		this.btn_parar.setOnClickListener(this);
@@ -73,7 +96,13 @@ public class ExercicioAerobicoView extends Activity implements OnClickListener,S
 			controlador.stopGPS();
 		}else if(v == btn_parar){
 			controlador.stopGPS();
-			//this.cro_duracao.stop();
+			Intent intent = new Intent();
+			intent.putExtra("distancia", dados.getDistancia());
+			intent.putExtra("tempo", dados.getTempoEmAndamento());
+			intent.putExtra("velocidade", dados.getVelocidadeMaxima());
+			setResult(1, intent);
+			finish();
+			
 		}else if(v == btn_iniciar){
 			this.btn_iniciar.setText(R.string.Pausar);
 			controlador.startGPS();
@@ -99,12 +128,19 @@ public class ExercicioAerobicoView extends Activity implements OnClickListener,S
 	
 	private Handler handler = new Handler() {
         public void  handleMessage(Message msg) {
-        	tv_distancia.setText(dados.getDistancia());
-    		tv_velocidade.setText(dados.getVelocidadeMovimento());
-    		tv_duracao.setText(dados.getTempoEmAndamento());
-
+        	tv_distancia.setText(df.format(dados.getDistancia()));
+    		tv_velocidade.setText(df.format(dados.getVelocidade()));
+    		tv_duracao.setText(DateFormat.format("mm:ss", dados.getTempoEmAndamento()));
         }
    };
+
+	@Override
+	protected boolean isRouteDisplayed() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
 
 };
 
