@@ -1,4 +1,4 @@
-package controller;
+package br.com.fitnessmobile.controller;
 
 import android.app.Activity;
 import br.com.fitnessmobile.R;
