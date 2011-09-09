@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:orientation="horizontal" android:gravity="center">
+        <TextView android:text="@string/Exercicio" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="20dp"/>
+        <TextView android:text="@string/Repeticao"  android:layout_width="wrap_content" android:layout_height="wrap_content"  android:layout_margin="20dp"/>
+        <TextView android:text="@string/Peso"  android:layout_width="wrap_content" android:layout_height="wrap_content"  android:layout_margin="20dp"/>
+    </LinearLayout>
+    <ListView android:layout_height="wrap_content" android:id="@+id/dialog_exer_listview" android:layout_width="fill_parent"></ListView>
+</LinearLayout>
