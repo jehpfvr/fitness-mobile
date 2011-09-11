@@ -3,7 +3,7 @@ package br.com.fitnessmobile.view;
 import java.util.ArrayList;
 import java.util.List;
 import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.adapter.EtapaAdapter;
+import br.com.fitnessmobile.adapter.ProgramaAdapter;
 import br.com.fitnessmobile.model.Etapa;
 import br.com.fitnessmobile.model.Exercicio;
 import br.com.fitnessmobile.model.ExercicioAerobico;
@@ -13,7 +13,13 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.sax.StartElementListener;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -21,10 +27,9 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class TabPrograma extends Activity implements OnItemLongClickListener, OnItemClickListener{
+public class TabPrograma extends Activity implements OnItemLongClickListener, OnItemClickListener,DialogInterface.OnClickListener{
 	private final int DIALOG_SELECIONAR = 1;
 	private ListView listView;
-	private TextView tv_prog_nome;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +41,9 @@ public class TabPrograma extends Activity implements OnItemLongClickListener, On
 
 	private void instanciarViews() {
 		
-		this.tv_prog_nome = (TextView) findViewById(R.id.programa_nome);
-		
 		this.listView = (ListView) findViewById(R.id.series_listview);
 		
+		//daqui para baixo tem que ser preenchido com dados do banco de dados...
 		Musculo musculo = new Musculo();
 		musculo.setImagem(R.drawable.icon);
 		musculo.setNome("Peitoral");
@@ -76,10 +80,7 @@ public class TabPrograma extends Activity implements OnItemLongClickListener, On
 		List<Programa> listSerie = new ArrayList<Programa>();
 		listSerie.add(programa);
 		
-		
-		this.tv_prog_nome.setText(programa.getNome());
-		
-		this.listView.setAdapter(new EtapaAdapter(this, listaEtapa));
+		this.listView.setAdapter(new ProgramaAdapter(this, listSerie));
 		this.listView.setOnItemClickListener(this);
 		this.listView.setOnItemLongClickListener(this);
 	}
@@ -89,20 +90,18 @@ public class TabPrograma extends Activity implements OnItemLongClickListener, On
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(R.string.Opcoes);
-		builder.setItems(items, new DialogInterface.OnClickListener() {
-		    public void onClick(DialogInterface dialog, int item) {
-		        if(item == 0){
-		        	showDialog(DIALOG_SELECIONAR);
-		        }
-		    }
-		});
+		builder.setItems(items, this);
 		AlertDialog alert = builder.create();
 		alert.show();
 		return true;
 	}
 
 	public void onItemClick(AdapterView<?> adapter, View v, int pos, long id) {
-		showDialog(DIALOG_SELECIONAR);	
+		Programa programa = (Programa) adapter.getAdapter().getItem(pos);
+		ArrayList<Etapa> listaEtapa = (ArrayList<Etapa>) programa.getEtapas();
+		Intent intent = new Intent(this, EtapaView.class);
+		intent.putExtra("etapa", listaEtapa);
+		startActivity(intent);
 	}
 	
 	@Override
@@ -113,6 +112,37 @@ public class TabPrograma extends Activity implements OnItemLongClickListener, On
 			dialogExercicio.show();
 		}
 		return dialogExercicio;
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.menu_default, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+	    case R.id.novo:
+	        //chame aqui a activity de adicionar um programa
+	    	Log.v("log", "adicionar Programa");
+	        return true;
+	    case R.id.opcoes:
+	    	//chame aqui a activity de configurações
+	    	Log.v("log", "activity configuração");
+	        return true;
+	    default:
+	        return super.onOptionsItemSelected(item);
+	    }
+	}
+
+	public void onClick(DialogInterface dialog, int pos) {
+		//trate aqui a seleção do click longo do botão
+		if(pos == 0){
+			
+		}
+		
 	}
 
 }

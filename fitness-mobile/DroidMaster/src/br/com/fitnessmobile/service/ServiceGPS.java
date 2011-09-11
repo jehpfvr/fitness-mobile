@@ -1,10 +1,10 @@
 package br.com.fitnessmobile.service;
 
-import com.google.android.maps.GeoPoint;
+import java.util.ArrayList;
+import java.util.List;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -20,9 +20,9 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 	private double velocidade;
 	private Location ultimoLocation;
 	private Cronometro cronometro;
-	private OnControladorGPSListener listener;
+	private List<OnControladorGPSListener> listener;
 	private EstatisticaGPS estatisticaGPS;
-	private GeoPoint localizacao;
+	private List<Coordenada> trajeto;
 
 
 	@Override
@@ -32,6 +32,8 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 		this.cronometro.setOnCronometroListener(this);
 		this.distancia = 0;
 		this.estatisticaGPS = new EstatisticaGPS();
+		this.trajeto = new ArrayList<Coordenada>();
+		this.listener = new ArrayList<OnControladorGPSListener>();
 		
 	}
 	
@@ -46,26 +48,19 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 			ultimoLocation = location;
 		}else{
 			
-			
 			this.distancia = this.ultimoLocation.distanceTo(location);
-			//Log.v("gps","metros "+distancia);
-			//Log.v("gps","Kilometros "+distancia/1000);
-			this.tempo = location.getTime()-ultimoLocation.getTime();
-			//Log.v("gps","milisengundos "+tempo);
-			//Log.v("gps","Segundos "+tempo/1000);
-			//Log.v("gps","minutos "+tempo/60000);
-			//Log.v("gps","horas "+tempo/3600000);
-			this.velocidade = (distancia)/((double) tempo/1000);
 			
-			//Log.v("gps","m/s"+this.velocidade);
-			//Log.v("gps","km/h "+this.velocidade*3.6);
+			this.tempo = location.getTime() - ultimoLocation.getTime();
 			
+			this.velocidade = (distancia)/((double) Math.abs(tempo/1000));
 			
-			this.estatisticaGPS.setTesteVelocidade(location.getSpeed());
 			this.estatisticaGPS.setDistancia(distancia);
 			this.estatisticaGPS.setVelocidade(velocidade*3.6);
-
 			
+			if(!location.equals(ultimoLocation))
+			this.estatisticaGPS.setUltimoLocation(location);
+
+			this.trajeto.add(new Coordenada(location));
 			this.ultimoLocation = location;
 			
 		}
@@ -123,17 +118,28 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 
 
 	public void setOnControladorGPS(OnControladorGPSListener listener) {
-		this.listener = listener;
+		this.listener.add(listener);
 	}
 
 	public void onCronometro(Cronometro cronometo) {
 		estatisticaGPS.setTempoEmAndamento(cronometo.getMilissegundos());
-		if(listener != null) listener.onControladorGPS(estatisticaGPS);
+		
+		if(!listener.isEmpty()){
+			for (OnControladorGPSListener c : listener) {
+				c.onControladorGPS(estatisticaGPS);
+			}
+		}
 		
 	}
 
 
-	public GeoPoint ultimaLocalizacao() {
-		return new Coordenada(getLocationManager().getLastKnownLocation(LocationManager.GPS_PROVIDER));
+	public List<Coordenada> getTrajeto() {
+		return trajeto;
+	}
+
+
+	public void removerOnControladorGPS(OnControladorGPSListener listener) {
+		this.listener.remove(listener);
+		
 	}
 }

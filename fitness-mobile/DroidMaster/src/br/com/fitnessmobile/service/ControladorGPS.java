@@ -1,12 +1,12 @@
 package br.com.fitnessmobile.service;
 
-import com.google.android.maps.GeoPoint;
+import java.util.List;
 
 public interface ControladorGPS {
 	
 	public void startGPS();
 	public void stopGPS();
-	public double getDistancia();
 	public void setOnControladorGPS(OnControladorGPSListener listener);
-	public GeoPoint ultimaLocalizacao();
+	public void removerOnControladorGPS(OnControladorGPSListener listener);
+	public List<Coordenada> getTrajeto();
 }

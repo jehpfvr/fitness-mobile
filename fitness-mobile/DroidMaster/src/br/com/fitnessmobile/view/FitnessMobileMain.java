@@ -15,7 +15,6 @@ public class FitnessMobileMain extends Activity implements OnClickListener{
 	private Button btn_medidas;
 	private Button btn_programa;
 	private Button btn_exercicio;
-	private Button btn_teste;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,17 +29,13 @@ public class FitnessMobileMain extends Activity implements OnClickListener{
 		
 		this.btn_exercicio = (Button) findViewById(R.id.btn_main_exercicio);
 		this.btn_exercicio.setOnClickListener(this);
-		
-		this.btn_teste = (Button) findViewById(R.id.btn_main_teste);
-		this.btn_teste.setOnClickListener(this);
+	
 	
 	}
 
 	public void onClick(View v) {
 		
-		if(v == btn_teste){
-			startActivityForResult(new Intent(this, ExercicioAerobicoView.class), 1);
-		}else if(v == btn_programa){
+		if(v == btn_programa){
 			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 1));
 		}else if(v == btn_medidas){
 			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 2));
@@ -52,9 +47,10 @@ public class FitnessMobileMain extends Activity implements OnClickListener{
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent it) {
-		Bundle params = it != null ? it.getExtras(): null;
-		String resultadoTeste = "distancia: " + params.getDouble("distancia")+"\n velocidade: "+ params.getDouble("velocidade") + "\n Tempo: "+ params.getLong("tempo");
-		
-		Toast.makeText(this, resultadoTeste, Toast.LENGTH_LONG).show();
+		if(resultCode ==1){
+			String resultadoTeste = "distancia: " + it.getDoubleExtra("distancia", 0)+"\n velocidade: "+ it.getDoubleExtra("velocidade", 0) + "\n Tempo: "+ it.getLongExtra("tempo", 0);
+			Toast.makeText(this, resultadoTeste, Toast.LENGTH_LONG).show();
+		}
+					
 	}
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<style name="labels_trajeto">
+	<item name="android:layout_width">wrap_content</item>
+	<item name="android:layout_height">wrap_content</item>
+	<item name="android:layout_marginLeft">8dp</item>
+	<item name="android:layout_marginRight">8dp</item>
+	<item name="android:textColor">#b7c0b6</item>
+</style>
+
+<style name="layouts_trajeto">
+	<item name="android:layout_width">wrap_content</item>
+	<item name="android:layout_height">wrap_content</item>
+	<item name="android:layout_margin">2dp</item>
+	<item name="android:gravity">center</item>
+	<item name="android:orientation">vertical</item>
+</style>
+    
+</resources>
