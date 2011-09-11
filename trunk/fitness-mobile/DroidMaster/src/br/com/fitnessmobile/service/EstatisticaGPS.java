@@ -1,27 +1,19 @@
 package br.com.fitnessmobile.service;
 
+import android.location.Location;
+
 public class EstatisticaGPS {
 	
 	private long tempo;
 	private double distancia;
 	private double velocidade;
 	private double velocidadeMaxima;
-	private double testeVelocidade;
+	private Location ultimoLocation;
 
 	public EstatisticaGPS() {
 		this.velocidadeMaxima = 0;
 	}
 	
-	
-	public double getTesteVelocidade() {
-		return testeVelocidade;
-	}
-
-
-	public void setTesteVelocidade(double testeVelocidade) {
-		this.testeVelocidade = testeVelocidade;
-	}
-
 
 	public double getDistancia() {
 		return distancia/1000;
@@ -51,6 +43,18 @@ public class EstatisticaGPS {
 	public void setTempoEmAndamento(long tempoEmAndamento) {
 		this.tempo = tempoEmAndamento;
 	}
+
+
+	public Location getUltimoLocation() {
+		return ultimoLocation;
+	}
+
+
+	public void setUltimoLocation(Location ultimoLocation) {
+		this.ultimoLocation = ultimoLocation;
+	}
+	
+	
 	
  
 	

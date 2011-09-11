@@ -1,6 +1,8 @@
 package br.com.fitnessmobile.model;
 
-public class Musculo {
+import java.io.Serializable;
+
+public class Musculo implements Serializable{
 	
 	private String nome;
 	private int imagem;

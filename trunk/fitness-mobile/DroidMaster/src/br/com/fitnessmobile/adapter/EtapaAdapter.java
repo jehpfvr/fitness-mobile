@@ -37,9 +37,9 @@ public class EtapaAdapter extends BaseAdapter{
 		Etapa etapa = lista.get(position);
 		LayoutInflater inflate = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
-		View v = inflate.inflate(R.layout.adapter_programa_layout, null);
+		View v = inflate.inflate(R.layout.adapter_default_layout, null);
 		
-		TextView tv_etapa = (TextView) v.findViewById(R.id.adapter_prog_etapa_text);
+		TextView tv_etapa = (TextView) v.findViewById(R.id.adapter_default_text);
 		tv_etapa.setText(etapa.getNome());
 		
 		return v;

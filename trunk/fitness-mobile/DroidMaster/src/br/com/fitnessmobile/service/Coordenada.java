@@ -1,10 +1,12 @@
 package br.com.fitnessmobile.service;
 
+import java.io.Serializable;
+
 import com.google.android.maps.GeoPoint;
 
 import android.location.Location;
 
-public class Coordenada extends GeoPoint {
+public class Coordenada extends GeoPoint implements Serializable {
 	// valores em graus * 1E6 (microdegrees)
 		public Coordenada(int latitudeE6, int longitudeE6) {
 			super(latitudeE6, longitudeE6);
@@ -17,7 +19,7 @@ public class Coordenada extends GeoPoint {
 
 		// Cria baseado no objeto 'Location' diretamente recebido do GPS
 		public Coordenada(Location location) {
-			this(location.getLatitude(), location.getLongitude());
+			this(location.getLatitude(),location.getLongitude());
 		}
 		
 		@Override

@@ -3,16 +3,19 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:orientation="vertical"
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
-	
-	<LinearLayout android:layout_width="fill_parent"
-	android:layout_height="wrap_content" android:orientation="vertical" android:layout_weight="1">
-		<com.google.android.maps.MapView
-		android:layout_width="fill_parent" android:layout_height="fill_parent"
-		android:apiKey="0X1tFn3N-pGDS6m75qX1rY1usj7E4IqEhkV247A" android:id="@+id/mapview" />
-	</LinearLayout>
+  android:layout_height="fill_parent"
+  android:id="@+id/layout_aerobico">
                  
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">
+    <ViewFlipper android:id="@+id/viewFlipper1" android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_weight="1">
+	    <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="vertical" android:background="#FF0000">     
+	        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Testando view 1" />
+	    </LinearLayout>
+	    <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="vertical" android:background="#00FF00">     
+	        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Testando view 2" />
+	    </LinearLayout>
+    </ViewFlipper>
+    
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">     
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/Duracao" />
         <TextView android:text="00" android:id="@+id/exer_aero_display_duracao" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="50sp"/>	
     </LinearLayout>
@@ -33,5 +36,6 @@
     <LinearLayout android:layout_width="fill_parent" android:layout_height="70dp" android:orientation="horizontal" android:gravity="center">
         <Button android:text="@string/Iniciar" android:id="@+id/exer_aero_btn_iniciar" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1" />
         <Button android:text="@string/Parar" android:id="@+id/exer_aero_btn_parar" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1" />
-    </LinearLayout>  
+    </LinearLayout>
+   
 </LinearLayout>

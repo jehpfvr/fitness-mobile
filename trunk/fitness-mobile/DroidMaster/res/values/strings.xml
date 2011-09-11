@@ -53,6 +53,8 @@
     <string name="Opcoes">Opções</string>
     <string name="Km">km</string>
     <string name="Km_h">km/h</string>
+    <string name="novo">novo</string>
+    <string name="opcoes">Opções</string>
     
     <string-array name="array_opcoes">
     	<item>Selecionar</item>

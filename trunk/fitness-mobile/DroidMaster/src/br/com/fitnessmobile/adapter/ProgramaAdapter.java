@@ -1,23 +1,21 @@
 package br.com.fitnessmobile.adapter;
 
 import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.model.*;
 
-public class ExercicioAdapter extends BaseAdapter {
+public class ProgramaAdapter extends BaseAdapter{
 	
 	private Context context;
-	private List<Exercicio> lista;
+	private List<Programa> lista;
 
-	public ExercicioAdapter(Context context, List<Exercicio> lista) {
+	public ProgramaAdapter(Context context, List<Programa> lista) {
 		super();
 		this.context = context;
 		this.lista = lista;
@@ -36,12 +34,13 @@ public class ExercicioAdapter extends BaseAdapter {
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
-		Exercicio exercicio = lista.get(position);
+		Programa programa = lista.get(position);
 		LayoutInflater inflate = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		
 		View v = inflate.inflate(R.layout.adapter_default_layout, null);
 		
-		TextView tv_exercicio = (TextView) v.findViewById(R.id.adapter_default_text);
-		tv_exercicio.setText(exercicio.getNome());
+		TextView tv_etapa = (TextView) v.findViewById(R.id.adapter_default_text);
+		tv_etapa.setText(programa.getNome());
 		
 		return v;
 	}

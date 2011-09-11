@@ -31,7 +31,7 @@ public class Cronometro extends Thread {
 	public void stopCronometro(){
 		this.isPausado = true;
 		synchronized (this) {
-			this.milissegundos -= 1000;
+			//this.milissegundos -= 1000; seria para sincronizar melhor... no pausa e inicio.
 			notifyAll();
 		}
 		

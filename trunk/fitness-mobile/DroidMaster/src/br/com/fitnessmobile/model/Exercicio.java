@@ -1,8 +1,9 @@
 package br.com.fitnessmobile.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Exercicio {
+public class Exercicio implements Serializable{
 	
 	private String nome;
 	private String descricao;

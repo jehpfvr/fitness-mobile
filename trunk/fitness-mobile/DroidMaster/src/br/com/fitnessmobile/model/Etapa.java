@@ -1,8 +1,9 @@
 package br.com.fitnessmobile.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Etapa {
+public class Etapa implements Serializable{
 	
 	private String nome;
 	private List<Exercicio> exercicios;
