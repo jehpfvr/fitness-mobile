@@ -1,4 +1,6 @@
-package br.com.fitnessmobile.model.banco;
+package br.com.fitnessmobile.dao;
+
+import br.com.fitnessmobile.adapter.ExercicioAdapter;
 
 /**
  * Classe de controle e acesso ao Banco de Dados

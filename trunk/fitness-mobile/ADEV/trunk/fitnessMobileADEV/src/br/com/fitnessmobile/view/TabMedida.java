@@ -1,16 +1,16 @@
-package br.com.fitnessmobile.view.tab;
+package br.com.fitnessmobile.view;
 
 import br.com.fitnessmobile.R;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class TabPrograma extends Activity {
+public class TabMedida extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		// Definir Layout
-		setContentView(R.layout.programa);
+		setContentView(R.layout.medidas);
 		
 		// Instanciar Views (Componentes da Tela)
 		instanciarViews();
