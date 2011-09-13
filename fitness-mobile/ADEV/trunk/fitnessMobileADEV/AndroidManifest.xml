@@ -15,10 +15,11 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name=".view.tab.Tab"></activity>
-		<activity android:name=".view.tab.TabPrograma"></activity>
-		<activity android:name=".view.tab.TabExercicio"></activity>
-		<activity android:name=".view.tab.TabMedida"></activity>
+		<activity android:name=".view.Tab"></activity>
+		<activity android:name=".view.TabPrograma"></activity>
+		<activity android:name=".vie.view.TabExercicio"></activity>
+		<activity android:name=".view.TabMedida"></activity>
+		
 		
 	</application>
 </manifest>

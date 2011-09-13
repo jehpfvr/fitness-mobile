@@ -1,4 +1,4 @@
-package br.com.fitnessmobile.view.tab;
+package br.com.fitnessmobile.view;
 
 import br.com.fitnessmobile.R;
 
@@ -27,7 +27,10 @@ public class Tab extends TabActivity implements OnTabChangeListener {
         intent = new Intent(this,TabMedida.class); 
         mTabHost.addTab(mTabHost.newTabSpec("tab_medidas").setIndicator("Medidas",getResources().getDrawable(R.drawable.ico_tab1)).setContent(intent)); // Aba com ID 2
         
-        // Pega o valor da Chave "abaSelecionada" da tela Principal (Se não houver nenhum valor, o padrão será '0')
+        intent = new Intent(this,TabMedida.class);
+        mTabHost.addTab(mTabHost.newTabSpec("tab_estatisticas").setIndicator("Estatisticas",getResources().getDrawable(android.R.drawable.ic_menu_sort_by_size)).setContent(intent)); // Aba com ID 3
+        
+        // Pega o valor da Chave "abaSelecionada" da tela Principal (Se nï¿½o houver nenhum valor, o padrï¿½o serï¿½ '0')
         mTabHost.setCurrentTab(getIntent().getIntExtra("abaSelecionada", 0));
         
         // Evento - Listener
