@@ -7,6 +7,8 @@ import br.com.fitnessmobile.adapter.ExercicioAdapter;
 import br.com.fitnessmobile.model.Exercicio;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -49,5 +51,12 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 			long arg3) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.menu_default, menu);
+		return true;
 	}
 }
