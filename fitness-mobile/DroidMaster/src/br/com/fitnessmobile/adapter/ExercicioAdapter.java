@@ -38,9 +38,9 @@ public class ExercicioAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		Exercicio exercicio = lista.get(position);
 		LayoutInflater inflate = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View v = inflate.inflate(R.layout.adapter_default_layout, null);
+		View v = inflate.inflate(R.layout.adapter_exercicio_layout, null);
 		
-		TextView tv_exercicio = (TextView) v.findViewById(R.id.adapter_default_text);
+		TextView tv_exercicio = (TextView) v.findViewById(R.id.adapter_exercicio_text);
 		tv_exercicio.setText(exercicio.getNome());
 		
 		return v;

@@ -7,10 +7,11 @@ import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.EtapaAdapter;
 import br.com.fitnessmobile.model.Etapa;
 import br.com.fitnessmobile.model.Exercicio;
-import br.com.fitnessmobile.model.Programa;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -55,5 +56,12 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 		intent.putExtra("exercicio", listaExercicio);
 		startActivity(intent);
 		
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.menu_default, menu);
+		return true;
 	}
 }
