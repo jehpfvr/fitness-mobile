@@ -2,14 +2,14 @@ package br.com.fitnessmobile.model;
 
 import java.io.Serializable;
 
-public class Etapa implements Serializable{
-	
+public class Agenda implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
-	private String nome;
+	private String diaSemana;
 	
-	public Etapa() {
+	public Agenda() {
 	}
 
 	public Integer getId() {
@@ -20,12 +20,12 @@ public class Etapa implements Serializable{
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getDiaSemana() {
+		return diaSemana;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setDiaSemana(String diaSemana) {
+		this.diaSemana = diaSemana;
 	}	
 
 }
