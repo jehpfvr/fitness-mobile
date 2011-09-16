@@ -5,7 +5,7 @@ import java.util.List;
 
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.EtapaAdapter;
-import br.com.fitnessmobile.model.Etapa;
+import br.com.fitnessmobile.model.EtapaExercicio;
 import br.com.fitnessmobile.model.Exercicio;
 import android.app.Activity;
 import android.content.Intent;
@@ -20,7 +20,7 @@ import android.widget.ListView;
 
 public class EtapaView extends Activity implements OnItemClickListener, OnItemLongClickListener{
 	private ListView listView;
-	private List<Etapa> listaEtapa;
+	private List<EtapaExercicio> listaEtapa;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,8 +34,8 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 		this.listView = (ListView) findViewById(R.id.etapa_listview);
 		
 		if(getIntent().getSerializableExtra("etapa") != null){
-			this.listaEtapa = (List<Etapa>) getIntent().getSerializableExtra("etapa");
-		}else this.listaEtapa = new ArrayList<Etapa>();
+			this.listaEtapa = (List<EtapaExercicio>) getIntent().getSerializableExtra("etapa");
+		}else this.listaEtapa = new ArrayList<EtapaExercicio>();
 		
 		this.listView.setAdapter(new EtapaAdapter(this, this.listaEtapa));
 		this.listView.setOnItemClickListener(this);
@@ -50,7 +50,7 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 	}
 
 	public void onItemClick(AdapterView<?> adapter, View v, int pos, long id) {
-		Etapa etapa = (Etapa) adapter.getAdapter().getItem(pos);
+		EtapaExercicio etapa = (EtapaExercicio) adapter.getAdapter().getItem(pos);
 		ArrayList<Exercicio> listaExercicio = (ArrayList<Exercicio>) etapa.getExercicios();
 		Intent intent = new Intent(this, ExercicioView.class);
 		intent.putExtra("exercicio", listaExercicio);
