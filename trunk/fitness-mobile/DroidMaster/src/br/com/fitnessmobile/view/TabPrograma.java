@@ -5,8 +5,8 @@ import java.util.List;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.ProgramaAdapter;
 import br.com.fitnessmobile.model.Etapa;
+import br.com.fitnessmobile.model.EtapaExercicio;
 import br.com.fitnessmobile.model.Exercicio;
-import br.com.fitnessmobile.model.ExercicioAerobico;
 import br.com.fitnessmobile.model.Musculo;
 import br.com.fitnessmobile.model.Programa;
 import android.app.Activity;
@@ -15,7 +15,6 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.sax.StartElementListener;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,7 +24,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
-import android.widget.TextView;
 
 public class TabPrograma extends Activity implements OnItemLongClickListener, OnItemClickListener,DialogInterface.OnClickListener{
 	private final int DIALOG_SELECIONAR = 1;
@@ -55,20 +53,31 @@ public class TabPrograma extends Activity implements OnItemLongClickListener, On
 		exercicio.setGrupoMuscular(listMusculo);
 		exercicio.setMusculoPrincipal(musculo);
 		exercicio.setNome("Supino Reto");
+		exercicio.setTipo('N');
 		
-		ExercicioAerobico corrida = new ExercicioAerobico();
+		Exercicio corrida = new Exercicio();
 		corrida.setDescricao("Corrida");
 		corrida.setGrupoMuscular(listMusculo);
 		corrida.setMusculoPrincipal(musculo);
 		corrida.setNome("Corrida");
+		corrida.setTipo('E');
 		
 		List<Exercicio> listExercicio= new ArrayList<Exercicio>();
 		listExercicio.add(exercicio);
 		listExercicio.add(corrida);
 		
+		EtapaExercicio etapaExercicio = new EtapaExercicio();
+		etapaExercicio.setExercicios(listExercicio);
+		etapaExercicio.setNome("Peito e Corrida");
+		
+		/*
+		List<EtapaExercicio> listaEtapa = new ArrayList<EtapaExercicio>();
+		listaEtapa.add(etapa);
+		*/
+		
 		Etapa etapa = new Etapa();
-		etapa.setExercicios(listExercicio);
 		etapa.setNome("Peito e Corrida");
+		etapa.setId(1);
 		
 		List<Etapa> listaEtapa = new ArrayList<Etapa>();
 		listaEtapa.add(etapa);
