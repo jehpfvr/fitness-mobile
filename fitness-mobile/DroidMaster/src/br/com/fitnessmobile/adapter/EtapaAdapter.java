@@ -13,9 +13,9 @@ import br.com.fitnessmobile.model.*;
 public class EtapaAdapter extends BaseAdapter{
 	
 	private Context context;
-	private List<Etapa> lista;
+	private List<EtapaExercicio> lista;
 
-	public EtapaAdapter(Context context, List<Etapa> lista) {
+	public EtapaAdapter(Context context, List<EtapaExercicio> lista) {
 		super();
 		this.context = context;
 		this.lista = lista;
@@ -34,7 +34,7 @@ public class EtapaAdapter extends BaseAdapter{
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
-		Etapa etapa = lista.get(position);
+		EtapaExercicio etapa = lista.get(position);
 		LayoutInflater inflate = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
 		View v = inflate.inflate(R.layout.adapter_default_layout, null);
