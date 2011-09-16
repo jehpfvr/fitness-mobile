@@ -3,6 +3,8 @@ package br.com.fitnessmobile.model;
 import java.io.Serializable;
 
 public class Musculo implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	
 	private String nome;
 	private int imagem;
