@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background_land">
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center">
+        <ImageView android:src="@drawable/logo_fitness" android:layout_marginTop="10dp" style="@style/default_wrap_content"></ImageView>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:gravity="center" android:layout_weight="1">
+    	<TableLayout android:layout_alignParentBottom="true" style="@style/default_wrap_content" >
+            <TableRow style="@style/default_wrap_content">
+                <Button android:id="@+id/btn_main_programa" style="@style/btn_main" android:text="@string/programa"></Button>
+                <Button android:id="@+id/btn_main_exercicio" style="@style/btn_main" android:text="@string/exercicio"></Button>
+                </TableRow>
+            <TableRow style="@style/default_wrap_content">
+                <Button android:id="@+id/btn_main_medidas" style="@style/btn_main" android:text="@string/Medidas"></Button>
+                <Button android:id="@+id/btn_main_conf" style="@style/btn_main" android:text="@string/Configuracao"></Button>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</LinearLayout>
