@@ -70,7 +70,7 @@ public class ProgramaListActivity extends ListActivity {
     
     @Override
     protected void onListItemClick(ListView l, View v, int posicao, long id) {
-    	super.onListItemClick(l, v, posicao, id);
+    	super.onListItemClick(l, v, --posicao, id);
     	editarPrograma(posicao);
     }
     
