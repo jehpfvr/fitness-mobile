@@ -23,6 +23,10 @@ public class ProgramaListActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         programaDao = new ProgramaDao(this);
         
+        View header = getLayoutInflater().inflate(R.layout.programa_lista_header, null);
+        ListView listView = getListView();
+        listView.addHeaderView(header, null, false);
+        
         atualizaLista();
     }
     
