@@ -57,6 +57,10 @@
     <string name="Nome">Nome</string>
     <string name="DataInicial">Data Inicial</string>
     <string name="DataFinal">Data Final</string>
+    <string name="Etapas">Etapas</string>
+    <string name="Selecione_etapas">Selecione as Etapas: </string>
+    <string name="Mostrar_mapa">Visualizar Mapa </string>
+    
     
     <string-array name="array_opcoes">
     	<item>Selecionar</item>

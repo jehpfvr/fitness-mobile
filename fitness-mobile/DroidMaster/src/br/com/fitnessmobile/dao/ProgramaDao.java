@@ -92,7 +92,7 @@ public class ProgramaDao {
 	public Integer salvar(Programa programa) {
 		Integer id = programa.getId();
 		
-		if (id != 0 && id != null)
+		if (id != null)
 			atualizarPrograma(programa);
 		else
 			id = inserir(programa);
