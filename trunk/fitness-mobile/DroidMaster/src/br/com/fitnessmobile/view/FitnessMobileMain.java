@@ -15,6 +15,7 @@ public class FitnessMobileMain extends Activity implements OnClickListener{
 	private Button btn_medidas;
 	private Button btn_programa;
 	private Button btn_exercicio;
+	private Button btn_configuracao;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,9 @@ public class FitnessMobileMain extends Activity implements OnClickListener{
 		
 		this.btn_exercicio = (Button) findViewById(R.id.btn_main_exercicio);
 		this.btn_exercicio.setOnClickListener(this);
+		
+		this.btn_configuracao = (Button) findViewById(R.id.btn_main_conf);
+		this.btn_configuracao.setOnClickListener(this);
 	
 	
 	}
@@ -41,6 +45,8 @@ public class FitnessMobileMain extends Activity implements OnClickListener{
 			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 2));
 		}else if(v == btn_exercicio){
 			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 3));
+		}else if(v == btn_configuracao){
+			startActivity(new Intent(this, ExercicioAerobicoView.class));
 		}
 		
 	}
