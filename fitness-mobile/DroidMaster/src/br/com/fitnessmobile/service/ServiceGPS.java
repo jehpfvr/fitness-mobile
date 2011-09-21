@@ -52,6 +52,7 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 			
 			this.tempo = location.getTime() - ultimoLocation.getTime();
 			
+			if(this.tempo > 0)
 			this.velocidade = (distancia)/((double) Math.abs(tempo/1000));
 			
 			this.estatisticaGPS.setDistancia(distancia);

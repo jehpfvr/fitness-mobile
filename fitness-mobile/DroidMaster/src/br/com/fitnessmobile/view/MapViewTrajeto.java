@@ -25,6 +25,7 @@ import br.com.fitnessmobile.service.ServiceGPS.LocalBinder;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
+import com.google.android.maps.MyLocationOverlay;
 
 public class MapViewTrajeto extends MapActivity implements ServiceConnection,OnControladorGPSListener{
 	
@@ -37,6 +38,7 @@ public class MapViewTrajeto extends MapActivity implements ServiceConnection,OnC
 	private ControladorGPS controlador;
 	private EstatisticaGPS dados;
 	private DecimalFormat df;
+	private MyLocationOverlay myLocationOverlay;
 	
 	@Override
 	protected void onCreate(Bundle icicle) {
@@ -58,7 +60,10 @@ public class MapViewTrajeto extends MapActivity implements ServiceConnection,OnC
 		this.mapController = this.mapView.getController();
 		
 		this.mapOverlay = new MapOverlay(this);
+		this.myLocationOverlay = new MyLocationOverlay(this, this.mapView);
 		this.mapView.getOverlays().add(mapOverlay);
+		this.mapView.getOverlays().add(myLocationOverlay);
+		this.myLocationOverlay.enableMyLocation();
 		
 		this.tvDistancia = (TextView) findViewById(R.id.trajeto_distancia);
 		this.tvDuracao = (TextView) findViewById(R.id.trajeto_duracao);
