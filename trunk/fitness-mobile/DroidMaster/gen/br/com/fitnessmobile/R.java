@@ -88,6 +88,8 @@ public final class R {
         public static final int layout_aerobico=0x7f080014;
         public static final int linearLayout1=0x7f080007;
         public static final int list_view_exercicio=0x7f08001b;
+        public static final int mapa_focus=0x7f08003e;
+        public static final int mapa_tipo=0x7f08003d;
         public static final int mapview_trajeto=0x7f080022;
         public static final int ombro=0x7f080036;
         public static final int panturrilha_dir=0x7f080035;
@@ -124,6 +126,7 @@ public final class R {
     }
     public static final class menu {
         public static final int menu_default=0x7f070000;
+        public static final int menu_mapa=0x7f070001;
     }
     public static final class string {
         public static final int Aceleracao=0x7f04002b;
@@ -155,10 +158,12 @@ public final class R {
         public static final int Exercicio_nome=0x7f04001c;
         public static final int Exercicio_prompt_pri=0x7f04001f;
         public static final int Exercicio_prompt_sec=0x7f040020;
+        public static final int Foco=0x7f04003e;
         public static final int Hoje=0x7f040019;
         public static final int Iniciar=0x7f04002c;
         public static final int Km=0x7f040033;
         public static final int Km_h=0x7f040034;
+        public static final int Mapa=0x7f04003c;
         public static final int Medidas=0x7f040004;
         public static final int Mostrar_mapa=0x7f04003b;
         public static final int Nome=0x7f040036;
@@ -174,6 +179,7 @@ public final class R {
         public static final int Quadril=0x7f040012;
         public static final int Repeticao=0x7f040031;
         public static final int Salvar=0x7f040018;
+        public static final int Satelite=0x7f04003d;
         public static final int Selecionar=0x7f040023;
         public static final int Selecione_etapas=0x7f04003a;
         public static final int Spinner_musculo=0x7f04001a;

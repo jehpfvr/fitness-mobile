@@ -60,6 +60,9 @@
     <string name="Etapas">Etapas</string>
     <string name="Selecione_etapas">Selecione as Etapas: </string>
     <string name="Mostrar_mapa">Visualizar Mapa </string>
+    <string name="Mapa">Modo Mapa </string>
+    <string name="Satelite">Modo Satelite</string>
+    <string name="Foco">Foco Automático</string>
     
     
     <string-array name="array_opcoes">
