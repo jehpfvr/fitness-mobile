@@ -11,6 +11,10 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.text.format.DateFormat;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import br.com.fitnessmobile.R;
@@ -22,6 +26,7 @@ import br.com.fitnessmobile.service.MapOverlay;
 import br.com.fitnessmobile.service.OnControladorGPSListener;
 import br.com.fitnessmobile.service.ServiceGPS.LocalBinder;
 
+import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
@@ -38,7 +43,11 @@ public class MapViewTrajeto extends MapActivity implements ServiceConnection,OnC
 	private ControladorGPS controlador;
 	private EstatisticaGPS dados;
 	private DecimalFormat df;
+<<<<<<< .mine
+	private boolean foco_automatico;
+=======
 	private MyLocationOverlay myLocationOverlay;
+>>>>>>> .r160
 	
 	@Override
 	protected void onCreate(Bundle icicle) {
@@ -47,6 +56,8 @@ public class MapViewTrajeto extends MapActivity implements ServiceConnection,OnC
 		
 		bindService(new Intent("SERVICO_GPS"), this, Context.BIND_AUTO_CREATE);
 		this.instanciarViews();
+		
+		this.foco_automatico = false;
 		
 	}
 
@@ -69,12 +80,51 @@ public class MapViewTrajeto extends MapActivity implements ServiceConnection,OnC
 		this.tvDuracao = (TextView) findViewById(R.id.trajeto_duracao);
 		this.tvVelocidade = (TextView) findViewById(R.id.trajeto_velocidade);
 		
+		
 	}
 
 	@Override
 	protected boolean isRouteDisplayed() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.menu_mapa, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+	    case R.id.mapa_tipo:
+		     if(mapView.isSatellite()){
+		    	 this.mapView.setSatellite(false);
+		    	 item.setTitle(R.string.Satelite);
+		     }
+		     else{
+		    	 this.mapView.setSatellite(true);
+		    	 item.setTitle(R.string.Mapa);
+		     }
+		        return true;
+		        
+	    case R.id.mapa_focus:
+	    	
+		     if(foco_automatico)
+		    	 this.foco_automatico = false;
+		     else
+		    	 this.foco_automatico = true;
+		     return true;
+		        
+	    case R.id.Opcoes:
+	    	//chame aqui a activity de configurações
+	    	Log.v("log", "activity configuração");
+	        return true;
+	    default:
+	        return super.onOptionsItemSelected(item);
+	    }
 	}
 
 	public void onServiceConnected(ComponentName name, IBinder service) {
@@ -105,6 +155,16 @@ public class MapViewTrajeto extends MapActivity implements ServiceConnection,OnC
     		tvDuracao.setText(DateFormat.format("mm:ss", dados.getTempoEmAndamento()));
     		
     		mapOverlay.setListaCoordenada(controlador.getTrajeto());
+    		
+    		if(foco_automatico){
+    			if(!controlador.getTrajeto().isEmpty()){
+    				int size = controlador.getTrajeto().size();
+	    			GeoPoint ponto = controlador.getTrajeto().get(size-1);
+	    			mapController.setCenter(ponto);
+	    			mapController.setZoom(21);
+    			}
+    		}
+    		
     		mapView.invalidate();
     	
         }
