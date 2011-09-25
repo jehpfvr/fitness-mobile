@@ -47,6 +47,27 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 		if(ultimoLocation == null){
 			ultimoLocation = location;
 		}else{
+<<<<<<< .mine
+			if(!location.equals(ultimoLocation)){
+				this.distancia = this.ultimoLocation.distanceTo(location);
+				
+				this.tempo = location.getTime() - ultimoLocation.getTime();
+				
+				this.velocidade = (distancia)/((double) Math.abs(tempo/1000));
+				
+				this.estatisticaGPS.setDistancia(distancia);
+				
+				if(!Double.isInfinite(velocidade))
+				this.estatisticaGPS.setVelocidade(velocidade*3.6);
+				
+				if(!location.equals(ultimoLocation))
+				this.estatisticaGPS.setUltimoLocation(location);
+	
+				this.trajeto.add(new Coordenada(location));
+				this.ultimoLocation = location;
+			  }else 
+				  this.estatisticaGPS.setVelocidade(0);
+=======
 			
 			this.distancia = this.ultimoLocation.distanceTo(location);
 			
@@ -64,6 +85,7 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 			this.trajeto.add(new Coordenada(location));
 			this.ultimoLocation = location;
 			
+>>>>>>> .r160
 		}
 
 	}
