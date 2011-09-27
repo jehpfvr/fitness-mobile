@@ -2,9 +2,6 @@ package br.com.fitnessmobile.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import android.R.bool;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -13,7 +10,6 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
 import android.location.Location;
-import android.util.Log;
 import br.com.fitnessmobile.R;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
@@ -21,12 +17,10 @@ import com.google.android.maps.Projection;
 
 public class MapOverlay extends Overlay{
 	
-	private Context context;
 	private List<Coordenada> listaCoordenada;
 	private final Paint caminhoPaint;
 	
-	public MapOverlay(Context context) {
-		this.context = context;
+	public MapOverlay() {
 		
 		this.listaCoordenada = new ArrayList<Coordenada>();
 		

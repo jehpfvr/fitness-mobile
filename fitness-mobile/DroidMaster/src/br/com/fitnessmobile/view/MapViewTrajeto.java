@@ -1,7 +1,6 @@
 package br.com.fitnessmobile.view;
 
 import java.text.DecimalFormat;
-
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -15,17 +14,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.service.CacheMapView;
 import br.com.fitnessmobile.service.ControladorGPS;
-import br.com.fitnessmobile.service.Coordenada;
 import br.com.fitnessmobile.service.EstatisticaGPS;
 import br.com.fitnessmobile.service.MapOverlay;
 import br.com.fitnessmobile.service.OnControladorGPSListener;
 import br.com.fitnessmobile.service.ServiceGPS.LocalBinder;
-
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
@@ -43,11 +38,8 @@ public class MapViewTrajeto extends MapActivity implements ServiceConnection,OnC
 	private ControladorGPS controlador;
 	private EstatisticaGPS dados;
 	private DecimalFormat df;
-<<<<<<< .mine
 	private boolean foco_automatico;
-=======
 	private MyLocationOverlay myLocationOverlay;
->>>>>>> .r160
 	
 	@Override
 	protected void onCreate(Bundle icicle) {
@@ -70,7 +62,7 @@ public class MapViewTrajeto extends MapActivity implements ServiceConnection,OnC
 		this.mapView.setBuiltInZoomControls(true);
 		this.mapController = this.mapView.getController();
 		
-		this.mapOverlay = new MapOverlay(this);
+		this.mapOverlay = new MapOverlay();
 		this.myLocationOverlay = new MyLocationOverlay(this, this.mapView);
 		this.mapView.getOverlays().add(mapOverlay);
 		this.mapView.getOverlays().add(myLocationOverlay);
