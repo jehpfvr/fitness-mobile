@@ -1,13 +1,14 @@
 package br.com.fitnessmobile.service;
 
 import java.io.Serializable;
-
 import com.google.android.maps.GeoPoint;
-
 import android.location.Location;
 
 public class Coordenada extends GeoPoint implements Serializable {
-	// valores em graus * 1E6 (microdegrees)
+
+		private static final long serialVersionUID = 1L;
+
+		// valores em graus * 1E6 (microdegrees)
 		public Coordenada(int latitudeE6, int longitudeE6) {
 			super(latitudeE6, longitudeE6);
 		}
