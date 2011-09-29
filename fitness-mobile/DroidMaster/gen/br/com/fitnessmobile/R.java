@@ -39,6 +39,7 @@ public final class R {
         public static final int logo_fitness=0x7f020015;
         public static final int panel_content=0x7f020016;
         public static final int panel_top=0x7f020017;
+        public static final int red_dot=0x7f020018;
     }
     public static final class id {
         public static final int Novo=0x7f08003b;
@@ -187,6 +188,7 @@ public final class R {
         public static final int Triceps_esq=0x7f04000a;
         public static final int Velocidade=0x7f04002a;
         public static final int Voltar=0x7f040027;
+        public static final int Zerar=0x7f04003f;
         public static final int app_name=0x7f040001;
         public static final int btn_add_exercicio=0x7f04001b;
         public static final int exercicio=0x7f040003;

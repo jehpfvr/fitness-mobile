@@ -75,6 +75,14 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 	
 	@Override
 	protected void onDestroy() {
+		if(dados != null){
+			Intent intent = new Intent();
+			intent.putExtra("distancia", dados.getDistancia());
+			intent.putExtra("tempo", dados.getTempoEmAndamento());
+			intent.putExtra("velocidade", dados.getVelocidadeMaxima());
+			setResult(1, intent);
+		}
+		
 		if(controlador != null )this.controlador.removerOnControladorGPS(this);
 		unbindService(this);
 		super.onDestroy();
@@ -87,18 +95,14 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 		
 		if(button.getText().equals(getString(R.string.Pausar))){
 			this.btn_iniciar.setText(R.string.Iniciar);
-			controlador.stopGPS();
-		}else if(v == btn_parar){
-			controlador.stopGPS();
-			
-			Intent intent = new Intent();
-			intent.putExtra("distancia", dados.getDistancia());
-			intent.putExtra("tempo", dados.getTempoEmAndamento());
-			intent.putExtra("velocidade", dados.getVelocidadeMaxima());
-			setResult(1, intent);
-			finish();
-			
-			
+			controlador.stopGPS(false);
+		}else if (button.getText().equals(getString(R.string.Zerar))) {
+			this.btn_parar.setText(R.string.Parar);
+			this.controlador.Zerar();
+		}
+		else if(v == btn_parar){
+			this.btn_parar.setText(R.string.Zerar);
+			controlador.stopGPS(true);
 		}else if(v == btn_iniciar){
 			this.btn_iniciar.setText(R.string.Pausar);
 			controlador.startGPS();

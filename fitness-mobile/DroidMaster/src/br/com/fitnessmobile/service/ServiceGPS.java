@@ -23,6 +23,7 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 	private List<OnControladorGPSListener> listener;
 	private EstatisticaGPS estatisticaGPS;
 	private List<Coordenada> trajeto;
+	private boolean marcarFim;
 
 
 	@Override
@@ -34,6 +35,7 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 		this.estatisticaGPS = new EstatisticaGPS();
 		this.trajeto = new ArrayList<Coordenada>();
 		this.listener = new ArrayList<OnControladorGPSListener>();
+		this.marcarFim = false;
 		
 	}
 	
@@ -109,7 +111,8 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 	}
 
 
-	public void stopGPS() {
+	public void stopGPS(boolean marcarFim) {
+		this.marcarFim = marcarFim;
 		getLocationManager().removeUpdates(this);
 		this.cronometro.stopCronometro();
 	}
@@ -143,6 +146,7 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 
 	public void onCronometro(Cronometro cronometo) {
 		estatisticaGPS.setTempoEmAndamento(cronometo.getMilissegundos());
+		estatisticaGPS.setMarcaFim(this.marcarFim);
 		
 		if(!listener.isEmpty()){
 			for (OnControladorGPSListener c : listener) {
@@ -161,5 +165,10 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 	public void removerOnControladorGPS(OnControladorGPSListener listener) {
 		this.listener.remove(listener);
 		
+	}
+
+
+	public void Zerar() {
+		this.trajeto.clear();
 	}
 }
