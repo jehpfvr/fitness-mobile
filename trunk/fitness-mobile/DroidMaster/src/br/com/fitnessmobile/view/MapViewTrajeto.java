@@ -148,6 +148,12 @@ public class MapViewTrajeto extends MapActivity implements ServiceConnection,OnC
     		
     		mapOverlay.setListaCoordenada(controlador.getTrajeto());
     		
+    		if(dados.isMarcaFim()){
+    			mapOverlay.setFim(dados.isMarcaFim());
+    			myLocationOverlay.disableMyLocation();
+    			mapView.getOverlays().remove(myLocationOverlay);
+    		}
+    		
     		if(foco_automatico){
     			if(!controlador.getTrajeto().isEmpty()){
     				int size = controlador.getTrajeto().size();
@@ -164,8 +170,9 @@ public class MapViewTrajeto extends MapActivity implements ServiceConnection,OnC
    
    @Override
 	protected void onDestroy() {
+	    unbindService(this);
 		super.onDestroy();
-		unbindService(this);
+		
 	}
 
 }

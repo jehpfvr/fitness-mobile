@@ -63,6 +63,7 @@
     <string name="Mapa">Modo Mapa </string>
     <string name="Satelite">Modo Satelite</string>
     <string name="Foco">Foco Automático</string>
+    <string name="Zerar">Zerar</string>
     
     
     <string-array name="array_opcoes">

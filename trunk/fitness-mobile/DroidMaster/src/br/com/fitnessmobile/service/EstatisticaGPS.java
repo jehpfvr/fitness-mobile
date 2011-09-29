@@ -9,11 +9,19 @@ public class EstatisticaGPS {
 	private double velocidade;
 	private double velocidadeMaxima;
 	private Location ultimoLocation;
+	private boolean marcaFim;
 
 	public EstatisticaGPS() {
 		this.velocidadeMaxima = 0;
 	}
 	
+	public boolean isMarcaFim() {
+		return marcaFim;
+	}
+
+	public void setMarcaFim(boolean marcaFim) {
+		this.marcaFim = marcaFim;
+	}
 
 	public double getDistancia() {
 		return distancia/1000;
