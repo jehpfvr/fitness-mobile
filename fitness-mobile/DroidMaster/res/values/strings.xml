@@ -65,6 +65,7 @@
     <string name="Satelite">Modo Satelite</string>
     <string name="Foco">Foco Automático</string>
     <string name="Etapa_nome">Nome da etapa</string>
+    <string name="Zerar">Zerar</string>
     
     
     <string-array name="array_opcoes">

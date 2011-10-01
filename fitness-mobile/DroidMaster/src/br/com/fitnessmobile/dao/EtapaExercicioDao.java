@@ -2,15 +2,12 @@ package br.com.fitnessmobile.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import br.com.fitnessmobile.adapter.enums.EtapaCampos;
 import br.com.fitnessmobile.adapter.enums.EtapaExercicioCampos;
-import br.com.fitnessmobile.model.Etapa;
 import br.com.fitnessmobile.model.EtapaExercicio;
 import br.com.fitnessmobile.model.Exercicio;
 
