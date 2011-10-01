@@ -7,10 +7,14 @@ import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.dao.ProgramaDao;
 import br.com.fitnessmobile.model.Programa;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,7 +22,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class AddPrograma extends Activity implements OnClickListener, OnDateSetListener {
+public class AddPrograma extends Activity implements OnClickListener, OnDateSetListener, android.content.DialogInterface.OnClickListener {
 	
 	static final int DIALOG_DATA_INICIO = 0;
 	static final int DIALOG_DATA_FINAL = 1;
@@ -36,6 +40,8 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 	private DatePickerDialog dialogDataInicio;
 	private DatePickerDialog dialogDataFim;
 	private int dialogSelecionado;
+	AlertDialog.Builder dlgAlert;
+	Intent intent;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +61,8 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 		this.btDatainicial = (Button) findViewById(R.id.add_programa_datainicial);
 		this.btDataFinal = (Button) findViewById(R.id.add_programa_datafinal);
 		
+		dlgAlert  = new AlertDialog.Builder(this);
+		
 		this.btSalvar.setOnClickListener(this);
 		this.btDatainicial.setOnClickListener(this);
 		this.btDataFinal.setOnClickListener(this);
@@ -67,6 +75,12 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 			this.programa.setDataFim(this.dataFim.getTime());
 			
 			this.programaDao.salvar(programa);
+			
+			dlgAlert.setMessage("Seu programa foi adicionado com sucesso");
+			dlgAlert.setTitle("Programa adicionado");
+			dlgAlert.setPositiveButton("OK", this);
+			dlgAlert.create().show();
+				
 		}else if (v == this.btDatainicial){
 			this.dialogSelecionado = DIALOG_DATA_INICIO;
 			showDialog(DIALOG_DATA_INICIO);
@@ -105,4 +119,14 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 		
 	}
 
+	public void onClick(DialogInterface dialog, int which) {
+		Log.i("OnClickDialog","Laço OnClick");
+		
+		//Pega o evento do click do Alert e chama o menu com a Tab
+		if (which == AlertDialog.BUTTON_POSITIVE){
+			Log.i("OnClickDialog","AddPRograma" );
+			intent = new Intent(this,FitnessMobileTab.class).putExtra("aba", 1);
+			startActivity(intent);
+		}
+	}
 }
