@@ -1,6 +1,7 @@
 package br.com.fitnessmobile.adapter;
 
 import java.util.List;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,14 +10,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.model.*;
+import br.com.fitnessmobile.model.Exercicio;
 
-public class ExercicioAdapter extends BaseAdapter {
+public class AddEtapaExercicioAdapter extends BaseAdapter {
 	
 	private Context context;
 	private List<Exercicio> lista;
 
-	public ExercicioAdapter(Context context, List<Exercicio> lista) {
+	public AddEtapaExercicioAdapter(Context context, List<Exercicio> lista) {
 		super();
 		this.context = context;
 		this.lista = lista;
@@ -40,15 +41,16 @@ public class ExercicioAdapter extends BaseAdapter {
 		
 		// Layout
 		LayoutInflater inflate = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View v = inflate.inflate(R.layout.adapter_exercicio_layout, null);
+		View v = inflate.inflate(R.layout.adapter_addexercicio_layout, null);
 	
 		// Nome do Exercicio
-		TextView tv_exercicio = (TextView) v.findViewById(R.id.adapter_exercicio_text);
+		TextView tv_exercicio = (TextView) v.findViewById(R.id.adapter_addexercicio_text);
 		tv_exercicio.setText(exercicio.getNome());
 		
 		// Icone do Exercicio
-		ImageView exercicio_icone = (ImageView) v.findViewById(R.id.adapter_exercicio_imagem);
+		ImageView exercicio_icone = (ImageView) v.findViewById(R.id.adapter_addexercicio_imagem);
 		exercicio_icone.setImageResource(exercicio.getMusculoPrincipal().getMusculoIcone());
+		
 		return v;
 	}
 }
