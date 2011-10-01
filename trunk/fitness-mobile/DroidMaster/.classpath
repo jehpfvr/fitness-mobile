@@ -3,7 +3,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/com_facebook_android"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/com_facebook_android"/>
 	<classpathentry kind="src" path="com_facebook_android_src"/>
+	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
