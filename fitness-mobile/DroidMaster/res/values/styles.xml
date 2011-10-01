@@ -23,4 +23,5 @@
     
     <style name="btn_main" parent="@style/default_wrap_content">
     </style>
+    <style name="programaLabel" parent="@style/programaLabel"></style>
 </resources>

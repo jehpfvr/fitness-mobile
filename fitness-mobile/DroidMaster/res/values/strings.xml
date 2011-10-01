@@ -30,6 +30,7 @@
     <string name="btn_add_exercicio">Novo Exercicio</string>
     <string name="Exercicio_nome">Nome do Exercicio: </string>
     <string name="Exercicio_Musculo_pri">Grupo Muscular Principal</string>
+    <string name="Exercicio_tipo">Tipo de Exercicio:</string>
     <string name="Exercicio_Musculo_sec">Grupos Músculares Secundários: </string>
     <string name="Exercicio_prompt_pri">Selecione o Grupo Muscular Primario </string>
     <string name="Exercicio_prompt_sec">Selecione os Grupo Muscular Secundario </string>
@@ -53,7 +54,7 @@
     <string name="Opcoes">Opções</string>
     <string name="Km">km</string>
     <string name="Km_h">km/h</string>
-    <string name="Novo">novo</string>
+    <string name="Novo">Novo</string>
     <string name="Nome">Nome</string>
     <string name="DataInicial">Data Inicial</string>
     <string name="DataFinal">Data Final</string>
@@ -63,7 +64,7 @@
     <string name="Mapa">Modo Mapa </string>
     <string name="Satelite">Modo Satelite</string>
     <string name="Foco">Foco Automático</string>
-    <string name="Zerar">Zerar</string>
+    <string name="Etapa_nome">Nome da etapa</string>
     
     
     <string-array name="array_opcoes">
@@ -72,16 +73,32 @@
     	<item>Excluir</item>
     </string-array>
     
-    <string-array name="array_grupo_muscular">
-   	    <item>todos</item>
-    	<item>Bíceps</item>
-    	<item>Tríceps</item>
+    <string-array name="array_filtro_muscular">
+    	<item>Todos</item>
+    	<item>Biceps</item>
+    	<item>Triceps</item>
     	<item>Costa</item>
     	<item>Peitoral</item>
-    	<item>Antebraço</item>
+    	<item>Antebraco</item>
     	<item>Abdome</item>
     	<item>Coxa</item>
     	<item>Panturrilha</item>
+    </string-array>
+    
+    <string-array name="array_grupo_muscular">
+	   	<item>Biceps</item>
+	   	<item>Triceps</item>
+	   	<item>Costa</item>
+	   	<item>Peitoral</item>
+	   	<item>Antebraco</item>
+	   	<item>Abdome</item>
+	   	<item>Coxa</item>
+	   	<item>Panturrilha</item>
+    </string-array>
+    
+    <string-array name="array_tipo_exercicio">
+	   	<item>Aerobico</item>
+	   	<item>Anaerobico</item>
     </string-array>
     
     
