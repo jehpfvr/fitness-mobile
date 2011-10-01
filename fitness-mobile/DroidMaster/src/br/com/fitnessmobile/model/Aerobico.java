@@ -45,5 +45,4 @@ public class Aerobico implements Serializable{
 	public void setDistancia(Double distancia) {
 		this.distancia = distancia;
 	}
-
 }
