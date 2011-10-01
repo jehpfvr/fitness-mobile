@@ -1,70 +1,52 @@
 package br.com.fitnessmobile.model;
 
-import java.io.Serializable;
-import java.util.List;
+import br.com.fitnessmobile.adapter.enums.EtapaExercicioCampos;
 
-public class EtapaExercicio implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
-	
+public class EtapaExercicio {
+
 	private Integer id;
-	private Aerobico aerobico;
-	private Anaerobico anaerobico;
-	private Etapa etapa;
-	private String nome;
-	private List<Exercicio> exercicios;
+	private Exercicio exercicio;
+	private Integer etapaid;
+	private Integer flag;
+	private Integer tipoID;
+	public static String[] colunas = {
+		EtapaExercicioCampos.ID.getCampo(),
+		EtapaExercicioCampos.ETAPA_ID.getCampo(),
+		EtapaExercicioCampos.EXERCICIO_ID.getCampo(),
+		EtapaExercicioCampos.FLAG.getCampo(),
+		EtapaExercicioCampos.TIPO_ID.getCampo()
+	};
 	
-	public EtapaExercicio() {
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public List<Exercicio> getExercicios() {
-		return exercicios;
-	}
-
-	public void setExercicios(List<Exercicio> exercicios) {
-		this.exercicios = exercicios;
-	}
+	public EtapaExercicio() { }
 
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	public Aerobico getAerobico() {
-		return aerobico;
+	public Integer getEtapaid() {
+		return etapaid;
 	}
-
-	public void setAerobico(Aerobico aerobico) {
-		this.aerobico = aerobico;
+	public void setEtapaid(Integer etapaid) {
+		this.etapaid = etapaid;
 	}
-
-	public Anaerobico getAnaerobico() {
-		return anaerobico;
+	public Integer getFlag() {
+		return flag;
 	}
-
-	public void setAnaerobico(Anaerobico anaerobico) {
-		this.anaerobico = anaerobico;
+	public void setFlag(Integer flag) {
+		this.flag = flag;
 	}
-
-	public Etapa getEtapa() {
-		return etapa;
+	public Exercicio getExercicio() {
+		return exercicio;
 	}
-
-	public void setEtapa(Etapa etapa) {
-		this.etapa = etapa;
+	public void setExercicio(Exercicio exercicio) {
+		this.exercicio = exercicio;
 	}
-	
-	
-	
+	public Integer getTipoID() {
+		return tipoID;
+	}
+	public void setTipoID(Integer tipoID) {
+		this.tipoID = tipoID;
+	}
 }

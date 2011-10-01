@@ -2,6 +2,8 @@ package br.com.fitnessmobile.model;
 
 import java.io.Serializable;
 
+import br.com.fitnessmobile.adapter.enums.Musculo;
+
 public class Medida implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
