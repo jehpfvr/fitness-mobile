@@ -1,11 +1,5 @@
 package br.com.fitnessmobile.view;
 
-import java.util.ArrayList;
-import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.adapter.ProgramaAdapter;
-import br.com.fitnessmobile.dao.ProgramaDao;
-import br.com.fitnessmobile.model.Etapa;
-import br.com.fitnessmobile.model.Programa;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -21,6 +15,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
+import br.com.fitnessmobile.R;
+import br.com.fitnessmobile.adapter.ProgramaAdapter;
+import br.com.fitnessmobile.dao.ProgramaDao;
+import br.com.fitnessmobile.model.Programa;
 
 public class TabPrograma extends Activity implements OnItemLongClickListener, OnItemClickListener,DialogInterface.OnClickListener{
 	private final int DIALOG_SELECIONAR = 1;
@@ -46,6 +44,8 @@ public class TabPrograma extends Activity implements OnItemLongClickListener, On
 		this.listView.setOnItemLongClickListener(this);
 	}
 
+	
+	
 	public boolean onItemLongClick(AdapterView<?> adapter, View v, int pos, long id) {
 		final CharSequence[] items = getResources().getTextArray(R.array.array_opcoes);
 
@@ -54,14 +54,21 @@ public class TabPrograma extends Activity implements OnItemLongClickListener, On
 		builder.setItems(items, this);
 		AlertDialog alert = builder.create();
 		alert.show();
+		
 		return true;
 	}
+	
+	
+	public void remover(){
+		
+	}
+	
 
 	public void onItemClick(AdapterView<?> adapter, View v, int pos, long id) {
 		Programa programa = (Programa) adapter.getAdapter().getItem(pos);
-		ArrayList<Etapa> listaEtapa = (ArrayList<Etapa>) programa.getEtapas();
 		Intent intent = new Intent(this, EtapaView.class);
-		intent.putExtra("etapa", listaEtapa);
+		intent.putExtra("programaID", programa.getId());
+		intent.putExtra("programaNome", programa.getNome());
 		startActivity(intent);
 	}
 	
@@ -86,12 +93,13 @@ public class TabPrograma extends Activity implements OnItemLongClickListener, On
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 	    case R.id.Novo:
+	    	Log.i("log", "activity AddPrograma");
 	        //chame aqui a activity de adicionar um programa
 	    	startActivity(new Intent(this, AddPrograma.class));
 	        return true;
 	    case R.id.Opcoes:
-	    	//chame aqui a activity de configurações
-	    	Log.v("log", "activity configuração");
+	    	//chame aqui a activity de configuracoes
+	    	Log.v("log", "activity configuracao");
 	        return true;
 	    default:
 	        return super.onOptionsItemSelected(item);
@@ -99,11 +107,10 @@ public class TabPrograma extends Activity implements OnItemLongClickListener, On
 	}
 
 	public void onClick(DialogInterface dialog, int pos) {
-		//trate aqui a seleção do click longo do botão
+		//trate aqui a selecao do click longo do botao
 		if(pos == 0){
 			
 		}
-		
 	}
 	
 	@Override
@@ -111,5 +118,4 @@ public class TabPrograma extends Activity implements OnItemLongClickListener, On
 		this.listView.setAdapter(new ProgramaAdapter(this, programaDao.listarProgramas()));
 		super.onResume();
 	}
-
 }
