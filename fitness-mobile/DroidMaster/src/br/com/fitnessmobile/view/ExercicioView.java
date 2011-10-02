@@ -1,5 +1,8 @@
 package br.com.fitnessmobile.view;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +15,16 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.EtapaExercicioAdapter;
 import br.com.fitnessmobile.dao.EtapaExercicioDao;
+import br.com.fitnessmobile.model.EtapaExercicio;
+import br.com.fitnessmobile.model.Exercicio;
 
 public class ExercicioView extends Activity implements OnItemLongClickListener, OnItemClickListener, OnClickListener {
 	
@@ -60,8 +68,24 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 		}
 	}
 
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		// TODO Auto-generated method stub
+	public void onItemClick(AdapterView<?> adapter, View view, int pos, long id) {
+		EtapaExercicio etapaExercicio = (EtapaExercicio) adapter.getAdapter().getItem(pos);
+		
+		if(etapaExercicio.getExercicio().getTipo().equals("N")){
+			if(etapaExercicio.getFlag().equals(1))
+				etapaExercicio.setFlag(0);
+			else
+				etapaExercicio.setFlag(1);
+		}else if(etapaExercicio.getExercicio().getTipo().equals("A")){
+			if(etapaExercicio.getFlag().equals(1))
+				etapaExercicio.setFlag(0);
+			else{
+				etapaExercicio.setFlag(1);
+				startActivityForResult(new Intent(this, ExercicioAerobicoView.class), 0);
+			}
+		}
+		
+		((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
 		
 	}
 
@@ -95,7 +119,25 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 	}
 
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		if(btn_exercicio_salvar == v){
+			ListAdapter list = this.listView.getAdapter();
+			for(int c=0;c<=list.getCount()-1;c++){
+				EtapaExercicio exercicio = (EtapaExercicio) list.getItem(c);
+				
+				Toast.makeText(this, exercicio.getFlag().toString(), Toast.LENGTH_LONG).show();
+			}
+			
+		}
 		
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(resultCode == 1 && resultCode == 0){
+			String result = "Distancia: "+ data.getDoubleExtra("distancia", 0) +"/n"+"Tempo: "+ new Date(data.getLongExtra("tempo", 0)).toString()+
+					        "Velocidade: "+data.getDoubleExtra("velocidade", 0);
+			
+			Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+		}
 	}
 }
