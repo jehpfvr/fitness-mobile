@@ -65,8 +65,9 @@
     <string name="Satelite">Modo Satelite</string>
     <string name="Foco">Foco Automático</string>
     <string name="Etapa_nome">Nome da etapa</string>
-    <string name="Zerar">Zerar</string>
-
+    <string name="Zerar">Zerar</string> 
+	<string name="Selecionar_exercicio">Clique para marcar</string>
+	<string name="Marcar_gps">Inicie o GPS </string>
  <string name="Modo_de_visualizacao_diurno">Modo diurno</string>
     <string name="Modo_de_visualizacao_noturno">Modo noturno</string>
     
