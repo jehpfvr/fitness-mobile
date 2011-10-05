@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+    <TextView android:text="TextView" android:id="@+id/textExercicioView" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_margin="5dp"/>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="horizontal" android:gravity="right">
+     <TextView android:text="@string/Selecionar_exercicio" android:id="@+id/avisoExercicioView" android:layout_height="wrap_content" android:layout_width="200dp" 
+               android:gravity="center" android:layout_margin="5dp" android:visibility="visible" android:textStyle="bold"/>
+     <ImageView android:src="@drawable/btn_check" android:layout_width="40dp" android:layout_height="40dp" 
+                android:id="@+id/imagemExercicioView" android:layout_gravity="center_vertical" android:visibility="gone"/>
+    </LinearLayout>
+   
+    
+</LinearLayout>

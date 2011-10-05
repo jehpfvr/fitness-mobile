@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, FitnessMobileActivity!</string>
+    <string name="app_name">FitnessMobile</string>
+    <string name="programa">Programa</string>
+    <string name="exercicio">Exercicio</string>
+    <string name="Medidas">Medidas</string>
+    <string name="Configuracao">Configuração</string>
+    <string name="Altura">Altura</string>
+    <string name="Peso">Peso</string>
+    <string name="Biceps_esq">Bíceps Esq</string>
+    <string name="Biceps_dir">Bíceps Dir</string>
+    <string name="Triceps_esq">Tríceps Esq</string>
+    <string name="Triceps_dir">Tríceps Dir</string>
+    <string name="Cintura">Cintura</string>
+    <string name="Peitoral">Peitoral</string>
+    <string name="Coxa_esq">Coxa esq</string>
+    <string name="Coxa_dir">Coxa dir</string>
+    <string name="Panturrilha_esq">Panturrilha Esq</string>
+    <string name="Panturrilha_dir">Panturrilha Dir</string>
+    <string name="Quadril">Quadril</string>
+    <string name="Antebraco_esq">Antebraço Esq</string>
+    <string name="Antebraco_dir">Antebraço Dir</string>
+    <string name="Ombro">Ombro</string>
+    <string name="Data_medida">Data da Medida:</string>
+    <string name="Data">Data</string>
+    <string name="Salvar">Salvar</string>
+    <string name="Hoje">Hoje</string>
+    <string name="Spinner_musculo">Escolha um grupo muscular</string>
+    <string name="btn_add_exercicio">Novo Exercicio</string>
+    <string name="Exercicio_nome">Nome do Exercicio: </string>
+    <string name="Exercicio_Musculo_pri">Grupo Muscular Principal</string>
+    <string name="Exercicio_tipo">Tipo de Exercicio:</string>
+    <string name="Exercicio_Musculo_sec">Grupos Músculares Secundários: </string>
+    <string name="Exercicio_prompt_pri">Selecione o Grupo Muscular Primario </string>
+    <string name="Exercicio_prompt_sec">Selecione os Grupo Muscular Secundario </string>
+    <string name="Exercicio_adicionar">Adicione um Exercicio </string>
+    <string name="Exercicio_adicionar_musc_sec">Adicionar Musculos Secundarios </string>
+    <string name="Selecionar">Selecionar</string>
+    <string name="Adicionar">Adicionar</string>
+    <string name="Editar">Editar</string>
+    <string name="Excluir">Excluir</string>
+    <string name="Voltar">Voltar</string>
+    <string name="Duracao">Duração</string>
+    <string name="Distancia">Distância</string>
+    <string name="Velocidade">Velocidade</string>
+    <string name="Aceleracao">Aceleracao</string>
+    <string name="Iniciar">Iniciar</string>
+    <string name="Pausar">Pausar</string>
+    <string name="Parar">Parar</string>
+    <string name="Dialog_exer_titulo">Exercicios por Etapa</string>
+    <string name="Exercicio">Exercicio</string>
+    <string name="Repeticao">Repetição</string>
+    <string name="Opcoes">Opções</string>
+    <string name="Km">km</string>
+    <string name="Km_h">km/h</string>
+    <string name="Novo">Novo</string>
+    <string name="Nome">Nome</string>
+    <string name="DataInicial">Data Inicial</string>
+    <string name="DataFinal">Data Final</string>
+    <string name="Etapas">Etapas</string>
+    <string name="Selecione_etapas">Selecione as Etapas: </string>
+    <string name="Mostrar_mapa">Visualizar Mapa </string>
+    <string name="Mapa">Modo Mapa </string>
+    <string name="Satelite">Modo Satelite</string>
+    <string name="Foco">Foco Automático</string>
+    <string name="Etapa_nome">Nome da etapa</string>
+    <string name="Zerar">Zerar</string> 
+	<string name="Selecionar_exercicio">Clique para marcar</string>
+	<string name="Marcar_gps">Inicie o GPS </string>
+ <string name="Modo_de_visualizacao_diurno">Modo diurno</string>
+    <string name="Modo_de_visualizacao_noturno">Modo noturno</string>
+    
+    <string-array name="array_opcoes">
+    	<item>Selecionar</item>
+    	<item>Editar</item>
+    	<item>Excluir</item>
+    </string-array>
+    
+    <string-array name="array_filtro_muscular">
+    	<item>Todos</item>
+    	<item>Biceps</item>
+    	<item>Triceps</item>
+    	<item>Costa</item>
+    	<item>Peitoral</item>
+    	<item>Antebraco</item>
+    	<item>Abdome</item>
+    	<item>Coxa</item>
+    	<item>Panturrilha</item>
+    </string-array>
+    
+    <string-array name="array_grupo_muscular">
+	   	<item>Biceps</item>
+	   	<item>Triceps</item>
+	   	<item>Costa</item>
+	   	<item>Peitoral</item>
+	   	<item>Antebraco</item>
+	   	<item>Abdome</item>
+	   	<item>Coxa</item>
+	   	<item>Panturrilha</item>
+    </string-array>
+    
+    <string-array name="array_tipo_exercicio">
+	   	<item>Aerobico</item>
+	   	<item>Anaerobico</item>
+    </string-array>
+    
+    
+</resources>
