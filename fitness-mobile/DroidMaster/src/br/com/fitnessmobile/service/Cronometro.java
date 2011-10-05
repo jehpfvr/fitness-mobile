@@ -88,6 +88,10 @@ public class Cronometro extends Thread {
 		this.listener = listener;
 	}
 	
+	public void clear(){
+		this.milissegundos = 0;
+		if(listener != null) listener.onCronometro(this);
+	}
 	
 	
 
