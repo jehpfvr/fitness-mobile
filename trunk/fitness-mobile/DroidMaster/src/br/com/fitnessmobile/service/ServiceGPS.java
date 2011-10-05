@@ -170,5 +170,6 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 
 	public void Zerar() {
 		this.trajeto.clear();
+		this.cronometro.clear();
 	}
 }

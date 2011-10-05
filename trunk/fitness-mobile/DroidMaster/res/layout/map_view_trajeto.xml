@@ -8,7 +8,6 @@
 	<com.google.android.maps.MapView
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
 	android:clickable="true"
-	android:fitsSystemWindows="true"
 	android:layout_weight="1"
 	android:apiKey="0X1tFn3N-pGDS6m75qX1rY1usj7E4IqEhkV247A" android:id="@+id/mapview_trajeto" />
 	
