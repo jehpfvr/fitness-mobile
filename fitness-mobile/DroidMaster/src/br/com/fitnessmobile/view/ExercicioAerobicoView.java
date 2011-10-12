@@ -99,6 +99,7 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 			controlador.stopGPS(false);
 		}else if (button.getText().equals(getString(R.string.Zerar))) {
 			this.btn_parar.setText(R.string.Parar);
+			this.btn_iniciar.setText(R.string.Iniciar);
 			this.btn_iniciar.setEnabled(true);
 			this.btn_parar.setEnabled(false);
 			this.controlador.Zerar();
