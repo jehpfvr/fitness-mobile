@@ -107,12 +107,19 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 	public void startGPS() {
 		getLocationManager().requestLocationUpdates( LocationManager.GPS_PROVIDER,1000, 0, this);
 		
+		this.marcarFim = false;
+		
 		this.cronometro.startCronometro();
 	}
 
 
 	public void stopGPS(boolean marcarFim) {
-		this.marcarFim = marcarFim;
+		
+		if(marcarFim){
+			this.marcarFim = marcarFim;
+			this.onCronometro(this.cronometro);
+		}
+		
 		getLocationManager().removeUpdates(this);
 		this.cronometro.stopCronometro();
 	}
@@ -142,6 +149,7 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 
 	public void setOnControladorGPS(OnControladorGPSListener listener) {
 		this.listener.add(listener);
+		this.onCronometro(this.cronometro);
 	}
 
 	public void onCronometro(Cronometro cronometo) {
@@ -171,5 +179,8 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 	public void Zerar() {
 		this.trajeto.clear();
 		this.cronometro.clear();
+		this.marcarFim = false;
+		this.estatisticaGPS = new EstatisticaGPS();
+		this.onCronometro(this.cronometro);
 	}
 }
