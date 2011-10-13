@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+        <FrameLayout android:id="@+id/frameLayout1" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout2" android:orientation="vertical" android:layout_height="wrap_content">
+                <Button android:layout_height="wrap_content" android:id="@+id/btnModoVisualizacaoDiurno" android:layout_width="fill_parent" android:text="@string/Modo_de_visualizacao_diurno"></Button>
+                <Button android:layout_height="wrap_content" android:id="@+id/btnModoVisualizacaoNoturno" android:layout_width="fill_parent" android:text="@string/Modo_de_visualizacao_noturno"></Button>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
