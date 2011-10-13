@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+	
+	<com.google.android.maps.MapView
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:clickable="true"
+	android:layout_weight="1"
+	android:apiKey="0X1tFn3N-pGDS6m75qX1rY1usj7E4IqEhkV247A" android:id="@+id/mapview_trajeto" />
+	
+	<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:background="@drawable/fundo_labels_trajeto" android:gravity="center" android:layout_alignParentRight="true" android:layout_margin="2dp">
+	  	 <LinearLayout style="@style/layouts_trajeto">
+	  	 	<TextView android:text="@string/Distancia" style="@style/labels_trajeto"/>
+	  	 	<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:gravity="center">
+	  	 		<TextView android:id="@+id/trajeto_distancia" android:layout_width="wrap_content" android:layout_height="wrap_content"  android:text="00" android:textSize="21sp"/>
+	  	 		<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"  android:layout_marginLeft="3dp" android:text="@string/Km" android:textSize="18sp"/>
+	  	 	</LinearLayout>
+	  	 </LinearLayout>
+	  	 <LinearLayout style="@style/layouts_trajeto">
+	  	 	<TextView android:text="@string/Duracao" style="@style/labels_trajeto"/>
+	  	 	<TextView android:id="@+id/trajeto_duracao" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" android:textSize="21sp"/>
+	  	 </LinearLayout>
+	  	 <LinearLayout style="@style/layouts_trajeto">
+	  	 	<TextView android:text="@string/Velocidade" style="@style/labels_trajeto" />
+	  	 	<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:gravity="center">
+	  	 		<TextView android:id="@+id/trajeto_velocidade" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00" android:textSize="21sp"/>
+	  	 		<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"  android:layout_marginLeft="3dp" android:text="@string/Km_h" android:textSize="18sp"/>
+	  	 	</LinearLayout>
+	  	 </LinearLayout>
+    </LinearLayout>
+
+    
+</RelativeLayout>
