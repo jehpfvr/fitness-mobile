@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="br.com.fitnessmobile" android:versionCode="1"
+	android:versionName="1.0">
+	<uses-sdk android:minSdkVersion="7" />
+	
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	<uses-permission android:name="android.permission.INTERNET" />
+	
+	<application android:icon="@drawable/icon" android:label="@string/app_name"
+		android:theme="@style/Button.dia" android:debuggable="true">
+		<uses-library android:name="com.google.android.maps" />
+		<activity android:name=".view.FitnessMobileMain"
+                  android:label="@string/app_name">
+                  	<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
+        </activity>
+			
+			
+		<activity android:name=".view.AddPrograma"/>
+		<activity android:name=".view.AddEtapa"/>
+		<activity android:name=".view.AddEtapaExercicio"/>	
+		
+		<activity android:name="br.com.fitnessmobile.view.LoginView">
+	
+        </activity>
+					
+		<activity android:name="br.com.fitnessmobile.view.FitnessMobileTab"/>
+		<activity android:name="br.com.fitnessmobile.view.TabHome"  />
+		<activity android:name=".view.TabPrograma"  />
+		<activity android:name=".view.TabExercicio" />
+		<activity android:name=".view.TabUsuario" />
+		<activity android:name=".view.TabModoVisualizacao" />
+		<activity android:name=".view.ExercicioAerobicoView" android:screenOrientation="portrait" />
+		<activity android:name=".view.MapViewTrajeto" android:screenOrientation="portrait" />
+		<activity android:name=".view.EtapaView" />
+		<activity android:name=".view.ExercicioView" />
+		<activity android:name=".view.ExercicioAnaerobicoView" />
+		<activity android:name="br.com.fitnessmobile.view.AddPrograma" />
+		<activity android:name=".dao.UsuarioDao" />
+		<activity android:name=".service.UsuarioListActivity" android:label="@string/app_name">
+		
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>		
+		</activity>
+		
+		<service android:name=".service.ServiceGPS">
+			<intent-filter>
+				<action android:name="SERVICO_GPS" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</service>
+			
+	</application>
+</manifest>
