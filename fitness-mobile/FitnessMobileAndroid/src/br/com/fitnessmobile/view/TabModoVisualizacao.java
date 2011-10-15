@@ -1,51 +1,80 @@
 package br.com.fitnessmobile.view;
 
-import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.controller.Util;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Intent;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-
+import android.widget.ImageView;
+import android.widget.Toast;
+import br.com.fitnessmobile.R;
+import br.com.fitnessmobile.controller.Util;
 
 public class TabModoVisualizacao extends Activity implements OnClickListener {
 
-	AlertDialog.Builder dlgAlert;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 		Util.inicioActivitySetTema(this);
-		
-		dlgAlert = new AlertDialog.Builder(this);
 		setContentView(R.layout.selecionar_modo_de_visualizacao);
-		
+
 		findViewById(R.id.btnModoVisualizacaoDiurno).setOnClickListener(this);
 		findViewById(R.id.btnModoVisualizacaoNoturno).setOnClickListener(this);
-
 	}
-		
+
 	public void onClick(View v) {
-		
-		switch (v.getId()) {
-		
-		case R.id.btnModoVisualizacaoDiurno:
-			dlgAlert.setMessage("Tema foi mudado com sucesso");
-			dlgAlert.setTitle("Tema Alterado");
-			dlgAlert.create().show();
-			Util.mudarParaTema(this, Util.TEMA_DIA);
-			break;
-		case R.id.btnModoVisualizacaoNoturno:
-			Util.mudarParaTema(this, Util.TEMA_NOITE);
-			dlgAlert.setMessage("Tema foi mudado com sucesso");
-			dlgAlert.setTitle("Tema Alterado");
-			dlgAlert.create().show();
-			break;
+
+		if (v.getId() == R.id.btnModoVisualizacaoDiurno) {
+			switch (Util.sTheme) {
+			case 0:
+				Context context3 = getApplicationContext();
+				CharSequence text3 = "O Tema diurno já está sendo utilizado";
+				int duration3 = Toast.LENGTH_SHORT;
+
+				Toast toast3 = Toast.makeText(context3, text3, duration3);
+				toast3.show();
+				break;
+
+			case 1:
+				Context context1 = getApplicationContext();
+				CharSequence text1 = "Tema alterado com sucesso";
+				int duration1 = Toast.LENGTH_SHORT;
+
+				Toast toast1 = Toast.makeText(context1, text1, duration1);
+				toast1.show();
+
+				Util.mudarParaTema(this, Util.TEMA_DIA);
+			   // TabUsuario.setBackgroundColor(Color.argb(255, 255, 255, 255));
+				//TabUsuario.getBackground().setColorFilter(Color.parseColor("#00ff00"), PorterDuff.Mode.DARKEN);
+				
+				break;
+			}
+		}
+		if (v.getId() == R.id.btnModoVisualizacaoNoturno) {
+			switch (Util.sTheme) {
+			case 0:
+				Context context2 = getApplicationContext();
+				CharSequence text2 = "Tema alterado com sucesso";
+				int duration2 = Toast.LENGTH_SHORT;
+
+				Toast toast2 = Toast.makeText(context2, text2, duration2);
+				toast2.show();
+
+				Util.mudarParaTema(this, Util.TEMA_NOITE);
+		        
+				break;
+			case 1:
+				Context context4 = getApplicationContext();
+				CharSequence text4 = "O Tema noturno já está sendo utilizado";
+				int duration4 = Toast.LENGTH_SHORT;
+
+				Toast toast4 = Toast.makeText(context4, text4, duration4);
+				toast4.show();
+			}
+
 		}
 	}
-	
 }

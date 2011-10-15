@@ -26,7 +26,7 @@ public class FitnessMobileTab extends TabActivity implements OnTabChangeListener
         mTabHost.addTab(mTabHost.newTabSpec("tab_exercicios").setIndicator("Exercicios",getResources().getDrawable(R.drawable.ico_tab_exer)).setContent(intent));    
      
         intent = new Intent(this,TabUsuario.class);
-        mTabHost.addTab(mTabHost.newTabSpec("tab_usuï¿½rio").setIndicator("Medidas",getResources().getDrawable(R.drawable.ico_tab_exer)).setContent(intent));
+        mTabHost.addTab(mTabHost.newTabSpec("tab_usuário").setIndicator("Medidas",getResources().getDrawable(R.drawable.ico_tab_exer)).setContent(intent));
             
         intent = new Intent(this,TabModoVisualizacao.class);
         mTabHost.addTab(mTabHost.newTabSpec("tab_visualizacao").setIndicator("Visualizacao",getResources().getDrawable(R.drawable.ico_tab_exer)).setContent(intent));
@@ -58,9 +58,4 @@ public class FitnessMobileTab extends TabActivity implements OnTabChangeListener
 		
 	}
     
-    
-    /*public void onTabChanged(String tabId) {
-        Log.i("log Aba", "Trocou aba: "+tabId);
-        
-    }*/
 }

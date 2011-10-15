@@ -42,13 +42,8 @@
 		<activity android:name=".view.EtapaView" />
 		<activity android:name=".view.ExercicioView" />
 		<activity android:name="br.com.fitnessmobile.view.AddPrograma" />
-		<activity android:name=".dao.UsuarioDao" />
-		<activity android:name=".service.UsuarioListActivity" android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>		
-		</activity>
+		
+		<activity android:name=".service.UsuarioInsertAltera" />
 		
 		<service android:name=".service.ServiceGPS">
 			<intent-filter>

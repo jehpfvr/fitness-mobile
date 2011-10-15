@@ -1,5 +1,6 @@
 package br.com.fitnessmobile.view;
 
+
 import java.util.Date;
 
 import android.app.Activity;
@@ -24,6 +25,7 @@ import br.com.fitnessmobile.adapter.EtapaExercicioAdapter;
 import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.EtapaExercicioDao;
 import br.com.fitnessmobile.model.EtapaExercicio;
+
 
 public class ExercicioView extends Activity implements OnItemLongClickListener, OnItemClickListener, OnClickListener {
 	
