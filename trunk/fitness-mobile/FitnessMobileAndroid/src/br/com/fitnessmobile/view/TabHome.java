@@ -1,6 +1,5 @@
 package br.com.fitnessmobile.view;
 
-import br.com.fitnessmobile.controller.Util;
 import android.app.Activity;
 import android.os.Bundle;
 

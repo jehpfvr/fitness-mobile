@@ -6,7 +6,5 @@
     
     <style name="ButtonNoite">
         <item name="android:buttonStyle">@style/Button2</item>
-        <!-- <item name="android:background">#FFFFFFFF</item>-->
-        <item name="android:textColor">#FFFF0000</item>
     </style>
 </resources>

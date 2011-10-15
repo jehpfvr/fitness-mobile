@@ -1,183 +1,106 @@
 package br.com.fitnessmobile.view;
 
 
+import java.util.List;
+
 import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.controller.Util;
+import br.com.fitnessmobile.adapter.UsuarioListAdapter;
+import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
 import br.com.fitnessmobile.dao.UsuarioDao;
 import br.com.fitnessmobile.model.Usuario;
-import br.com.fitnessmobile.model.UsuarioCampo;
-
-import br.com.fitnessmobile.service.UsuarioListActivity;
-import android.app.Activity;
+import br.com.fitnessmobile.service.UsuarioInsertAltera;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
 
-
-public class TabUsuario extends Activity{
-	static final int RESULT_SALVAR = 1;
-	static final int RESULT_EXCLUIR = 2;
+public class TabUsuario extends ListActivity  {
+	protected static final int INSERIR_EDITAR = 1;
 	
-	public UsuarioDao usuarioDao;
-	public Usuario usuario;
+	public static UsuarioDao usuarioDao;
+	
+	private List<Usuario> usuarios;
+	
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        usuarioDao = new UsuarioDao(this);
+        
+        View header = getLayoutInflater().inflate(R.layout.usuario_lista_header, null);
+        ListView listView = getListView();
+        listView.addHeaderView(header, null, false);
+        
+        atualizaLista();
+    }
+    
+    public void atualizaLista() {
+    	usuarios = usuarioDao.listarUsuarios();
+    	
+    	setListAdapter(new UsuarioListAdapter(this, usuarios));
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+    	super.onCreateOptionsMenu(menu);
+    	
+    	menu.add(0, INSERIR_EDITAR, 0, "Inserir Novo");
+    	
+    	return true;
+    }
+    
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+    	switch (item.getItemId()) {
+			case INSERIR_EDITAR:
+				// Abre a tela com o formulário para adicionar
+				startActivityForResult(new Intent(this, UsuarioInsertAltera.class), INSERIR_EDITAR);
+				Toast.makeText(this, "Dados de usuario inserido!", 5);
+				break;
+    	}
+    	
+    	return true;
+    }
+    
+    @Override
+    protected void onActivityResult(int codigo, int codigoRetorno, Intent it) {
+    	super.onActivityResult(codigo, codigoRetorno, it);
+    	
+    	// Quando a activity retorna atualizar a lista
+    	if (codigoRetorno == RESULT_OK) {
+    		atualizaLista();
+    	}
+    }
+    
+    @Override
+    protected void onListItemClick(ListView l, View v, int posicao, long id) {
+    	super.onListItemClick(l, v, posicao, id);
+    	editarPrograma(--posicao);
+    }
+    
+    protected void editarPrograma(int posicao) {
+    	// Recupera o programa selecionado
+    	Usuario usuario = usuarios.get(posicao);
+    	
+    	// Cria a intent para abrir a tela de edição de programa
+    	Intent it = new Intent(this, UsuarioInsertAltera.class);
+    	
+    	// Passa o id do programa como parâmetro
+    	it.putExtra(UsuarioCampos.ID.getCampo(), usuario.getId());
+    	
+    	// Abre a tela de edição
+    	startActivityForResult(it, INSERIR_EDITAR);
+    }
+    
+    @Override
+    protected void onDestroy() {	
+    	super.onDestroy();
+    	
+    	//Fechar banco
+    	usuarioDao.Fechar();
+    }
 
-	// Campos texto
-	private EditText edtPeso;
-	private EditText edtAltura;
-	private EditText edtBicepsEsquerdo;
-	private EditText edtBicepsDireito;
-	private EditText edtTricepsEsquerdo;
-	private EditText edtTricepsDireito;
-	private EditText edtCintura;
-	private EditText edtPeitoral;
-	private EditText edtCoxaEsquerdo;
-	private EditText edtCoxaDireita;
-	private EditText edtPanturrilhaEsquerda;
-	private EditText edtPanturrilhaDireita;
-	private EditText edtQuadril;
-	private EditText edtData;
-	private Long id;
-
-	@Override
-	protected void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
-		Util.inicioActivitySetTema(this);
-		setContentView(R.layout.usuario_form);
-
-		edtPeso = (EditText) findViewById(R.id.edtPeso);
-		edtAltura = (EditText) findViewById(R.id.edtAltura);
-		edtBicepsEsquerdo = (EditText) findViewById(R.id.edtBicepsEsquerdo);
-
-		id = null;
-
-		Bundle extras = getIntent().getExtras();
-		// Se for para Editar, recuperar os valores ...
-		if (extras != null) {
-			id = extras.getLong(UsuarioCampo.ID.getCampo());
-
-			if (id != null) {
-				// ï¿½ uma ediï¿½ï¿½o, busca o programa...
-				Usuario u = buscarUsuario(id);
-				
-				edtPeso.setText(u.getPeso());
-				edtAltura.setText(u.getAltura());
-				edtBicepsEsquerdo.setText(u.getBicepsEsquerdo());
-				edtBicepsDireito.setText(u.getBicepsDireito());
-				edtTricepsEsquerdo.setText(u.getTricepsEsquerdo());
-				edtTricepsDireito.setText(u.getTricepsDireito());
-				edtCintura.setText(u.getCintura());
-				edtPeitoral.setText(u.getPeitoral());
-				edtCoxaEsquerdo.setText(u.getCoxaEsquerda());
-				edtCoxaDireita.setText(u.getCoxaDireita());
-				edtPanturrilhaEsquerda.setText(u.getPanturrilhaEsquerda());
-				edtPanturrilhaDireita.setText(u.getPanturrilhaDireita());
-				edtQuadril.setText(u.getQuadril());
-				edtData.setText(u.getData());
-			}
-		}
-
-		Button btnCancelar = (Button) findViewById(R.id.btnCancelar);
-		btnCancelar.setOnClickListener(new OnClickListener() {
-			public void onClick(View view) {
-				setResult(RESULT_CANCELED);
-				// Fecha a tela
-				finish();
-			}
-		});
-
-		// Listener para salvar o programa
-		Button btnSalvar = (Button) findViewById(R.id.btnSalvar);
-		btnSalvar.setOnClickListener(new OnClickListener() {
-			public void onClick(View view) {
-				salvar();
-			}
-		});
-
-		//Button btnExcluir = (Button) findViewById(R.id.btExcluir);
-
-//		if (id == null) {
-//			// Se id estï¿½ nulo, nï¿½o pode excluir
-//			btnExcluir.setVisibility(View.INVISIBLE);
-//		} else {
-//			// Listener para excluir o programa
-//			btnExcluir.setOnClickListener(new OnClickListener() {
-//				public void onClick(View view) {
-//					excluir();
-//				}
-//			});
-//		}
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		// Cancela para nï¿½o ficar nada na tela pendente
-		setResult(RESULT_CANCELED);
-
-		// Fecha a tela
-		finish();
-	}
-
-	public void salvar() {
-
-		Usuario usuario = new Usuario();
-		
-		if (id != null) {
-			// ï¿½ uma atualizaï¿½ï¿½o
-			usuario.setId(id);
-		}
-		usuario.setPeso(edtPeso.getText().toString());
-		usuario.setAltura(edtAltura.getText().toString());
-		usuario.setBicepsEsquerdo(edtBicepsEsquerdo.getText().toString());
-		usuario.setBicepsDireito(edtBicepsDireito.getText().toString());
-		usuario.setTricepsEsquerdo(edtTricepsEsquerdo.getText().toString());
-		usuario.setTricepsDireito(edtTricepsDireito.getText().toString());
-		usuario.setCintura(edtCintura.getText().toString());
-		usuario.setPeitoral(edtPeitoral.getText().toString());
-		usuario.setCoxaEsquerda(edtCoxaEsquerdo.getText().toString());
-		usuario.setCoxaDireita(edtCoxaDireita.getText().toString());
-		usuario.setPanturrilhaEsquerda(edtPanturrilhaEsquerda.getText().toString());
-		usuario.setPanturrilhaDireita(edtPanturrilhaDireita.getText().toString());
-		usuario.setQuadril(edtQuadril.getText().toString());
-		usuario.setData(edtData.getText().toString());
-		
-		// Salvar
-		salvarUsuario(usuario);
-
-		// OK
-		setResult(RESULT_OK, new Intent());
-
-		// Fecha a tela
-		finish();
-	}
-
-	public void excluir() {
-		if (id != null) {
-			excluirUsuario(id);
-		}
-
-		// OK
-		setResult(RESULT_OK, new Intent());
-
-		// Fecha a tela
-		finish();
-	}
-
-	// Buscar o programa pelo id
-	protected Usuario buscarUsuario(long id) {
-		return UsuarioListActivity.usuarioDao.buscarUsuario(id);
-	}
-
-	// Salvar o programa
-	protected void salvarUsuario(Usuario usuario) {
-		UsuarioListActivity.usuarioDao.salvar(usuario);
-	}
-
-	// Excluir o Programa
-	protected void excluirUsuario(long id) {
-		UsuarioListActivity.usuarioDao.excluir(id);
-	}
 }

@@ -8,7 +8,7 @@ import android.content.Intent;
 
 public class Util {
 	
-	private static int sTheme;
+	public static int sTheme;
 	
 	public final static int TEMA_DIA = 0;
 	public final static int TEMA_NOITE = 1;

@@ -1,5 +1,8 @@
 package br.com.fitnessmobile.model;
 
+import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
+
+
 public class Usuario {
 	private long id;
 	private String peso;
@@ -18,11 +21,48 @@ public class Usuario {
 	private String data;
 	
 	public static String[] colunas = {
-		UsuarioCampo.ID.getCampo(), UsuarioCampo.PESO.getCampo(), UsuarioCampo.ALTURA.getCampo(), UsuarioCampo.BICEPS_ESQUERDO.getCampo(), UsuarioCampo.BICEPS_DIREITO.getCampo(), UsuarioCampo.TRICEPS_ESQUERDO.getCampo(), UsuarioCampo.TRICEPS_DIREITO.getCampo(), UsuarioCampo.CINTURA.getCampo(), UsuarioCampo.PEITORAL.getCampo(), UsuarioCampo.COXA_ESQUERDA.getCampo(), UsuarioCampo.COXA_ESQUERDA.getCampo(), UsuarioCampo.PANTURRILHA_ESQUERDA.getCampo(), UsuarioCampo.PANTURRILHA_DIREITA.getCampo(), UsuarioCampo.CINTURA.getCampo(), UsuarioCampo.DATA.getCampo()
+		UsuarioCampos.ID.getCampo(), UsuarioCampos.PESO.getCampo(), UsuarioCampos.ALTURA.getCampo(), UsuarioCampos.BICEPS_ESQUERDO.getCampo(), UsuarioCampos.BICEPS_DIREITO.getCampo(), UsuarioCampos.TRICEPS_ESQUERDO.getCampo(), UsuarioCampos.TRICEPS_DIREITO.getCampo(), UsuarioCampos.CINTURA.getCampo(), UsuarioCampos.PEITORAL.getCampo(), UsuarioCampos.COXA_ESQUERDA.getCampo(), UsuarioCampos.COXA_DIREITA.getCampo(), UsuarioCampos.PANTURRILHA_ESQUERDA.getCampo(), UsuarioCampos.PANTURRILHA_DIREITA.getCampo(), UsuarioCampos.QUADRIL.getCampo(), UsuarioCampos.DATA.getCampo()
 	};
 	
 	public Usuario(){
 		
+	}
+	
+	public Usuario(String peso, String altura, String bicepsEsquerdo, String bicepsDireito, String tricepsEsquerdo, String tricepsDireito, String cintura, String peitoral, String coxaEsquerda, String coxaDireita, String panturrilhaEsquerda, String panturrilhaDireita, String quadril, String data){
+		super();
+		this.peso = peso;
+		this.altura = altura;
+		this.bicepsEsquerdo = bicepsEsquerdo;
+		this.bicepsDireito = bicepsDireito;
+		this.tricepsEsquerdo = tricepsEsquerdo;
+		this.tricepsDireito = tricepsDireito;
+		this.cintura = cintura;
+		this.peitoral = peitoral;
+		this.coxaEsquerda = coxaEsquerda;
+		this.coxaDireita = coxaDireita;
+		this.panturrilhaEsquerda = panturrilhaEsquerda;
+		this.panturrilhaDireita = panturrilhaDireita;
+		this.quadril = quadril;
+		this.data = data;
+	}	
+	
+	public Usuario(long id, String peso, String altura, String bicepsEsquerdo, String bicepsDireito, String tricepsEsquerdo, String tricepsDireito, String cintura, String peitoral, String coxaEsquerda, String coxaDireita, String panturrilhaEsquerda, String panturrilhaDireita, String quadril, String data){
+		super();
+		this.id = id;
+		this.peso = peso;
+		this.altura = altura;
+		this.bicepsEsquerdo = bicepsEsquerdo;
+		this.bicepsDireito = bicepsDireito;
+		this.tricepsEsquerdo = tricepsEsquerdo;
+		this.tricepsDireito = tricepsDireito;
+		this.cintura = cintura;
+		this.peitoral = peitoral;
+		this.coxaEsquerda = coxaEsquerda;
+		this.coxaDireita = coxaDireita;
+		this.panturrilhaEsquerda = panturrilhaEsquerda;
+		this.panturrilhaDireita = panturrilhaDireita;
+		this.quadril = quadril;
+		this.data = data;
 	}
 	
 	public long getId() {

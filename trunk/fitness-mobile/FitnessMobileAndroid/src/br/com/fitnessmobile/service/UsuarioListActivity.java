@@ -38,7 +38,7 @@ public class UsuarioListActivity extends ListActivity  {
     }
     
     public void atualizaLista() {
-    	usuarios = usuarioDao.listarUsuario();
+    	usuarios = usuarioDao.listarUsuarios();
     	
     	setListAdapter((ListAdapter) new UsuarioListAdapter(this, usuarios));
     }
