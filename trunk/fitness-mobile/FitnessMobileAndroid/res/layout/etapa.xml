@@ -5,6 +5,7 @@
   android:layout_width="fill_parent"
   android:layout_height="fill_parent">
   <TextView android:layout_height="wrap_content" android:id="@+id/etapa_textview" android:text="Etapas" android:layout_width="wrap_content" />
+  <TextView android:layout_height="wrap_content" android:id="@+id/Dtetapa_textview" android:text="Datas" android:layout_width="wrap_content" />
   <ListView android:layout_height="wrap_content" android:id="@+id/etapa_listview" android:layout_width="fill_parent" android:layout_weight="1"/>
     
 </LinearLayout>

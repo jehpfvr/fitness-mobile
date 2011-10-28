@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import br.com.fitnessmobile.adapter.enums.EtapaCampos;
+import br.com.fitnessmobile.adapter.enums.ProgramaCampos;
 import br.com.fitnessmobile.model.Etapa;
 
 public class EtapaDao {
@@ -21,6 +22,7 @@ public class EtapaDao {
 	private static final String[] SCRIPT_DATABASE_CREATE_ETAPA = new String[] {
 			"create table etapa ( _id integer primary key autoincrement," +
 			"nome text null," +
+			"data_inicial numeric not null, data_final numeric not null," +		
 			"programaid integer null);"};
 
 	// Nome do banco
@@ -68,6 +70,8 @@ public class EtapaDao {
 				e.setId(c.getInt(c.getColumnIndex(EtapaCampos.ID.getCampo())));
 				e.setNome(c.getString(c.getColumnIndex(EtapaCampos.NOME.getCampo())));
 				e.setProgramaID(Integer.parseInt(c.getString(c.getColumnIndex(EtapaCampos.PROGRAMA_ID.getCampo()))));
+				e.setDataInicio(c.getLong(c.getColumnIndex(EtapaCampos.DATA_INICIAL.getCampo())));
+				e.setDataFim(c.getLong(c.getColumnIndex(EtapaCampos.DATA_FINAL.getCampo())));
 
 				etapas.add(e);
 
@@ -94,10 +98,12 @@ public class EtapaDao {
 		
 		values.put(EtapaCampos.NOME.getCampo(), etapa.getNome());
 		values.put(EtapaCampos.PROGRAMA_ID.getCampo(), etapa.getProgramaID());
+		values.put(EtapaCampos.DATA_INICIAL.getCampo(), etapa.getDataInicio());
+		values.put(EtapaCampos.DATA_FINAL.getCampo(), etapa.getDataFim());
 
 		Integer id = (int) db.insert(NOME_TABELA, "", values);
 		
-		Log.i(CATEGORIA, "Inserindo no banco etapa: "+ values);
+		Log.i(CATEGORIA, "Inserindo nova etapa ao banco: "+ values);
 		
 		return id;
 	}
@@ -109,6 +115,8 @@ public class EtapaDao {
 		
 		values.put(EtapaCampos.NOME.getCampo(), etapa.getNome());
 		values.put(EtapaCampos.PROGRAMA_ID.getCampo(), etapa.getProgramaID());
+		values.put(EtapaCampos.DATA_INICIAL.getCampo(), etapa.getDataInicio());
+		values.put(EtapaCampos.DATA_FINAL.getCampo(), etapa.getDataFim());
 		
 		String id = String.valueOf(etapa.getId());
 		String where = EtapaCampos.ID.getCampo() + "=?";
@@ -119,5 +127,18 @@ public class EtapaDao {
 		
 		return count;
 		
+	}
+
+	public int excluir(long id) {
+		String where =  ProgramaCampos.ID.getCampo() + "=?";
+		
+		String _id = String.valueOf(id);
+		String[] whereArgs = new String[] {_id};
+		
+		int count = db.delete(NOME_TABELA, where, whereArgs);
+		
+		Log.i(CATEGORIA, "Deletou ["+ count +" registros.");
+		
+		return count;
 	}
 }

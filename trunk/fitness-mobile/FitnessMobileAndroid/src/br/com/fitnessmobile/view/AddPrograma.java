@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AddPrograma extends Activity implements OnClickListener, OnDateSetListener, android.content.DialogInterface.OnClickListener {
 	
@@ -70,6 +71,18 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 
 	public void onClick(View v) {
 		if(v == this.btSalvar){
+			
+			// programa nao pode ter data inicial menor do que a data atual
+			Date dataAtual = new Date(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+			if (dataInicio.getTime() < dataAtual.getTime()) { // TODO adicionar ao casos de uso
+				Toast.makeText(getApplicationContext(), "Data Inicial nao pode ser menor do que a Data de Atual.", Toast.LENGTH_SHORT).show();
+				return;
+			}
+			if (dataInicio.getTime() > dataFim.getTime()) { // TODO adicionar ao casos de uso
+				Toast.makeText(getApplicationContext(), "Data Inicial nao pode ser maior do que a Data Final.", Toast.LENGTH_SHORT).show();
+				return;
+			}
+			
 			this.programa.setNome(this.etNome.getText().toString());
 			this.programa.setDataInicio(this.dataInicio.getTime());
 			this.programa.setDataFim(this.dataFim.getTime());
@@ -80,6 +93,7 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 			dlgAlert.setTitle("Programa adicionado");
 			dlgAlert.setPositiveButton("OK", this);
 			dlgAlert.create().show();
+			this.onDestroy();
 				
 		}else if (v == this.btDatainicial){
 			this.dialogSelecionado = DIALOG_DATA_INICIO;
@@ -112,6 +126,7 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 		if(this.dialogSelecionado == DIALOG_DATA_INICIO){
 			this.tvDataInicial.setText(String.valueOf(day)+"-"+String.valueOf(dialog.getMonth()+1)+"-"+String.valueOf(year));
 			this.dataInicio = new Date(year, month, day);
+			
 		}else if(this.dialogSelecionado == DIALOG_DATA_FINAL){
 			this.tvDataFinal.setText(String.valueOf(day)+"-"+String.valueOf(dialog.getMonth()+1)+"-"+String.valueOf(year));
 			this.dataFim = new Date(year, month, day);

@@ -8,7 +8,7 @@ public class Anaerobico implements Serializable {
 	
 	private Integer id;
 	private Integer repeticoes;
-	private Double peso;
+	private float peso;
 	private Integer serie;
 	
 	public Anaerobico() {
@@ -30,11 +30,11 @@ public class Anaerobico implements Serializable {
 		this.repeticoes = repeticoes;
 	}
 
-	public Double getPeso() {
+	public float getPeso() {
 		return peso;
 	}
 
-	public void setPeso(Double peso) {
+	public void setPeso(float peso) {
 		this.peso = peso;
 	}
 

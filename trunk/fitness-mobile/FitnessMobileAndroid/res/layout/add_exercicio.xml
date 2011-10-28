@@ -16,7 +16,15 @@
 		<Spinner android:layout_height="wrap_content" android:id="@+id/exercicio_tipo"
 			android:layout_width="fill_parent"></Spinner>
 		<TextView style="@style/default_wrap_content" android:text="@string/Exercicio_Musculo_sec"></TextView>
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/Exercicio_adicionar_musc_sec" android:id="@+id/btn_exercicio_add_mus_sec"></Button>
+		
+		<Button android:layout_height="wrap_content" android:text="@string/Exercicio_adicionar_musc_sec" android:id="@+id/btn_exercicio_add_mus_sec" android:layout_width="314dp"></Button>
+		
+		<TextView style="@style/default_wrap_content" android:text="@string/Exercicio_indicecalorico"></TextView>
+		<EditText android:layout_height="wrap_content" android:id="@+id/exercicio_indicecalorico"
+			android:layout_width="fill_parent">
+			<requestFocus></requestFocus>
+		</EditText>
+		
 		<LinearLayout android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:layout_width="fill_parent" android:orientation="horizontal" android:gravity="center">
 			<Button android:text="Salvar" android:id="@+id/btn_exercicio_salvar" android:layout_width="100dp" android:layout_height="wrap_content"></Button>
 			<Button android:text="Cancelar" android:id="@+id/btn_exercicio_cancelar" android:layout_width="100dp" android:layout_height="wrap_content"></Button>

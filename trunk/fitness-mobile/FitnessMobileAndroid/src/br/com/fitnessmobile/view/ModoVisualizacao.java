@@ -13,7 +13,7 @@ import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.controller.Util;
 
-public class TabModoVisualizacao extends Activity implements OnClickListener {
+public class ModoVisualizacao extends Activity implements OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class TabModoVisualizacao extends Activity implements OnClickListener {
 			switch (Util.sTheme) {
 			case 0:
 				Context context3 = getApplicationContext();
-				CharSequence text3 = "O Tema diurno já está sendo utilizado";
+				CharSequence text3 = "O Tema diurno jï¿½ estï¿½ sendo utilizado";
 				int duration3 = Toast.LENGTH_SHORT;
 
 				Toast toast3 = Toast.makeText(context3, text3, duration3);
@@ -68,7 +68,7 @@ public class TabModoVisualizacao extends Activity implements OnClickListener {
 				break;
 			case 1:
 				Context context4 = getApplicationContext();
-				CharSequence text4 = "O Tema noturno já está sendo utilizado";
+				CharSequence text4 = "O Tema noturno jï¿½ estï¿½ sendo utilizado";
 				int duration4 = Toast.LENGTH_SHORT;
 
 				Toast toast4 = Toast.makeText(context4, text4, duration4);

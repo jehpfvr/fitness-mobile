@@ -8,14 +8,28 @@ import br.com.fitnessmobile.R;
 public enum Musculo {
 	
 	// Declaracao das Constantes (Sintaxe: Id do Musculo fixo, Nome do Musculo, int Icone)
-	BICEPS (1, "Biceps", R.drawable.icon),
-	TRICEPS (2, "Triceps", R.drawable.icon),
-	COSTA (3, "Costa", R.drawable.icon),
-	PEITORAL (4, "Peitoral", R.drawable.icon),
-	ANTEBRACO (5, "Antebraco", R.drawable.icon),
-	ABDOME (6, "Abdome", R.drawable.icon),
-	COXA (7, "Coxa", R.drawable.icon),
-	PANTURRILHA (8, "Panturrilha", R.drawable.icon);
+	
+	
+	//Área alta
+	TRAPEZIO (1, "Trapezio", R.drawable.trapezio),
+	DELTOIDE (2, "Deltoide", R.drawable.deltoide),
+	BICEPS (3, "Biceps", R.drawable.biceps),
+	TRICEPS (4, "Triceps", R.drawable.triceps),
+	ANTEBRACO (5, "Antebraco", R.drawable.antebracos),
+	
+	//Área central
+	PEITORAL (6, "Peitoral", R.drawable.icon),
+	ABDOMINAIS (7, "Abdominais", R.drawable.icon),
+	ABDOMINAIS_OBLIQUOS(8,"Abdominais_Obliquos",R.drawable.icon),
+	DORSAIS(9,"Dorsais",R.drawable.icon),
+	LOMBARES(10,"Lombares",R.drawable.icon),
+	
+	//ÁREA baixa
+	GLUTEOS(11,"Gluteos",R.drawable.icon),
+	ADUTORES(12,"Adutores",R.drawable.icon),
+	QUADRICEPS (13, "Quadriceps", R.drawable.icon),
+	ISQUIOTIBIAIS(14,"Isquiotibiais",R.drawable.icon),
+	PANTURRILHA (15, "Panturrilha", R.drawable.icon);
 	
 	// Definicao das Constantes
 	private final int musculo_id;

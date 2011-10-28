@@ -29,6 +29,7 @@
     <string name="Spinner_musculo">Escolha um grupo muscular</string>
     <string name="btn_add_exercicio">Novo Exercicio</string>
     <string name="Exercicio_nome">Nome do Exercicio: </string>
+    <string name="Exercicio_indicecalorico">Indice Calorico </string>
     <string name="Exercicio_Musculo_pri">Grupo Muscular Principal</string>
     <string name="Exercicio_tipo">Tipo de Exercicio:</string>
     <string name="Exercicio_Musculo_sec">Grupos Músculares Secundários: </string>
@@ -56,6 +57,7 @@
     <string name="Km_h">km/h</string>
     <string name="Novo">Novo</string>
     <string name="Nome">Nome</string>
+    <string name="Modo_v">Modo de Visualização</string>
     <string name="DataInicial">Data Inicial</string>
     <string name="DataFinal">Data Final</string>
     <string name="Etapas">Etapas</string>
@@ -70,6 +72,10 @@
 	<string name="Marcar_gps">Inicie o GPS </string>
  <string name="Modo_de_visualizacao_diurno">Modo diurno</string>
     <string name="Modo_de_visualizacao_noturno">Modo noturno</string>
+   <string name="EAnaerobico_Peso">Peso</string>
+   <string name="EAnaerobico_Serie">Serie</string>
+   <string name="EAnaerobico_Repeticao">Repeticao</string>
+   <string name="Preferencias">Escolha suas preferências</string>
     
     <string-array name="array_opcoes">
     	<item>Selecionar</item>
@@ -78,25 +84,43 @@
     </string-array>
     
     <string-array name="array_filtro_muscular">
-    	<item>Todos</item>
-    	<item>Biceps</item>
-    	<item>Triceps</item>
-    	<item>Costa</item>
-    	<item>Peitoral</item>
-    	<item>Antebraco</item>
-    	<item>Abdome</item>
-    	<item>Coxa</item>
-    	<item>Panturrilha</item>
+    	<item>Todos</item>>
+    	<item>Trapezio</item>
+    	<item>Deltoide</item>
+	   	<item>Biceps</item>
+	   	<item>Triceps</item>
+	   	<item>Antebraco</item>
+	   	
+	   	<item>Peitoral</item>
+	   	<item>Abdominais</item>
+	   	<item>Abdominais_Obliquos</item>
+	   	<item>Dorsais</item>
+	   	<item>Lombares</item>
+	   	
+	   	<item>Gluteos</item>
+	   	<item>Adutores</item>
+	   	<item>Quadriceps</item>
+		<item>Isquiotibiais</item>
+	   	<item>Panturrilha</item>
     </string-array>
     
     <string-array name="array_grupo_muscular">
+    	<item>Trapezio</item>
+    	<item>Deltoide</item>
 	   	<item>Biceps</item>
 	   	<item>Triceps</item>
-	   	<item>Costa</item>
-	   	<item>Peitoral</item>
 	   	<item>Antebraco</item>
-	   	<item>Abdome</item>
-	   	<item>Coxa</item>
+	   	
+	   	<item>Peitoral</item>
+	   	<item>Abdominais</item>
+	   	<item>Abdominais_Obliquos</item>
+	   	<item>Dorsais</item>
+	   	<item>Lombares</item>
+	   	
+	   	<item>Gluteos</item>
+	   	<item>Adutores</item>
+	   	<item>Quadriceps</item>
+		<item>Isquiotibiais</item>
 	   	<item>Panturrilha</item>
     </string-array>
     
