@@ -1,0 +1,9 @@
+
+androiddebugkey, Jun 25, 2011, PrivateKeyEntry,
+Certificate fingerprint (MD5): E3:2F:12:99:89:50:19:DB:32:11:FC:0D:0F:CB:2C:06
+
+
+KEYMAP
+
+0X1tFn3N-pGDS6m75qX1rY1usj7E4IqEhkV247A
+
