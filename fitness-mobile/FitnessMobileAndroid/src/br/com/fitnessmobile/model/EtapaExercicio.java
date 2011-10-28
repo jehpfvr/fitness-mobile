@@ -9,12 +9,16 @@ public class EtapaExercicio {
 	private Integer etapaid;
 	private Integer flag;
 	private Integer tipoID;
+	private Integer diaID;
+	private long dtBaixa;
 	public static String[] colunas = {
 		EtapaExercicioCampos.ID.getCampo(),
 		EtapaExercicioCampos.ETAPA_ID.getCampo(),
 		EtapaExercicioCampos.EXERCICIO_ID.getCampo(),
 		EtapaExercicioCampos.FLAG.getCampo(),
-		EtapaExercicioCampos.TIPO_ID.getCampo()
+		EtapaExercicioCampos.TIPO_ID.getCampo(),
+		EtapaExercicioCampos.DIA_ID.getCampo(),
+		EtapaExercicioCampos.DATA_BAIXA.getCampo()
 	};
 	
 	public EtapaExercicio() { }
@@ -48,5 +52,17 @@ public class EtapaExercicio {
 	}
 	public void setTipoID(Integer tipoID) {
 		this.tipoID = tipoID;
+	}
+	public Integer getDiaID() {
+		return diaID;
+	}
+	public void setDiaID(Integer diaID) {
+		this.diaID = diaID;
+	}
+	public long getDtBaixa() {
+		return dtBaixa;
+	}
+	public void setDtBaixa(long dtBaixa) {
+		this.dtBaixa = dtBaixa;
 	}
 }

@@ -1,7 +1,7 @@
 package br.com.fitnessmobile.view;
 
 import android.app.Activity;
-import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,7 +16,6 @@ import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.ExercicioAdapter;
 import br.com.fitnessmobile.adapter.enums.Musculo;
-import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.ExercicioDao;
 import br.com.fitnessmobile.model.Exercicio;
 
@@ -24,17 +23,16 @@ public class TabExercicio extends Activity implements OnClickListener {
 	
 	private ListView listView;
 	private Spinner sp_GrupoMuscular;
-	private Dialog dialogAddExercicio;
+	
 	private Button btn_addExercicio;
 	
 	private ExercicioDao exercicioDao;
 	
-	private String nomeFiltro = "Todos"; // Padrão listar todos
+	private String nomeFiltro = "Todos"; // Padrao listar todos
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Util.inicioActivitySetTema(this);
 
 		// Definir Layout
 		setContentView(R.layout.exercicios);
@@ -110,18 +108,11 @@ public class TabExercicio extends Activity implements OnClickListener {
 		});
 	}
 	
-	@Override
-	protected Dialog onCreateDialog(int id) {
-		if (id == 0) {
-			this.dialogAddExercicio = new DialogAddMusculo(this,R.string.Exercicio_adicionar);
-		}
-		return this.dialogAddExercicio;
-	}
 
 	// Eventos de Botao
 	public void onClick(View v) {
 		if (v == btn_addExercicio) {
-			this.showDialog(0);
+			startActivity(new Intent(this,AddExercicio.class));
 		}
 	}
 

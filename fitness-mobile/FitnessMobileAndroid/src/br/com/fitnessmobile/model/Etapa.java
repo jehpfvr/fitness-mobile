@@ -11,10 +11,15 @@ public class Etapa implements Serializable{
 	private Integer id;
 	private String nome;
 	private Integer programaID;
+	private long dataInicio;
+	private long dataFim;
+	
 	public static String[] colunas = {
 		EtapaCampos.ID.getCampo(),
 		EtapaCampos.NOME.getCampo(),
-		EtapaCampos.PROGRAMA_ID.getCampo()
+		EtapaCampos.PROGRAMA_ID.getCampo(),
+		EtapaCampos.DATA_INICIAL.getCampo(),
+		EtapaCampos.DATA_FINAL.getCampo()
 	};
 	
 	public Etapa() {
@@ -42,5 +47,21 @@ public class Etapa implements Serializable{
 
 	public void setProgramaID(Integer programaID) {
 		this.programaID = programaID;
+	}
+	
+	public long getDataInicio() {
+		return dataInicio;
+	}
+
+	public long getDataFim() {
+		return dataFim;
+	}
+
+	public void setDataInicio(long time) {
+		this.dataInicio = time;
+	}
+
+	public void setDataFim(long time) {
+		this.dataFim = time;
 	}	
 }

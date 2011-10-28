@@ -5,6 +5,8 @@ public enum EtapaExercicioCampos {
 	FLAG ("flag"),
 	ETAPA_ID ("etapaid"),
 	EXERCICIO_ID ("exercicioid"),
+	DIA_ID ("diaid"),
+	DATA_BAIXA ("dtbaixa"),
 	TIPO_ID ("tipoid");
 	
 	private String campo;

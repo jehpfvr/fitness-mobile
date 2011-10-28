@@ -26,18 +26,17 @@ public class FitnessMobileTab extends TabActivity implements OnTabChangeListener
         mTabHost.addTab(mTabHost.newTabSpec("tab_exercicios").setIndicator("Exercicios",getResources().getDrawable(R.drawable.ico_tab_exer)).setContent(intent));    
      
         intent = new Intent(this,TabUsuario.class);
-        mTabHost.addTab(mTabHost.newTabSpec("tab_usuário").setIndicator("Medidas",getResources().getDrawable(R.drawable.ico_tab_exer)).setContent(intent));
-            
-        intent = new Intent(this,TabModoVisualizacao.class);
-        mTabHost.addTab(mTabHost.newTabSpec("tab_visualizacao").setIndicator("Visualizacao",getResources().getDrawable(R.drawable.ico_tab_exer)).setContent(intent));
-               
+        mTabHost.addTab(mTabHost.newTabSpec("tab_usuario").setIndicator("Medidas",getResources().getDrawable(R.drawable.ico_tab1)).setContent(intent));
+        
+        /*intent = new Intent(this,TabModoVisualizacao.class);
+        mTabHost.addTab(mTabHost.newTabSpec("tab_modo_visualizacao").setIndicator("Visualizacao",getResources().getDrawable(R.drawable.ico_tab1)).setContent(intent));*/
+        
         
         mTabHost.setCurrentTab(getIntent().getIntExtra("aba", 0));
         
         getTabHost().setOnTabChangedListener(this);
     }
 
-    
     public void onTabChanged(String tabId) {
 		if(getTabHost().getCurrentTab() == 0){
 			System.out.println("Selecionou Home");
@@ -52,10 +51,5 @@ public class FitnessMobileTab extends TabActivity implements OnTabChangeListener
 		if(getTabHost().getCurrentTab() == 3){
 			System.out.println("Selecionou Medidas");
 		}
-		if(getTabHost().getCurrentTab() == 4){
-			System.out.println("Selecionou Visualizacao");
-		}
-		
 	}
-    
 }

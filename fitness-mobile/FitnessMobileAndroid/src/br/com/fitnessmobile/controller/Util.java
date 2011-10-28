@@ -25,11 +25,11 @@ public class Util {
 		switch (sTheme)
 		{
 		case TEMA_DIA:
-			activity.setTheme(R.style.ButtonDia);	 
+			activity.setTheme(R.style.Button_dia);	 
 			
 			break;
 		case TEMA_NOITE:
-			activity.setTheme(R.style.ButtonNoite);
+			activity.setTheme(R.style.Button_noite);
 			break;
 		}
 	}
