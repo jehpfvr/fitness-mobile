@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Button.dia" parent="android:style/Theme.NoTitleBar.Fullscreen">
+        <item name="android:buttonStyle">@style/Button</item>
+    </style>
+    
+    <style name="Button.noite" parent="android:style/Theme.NoTitleBar.Fullscreen">
+        <item name="android:buttonStyle">@style/Button2</item>
+    </style>
+</resources>
