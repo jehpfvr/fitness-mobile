@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.AddEtapaExercicioAdapter;
+import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.EtapaExercicioDao;
 import br.com.fitnessmobile.dao.ExercicioDao;
 import br.com.fitnessmobile.model.EtapaExercicio;
@@ -31,6 +32,7 @@ public class AddEtapaExercicio extends Activity  {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Util.inicioActivitySetTema(this);
 		this.setContentView(R.layout.etapa);
 		this.etapaID = getIntent().getIntExtra("etapaID", -1);
 		this.diaID = getIntent().getIntExtra("diaID", -1);

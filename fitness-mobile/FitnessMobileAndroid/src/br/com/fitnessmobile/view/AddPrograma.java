@@ -4,6 +4,7 @@ package br.com.fitnessmobile.view;
 import java.util.Calendar;
 import java.util.Date;
 import br.com.fitnessmobile.R;
+import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.ProgramaDao;
 import br.com.fitnessmobile.model.Programa;
 import android.app.Activity;
@@ -47,6 +48,7 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.add_programa);
 		this.instanciarViews();
 	}

@@ -1,6 +1,7 @@
 package br.com.fitnessmobile.view;
 
 import br.com.fitnessmobile.R;
+import br.com.fitnessmobile.controller.Util;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ public class FitnessMobileMain extends Activity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.main);
 		
 		this.btn_programa = (Button) findViewById(R.id.btn_main_programa);
