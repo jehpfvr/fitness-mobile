@@ -8,6 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import br.com.fitnessmobile.R;
+import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.AnaerobicoDao;
 import br.com.fitnessmobile.dao.EtapaExercicioDao;
 import br.com.fitnessmobile.model.Anaerobico;
@@ -28,6 +29,7 @@ public class ExercicioAnaerobicoView extends Activity implements OnClickListener
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.exercicio_anaerobico);
 		
 		ultimoID = getIntent().getIntExtra("etapaExercicioID", -1);

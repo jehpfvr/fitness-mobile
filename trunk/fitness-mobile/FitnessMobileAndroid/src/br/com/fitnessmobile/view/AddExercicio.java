@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.enums.Musculo;
+import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.ExercicioDao;
 import br.com.fitnessmobile.model.Exercicio;
 
@@ -43,6 +44,7 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.add_exercicio);
 		
 		this.instanciarViews();

@@ -1,7 +1,7 @@
-package br.com.fitnessmobile.model;
+package br.com.fitnessmobile.controller;
 
-public enum UsuarioCampo {
-	ID ("id"),
+public enum UsuarioCampos {
+	ID ("_id"),
 	PESO ("peso"),
 	ALTURA ("altura"),
 	BICEPS_ESQUERDO ("biceps_esquerdo"), 
@@ -19,7 +19,7 @@ public enum UsuarioCampo {
 	
 	private String campo;
 	
-	UsuarioCampo(String campo) {
+	UsuarioCampos(String campo) {
 		this.campo = campo;
 	}
 	
@@ -28,4 +28,3 @@ public enum UsuarioCampo {
 	}
 
 }
-
