@@ -45,7 +45,7 @@
 		<activity android:name=".view.Configuracao" />
 		<activity android:name="br.com.fitnessmobile.view.AddPrograma" />
 		<activity android:name=".dao.UsuarioDao" />
-		<activity android:name=".service.UsuarioInsertAltera" />
+		<activity android:name=".view.UsuarioInsertAltera" />
 		<activity android:name=".service.UsuarioListActivity" android:label="@string/app_name">
 
 		</activity>

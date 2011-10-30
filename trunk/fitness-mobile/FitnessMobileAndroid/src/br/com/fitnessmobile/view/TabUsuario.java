@@ -8,7 +8,6 @@ import br.com.fitnessmobile.adapter.UsuarioListAdapter;
 import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
 import br.com.fitnessmobile.dao.UsuarioDao;
 import br.com.fitnessmobile.model.Usuario;
-import br.com.fitnessmobile.service.UsuarioInsertAltera;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -47,7 +46,7 @@ public class TabUsuario extends ListActivity  {
     public boolean onCreateOptionsMenu(Menu menu) {
     	super.onCreateOptionsMenu(menu);
     	
-    	menu.add(0, INSERIR_EDITAR, 0, "Inserir Novo");
+    	menu.add(0, INSERIR_EDITAR, 0, "Novo");
     	
     	return true;
     }
