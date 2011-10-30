@@ -24,6 +24,8 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 	private EstatisticaGPS estatisticaGPS;
 	private List<Coordenada> trajeto;
 	private boolean marcarFim;
+	private double indiceCaloria;
+	private double peso;
 
 
 	@Override
@@ -36,6 +38,9 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 		this.trajeto = new ArrayList<Coordenada>();
 		this.listener = new ArrayList<OnControladorGPSListener>();
 		this.marcarFim = false;
+		
+		//pega peso do Dao Usuario
+		this.peso = 88.9;
 		
 	}
 	
@@ -56,34 +61,40 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 				
 				this.velocidade = (distancia)/((double) Math.abs(tempo/1000));
 				
+				this.estatisticaGPS.setTempoPercorrido(tempo/1000);
+				
 				this.estatisticaGPS.setDistancia(distancia);
 				
-				if(!Double.isInfinite(velocidade))
+				if(!Double.isInfinite(velocidade) && !Double.isNaN(velocidade))
 				this.estatisticaGPS.setVelocidade(velocidade*3.6);
+				
+				if(!location.equals(ultimoLocation))
+				this.estatisticaGPS.setUltimoLocation(location);
+				
+				this.estatisticaGPS.setCalorias(this.calcularCalorias());
+	
+				this.trajeto.add(new Coordenada(location));
+				this.ultimoLocation = location;
+				
+			  }else 
+				  
+				this.estatisticaGPS.setVelocidade(0);
+			
+				this.distancia = this.ultimoLocation.distanceTo(location);
+				
+				this.tempo = location.getTime() - ultimoLocation.getTime();
+				
+				if(this.tempo > 0)
+				this.velocidade = (distancia)/((double) Math.abs(tempo/1000));
+				
+				this.estatisticaGPS.setDistancia(distancia);
+				//this.estatisticaGPS.setVelocidade(velocidade*3.6);
 				
 				if(!location.equals(ultimoLocation))
 				this.estatisticaGPS.setUltimoLocation(location);
 	
 				this.trajeto.add(new Coordenada(location));
 				this.ultimoLocation = location;
-			  }else 
-				  this.estatisticaGPS.setVelocidade(0);
-			
-			this.distancia = this.ultimoLocation.distanceTo(location);
-			
-			this.tempo = location.getTime() - ultimoLocation.getTime();
-			
-			if(this.tempo > 0)
-			this.velocidade = (distancia)/((double) Math.abs(tempo/1000));
-			
-			this.estatisticaGPS.setDistancia(distancia);
-			this.estatisticaGPS.setVelocidade(velocidade*3.6);
-			
-			if(!location.equals(ultimoLocation))
-			this.estatisticaGPS.setUltimoLocation(location);
-
-			this.trajeto.add(new Coordenada(location));
-			this.ultimoLocation = location;
 			
 		}
 
@@ -170,5 +181,17 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 
 	public void Zerar() {
 		this.trajeto.clear();
+	}
+	
+	private double calcularCalorias(){	
+		if(!Double.isNaN(this.indiceCaloria))
+			return ((this.indiceCaloria * this.peso)/50) * estatisticaGPS.getTempoPercorrido();
+		else return Double.valueOf(0);
+		
+	}
+
+
+	public void adicionarIndiceCalorico(double indice) {
+		this.indiceCaloria = indice;		
 	}
 }
