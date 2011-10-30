@@ -10,4 +10,5 @@ public interface ControladorGPS {
 	public void removerOnControladorGPS(OnControladorGPSListener listener);
 	public List<Coordenada> getTrajeto();
 	public void Zerar();
+	public void adicionarIndiceCalorico(double indice);
 }

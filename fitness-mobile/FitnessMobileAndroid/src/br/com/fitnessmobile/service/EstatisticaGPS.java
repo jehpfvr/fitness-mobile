@@ -5,14 +5,17 @@ import android.location.Location;
 public class EstatisticaGPS {
 	
 	private long tempo;
+	private long tempoPercorrido;
 	private double distancia;
 	private double velocidade;
 	private double velocidadeMaxima;
 	private Location ultimoLocation;
 	private boolean marcaFim;
+	private double calorias;
 
 	public EstatisticaGPS() {
 		this.velocidadeMaxima = 0;
+		this.velocidade = 0;
 	}
 	
 	public boolean isMarcaFim() {
@@ -61,6 +64,30 @@ public class EstatisticaGPS {
 	public void setUltimoLocation(Location ultimoLocation) {
 		this.ultimoLocation = ultimoLocation;
 	}
+
+	public double getVelocidadeMedia() {
+		if(Double.isNaN(distancia/tempoPercorrido)) return Double.valueOf(0);
+		return (distancia/tempoPercorrido) *3.6;
+	}
+
+	public double getCalorias() {
+		return calorias;
+	}
+
+	public void setCalorias(double calorias) {
+		this.calorias = calorias;
+	}
+
+	public long getTempoPercorrido() {
+		return tempoPercorrido;
+	}
+
+	public void setTempoPercorrido(long tempoPercorrido) {
+		this.tempoPercorrido += Math.abs(tempoPercorrido);
+	}
+	
+	
+	
 	
 	
 	
