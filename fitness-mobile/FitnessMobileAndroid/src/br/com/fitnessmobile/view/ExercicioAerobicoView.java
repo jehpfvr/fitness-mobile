@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class ExercicioAerobicoView extends MapActivity implements OnClickListener,ServiceConnection, OnControladorGPSListener{
@@ -29,12 +30,15 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 	private TextView tv_distancia;
 	private TextView tv_velocidade;
 	private TextView tv_duracao;
+	private TextView tv_caloria;
+	private TextView tv_velocidadeMedia;
 	private Button btn_iniciar;
 	private Button btn_mapa;
 	private Button btn_parar;
 	private EstatisticaGPS dados;
 	private ControladorGPS controlador;
 	private DecimalFormat df;
+	private double indiceCalorico;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +58,10 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 		this.df = new DecimalFormat("0.00");
 		this.tv_distancia = (TextView) findViewById(R.id.exer_aero_display_distancia);
 		this.tv_velocidade = (TextView) findViewById(R.id.exer_aero_display_velocidade);
+		this.tv_velocidadeMedia = (TextView) findViewById(R.id.exer_aero_display_velocidade_media);
 		this.tv_duracao = (TextView) findViewById(R.id.exer_aero_display_duracao);
-	
+		this.tv_caloria = (TextView) findViewById(R.id.exer_aero_display_caloria);
+		
 		this.btn_iniciar = (Button) findViewById(R.id.exer_aero_btn_iniciar);
 		this.btn_parar = (Button) findViewById(R.id.exer_aero_btn_parar);
 		this.btn_mapa = (Button) findViewById(R.id.exer_aero_btn_mapa);
@@ -63,6 +69,8 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 		this.btn_iniciar.setOnClickListener(this);
 		this.btn_parar.setOnClickListener(this);
 		this.btn_mapa.setOnClickListener(this);
+		
+		this.indiceCalorico = getIntent().getFloatExtra("indiceCalorico", 0);
 		
 	}
 	
@@ -77,6 +85,11 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 	
 	@Override
 	protected void onDestroy() {
+		super.onDestroy();
+	}
+	
+	@Override
+	public void onBackPressed() {
 		if(dados != null){
 			Intent intent = new Intent();
 			intent.putExtra("distancia", dados.getDistancia());
@@ -87,7 +100,7 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 		
 		if(controlador != null )this.controlador.removerOnControladorGPS(this);
 		unbindService(this);
-		super.onDestroy();
+		super.onBackPressed();
 	}
 	
 
@@ -118,6 +131,9 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 		LocalBinder binder = (LocalBinder) service;
 		this.controlador = binder.getControlador();
 		this.controlador.setOnControladorGPS(this);
+		this.controlador.adicionarIndiceCalorico(this.indiceCalorico);
+		Toast.makeText(this, String.valueOf(this.indiceCalorico), Toast.LENGTH_LONG).show();
+		
 	}
 
 	public void onServiceDisconnected(ComponentName name) {
@@ -132,9 +148,11 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 	
 	private Handler handler = new Handler() {
         public void  handleMessage(Message msg) {
-        	tv_distancia.setText(df.format(dados.getDistancia()));
-    		tv_velocidade.setText(df.format(dados.getVelocidade()));
+        	tv_distancia.setText(df.format(dados.getDistancia()));       
+        	tv_velocidade.setText(df.format(dados.getVelocidade()));
     		tv_duracao.setText(DateFormat.format("mm:ss", dados.getTempoEmAndamento()));
+    		tv_velocidadeMedia.setText(df.format(dados.getVelocidadeMedia()));
+    		tv_caloria.setText(df.format(dados.getCalorias()));
    
         }
    };

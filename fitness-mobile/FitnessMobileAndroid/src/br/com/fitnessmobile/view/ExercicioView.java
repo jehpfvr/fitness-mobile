@@ -78,7 +78,10 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 				etapaExercicio.setFlag(0);
 			else{
 				etapaExercicio.setFlag(1);
-				startActivityForResult(new Intent(this, ExercicioAerobicoView.class).putExtra("etapaExercicioID", etapaExercicio.getDiaID()), 0);
+				Intent intent = new Intent(this, ExercicioAerobicoView.class);
+				intent.putExtra("etapaExercicioID", etapaExercicio.getDiaID());
+				intent.putExtra("indiceCalorico", etapaExercicio.getExercicio().getIndiceCalorico());
+				startActivityForResult(intent, 0);
 			}
 		}
 		((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
