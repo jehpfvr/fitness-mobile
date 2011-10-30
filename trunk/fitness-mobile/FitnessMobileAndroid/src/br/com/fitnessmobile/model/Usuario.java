@@ -2,7 +2,6 @@ package br.com.fitnessmobile.model;
 
 import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
 
-
 public class Usuario {
 	private long id;
 	private String peso;
