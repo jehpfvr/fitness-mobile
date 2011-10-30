@@ -35,6 +35,7 @@
 		<activity android:name=".view.TabPrograma"  />
 		<activity android:name=".view.TabExercicio" />
 		<activity android:name=".view.TabUsuario" />
+		<activity android:name=".view.TabGraficoEvolutivo" />
 		<activity android:name=".view.ModoVisualizacao" />
 		<activity android:name=".view.ExercicioAerobicoView" android:screenOrientation="portrait" />
 		<activity android:name=".view.MapViewTrajeto" android:screenOrientation="portrait" />
