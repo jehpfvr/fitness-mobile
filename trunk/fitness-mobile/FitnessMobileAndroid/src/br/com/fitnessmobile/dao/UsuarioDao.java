@@ -3,14 +3,14 @@ package br.com.fitnessmobile.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
-import br.com.fitnessmobile.model.Usuario;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
+import br.com.fitnessmobile.model.Usuario;
 
 public class UsuarioDao {
 	
@@ -26,7 +26,7 @@ public class UsuarioDao {
 	// Nome do banco
 	private static final String NOME_BANCO = "Mobilefitness";
 	
-	// Controle de vers�o
+	// Controle de versão
 	private static final int VERSAO_BANCO = 1;
 
 	// Nome da tabela
@@ -34,7 +34,7 @@ public class UsuarioDao {
 
 	protected SQLiteDatabase db;
 	
-	// Classe utilit�ria para abrir, criar, e atualizar o banco de dados
+	// Classe utilitária para abrir, criar, e atualizar o banco de dados
 	SQLiteHelper dbHelper;
 	
 	
@@ -43,7 +43,7 @@ public class UsuarioDao {
 		dbHelper = new SQLiteHelper(ctx, UsuarioDao.NOME_BANCO, UsuarioDao.VERSAO_BANCO,
 				UsuarioDao.SCRIPT_DATABASE_CREATE, UsuarioDao.SCRIPT_DATABASE_DELETE);
 
-		// abre o banco no modo escrita para poder alterar tamb�m
+		// abre o banco no modo escrita para poder alterar também
 		db = dbHelper.getWritableDatabase();
 	}
 	
@@ -74,7 +74,7 @@ public class UsuarioDao {
 		if (c.moveToFirst()) {
 			do {
 				Usuario u = new Usuario();
-								
+
 				u.setId(c.getLong(c.getColumnIndex(UsuarioCampos.ID.getCampo())));
 				u.setAltura(c.getString(c.getColumnIndex(UsuarioCampos.ALTURA.getCampo())));
 				u.setPeso(c.getString(c.getColumnIndex(UsuarioCampos.PESO.getCampo())));
@@ -137,7 +137,7 @@ public class UsuarioDao {
 	}
 	
 	// Atualiza o programa com os valores abaixo
-	// A cl�usula where � utilizada para identificar o programa a ser atualizado
+	// A cl�usula where � utilizada para identificar o programa a ser atualizado
 	public int atualizarUsuario(Usuario usuario) {
 		ContentValues values = new ContentValues();
 		
@@ -213,6 +213,46 @@ public class UsuarioDao {
 		Log.i(CATEGORIA, "Deletou ["+ count +" registros.");
 		
 		return count;
+	}
+	
+	/**
+	 * 
+	 * Método utilizado para pegar as medidas do usuário por uma data.
+	 * Será importante, principalmente, para o requisito de desenvolvimento do usuário
+	 * por período.
+	 * 
+	 * @param data - Será passada um objeto String, já que o SQLite não suporta DateTime
+	 * @return
+	 */
+	public Usuario getUsuarioByDate(String data) {
+		
+		Cursor c = db.query(true, NOME_TABELA, Usuario.colunas, UsuarioCampos.DATA.getCampo() + "=" + data, null, null, null, null, null);
+		
+		if (c.getCount() > 0) {
+
+			c.moveToFirst();			
+			Usuario usuario = new Usuario();
+			
+			usuario.setId(c.getLong(c.getColumnIndex(UsuarioCampos.ID.getCampo())));
+			usuario.setAltura(c.getString(c.getColumnIndex(UsuarioCampos.ALTURA.getCampo())));
+			usuario.setPeso(c.getString(c.getColumnIndex(UsuarioCampos.PESO.getCampo())));
+			usuario.setBicepsEsquerdo(c.getString(c.getColumnIndex(UsuarioCampos.BICEPS_ESQUERDO.getCampo())));
+			usuario.setBicepsDireito(c.getString(c.getColumnIndex(UsuarioCampos.BICEPS_DIREITO.getCampo())));
+			usuario.setTricepsEsquerdo(c.getString(c.getColumnIndex(UsuarioCampos.TRICEPS_ESQUERDO.getCampo())));				
+			usuario.setTricepsDireito(c.getString(c.getColumnIndex(UsuarioCampos.TRICEPS_DIREITO.getCampo())));
+			usuario.setCintura(c.getString(c.getColumnIndex(UsuarioCampos.CINTURA.getCampo())));
+			usuario.setPeitoral(c.getString(c.getColumnIndex(UsuarioCampos.PEITORAL.getCampo())));
+			usuario.setCoxaEsquerda(c.getString(c.getColumnIndex(UsuarioCampos.COXA_ESQUERDA.getCampo())));
+			usuario.setCoxaDireita(c.getString(c.getColumnIndex(UsuarioCampos.COXA_DIREITA.getCampo())));
+			usuario.setPanturrilhaEsquerda(c.getString(c.getColumnIndex(UsuarioCampos.PANTURRILHA_ESQUERDA.getCampo())));
+			usuario.setPanturrilhaDireita(c.getString(c.getColumnIndex(UsuarioCampos.PANTURRILHA_DIREITA.getCampo())));
+			usuario.setQuadril(c.getString(c.getColumnIndex(UsuarioCampos.QUADRIL.getCampo())));	
+			usuario.setData(c.getString(c.getColumnIndex(UsuarioCampos.DATA.getCampo())));
+			
+			return usuario;
+		}
+		
+		return null;
 	}
 
 }
