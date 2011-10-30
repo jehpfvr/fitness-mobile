@@ -45,6 +45,7 @@
     <string name="Duracao">Duração</string>
     <string name="Distancia">Distância</string>
     <string name="Velocidade">Velocidade</string>
+    <string name="VelocidadeMedia">Veloc. Media</string>
     <string name="Aceleracao">Aceleracao</string>
     <string name="Iniciar">Iniciar</string>
     <string name="Pausar">Pausar</string>
@@ -55,6 +56,7 @@
     <string name="Opcoes">Opções</string>
     <string name="Km">km</string>
     <string name="Km_h">km/h</string>
+    <string name="Kcal">Kcal</string>
     <string name="Novo">Novo</string>
     <string name="Nome">Nome</string>
     <string name="Modo_v">Modo de Visualização</string>
@@ -70,12 +72,13 @@
     <string name="Zerar">Zerar</string> 
 	<string name="Selecionar_exercicio">Clique para marcar</string>
 	<string name="Marcar_gps">Inicie o GPS </string>
- <string name="Modo_de_visualizacao_diurno">Modo diurno</string>
+	<string name="Modo_de_visualizacao_diurno">Modo diurno</string>
     <string name="Modo_de_visualizacao_noturno">Modo noturno</string>
-   <string name="EAnaerobico_Peso">Peso</string>
-   <string name="EAnaerobico_Serie">Serie</string>
-   <string name="EAnaerobico_Repeticao">Repeticao</string>
-   <string name="Preferencias">Escolha suas preferências</string>
+   	<string name="EAnaerobico_Peso">Peso</string>
+   	<string name="EAnaerobico_Serie">Serie</string>
+   	<string name="EAnaerobico_Repeticao">Repeticao</string>
+   	<string name="Preferencias">Escolha suas preferências</string>
+   	<string name="Calorias">Calorias </string>
     
     <string-array name="array_opcoes">
     	<item>Selecionar</item>
