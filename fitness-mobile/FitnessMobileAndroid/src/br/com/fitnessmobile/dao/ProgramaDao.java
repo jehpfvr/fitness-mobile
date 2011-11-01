@@ -11,37 +11,15 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-public class ProgramaDao {
+public class ProgramaDao extends Dao {
 	
-	private static final String CATEGORIA = "fitness";
-	
-	// Script para fazer drop na tabela
-	private static final String SCRIPT_DATABASE_DELETE = "DROP TABLE IF EXISTS programa";
-	
-	// Cria a tabela com o "_id" sequencial
-	private static final String[] SCRIPT_DATABASE_CREATE = new String[] {
-			"create table programa ( _id integer primary key autoincrement, nome text not null, data_inicial numeric not null, data_final numeric not null);"};
-
-	// Nome do banco
-	private static final String NOME_BANCO = "fitness_mobile";
-	
-	// Controle de versão
-	private static final int VERSAO_BANCO = 1;
-
 	// Nome da tabela
 	public static final String NOME_TABELA = "programa";
-
-	protected SQLiteDatabase db;
-	
-	// Classe utilitária para abrir, criar, e atualizar o banco de dados
-	SQLiteHelper dbHelper;
-	
-	
+		
 	// Cria o banco de dados com um script SQL
 	public ProgramaDao(Context ctx) {
-		dbHelper = new SQLiteHelper(ctx, ProgramaDao.NOME_BANCO, ProgramaDao.VERSAO_BANCO,
-				ProgramaDao.SCRIPT_DATABASE_CREATE, ProgramaDao.SCRIPT_DATABASE_DELETE);
-
+		super(ctx);
+		
 		// abre o banco no modo escrita para poder alterar também
 		db = dbHelper.getWritableDatabase();
 	}

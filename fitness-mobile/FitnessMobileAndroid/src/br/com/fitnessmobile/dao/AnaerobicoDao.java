@@ -12,7 +12,7 @@ public class AnaerobicoDao {
 private static final String CATEGORIA = "fitness";
 	
 	// Script para fazer drop na tabela
-	private static final String SCRIPT_DATABASE_DELETE = "DROP TABLE IF EXISTS exercicio";
+	private static final String[] SCRIPT_DATABASE_DELETE = new String[] {"DROP TABLE IF EXISTS exercicio"};
 	
 	// Cria a tabela com o "_id" sequencial
 	private static final String[] SCRIPT_DATABASE_CREATE_EAnaerobico = new String[] {
