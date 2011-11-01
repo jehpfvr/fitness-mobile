@@ -17,7 +17,7 @@ public class EtapaExercicioDao {
 	private static final String CATEGORIA = "fitness";
 	
 	// Script para fazer drop na tabela
-	private static final String SCRIPT_DATABASE_DELETE = "DROP TABLE IF EXISTS exercicio_etapa";
+	private static final String[] SCRIPT_DATABASE_DELETE = new String[] {"DROP TABLE IF EXISTS exercicio_etapa"};
 	
 	// Cria a tabela com o "_id" sequencial
 	private static final String[] SCRIPT_DATABASE_CREATE_EXERCICIO_ETAPA = new String[] {

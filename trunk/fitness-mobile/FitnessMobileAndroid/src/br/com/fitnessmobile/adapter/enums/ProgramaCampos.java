@@ -1,10 +1,10 @@
 package br.com.fitnessmobile.adapter.enums;
 
 public enum ProgramaCampos {
-	ID ("_id"),
-	NOME ("nome"),
-	DATA_INICIAL ("data_inicial"),
-	DATA_FINAL ("data_final");
+	ID ("pro_id"),
+	NOME ("pro_nome"),
+	DATA_INICIAL ("pro_data_inicial"),
+	DATA_FINAL ("pro_data_final");
 	
 	private String campo;
 	
