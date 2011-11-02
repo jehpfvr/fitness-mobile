@@ -1,15 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+	<style name="white_background_wh">
+		<item name="android:background">@drawable/background</item>
+	</style>
+
+	<style name="white_background_bl">
+		<item name="android:background">@drawable/background_noite</item>
+	</style>
+
+	<style name="text_title_wh">
+		<item name="android:textColor">#FFF</item>
+		<item name="android:textSize">16sp</item>
+		<item name="android:shadowDx">1.0</item>
+		<item name="android:shadowDy">1.0</item>
+		<item name="android:shadowRadius">3</item>
+		<item name="android:shadowColor">#888</item>
+	</style>
+
+	<style name="text_title_bl">
+		<item name="android:textColor">#000</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textSize">16sp</item>
+		<item name="android:shadowDx">1.0</item>
+		<item name="android:shadowDy">1.0</item>
+		<item name="android:shadowRadius">1</item>
+		<item name="android:shadowColor">#DDD</item>
+	</style>
+
+	<style name="listview_wh" parent="@android:style/Widget.ListView">
+	    <item name="android:textColor">#000</item>
+	</style>
+	
+	<style name="listview_bl" parent="@android:style/Widget.ListView">
+		<item name="android:cacheColorHint">#fff</item>
+	</style>
+
 	<style name="ButtonDia">
-		<item name="android:gravity">center_vertical|center_horizontal</item>
 		<item name="android:textColor">#FFFFFFFF</item>
-		<item name="android:shadowColor">#FF000000</item>
-		<item name="android:shadowDx">0</item>
-		<item name="android:shadowDy">-1</item>
-		<item name="android:shadowRadius">0.2</item>
+	    <item name="android:shadowColor">#FF000000</item>
 		<item name="android:textSize">16dip</item>
 		<item name="android:textStyle">bold</item>
-		<item name="android:background">@drawable/btn_custom</item>
+		<item name="android:background">@drawable/ic_btn_verde</item>
 		<item name="android:focusable">true</item>
 		<item name="android:clickable">true</item>
 		<item name="android:height">40dp</item>
@@ -17,14 +49,11 @@
 	</style>
 
 	<style name="ButtonNoite">
-		<item name="android:gravity">center_vertical|center_horizontal</item>
-		<item name="android:textColor">#FF000000</item>
-		<item name="android:shadowDx">0</item>
-		<item name="android:shadowDy">-1</item>
-		<item name="android:shadowRadius">0.2</item>
+		<item name="android:textColor">#FFFFFFFF</item>
+		<item name="android:shadowColor">#FF000000</item>
 		<item name="android:textSize">16dip</item>
 		<item name="android:textStyle">bold</item>
-		<item name="android:background">@drawable/ic_btn_cinza</item>
+		<item name="android:background">@drawable/ic_btn_noite</item>
 		<item name="android:focusable">true</item>
 		<item name="android:clickable">true</item>
 		<item name="android:height">40dp</item>
