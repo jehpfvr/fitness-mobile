@@ -81,13 +81,13 @@
 	</TextView>	
 	</TableRow>
 	
-	<Button android:text="Insira a Data Aqui" android:id="@+id/add_data_usuario" android:padding="3dip" android:layout_weight="1" />	
+	<Button android:text="Insira a Data Aqui" android:id="@+id/add_data_usuario" style="?button" android:padding="3dip" android:layout_weight="1" />	
 
 	<LinearLayout android:layout_height="fill_parent" android:layout_width="fill_parent" android:layout_weight="1">
-		<Button android:text="Salvar" android:id="@+id/btnSalvar"
+		<Button android:text="Salvar" android:id="@+id/btnSalvar" style="?button"
 			android:layout_height="wrap_content" android:layout_width="wrap_content"
 		/>
-		<Button android:text="Cancelar" android:id="@+id/btnCancelar"
+		<Button android:text="Cancelar" android:id="@+id/btnCancelar" style="?button"
 			android:layout_height="wrap_content" android:layout_width="wrap_content"
 		/>
 	</LinearLayout>
