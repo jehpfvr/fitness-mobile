@@ -31,9 +31,6 @@ public class FitnessMobileTab extends TabActivity implements OnTabChangeListener
         intent = new Intent(this,TabGraficoEvolutivo.class);
         mTabHost.addTab(mTabHost.newTabSpec("tab_grafico_evolutivo").setIndicator("Gráfico Evolutivo",getResources().getDrawable(R.drawable.ico_tab1)).setContent(intent));
         
-        /*intent = new Intent(this,TabModoVisualizacao.class);
-        mTabHost.addTab(mTabHost.newTabSpec("tab_modo_visualizacao").setIndicator("Visualizacao",getResources().getDrawable(R.drawable.ico_tab1)).setContent(intent));*/
-        
         
         mTabHost.setCurrentTab(getIntent().getIntExtra("aba", 0));
         
