@@ -11,6 +11,7 @@ import android.location.LocationManager;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 
 public class ServiceGPS extends Service implements LocationListener,ControladorGPS,OnCronometroListener{
 	
@@ -184,9 +185,18 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 	}
 	
 	private double calcularCalorias(){	
-		if(!Double.isNaN(this.indiceCaloria))
-			return ((this.indiceCaloria * this.peso)/50) * estatisticaGPS.getTempoPercorrido();
-		else return Double.valueOf(0);
+		if(!Double.isNaN(this.indiceCaloria)){
+			Double tempo = (Double.valueOf(estatisticaGPS.getTempoEmAndamento())/1000)/60;
+			Double result = ((this.indiceCaloria * this.peso)/50) * tempo;
+			/*Log.v("caloria", "tempo percorrido "+estatisticaGPS.getTempoPercorrido());
+			Log.v("caloria", "tempo "+tempo);
+			Log.v("caloria", "Peso "+peso);
+			Log.v("caloria", "indice "+indiceCaloria);
+			Log.v("caloria", "caloria "+result);*/
+			return result;
+		}
+		else 
+			return Double.valueOf(0);
 		
 	}
 
