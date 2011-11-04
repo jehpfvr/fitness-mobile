@@ -22,9 +22,12 @@
                 <Button android:id="@+id/btn_main_programa"  style="?button" android:text="@string/programa" ></Button>
                 <Button android:id="@+id/btn_main_exercicio" style="?button" android:text="@string/exercicio" android:layout_marginLeft="8dp"></Button>
             </TableRow>
-            <TableRow >
+            <TableRow>
                 <Button android:id="@+id/btn_main_medidas" style="?button" android:text="@string/Medidas"     ></Button>
                 <Button android:id="@+id/btn_main_conf"    style="?button" android:text="@string/Configuracao" android:layout_marginLeft="8dp"></Button>
+            </TableRow>
+            <TableRow>
+            <Button android:id="@+id/btn_controletempo"  style="?button" android:text="Controle de Tempo" android:layout_marginLeft="8dp"></Button>
             </TableRow>
         </TableLayout>
     </LinearLayout>
