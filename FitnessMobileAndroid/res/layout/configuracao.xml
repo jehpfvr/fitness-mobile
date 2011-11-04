@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+    
+    <TextView android:text="@string/Preferencias" android:id="@+id/tvPre" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+    <RadioButton android:text="m/s" android:id="@+id/radioButton1" android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
+    <RadioButton android:text="Km/H" android:id="@+id/radioButton2" android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
+    
+    <Button android:text="@string/Modo_v" android:id="@+id/btn_Modo" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+    
+</TableLayout>
