@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/nuvens">
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:id="@+id/txt"
+    android:textSize="22sp"/>
+    <TextView android:textSize="22sp" android:layout_height="wrap_content" android:id="@+id/textView1" android:text="Cronômetro"  android:layout_width="wrap_content" android:layout_x="34dp" android:layout_y="116dp"></TextView>
+    <Chronometer android:id="@+id/chrono" android:layout_height="wrap_content" android:textSize="55sp" android:layout_width="wrap_content" android:layout_x="33dp" android:layout_y="169dp"></Chronometer>
+    <ImageButton android:id="@+id/btnReset" android:onClick="onClick" android:layout_height="wrap_content" android:layout_width="wrap_content" android:background="@drawable/brt_resume" android:layout_x="12dp" android:layout_y="380dp"></ImageButton>
+    <ImageButton android:id="@+id/btnStart" android:onClick="onClick" android:layout_height="wrap_content" android:layout_width="wrap_content" android:background="@drawable/btn_play" android:layout_x="110dp" android:layout_y="377dp"></ImageButton>
+    <ImageButton android:id="@+id/btnStop" android:onClick="onClick" android:layout_height="wrap_content" android:layout_width="wrap_content" android:background="@drawable/btn_stop" android:layout_x="231dp" android:layout_y="404dp"></ImageButton>
+</AbsoluteLayout>

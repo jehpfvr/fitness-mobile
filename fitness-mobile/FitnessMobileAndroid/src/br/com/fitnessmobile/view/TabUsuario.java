@@ -3,11 +3,6 @@ package br.com.fitnessmobile.view;
 
 import java.util.List;
 
-import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.adapter.UsuarioListAdapter;
-import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
-import br.com.fitnessmobile.dao.UsuarioDao;
-import br.com.fitnessmobile.model.Usuario;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +11,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
+import br.com.fitnessmobile.R;
+import br.com.fitnessmobile.adapter.UsuarioListAdapter;
+import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
+import br.com.fitnessmobile.controller.Util;
+import br.com.fitnessmobile.dao.UsuarioDao;
+import br.com.fitnessmobile.model.Usuario;
 
 public class TabUsuario extends ListActivity  {
 	protected static final int INSERIR_EDITAR = 1;
@@ -29,6 +30,8 @@ public class TabUsuario extends ListActivity  {
         super.onCreate(savedInstanceState);
         usuarioDao = new UsuarioDao(this);
         
+        
+        Util.inicioActivitySetTema(this);
         View header = getLayoutInflater().inflate(R.layout.usuario_lista_header, null);
         ListView listView = getListView();
         listView.addHeaderView(header, null, false);

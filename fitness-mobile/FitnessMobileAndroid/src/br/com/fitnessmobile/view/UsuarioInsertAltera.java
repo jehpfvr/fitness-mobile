@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
+import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.model.Usuario;
 
 public class UsuarioInsertAltera extends Activity implements OnClickListener,
@@ -50,6 +51,7 @@ public class UsuarioInsertAltera extends Activity implements OnClickListener,
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
+		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.usuario_form);
 
 		edtPeso = (EditText) findViewById(R.id.edtPeso);

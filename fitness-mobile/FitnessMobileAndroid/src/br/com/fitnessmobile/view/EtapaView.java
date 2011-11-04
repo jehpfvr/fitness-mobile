@@ -22,6 +22,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.EtapaAdapter;
+import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.EtapaDao;
 import br.com.fitnessmobile.model.Etapa;
 
@@ -42,6 +43,7 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.etapa);
 		
 		programaID = getIntent().getIntExtra("programaID", -1);
