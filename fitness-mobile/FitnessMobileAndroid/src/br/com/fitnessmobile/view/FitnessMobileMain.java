@@ -1,8 +1,6 @@
 package br.com.fitnessmobile.view;
 
-import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.controller.Util;
-import br.com.fitnessmobile.service.Cronometro;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
+import br.com.fitnessmobile.R;
 
 public class FitnessMobileMain extends Activity implements OnClickListener {
 	
@@ -17,7 +16,7 @@ public class FitnessMobileMain extends Activity implements OnClickListener {
 	private Button btn_programa;
 	private Button btn_exercicio;
 	private Button btn_configuracao;
-	private Button btn_cronometro;
+	private Button btn_estatistica;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +36,8 @@ public class FitnessMobileMain extends Activity implements OnClickListener {
 		this.btn_configuracao = (Button) findViewById(R.id.btn_main_conf);
 		this.btn_configuracao.setOnClickListener(this);
 		
-		this.btn_cronometro = (Button) findViewById(R.id.btn_controletempo);
-		this.btn_cronometro.setOnClickListener(this);
+		this.btn_estatistica = (Button)findViewById(R.id.btn_main_estatistica);
+		this.btn_estatistica.setOnClickListener(this);
 	}
 
 	public void onClick(View v) {
@@ -50,8 +49,8 @@ public class FitnessMobileMain extends Activity implements OnClickListener {
 			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 3));
 		}else if(v == btn_configuracao){
 			startActivity(new Intent(this, Configuracao.class));
-		}else if(v == btn_cronometro){
-			startActivity(new Intent(this, ControleDeTempo.class));
+		}else if(v == btn_estatistica){
+			startActivity(new Intent(this, TabEstatistica.class));
 		}
 	}
 	

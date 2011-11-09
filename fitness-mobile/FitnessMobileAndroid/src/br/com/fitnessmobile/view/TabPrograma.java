@@ -2,8 +2,9 @@ package br.com.fitnessmobile.view;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,86 +16,92 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.ProgramaAdapter;
-import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.ProgramaDao;
 import br.com.fitnessmobile.model.Programa;
 
-public class TabPrograma extends Activity implements OnItemLongClickListener, OnItemClickListener,DialogInterface.OnClickListener{
-	private final int DIALOG_SELECIONAR = 1;
+public class TabPrograma extends Activity {
+	
 	private ListView listView;
 	private ProgramaDao programaDao;
 	private Intent intent;
-	AlertDialog.Builder dlgAlert;
-	
-	
 	private Programa programa_selecionado;
+	private Context _context;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.programa);
+		this._context = this;
 		this.instanciarViews();
-
+		this.configurarViews();
 	}
 
 	private void instanciarViews() {
-		
 		this.programaDao = new ProgramaDao(this);
-		
 		this.listView = (ListView) findViewById(R.id.series_listview);
-		
+	}
+	
+	private void configurarViews() {
 		this.listView.setAdapter(new ProgramaAdapter(this, this.programaDao.listarProgramas()));
-		this.listView.setOnItemClickListener(this);
-		this.listView.setOnItemLongClickListener(this);
-		this.dlgAlert = new AlertDialog.Builder(this);
+		
+		this.listView.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> adapter, View v, int pos, long id) {
+				Programa programa = (Programa) adapter.getAdapter().getItem(pos);
+				Intent intent = new Intent(_context, EtapaView.class);
+				intent.putExtra("programaID", programa.getId());
+				intent.putExtra("programaNome", programa.getNome());
+				intent.putExtra("programaDtInicio", programa.getDataInicio());
+				intent.putExtra("programaDtFim", programa.getDataFim());
+				Log.i("passando parametros", "programa dt inicio" + programa.getDataInicio());
+				Log.i("passando parametros", "programa dt fim" + programa.getDataFim());
+				startActivity(intent);
+				
+			}
+		});
+		
+		this.listView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			public boolean onItemLongClick(AdapterView<?> adapter, View v, int pos, long id) {
+				final CharSequence[] items = getResources().getTextArray(R.array.array_opcoes);
+
+				programa_selecionado = (Programa)adapter.getAdapter().getItem(pos);
+				
+				AlertDialog.Builder builder = new AlertDialog.Builder(_context);
+				builder.setTitle(R.string.Opcoes);
+				builder.setItems(items, new OnClickListener() {
+					public void onClick(DialogInterface dialog, int pos) {
+						if(pos == 0) {
+							Log.i("Programa", "Selecionar");
+						}
+						else if(pos == 1) {
+							Log.i("Programa", "Atualizar");
+							intent = new Intent(_context,EditarPrograma.class).putExtra("Programa", programa_selecionado.getId());
+							startActivity(intent);
+						}
+						else if (pos == 2){
+							Log.i("Programa","Excluir");
+							
+							remover(); // TODO Validacoes
+							
+							Toast.makeText(_context, "Seu programa foi excluido", 500).show();
+							startActivity(new Intent(getApplicationContext(),FitnessMobileTab.class).putExtra("aba", 1));
+						}
+					}
+				});
+				AlertDialog alert = builder.create();
+				alert.show();
+				
+				return true;
+			}
+			
+		});
 	}
 
-	
-	public boolean onItemLongClick(AdapterView<?> adapter, View v, int pos, long id) {
-		final CharSequence[] items = getResources().getTextArray(R.array.array_opcoes);
-
-		programa_selecionado = (Programa)adapter.getAdapter().getItem(pos);
-		
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle(R.string.Opcoes);
-		builder.setItems(items, this);
-		AlertDialog alert = builder.create();
-		alert.show();
-		
-		return true;
-	}
-	
-	
-	public void remover(){
-	
+	public void remover() { // TODO: Colocar validacoes
 		programaDao.excluir(programa_selecionado.getId());
-		
-	}
-	
-
-	public void onItemClick(AdapterView<?> adapter, View v, int pos, long id) {
-		Programa programa = (Programa) adapter.getAdapter().getItem(pos);
-		Intent intent = new Intent(this, EtapaView.class);
-		intent.putExtra("programaID", programa.getId());
-		intent.putExtra("programaNome", programa.getNome());
-		intent.putExtra("programaDtInicio", programa.getDataInicio());
-		intent.putExtra("programaDtFim", programa.getDataFim());
-		Log.i("passando parametros", "programa dt inicio" + programa.getDataInicio());
-		Log.i("passando parametros", "programa dt fim" + programa.getDataFim());
-		startActivity(intent);
-	}
-	
-	@Override
-	protected Dialog onCreateDialog(int id) {
-		DialogExercicios dialogExercicio = null;
-		if(id == DIALOG_SELECIONAR){
-			dialogExercicio = new DialogExercicios(this);
-			dialogExercicio.show();
-		}
-		return dialogExercicio;
 	}
 	
 	@Override
@@ -107,45 +114,19 @@ public class TabPrograma extends Activity implements OnItemLongClickListener, On
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-	    case R.id.Novo:
-	    	Log.i("log", "activity AddPrograma");
-	        //chame aqui a activity de adicionar um programa
-	    	startActivity(new Intent(this, AddPrograma.class));
-	        return true;
-	    case R.id.Opcoes:
-	    	//chame aqui a activity de configuracoes
-	    	Log.v("log", "activity configuracao");
-	    	startActivity(new Intent(this, Configuracao.class));
-	        return true;
-	    default:
-	        return super.onOptionsItemSelected(item);
+		    case R.id.Novo:
+		    	Log.i("log", "activity AddPrograma");
+		        //chame aqui a activity de adicionar um programa
+		    	startActivity(new Intent(this, AddPrograma.class));
+		        return true;
+		    case R.id.Opcoes:
+		    	//chame aqui a activity de configuracoes
+		    	Log.v("log", "activity configuracao");
+		    	startActivity(new Intent(this, Configuracao.class));
+		        return true;
+		    default:
+		        return super.onOptionsItemSelected(item);
 	    }
-	}
-
-	public void onClick(DialogInterface dialog, int pos) {
-		//trate aqui a selecao do click longo do botao
-		if(dialog == dlgAlert ){
-			if(pos == AlertDialog.BUTTON_POSITIVE){
-				Log.i("Entrou ","no if");
-				intent = new Intent(this,FitnessMobileTab.class).putExtra("aba", 1);
-				startActivity(intent);	
-			}
-		}
-		
-		if(pos == 0){
-			
-		}else if (pos == 2){
-			Log.i("Programa","Excluir");
-			remover();
-			
-			dlgAlert.setMessage("Seu programa foi excluido");
-			dlgAlert.setTitle("Programa Excluido");
-			dlgAlert.setPositiveButton("OK", this);
-			dlgAlert.create().show();
-			
-			intent = new Intent(this,FitnessMobileTab.class).putExtra("aba", 1);
-			startActivity(intent);	
-		}
 	}
 	
 	@Override

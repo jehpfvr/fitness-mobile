@@ -1,23 +1,24 @@
 package br.com.fitnessmobile.view;
 
-
 import java.util.List;
 
-import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.UsuarioListAdapter;
-import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
 import br.com.fitnessmobile.dao.UsuarioDao;
 import br.com.fitnessmobile.model.Usuario;
+import br.com.fitnessmobile.model.UsuarioCampo;
+
+import br.com.fitnessmobile.R;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class TabUsuario extends ListActivity  {
+public class UsuarioListActivity extends ListActivity  {
 	protected static final int INSERIR_EDITAR = 1;
 	
 	public static UsuarioDao usuarioDao;
@@ -39,7 +40,7 @@ public class TabUsuario extends ListActivity  {
     public void atualizaLista() {
     	usuarios = usuarioDao.listarUsuarios();
     	
-    	setListAdapter(new UsuarioListAdapter(this, usuarios));
+    	setListAdapter((ListAdapter) new UsuarioListAdapter(this, usuarios));
     }
     
     @Override
@@ -56,8 +57,8 @@ public class TabUsuario extends ListActivity  {
     	switch (item.getItemId()) {
 			case INSERIR_EDITAR:
 				// Abre a tela com o formul�rio para adicionar
-				startActivityForResult(new Intent(this, UsuarioInsertAltera.class), INSERIR_EDITAR);
-				Toast.makeText(this, "Dados de usuario inserido!", 2000);
+				startActivityForResult(new Intent(this, TabUsuario.class), INSERIR_EDITAR);
+				Toast.makeText(this, "Dados de usuario inserido!", 5);
 				break;
     	}
     	
@@ -85,10 +86,10 @@ public class TabUsuario extends ListActivity  {
     	Usuario usuario = usuarios.get(posicao);
     	
     	// Cria a intent para abrir a tela de edi��o de programa
-    	Intent it = new Intent(this, UsuarioInsertAltera.class);
+    	Intent it = new Intent(this, TabUsuario.class);
     	
     	// Passa o id do programa como par�metro
-    	it.putExtra(UsuarioCampos.ID.getCampo(), usuario.getId());
+    	it.putExtra(UsuarioCampo.ID.getCampo(), usuario.getId());
     	
     	// Abre a tela de edi��o
     	startActivityForResult(it, INSERIR_EDITAR);
