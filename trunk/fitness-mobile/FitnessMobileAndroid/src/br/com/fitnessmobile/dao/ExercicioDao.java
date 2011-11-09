@@ -7,51 +7,23 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import br.com.fitnessmobile.adapter.enums.ExercicioCampos;
 import br.com.fitnessmobile.adapter.enums.Musculo;
 import br.com.fitnessmobile.model.Exercicio;
 
-public class ExercicioDao {
+public class ExercicioDao extends Dao {
 
-	private static final String CATEGORIA = "fitness";
-	
-	// Script para fazer drop na tabela
-	private static final String[] SCRIPT_DATABASE_DELETE = new String[] {"DROP TABLE IF EXISTS exercicio"};
-	
-	// Cria a tabela com o "_id" sequencial
-	private static final String[] SCRIPT_DATABASE_CREATE_EXERCICIO = new String[] {
-			"create table exercicio ( _id integer primary key autoincrement," +
-			"nome text null," +
-			"descricao text null," +
-			"situacao text null," +
-			"tipo text null," +
-			"indicecalorico real null," +
-			"grupomuscular text null," +
-			"musculo text null);"};
-
-	// Nome do banco
-	private static final String NOME_BANCO = "fitness_mobile_exer";
-	
-	// Controle de vers�o
-	private static final int VERSAO_BANCO = 1;
 
 	// Nome da tabela
 	public static final String NOME_TABELA = "exercicio";
 
-	protected SQLiteDatabase db;
-	
-	// Classe utilit�ria para abrir, criar, e atualizar o banco de dados
-	SQLiteHelper dbHelper;
 	
 	
 	// Cria o banco de dados com um script SQL
 	public ExercicioDao(Context ctx) {
-		dbHelper = new SQLiteHelper(ctx, ExercicioDao.NOME_BANCO, ExercicioDao.VERSAO_BANCO,
-				ExercicioDao.SCRIPT_DATABASE_CREATE_EXERCICIO, ExercicioDao.SCRIPT_DATABASE_DELETE);
-
-		// abre o banco no modo escrita para poder alterar tamb�m
+		super(ctx);
+		// abre o banco no modo escrita para poder alterar tambem
 		db = dbHelper.getWritableDatabase();
 	}
 	

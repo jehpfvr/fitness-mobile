@@ -6,49 +6,23 @@ import java.util.List;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import br.com.fitnessmobile.adapter.enums.EtapaExercicioCampos;
 import br.com.fitnessmobile.model.EtapaExercicio;
 import br.com.fitnessmobile.model.Exercicio;
 
-public class EtapaExercicioDao {
+public class EtapaExercicioDao extends Dao{
 	
-	private static final String CATEGORIA = "fitness";
-	
-	// Script para fazer drop na tabela
-	private static final String[] SCRIPT_DATABASE_DELETE = new String[] {"DROP TABLE IF EXISTS exercicio_etapa"};
-	
-	// Cria a tabela com o "_id" sequencial
-	private static final String[] SCRIPT_DATABASE_CREATE_EXERCICIO_ETAPA = new String[] {
-			"create table exercicio_etapa ( _id integer primary key autoincrement," +
-			"flag integer null," +
-			"tipoid integer null," +
-			"etapaid integer null," +
-			"diaid integer null," +
-			"dtbaixa numeric null," +
-			"exercicioid integer null);"};
-
-	// Nome do banco
-	private static final String NOME_BANCO = "fitness_mobile_exercicio_etapa";
-	
-	// Controle de versao
-	private static final int VERSAO_BANCO = 1;
 
 	// Nome da tabela
-	public static final String NOME_TABELA = "exercicio_etapa";
+	public static final String NOME_TABELA = "etapa_exercicio";
 
-	protected SQLiteDatabase db;
-	
-	// Classe utilitaria para abrir, criar, e atualizar o banco de dados
-	SQLiteHelper dbHelper;
 	
 	private Context context;
 	
 	// Cria o banco de dados com um script SQL
 	public EtapaExercicioDao(Context ctx) {
-		dbHelper = new SQLiteHelper(ctx, EtapaExercicioDao.NOME_BANCO, EtapaExercicioDao.VERSAO_BANCO,
-				EtapaExercicioDao.SCRIPT_DATABASE_CREATE_EXERCICIO_ETAPA, EtapaExercicioDao.SCRIPT_DATABASE_DELETE);
+		super(ctx);
 
 		// abre o banco no modo escrita para poder alterar tambem
 		db = dbHelper.getWritableDatabase();
@@ -65,15 +39,18 @@ public class EtapaExercicioDao {
 
 
 	// Retorna uma lista com os exercicio da etapa
-	public List<EtapaExercicio> listarEtapaExerciciosByDay(Integer id, Integer diaID) {
-		Cursor c = db.query(true, NOME_TABELA, EtapaExercicio.colunas, EtapaExercicioCampos.ETAPA_ID.getCampo() + "=" + id + " and " + EtapaExercicioCampos.DIA_ID.getCampo() +"="+ diaID, null, null, null, null, null);
+	public List<EtapaExercicio> listarEtapaExerciciosByDay(Integer ete_id, Integer ete_diaid) {
 		
+		//TODO Erro aqui.
+		Cursor c = db.query(true, NOME_TABELA, EtapaExercicio.colunas, EtapaExercicioCampos.ETAPA_ID.getCampo() + "=" + ete_id + " and " + EtapaExercicioCampos.DIA_ID.getCampo() +"="+ ete_diaid, null, null, null, null, null);
+		Log.i("Chegou " , "Aqui Lista de exercicios da etapa");
 		List<EtapaExercicio> etapa_exercicios = new ArrayList<EtapaExercicio>();
 		ExercicioDao exercicioDao = new ExercicioDao(context);
 		if (c.moveToFirst()) {
 			do {
 				EtapaExercicio ee = new EtapaExercicio();
 								
+				
 				ee.setId(c.getInt(c.getColumnIndex(EtapaExercicioCampos.ID.getCampo())));
 				ee.setEtapaid(c.getInt(c.getColumnIndex(EtapaExercicioCampos.ETAPA_ID.getCampo())));
 				ee.setTipoID(c.getInt(c.getColumnIndex(EtapaExercicioCampos.TIPO_ID.getCampo())));
