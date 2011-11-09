@@ -8,7 +8,7 @@ import android.util.Log;
 /**
  * Implementacao de SQLiteOpenHelper
  * 
- * Classe utilitária para abrir, criar, e atualizar o banco de dados
+ * Classe utilitaria para abrir, criar, e atualizar o banco de dados
  * 
  * @author Gustavo
  */
@@ -20,11 +20,11 @@ class SQLiteHelper extends SQLiteOpenHelper {
 	private String[] scriptSQLDelete;
 
 	/**
-	 * Cria uma instância de SQLiteHelper
+	 * Cria uma instancia de SQLiteHelper
 	 * 
 	 * @param context
 	 * @param nomeBanco nome do banco de dados
-	 * @param versaoBanco versão do banco de dados (se for diferente é para atualizar)
+	 * @param versaoBanco versao do banco de dados (se for diferente e para atualizar)
 	 * @param scriptSQLCreate SQL com o create table..
 	 * @param scriptSQLDelete SQL com o drop table...
 	 */
@@ -40,37 +40,39 @@ class SQLiteHelper extends SQLiteOpenHelper {
 		Log.i(CATEGORIA, "Criando banco com sql");
 		int qtdeScripts = scriptSQLCreate.length;
 
-		// Executa cada sql passado como parâmetro
+		// Executa cada sql passado como parametro
 		for (int i = 0; i < qtdeScripts; i++) {
 			String sql = scriptSQLCreate[i];
 			Log.i(CATEGORIA, sql);
-			// Cria o banco de dados executando o script de criação
+			// Cria o banco de dados executando o script de criacao
 			db.execSQL(sql);
 		}
 	}
-	
+
 	public void onDelete(SQLiteDatabase db) {
-		Log.i(CATEGORIA, "Criando banco com sql");
-		int qtdeScripts = scriptSQLDelete.length;
-
-		// Executa cada sql passado como parâmetro
-		for (int i = 0; i < qtdeScripts; i++) {
-			String sql = scriptSQLDelete[i];
-			Log.i(CATEGORIA, sql);
-			// Cria o banco de dados executando o script de criação
-			db.execSQL(sql);
-		}
-	}
-
+	 			Log.i(CATEGORIA, "Criando banco com sql");
+	 			int qtdeScripts = scriptSQLDelete.length;
+	 			// Executa cada sql passado como parÃ¢metro
+	 			for (int i = 0; i < qtdeScripts; i++) {
+	 				String sql = scriptSQLDelete[i];
+	 				Log.i(CATEGORIA, sql);
+	 				// Cria o banco de dados executando o script de criaÃ§Ã£o
+	 				db.execSQL(sql);
+	 
+	 			}
+	 
+	 		}
+	
+	
+	
 	@Override
-	// Mudou a versão...
+	// Mudou a versao...
 	public void onUpgrade(SQLiteDatabase db, int versaoAntiga, int novaVersao) {
-		Log.w(CATEGORIA, "Atualizando da versão " + versaoAntiga + " para " + novaVersao + ". Todos os registros serão deletados.");
+		Log.w(CATEGORIA, "Atualizando da versao " + versaoAntiga + " para " + novaVersao + ". Todos os registros serao deletados.");
 		Log.i(CATEGORIA, "Apagando as tabelas para recriar o banco.");
 		// Deleta as tabelas...
 		onDelete(db);
 		// Cria novamente...
 		onCreate(db);
 	}
-	
 }

@@ -2,25 +2,26 @@ package br.com.fitnessmobile.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-import br.com.fitnessmobile.adapter.enums.ProgramaCampos;
-import br.com.fitnessmobile.model.Programa;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import br.com.fitnessmobile.adapter.enums.ProgramaCampos;
+import br.com.fitnessmobile.model.Programa;
 
 public class ProgramaDao extends Dao {
 	
+
 	// Nome da tabela
 	public static final String NOME_TABELA = "programa";
-		
+	
 	// Cria o banco de dados com um script SQL
 	public ProgramaDao(Context ctx) {
 		super(ctx);
-		
-		// abre o banco no modo escrita para poder alterar também
+
+		// abre o banco no modo escrita para poder alterar tambem
 		db = dbHelper.getWritableDatabase();
 	}
 	
@@ -94,8 +95,8 @@ public class ProgramaDao extends Dao {
 	}
 	
 	// Atualiza o programa com os valores abaixo
-	// A cláusula where é utilizada para identificar o programa a ser atualizado
-	private int atualizarPrograma(Programa programa) {
+	// A clausula where e utilizada para identificar o programa a ser atualizado
+	public int atualizarPrograma(Programa programa) {
 		ContentValues values = new ContentValues();
 		
 		values.put(ProgramaCampos.NOME.getCampo(), programa.getNome());
@@ -145,7 +146,7 @@ public class ProgramaDao extends Dao {
 		
 		int count = db.delete(NOME_TABELA, where, whereArgs);
 		
-		Log.i(CATEGORIA, "Deletou ["+ count +" registros.");
+		Log.i(CATEGORIA, "Deletou ["+ count +"] registros.");
 		
 		return count;
 	}
