@@ -16,17 +16,14 @@ import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.ExercicioAdapter;
 import br.com.fitnessmobile.adapter.enums.Musculo;
-import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.ExercicioDao;
 import br.com.fitnessmobile.model.Exercicio;
 
-public class TabExercicio extends Activity implements OnClickListener {
+public class TabExercicio extends Activity {
 	
 	private ListView listView;
 	private Spinner sp_GrupoMuscular;
-	
 	private Button btn_addExercicio;
-	
 	private ExercicioDao exercicioDao;
 	
 	private String nomeFiltro = "Todos"; // Padrao listar todos
@@ -35,7 +32,6 @@ public class TabExercicio extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		Util.inicioActivitySetTema(this);
 		// Definir Layout
 		setContentView(R.layout.exercicios);
 		
@@ -52,7 +48,13 @@ public class TabExercicio extends Activity implements OnClickListener {
 		this.btn_addExercicio = (Button) findViewById(R.id.btn_add_exercicio);
 		
 		// Evento ao Botao Novo Exercicio
-		this.btn_addExercicio.setOnClickListener(this);
+		this.btn_addExercicio.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				if (v == btn_addExercicio) {
+					startActivity(new Intent(getApplicationContext(),AddExercicio.class));
+				}
+			}
+		});
 		
 		/**
 		 * Adapter ao Spinner
@@ -67,7 +69,7 @@ public class TabExercicio extends Activity implements OnClickListener {
 				// Pega nome pela posicao
  				nomeFiltro = parent.getItemAtPosition(position).toString();
 				// Imprime um Toast na tela com o nome que foi selecionado
-				Toast.makeText(getApplicationContext(), "Filtrando Exercicios por: " + nomeFiltro, Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), "Filtrando Exercicios por: " + nomeFiltro, Toast.LENGTH_SHORT).show();
 				
 				// Filtra a Lista de Exercicios contendo so o Musculo Selecionado
 				if (nomeFiltro.equals("Todos"))
@@ -108,14 +110,6 @@ public class TabExercicio extends Activity implements OnClickListener {
 				return false;
 		    }
 		});
-	}
-	
-
-	// Eventos de Botao
-	public void onClick(View v) {
-		if (v == btn_addExercicio) {
-			startActivity(new Intent(this,AddExercicio.class));
-		}
 	}
 
 	@Override

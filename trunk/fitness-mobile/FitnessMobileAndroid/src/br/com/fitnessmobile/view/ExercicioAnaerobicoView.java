@@ -1,14 +1,12 @@
 package br.com.fitnessmobile.view;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.AnaerobicoDao;
 import br.com.fitnessmobile.dao.EtapaExercicioDao;
 import br.com.fitnessmobile.model.Anaerobico;
@@ -29,7 +27,6 @@ public class ExercicioAnaerobicoView extends Activity implements OnClickListener
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.exercicio_anaerobico);
 		
 		ultimoID = getIntent().getIntExtra("etapaExercicioID", -1);
@@ -73,16 +70,24 @@ public class ExercicioAnaerobicoView extends Activity implements OnClickListener
 			
 			anaerobicoDao.Fechar();
 			
-			startActivity(new Intent(this, ExercicioViewTab.class).putExtra("etapaID", etapaID).putExtra("diaID", diaID));
-			
+			//startActivity(new Intent(this, ExercicioViewTab.class).putExtra("etapaID", etapaID).putExtra("diaID", diaID));
+			this.finish();
 		
 		}else if(arg0 == btn_cancelar){
 			EtapaExercicioDao etapaExercicioDao = new EtapaExercicioDao(this);
 			etapaExercicioDao.excluir(ultimoID);
 			etapaExercicioDao.Fechar();
-			startActivity(new Intent(this, ExercicioViewTab.class).putExtra("etapaID", etapaID).putExtra("diaID", diaID));
+			//startActivity(new Intent(this, ExercicioViewTab.class).putExtra("etapaID", etapaID).putExtra("diaID", diaID));
+			this.finish();
 		}
 	}
 	
-
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		EtapaExercicioDao etapaExercicioDao = new EtapaExercicioDao(this);
+		etapaExercicioDao.excluir(ultimoID);
+		etapaExercicioDao.Fechar();
+		this.finish();
+	}
 }

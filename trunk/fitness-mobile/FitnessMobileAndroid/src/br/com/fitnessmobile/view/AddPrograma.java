@@ -2,19 +2,17 @@ package br.com.fitnessmobile.view;
 
 
 import java.util.Calendar;
-import java.util.Date;
-import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.controller.Util;
-import br.com.fitnessmobile.dao.ProgramaDao;
-import br.com.fitnessmobile.model.Programa;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,6 +21,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import br.com.fitnessmobile.R;
+import br.com.fitnessmobile.dao.ProgramaDao;
+import br.com.fitnessmobile.model.Programa;
 
 public class AddPrograma extends Activity implements OnClickListener, OnDateSetListener, android.content.DialogInterface.OnClickListener {
 	
@@ -37,8 +38,9 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 	private Button btDataFinal;
 	private Programa programa;
 	private ProgramaDao programaDao;
-	private Date dataInicio;
-	private Date dataFim;
+	private Calendar dataInicio;
+	private Calendar dataFim;
+	private Calendar dataAtual;
 	private DatePickerDialog dialogDataInicio;
 	private DatePickerDialog dialogDataFim;
 	private int dialogSelecionado;
@@ -48,7 +50,6 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.add_programa);
 		this.instanciarViews();
 	}
@@ -69,25 +70,38 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 		this.btSalvar.setOnClickListener(this);
 		this.btDatainicial.setOnClickListener(this);
 		this.btDataFinal.setOnClickListener(this);
+		
+		this.dataInicio = Calendar.getInstance();
+		this.dataFim = Calendar.getInstance();
+		dataAtual = Calendar.getInstance();
+		dataAtual.set(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH)-1);
+	}
+	
+	public void vibrar(){
+		Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+		 
+		// Vibrate for 300 milliseconds
+		vb.vibrate(300);
 	}
 
 	public void onClick(View v) {
 		if(v == this.btSalvar){
 			
 			// programa nao pode ter data inicial menor do que a data atual
-			Date dataAtual = new Date(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-			if (dataInicio.getTime() < dataAtual.getTime()) { // TODO adicionar ao casos de uso
+			if (dataInicio.getTimeInMillis() < dataAtual.getTimeInMillis()) { // TODO adicionar ao casos de uso
 				Toast.makeText(getApplicationContext(), "Data Inicial nao pode ser menor do que a Data de Atual.", Toast.LENGTH_SHORT).show();
+				vibrar();
 				return;
 			}
-			if (dataInicio.getTime() > dataFim.getTime()) { // TODO adicionar ao casos de uso
+			if (dataInicio.getTimeInMillis() > dataFim.getTimeInMillis()) { // TODO adicionar ao casos de uso
 				Toast.makeText(getApplicationContext(), "Data Inicial nao pode ser maior do que a Data Final.", Toast.LENGTH_SHORT).show();
+				vibrar();
 				return;
 			}
 			
 			this.programa.setNome(this.etNome.getText().toString());
-			this.programa.setDataInicio(this.dataInicio.getTime());
-			this.programa.setDataFim(this.dataFim.getTime());
+			this.programa.setDataInicio(this.dataInicio.getTimeInMillis());
+			this.programa.setDataFim(this.dataFim.getTimeInMillis());
 			
 			this.programaDao.salvar(programa);
 			
@@ -95,8 +109,7 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 			dlgAlert.setTitle("Programa adicionado");
 			dlgAlert.setPositiveButton("OK", this);
 			dlgAlert.create().show();
-			this.onDestroy();
-				
+
 		}else if (v == this.btDatainicial){
 			this.dialogSelecionado = DIALOG_DATA_INICIO;
 			showDialog(DIALOG_DATA_INICIO);
@@ -106,6 +119,13 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 		}
 		
 	}
+	
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Fecha o banco
+        programaDao.Fechar();
+    }
 	
 	@Override
 	protected Dialog onCreateDialog(int id) {
@@ -127,11 +147,15 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 	public void onDateSet(DatePicker dialog, int year, int month, int day) {
 		if(this.dialogSelecionado == DIALOG_DATA_INICIO){
 			this.tvDataInicial.setText(String.valueOf(day)+"-"+String.valueOf(dialog.getMonth()+1)+"-"+String.valueOf(year));
-			this.dataInicio = new Date(year, month, day);
+			this.dataInicio.set(Calendar.YEAR, year);
+			this.dataInicio.set(Calendar.MONTH, month);
+			this.dataInicio.set(Calendar.DAY_OF_MONTH, day);
 			
 		}else if(this.dialogSelecionado == DIALOG_DATA_FINAL){
 			this.tvDataFinal.setText(String.valueOf(day)+"-"+String.valueOf(dialog.getMonth()+1)+"-"+String.valueOf(year));
-			this.dataFim = new Date(year, month, day);
+			this.dataFim.set(Calendar.YEAR, year);
+			this.dataFim.set(Calendar.MONTH, month);
+			this.dataFim.set(Calendar.DAY_OF_MONTH, day);
 		}
 		
 	}
@@ -142,8 +166,9 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 		//Pega o evento do click do Alert e chama o menu com a Tab
 		if (which == AlertDialog.BUTTON_POSITIVE){
 			Log.i("OnClickDialog","AddPRograma" );
-			intent = new Intent(this,FitnessMobileTab.class).putExtra("aba", 1);
-			startActivity(intent);
+			//intent = new Intent(this,FitnessMobileTab.class).putExtra("aba", 1);
+			//startActivity(intent);
+			this.finish();
 		}
 	}
 }

@@ -20,9 +20,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.EtapaAdapter;
-import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.EtapaDao;
 import br.com.fitnessmobile.model.Etapa;
 
@@ -43,7 +43,6 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.etapa);
 		
 		programaID = getIntent().getIntExtra("programaID", -1);
@@ -55,26 +54,31 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 	}
 	
 	private void instanciarView() {
-		Date dtFim = new Date();
-		dtFim.setTime((long)programaDtFim);
 		
-		Date dtInicio = new Date();
-		dtInicio.setTime((long)programaDtInicio);
+		Calendar dtInicio = Calendar.getInstance();
+		dtInicio.setTimeInMillis(programaDtInicio);
+		
+		Calendar dtFim = Calendar.getInstance();
+		dtFim.setTimeInMillis(programaDtFim);
 		
 		this.etapaDao = new EtapaDao(this);
 		this.textView = (TextView) findViewById(R.id.etapa_textview);
 		this.textView.setText("Etapas do Programa: " + programaNome);
 		this.tvDtProg = (TextView) findViewById(R.id.Dtetapa_textview);
-		this.tvDtProg.setText("De: "+dtInicio.getDay()+"/"+dtInicio.getMonth()+"/"+dtInicio.getYear()+" até "+dtFim.getDay()+"/"+dtFim.getMonth()+"/"+dtFim.getYear());
+		
+		int monthInicio = dtInicio.get(Calendar.MONTH)+1;
+		int monthFim = dtFim.get(Calendar.MONTH)+1;
+		
+		this.tvDtProg.setText("De: "
+				+dtInicio.get(Calendar.DAY_OF_MONTH)+"/"+monthInicio+"/"+dtInicio.get(Calendar.YEAR)+" "
+				+ "Ate: "
+				+dtFim.get(Calendar.DAY_OF_MONTH)+"/"+monthFim+"/"+dtFim.get(Calendar.YEAR));
+		
 		this.listView = (ListView) findViewById(R.id.etapa_listview);
 		this.dlgAlert = new AlertDialog.Builder(this);
 		
-		
-		
-		
-		
 		if(!programaID.equals(-1)){
-			Log.i("fitness", "Listando Etapas do Programa com ID" + programaID);
+			Log.i("fitness", "Listando Etapas do Programa com ID " + programaID);
 			this.listView.setAdapter(new EtapaAdapter(this, etapaDao.listarEtapaByProgramaID(programaID)));
 			this.listView.setOnItemClickListener(this);
 			this.listView.setOnItemLongClickListener(this);
@@ -111,7 +115,7 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 		int day = cal.get(Calendar.DAY_OF_WEEK);
 		int dayInt = -2;
 		switch (day) {
-		    case Calendar.SUNDAY: // segunda
+		    case Calendar.MONDAY: // segunda
 		    	dayInt = 0;
 		        break;
 		    case Calendar.TUESDAY:  
@@ -129,7 +133,7 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 		    case Calendar.SATURDAY:  
 		    	dayInt = 5;  
 		        break;
-		    case Calendar.MONDAY:  
+		    case Calendar.SUNDAY:  
 		    	dayInt = 6;  
 		        break;
 		    default:
@@ -186,14 +190,10 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 
 	
 	public void removerEtapa(){
-		
+		this.etapaDao = new EtapaDao(this);
 		etapaDao.excluir(etapa_selecionada.getId());
-		
-	}
-	
-	public void atualizarEtapa(){
-		
-		
+		this.listView.setAdapter(new EtapaAdapter(this, etapaDao.listarEtapaByProgramaID(programaID)));
+		this.etapaDao.Fechar();
 	}
 
 	public void onClick(DialogInterface arg0, int arg1) {
@@ -211,18 +211,18 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 		}//Colocar para selecionar e excluir mais de uma
 		
 		else if(arg1 == 1){
-			Log.i("Etapa","Editar");
-			atualizarEtapa();
+			Log.i("Etapa", "Atualizar");
+			
+			intent = new Intent(this,EditarEtapa.class).putExtra("programaID", etapa_selecionada.getId());
+			Log.i("Visualizando etapa com id", etapa_selecionada.getId().toString());
+			startActivity(intent);
 			
 		}
 		else if (arg1 == 2){
 			Log.i("Etapa","Excluir");
 			removerEtapa();
 			
-			dlgAlert.setMessage("Sua etapa foi excluida");
-			dlgAlert.setTitle("Etapa Excluida");
-			dlgAlert.setPositiveButton("OK", this);
-			dlgAlert.create().show();
+			Toast.makeText(this, "Sua etapa foi excluida", 500).show();
 			
 	}
   

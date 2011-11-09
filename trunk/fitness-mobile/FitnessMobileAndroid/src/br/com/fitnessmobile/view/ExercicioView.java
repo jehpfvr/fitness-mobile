@@ -22,7 +22,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.EtapaExercicioAdapter;
-import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.EtapaExercicioDao;
 import br.com.fitnessmobile.model.EtapaExercicio;
 
@@ -37,7 +36,6 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Util.inicioActivitySetTema(this);
 		this.setContentView(R.layout.exercicio);
 		etapaID = getIntent().getIntExtra("etapaID", -1);
 		diaID = getIntent().getIntExtra("diaID", -1);
@@ -78,10 +76,7 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 				etapaExercicio.setFlag(0);
 			else{
 				etapaExercicio.setFlag(1);
-				Intent intent = new Intent(this, ExercicioAerobicoView.class);
-				intent.putExtra("etapaExercicioID", etapaExercicio.getDiaID());
-				intent.putExtra("indiceCalorico", etapaExercicio.getExercicio().getIndiceCalorico());
-				startActivityForResult(intent, 0);
+				startActivityForResult(new Intent(this, ExercicioAerobicoView.class).putExtra("etapaExercicioID", etapaExercicio.getDiaID()), 0);
 			}
 		}
 		((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
@@ -144,5 +139,11 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 			
 			Toast.makeText(this, result, Toast.LENGTH_LONG).show();
 		}
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		this.listView.setAdapter(new EtapaExercicioAdapter(this, etapaExercicioDao.listarEtapaExerciciosByDay(etapaID,diaID)));
 	}
 }
