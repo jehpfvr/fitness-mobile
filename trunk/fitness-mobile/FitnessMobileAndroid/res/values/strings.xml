@@ -72,8 +72,8 @@
     <string name="Zerar">Zerar</string> 
 	<string name="Selecionar_exercicio">Clique para marcar</string>
 	<string name="Marcar_gps">Inicie o GPS </string>
-	<string name="Modo_de_visualizacao_diurno">Modo diurno</string>
-    <string name="Modo_de_visualizacao_noturno">Modo noturno</string>
+ 	<string name="Modo_de_visualizacao_diurno">Modo diurno</string>
+   	<string name="Modo_de_visualizacao_noturno">Modo noturno</string>
    	<string name="EAnaerobico_Peso">Peso</string>
    	<string name="EAnaerobico_Serie">Serie</string>
    	<string name="EAnaerobico_Repeticao">Repeticao</string>
