@@ -2,12 +2,6 @@ package br.com.fitnessmobile.view;
 
 import java.util.List;
 
-import br.com.fitnessmobile.adapter.UsuarioListAdapter;
-import br.com.fitnessmobile.dao.UsuarioDao;
-import br.com.fitnessmobile.model.Usuario;
-import br.com.fitnessmobile.model.UsuarioCampo;
-
-import br.com.fitnessmobile.R;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +11,11 @@ import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import br.com.fitnessmobile.R;
+import br.com.fitnessmobile.adapter.UsuarioListAdapter;
+import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
+import br.com.fitnessmobile.dao.UsuarioDao;
+import br.com.fitnessmobile.model.Usuario;
 
 public class UsuarioListActivity extends ListActivity  {
 	protected static final int INSERIR_EDITAR = 1;
@@ -89,7 +88,7 @@ public class UsuarioListActivity extends ListActivity  {
     	Intent it = new Intent(this, TabUsuario.class);
     	
     	// Passa o id do programa como par�metro
-    	it.putExtra(UsuarioCampo.ID.getCampo(), usuario.getId());
+    	it.putExtra(UsuarioCampos.ID.getCampo(), usuario.getId());
     	
     	// Abre a tela de edi��o
     	startActivityForResult(it, INSERIR_EDITAR);

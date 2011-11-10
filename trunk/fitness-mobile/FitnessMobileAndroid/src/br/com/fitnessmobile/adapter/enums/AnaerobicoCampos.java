@@ -2,10 +2,11 @@ package br.com.fitnessmobile.adapter.enums;
 
 public enum AnaerobicoCampos {
 	
-	ID ("_id"),
-	SERIE ("serie"),
-	PESO ("peso"),
-	REPETICAO("repeticao");
+	ID ("ana_id"),
+	SERIE ("ana_serie"),
+	PESO ("ana_peso"),
+	REPETICAO("ana_repeticao"),
+	IDEta ("ana_ete_id");
 	
 	private String campo;
 	

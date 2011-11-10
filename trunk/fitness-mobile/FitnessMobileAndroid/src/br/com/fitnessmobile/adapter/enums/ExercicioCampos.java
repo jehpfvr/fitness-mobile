@@ -3,14 +3,14 @@ package br.com.fitnessmobile.adapter.enums;
 public enum ExercicioCampos {
 	
 	// Tabela Exercicios
-	ID ("_id"),
-	NOME ("nome"),
-	DESCRICAO ("descricao"),
-	SITUACAO ("situacao"),
-	TIPO ("tipo"),
-	INDICE_CALORICO ("indicecalorico"),
-	MUSCULO ("musculo"),
-	GRUPO_MUSCULAR ("grupomuscular");
+	ID ("exe_id"),
+	NOME ("exe_nome"),
+	DESCRICAO ("exe_descricao"),
+	SITUACAO ("exe_situacao"),
+	TIPO ("exe_tipo"),
+	INDICE_CALORICO ("exe_indice_calorico"),
+	MUSCULO ("exe_musculo"),
+	GRUPO_MUSCULAR ("exe_grupomuscular");
 	
 	private String campo;
 	
