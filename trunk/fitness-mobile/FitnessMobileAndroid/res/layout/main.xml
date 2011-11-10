@@ -13,6 +13,9 @@
         	<TextView style="?textTitle" android:text="Idade:" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
         </LinearLayout>
     </LinearLayout>
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:layout_margin="10dp">
+        <Button android:id="@+id/btn_main_estatistica" android:layout_marginTop="108dp"  style="@style/btn_main" android:text="Estatisticas"/>
+        </LinearLayout>
     <LinearLayout android:layout_width="fill_parent" android:layout_height="5dip" android:orientation="vertical" android:background="@drawable/fundo_labels_trajeto" android:layout_margin="5dp"/>
    
   
