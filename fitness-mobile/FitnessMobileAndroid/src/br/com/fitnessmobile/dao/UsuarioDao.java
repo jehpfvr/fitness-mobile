@@ -215,4 +215,9 @@ public class UsuarioDao {
 		return count;
 	}
 
+	public Usuario getUsuarioByDate(String dataDeFim) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

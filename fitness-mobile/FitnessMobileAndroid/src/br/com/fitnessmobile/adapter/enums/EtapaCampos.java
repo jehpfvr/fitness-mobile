@@ -1,11 +1,11 @@
 package br.com.fitnessmobile.adapter.enums;
 
 public enum EtapaCampos {
-	ID ("_id"),
-	NOME ("nome"),
-	DATA_INICIAL ("data_inicial"),
-	DATA_FINAL ("data_final"),
-	PROGRAMA_ID ("programaid");
+	ID ("eta_id"),
+	NOME ("eta_nome"),
+	DATA_INICIAL ("eta_data_inicial"),
+	DATA_FINAL ("eta_data_final"),
+	PROGRAMA_ID ("eta_pro_id");
 	
 	private String campo;
 	
