@@ -1,11 +1,15 @@
 package br.com.fitnessmobile.view;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.dao.AnaerobicoDao;
 import br.com.fitnessmobile.dao.EtapaExercicioDao;
@@ -52,24 +56,27 @@ public class ExercicioAnaerobicoView extends Activity implements OnClickListener
 		
 	}
 
-
 	public void onClick(View arg0) {
 		// TODO Auto-generated method stub
 		if(arg0 == btn_salvar){
 			
+			if(!validarCampos()){
+				vibrar();
+				return;
+			}
+			Log.i("Campos","validados");
 			String peso = tv_peso.getText().toString();
 			String serie = tv_serie.getText().toString();
 			String repeticao = tv_repeticao.getText().toString();
 			
 			Anaerobico anaerobico = new Anaerobico();
-			anaerobico.setId(ultimoID);
+			anaerobico.setIdEta(ultimoID);
 			anaerobico.setPeso(Float.parseFloat(peso));
 			anaerobico.setSerie(Integer.parseInt(serie));
 			anaerobico.setRepeticoes(Integer.parseInt(repeticao));
 			anaerobicoDao.inserir(anaerobico);
 			
 			anaerobicoDao.Fechar();
-			
 			//startActivity(new Intent(this, ExercicioViewTab.class).putExtra("etapaID", etapaID).putExtra("diaID", diaID));
 			this.finish();
 		
@@ -82,6 +89,33 @@ public class ExercicioAnaerobicoView extends Activity implements OnClickListener
 		}
 	}
 	
+	private void vibrar(){
+		Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+		// Vibrate for 300 milliseconds
+		vb.vibrate(300);
+	}
+	
+	private boolean validarCampos() {
+		// TODO Auto-generated method stub
+		boolean retorno = true;
+		
+		
+		Log.i("Validando","Campos");
+		if(tv_peso.getText().length() < 1 ){
+			Toast.makeText(this, "Informe o peso!", 500).show();
+			retorno = false;
+		}
+		if(tv_repeticao.getText().length() < 1){
+			Toast.makeText(this, "Informe a quantidade de repetições!", 500).show();
+			retorno = false;
+		}
+		if(tv_serie.getText().length() < 1){
+			Toast.makeText(this, "Informe a quantidade de séries!!", 500).show();
+			retorno = false;
+		}
+		return retorno;
+	}
+
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();

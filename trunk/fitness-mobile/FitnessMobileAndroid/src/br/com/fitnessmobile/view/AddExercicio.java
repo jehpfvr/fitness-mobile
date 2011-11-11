@@ -127,7 +127,6 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 	public void onClick(View v) {
 		String mensagemExercicio = null;
 		if(v == btn_exercicio_salvar){
-			
 			validarCampos();
 			//TODO fazer validações
 			if (musculoPriSelect == null) return;

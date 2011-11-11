@@ -5,7 +5,7 @@ public enum AnaerobicoCampos {
 	ID ("ana_id"),
 	SERIE ("ana_serie"),
 	PESO ("ana_peso"),
-	REPETICAO("ana_repeticao"),
+	REPETICAO("ana_repeticoes"),
 	IDEta ("ana_ete_id");
 	
 	private String campo;

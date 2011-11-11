@@ -7,10 +7,9 @@ import br.com.fitnessmobile.adapter.enums.AnaerobicoCampos;
 import br.com.fitnessmobile.model.Anaerobico;
 
 public class AnaerobicoDao extends Dao{
-	
 
 	// Nome da tabela
-	public static final String NOME_TABELA = "eAnaerobico";
+	public static final String NOME_TABELA = "anaerobico";
 
 	// Cria o banco de dados com um script SQL
 	 public AnaerobicoDao(Context ctx) {
@@ -31,7 +30,7 @@ public class AnaerobicoDao extends Dao{
 	public Integer inserir(Anaerobico anaerobico) {
 		ContentValues values = new ContentValues();
 		
-		values.put(AnaerobicoCampos.ID.getCampo(), anaerobico.getId());
+		values.put(AnaerobicoCampos.IDEta.getCampo(), anaerobico.getIdEta());
 		values.put(AnaerobicoCampos.PESO.getCampo(), anaerobico.getPeso());
 		values.put(AnaerobicoCampos.SERIE.getCampo(), anaerobico.getSerie());
 		values.put(AnaerobicoCampos.REPETICAO.getCampo(), anaerobico.getRepeticoes());
