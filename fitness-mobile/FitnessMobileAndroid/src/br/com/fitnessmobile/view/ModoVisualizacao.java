@@ -27,7 +27,7 @@ public class ModoVisualizacao extends Activity implements OnClickListener {
 			switch (Util.sTheme) {
 			case 0:
 				Context context3 = getApplicationContext();
-				CharSequence text3 = "O Tema diurno j� est� sendo utilizado";
+				CharSequence text3 = "O Tema diurno ja esta sendo utilizado";
 				int duration3 = Toast.LENGTH_SHORT;
 
 				Toast toast3 = Toast.makeText(context3, text3, duration3);
@@ -45,7 +45,7 @@ public class ModoVisualizacao extends Activity implements OnClickListener {
 				Util.mudarParaTema(this, Util.TEMA_DIA);
 			   // TabUsuario.setBackgroundColor(Color.argb(255, 255, 255, 255));
 				//TabUsuario.getBackground().setColorFilter(Color.parseColor("#00ff00"), PorterDuff.Mode.DARKEN);
-				
+				this.finish();
 				break;
 			}
 		}
@@ -60,11 +60,11 @@ public class ModoVisualizacao extends Activity implements OnClickListener {
 				toast2.show();
 
 				Util.mudarParaTema(this, Util.TEMA_NOITE);
-		        
+		        this.finish();
 				break;
 			case 1:
 				Context context4 = getApplicationContext();
-				CharSequence text4 = "O Tema noturno j� est� sendo utilizado";
+				CharSequence text4 = "O Tema noturno ja esta sendo utilizado";
 				int duration4 = Toast.LENGTH_SHORT;
 
 				Toast toast4 = Toast.makeText(context4, text4, duration4);

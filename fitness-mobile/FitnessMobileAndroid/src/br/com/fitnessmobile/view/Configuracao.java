@@ -31,6 +31,7 @@ public class Configuracao extends Activity implements OnClickListener{
 		// TODO Auto-generated method stub
 		if(arg0.equals(btn_Modo)){
 			startActivity(new Intent(this, ModoVisualizacao.class));
+			this.finish();
 		}
 		
 	}
