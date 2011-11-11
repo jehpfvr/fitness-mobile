@@ -5,17 +5,16 @@
 	<LinearLayout android:layout_height="fill_parent"
 		android:orientation="vertical" android:layout_margin="5dp" android:layout_width="248dp">
 		<TextView android:layout_height="wrap_content" android:layout_width="fill_parent" style="?textTitle" android:text="@string/EAnaerobico_Serie"></TextView>
-		<EditText android:layout_height="wrap_content" android:id="@+id/EAnaerobico_Serie"
+		<EditText android:layout_height="wrap_content" android:numeric="integer" android:id="@+id/EAnaerobico_Serie"
 			android:layout_width="fill_parent">
 			<requestFocus></requestFocus>
 		</EditText>
 		<TextView android:layout_height="wrap_content" android:layout_width="fill_parent" style="?textTitle" android:text="@string/EAnaerobico_Repeticao"></TextView>
-		<EditText android:layout_height="wrap_content" android:id="@+id/EAnaerobico_Repeticao"
+		<EditText android:layout_height="wrap_content" android:numeric="integer" android:id="@+id/EAnaerobico_Repeticao"
 			android:layout_width="fill_parent">
 		</EditText>
 		<TextView android:layout_height="wrap_content" android:layout_width="fill_parent" style="?textTitle" android:text="@string/EAnaerobico_Peso"></TextView>
-		<EditText android:layout_height="wrap_content" android:id="@+id/EAnaerobico_Peso"
-			android:layout_width="fill_parent">
+		<EditText android:layout_height="wrap_content" android:numeric="integer" android:id="@+id/EAnaerobico_Peso" android:layout_width="323dp">
 		</EditText>
 		<LinearLayout android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:layout_width="fill_parent" android:orientation="horizontal" android:gravity="center">
 			<Button android:text="Salvar" android:id="@+id/btn_exercicio_salvar" style="?button" android:layout_width="100dp" android:layout_height="wrap_content"></Button>

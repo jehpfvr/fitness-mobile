@@ -2,7 +2,6 @@ package br.com.fitnessmobile.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import br.com.fitnessmobile.adapter.enums.AnaerobicoCampos;
 import br.com.fitnessmobile.model.Anaerobico;

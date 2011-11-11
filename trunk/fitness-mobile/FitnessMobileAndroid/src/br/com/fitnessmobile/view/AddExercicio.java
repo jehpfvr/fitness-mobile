@@ -41,8 +41,6 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 	private ExercicioDao exercicioDao;
 	Intent intent;
 	
-	private String msg;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,7 +48,6 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 		
 		this.instanciarViews();
 		this.configurarViews();
-		
 	}
 
 	private void instanciarViews() {
@@ -101,7 +98,6 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 			public void onNothingSelected(AdapterView<?> adapter) { }
 		});
 	}
-
 	
 	public void showDialogMusculosSec(){
 		checkedMusculo = new boolean[this.lista_musculos.size()]; 
@@ -168,8 +164,6 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 				this.finish();
 			}
 			
-		
-
 		}else if(v == btn_exercicio_cancelar){
 			Toast.makeText(this, "Exercicio Cancelado", Toast.LENGTH_SHORT).show();
 			this.finish();
@@ -182,30 +176,27 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 	
 	public void vibrar(){
 		Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-		 
 		// Vibrate for 300 milliseconds
 		vb.vibrate(300);
 	}
-	
-
 
 	private void validarCampos() {
 		// TODO Auto-generated method stub
 		
-		if(et_indice_calorico.getText() == null){
-		msg = "Informe o índice calórico!";
-		vibrar();
-		Toast.makeText(this, msg, 500).show();
+		if(et_nome_exercicio.getText().length() == 0){
+			Toast.makeText(this, "Informe o nome do exercicio!", 500).show();
+			vibrar();
+			return;
 		}
-		else if (musculoPriSelect == null){
-		msg = "Selecione o musculo primário!";
-		vibrar();
-		Toast.makeText(this, msg, 500).show();
+		if(et_indice_calorico.getText().length() == 0){
+			Toast.makeText(this, "Informe o índice calórico!", 500).show();
+			vibrar();
+			return;
 		}
-		else if(et_nome_exercicio.getText() == null){
-		msg = "Informe o nome do exercicio!";
-		vibrar();
-		Toast.makeText(this, msg, 500).show();
+		if(selectedMusculo.isEmpty()){
+			Toast.makeText(this, "Selecione pelo menos um musculo secundário!", 500).show();
+			vibrar();
+			return;
 		}
 	}
 
