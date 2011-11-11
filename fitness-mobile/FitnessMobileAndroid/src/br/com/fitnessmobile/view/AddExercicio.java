@@ -5,9 +5,11 @@ import java.util.EnumSet;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -38,7 +40,8 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 	private boolean[] checkedMusculo;
 	private ExercicioDao exercicioDao;
 	Intent intent;
-
+	
+	private String msg;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +131,8 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 	public void onClick(View v) {
 		String mensagemExercicio = null;
 		if(v == btn_exercicio_salvar){
+			
+			validarCampos();
 			//TODO fazer validações
 			if (musculoPriSelect == null) return;
 			if (et_indice_calorico.getText() == null) return;
@@ -172,6 +177,35 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 		
 		}else if(v == btn_add_musc_sec){
 			this.showDialogMusculosSec();
+		}
+	}
+	
+	public void vibrar(){
+		Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+		 
+		// Vibrate for 300 milliseconds
+		vb.vibrate(300);
+	}
+	
+
+
+	private void validarCampos() {
+		// TODO Auto-generated method stub
+		
+		if(et_indice_calorico.getText() == null){
+		msg = "Informe o índice calórico!";
+		vibrar();
+		Toast.makeText(this, msg, 500).show();
+		}
+		else if (musculoPriSelect == null){
+		msg = "Selecione o musculo primário!";
+		vibrar();
+		Toast.makeText(this, msg, 500).show();
+		}
+		else if(et_nome_exercicio.getText() == null){
+		msg = "Informe o nome do exercicio!";
+		vibrar();
+		Toast.makeText(this, msg, 500).show();
 		}
 	}
 
