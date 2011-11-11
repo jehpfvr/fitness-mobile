@@ -1,12 +1,12 @@
 package br.com.fitnessmobile.controller;
 
-import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.view.FitnessMobileMain;
 import android.app.Activity;
 import android.content.Intent;
+import br.com.fitnessmobile.R;
+import br.com.fitnessmobile.view.FitnessMobileMain;
 
 
-public class Util {
+public class Util extends Activity{
 	
 	public static int sTheme;
 	
@@ -33,4 +33,5 @@ public class Util {
 			break;
 		}
 	}
+	
 }

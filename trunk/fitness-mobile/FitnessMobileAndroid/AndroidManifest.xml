@@ -21,7 +21,7 @@
             </intent-filter>
             
         </activity>
-			
+		
 		<activity android:name=".view.AddExercicio"/>	
 		<activity android:name=".view.AddPrograma"/>
 		<activity android:name=".view.AddEtapa"/>
