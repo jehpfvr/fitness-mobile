@@ -6,6 +6,7 @@
   android:layout_height="fill_parent"
   style="?whiteBackground">
   <ListView 
+  android:orientation="vertical"
   android:id="@+id/series_listview" 
   android:layout_height="wrap_content" 
   android:layout_width="fill_parent"

@@ -22,6 +22,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.EtapaExercicioAdapter;
+import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.EtapaExercicioDao;
 import br.com.fitnessmobile.model.EtapaExercicio;
 
@@ -36,6 +37,7 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Util.inicioActivitySetTema(this);
 		this.setContentView(R.layout.exercicio);
 		etapaID = getIntent().getIntExtra("etapaID", -1);
 		diaID = getIntent().getIntExtra("diaID", -1);

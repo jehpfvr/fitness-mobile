@@ -3,15 +3,12 @@
 	<style name="TemaDia">
 		<item name="button">@style/ButtonDia</item>
 		<item name="textTitle">@style/text_title_wh</item>
-		<item name="listItem">@style/listview_wh</item>
 		<item name="whiteBackground">@style/white_background_wh</item>
 	</style>
 
 	<style name="TemaNoite">
 		<item name="button">@style/ButtonNoite</item>
 		<item name="textTitle">@style/text_title_bl</item>
-		<item name="listItem">@style/listview_bl</item>
 		<item name="whiteBackground">@style/white_background_bl</item>
 	</style>
-
 </resources>

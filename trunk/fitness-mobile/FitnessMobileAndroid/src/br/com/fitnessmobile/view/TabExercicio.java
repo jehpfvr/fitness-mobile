@@ -16,6 +16,7 @@ import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.ExercicioAdapter;
 import br.com.fitnessmobile.adapter.enums.Musculo;
+import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.ExercicioDao;
 import br.com.fitnessmobile.model.Exercicio;
 
