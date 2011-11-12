@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import br.com.fitnessmobile.R;
+import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.ProgramaDao;
 import br.com.fitnessmobile.model.Programa;
 
@@ -52,6 +53,7 @@ public class EditarPrograma extends Activity implements OnClickListener, OnDateS
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.add_programa);
 		programaID = getIntent().getIntExtra("Programa",-1);
 		Log.i("Recebido programa",""+programaID);

@@ -214,9 +214,35 @@ public class UsuarioDao {
 		
 		return count;
 	}
+	
+public Usuario getUsuarioByDate(String data) {
+		
+		Cursor c = db.query(true, NOME_TABELA, Usuario.colunas, UsuarioCampos.DATA.getCampo() + "=" + data, null, null, null, null, null);
+		
+		if (c.getCount() > 0) {
 
-	public Usuario getUsuarioByDate(String dataDeFim) {
-		// TODO Auto-generated method stub
+			c.moveToFirst();			
+			Usuario usuario = new Usuario();
+			
+			usuario.setId(c.getLong(c.getColumnIndex(UsuarioCampos.ID.getCampo())));
+			usuario.setAltura(c.getString(c.getColumnIndex(UsuarioCampos.ALTURA.getCampo())));
+			usuario.setPeso(c.getString(c.getColumnIndex(UsuarioCampos.PESO.getCampo())));
+			usuario.setBicepsEsquerdo(c.getString(c.getColumnIndex(UsuarioCampos.BICEPS_ESQUERDO.getCampo())));
+			usuario.setBicepsDireito(c.getString(c.getColumnIndex(UsuarioCampos.BICEPS_DIREITO.getCampo())));
+			usuario.setTricepsEsquerdo(c.getString(c.getColumnIndex(UsuarioCampos.TRICEPS_ESQUERDO.getCampo())));				
+			usuario.setTricepsDireito(c.getString(c.getColumnIndex(UsuarioCampos.TRICEPS_DIREITO.getCampo())));
+			usuario.setCintura(c.getString(c.getColumnIndex(UsuarioCampos.CINTURA.getCampo())));
+			usuario.setPeitoral(c.getString(c.getColumnIndex(UsuarioCampos.PEITORAL.getCampo())));
+			usuario.setCoxaEsquerda(c.getString(c.getColumnIndex(UsuarioCampos.COXA_ESQUERDA.getCampo())));
+			usuario.setCoxaDireita(c.getString(c.getColumnIndex(UsuarioCampos.COXA_DIREITA.getCampo())));
+			usuario.setPanturrilhaEsquerda(c.getString(c.getColumnIndex(UsuarioCampos.PANTURRILHA_ESQUERDA.getCampo())));
+			usuario.setPanturrilhaDireita(c.getString(c.getColumnIndex(UsuarioCampos.PANTURRILHA_DIREITA.getCampo())));
+			usuario.setQuadril(c.getString(c.getColumnIndex(UsuarioCampos.QUADRIL.getCampo())));	
+			usuario.setData(c.getString(c.getColumnIndex(UsuarioCampos.DATA.getCampo())));
+			
+			return usuario;
+		}
+		
 		return null;
 	}
 

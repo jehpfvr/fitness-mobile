@@ -43,8 +43,6 @@ public class ModoVisualizacao extends Activity implements OnClickListener {
 				toast1.show();
 
 				Util.mudarParaTema(this, Util.TEMA_DIA);
-			   // TabUsuario.setBackgroundColor(Color.argb(255, 255, 255, 255));
-				//TabUsuario.getBackground().setColorFilter(Color.parseColor("#00ff00"), PorterDuff.Mode.DARKEN);
 				this.finish();
 				break;
 			}

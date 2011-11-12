@@ -14,8 +14,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
+import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.model.Usuario;
 
 
@@ -40,7 +42,7 @@ public class UsuarioInsertAltera extends Activity implements OnClickListener, On
     	private EditText edtPanturrilhaEsquerda;
     	private EditText edtPanturrilhaDireita;
     	private EditText edtQuadril;
-    	private EditText edtData;
+    	private TextView edtData;
     	private DatePickerDialog dialogData;
     	private Long id;
     	private int dialogSelecionado;
@@ -49,7 +51,7 @@ public class UsuarioInsertAltera extends Activity implements OnClickListener, On
     	@Override
     	protected void onCreate(Bundle icicle) {
     		super.onCreate(icicle);
-
+    		Util.inicioActivitySetTema(this);
     		setContentView(R.layout.usuario_form);
 
     		edtPeso = (EditText) findViewById(R.id.edtPeso);
@@ -65,7 +67,7 @@ public class UsuarioInsertAltera extends Activity implements OnClickListener, On
     		edtPanturrilhaEsquerda = (EditText) findViewById(R.id.edtPanturrilhaEsquerda);
     		edtPanturrilhaDireita = (EditText) findViewById(R.id.edtPanturrilhaDireita);
     		edtQuadril = (EditText) findViewById(R.id.edtQuadril);
-    		edtData = (EditText) findViewById(R.id.edtData);
+    		edtData = (TextView) findViewById(R.id.edtData);
     		id = null;
     		
     		this.btData = (Button) findViewById(R.id.add_data_usuario);

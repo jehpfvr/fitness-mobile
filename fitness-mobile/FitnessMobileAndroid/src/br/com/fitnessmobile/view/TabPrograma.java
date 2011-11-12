@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.ProgramaAdapter;
+import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.ProgramaDao;
 import br.com.fitnessmobile.model.Programa;
 
@@ -33,6 +34,7 @@ public class TabPrograma extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.programa);
 		this._context = this;
 		this.instanciarViews();

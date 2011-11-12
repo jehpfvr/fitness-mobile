@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.AddEtapaExercicioAdapter;
+import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.EtapaExercicioDao;
 import br.com.fitnessmobile.dao.ExercicioDao;
 import br.com.fitnessmobile.model.EtapaExercicio;
