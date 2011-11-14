@@ -37,7 +37,6 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Util.inicioActivitySetTema(this);
 		this.setContentView(R.layout.exercicio);
 		etapaID = getIntent().getIntExtra("etapaID", -1);
 		diaID = getIntent().getIntExtra("diaID", -1);
