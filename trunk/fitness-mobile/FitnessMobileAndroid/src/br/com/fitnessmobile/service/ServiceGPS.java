@@ -2,6 +2,7 @@ package br.com.fitnessmobile.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +12,6 @@ import android.location.LocationManager;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.util.Log;
 
 public class ServiceGPS extends Service implements LocationListener,ControladorGPS,OnCronometroListener{
 	
@@ -60,7 +60,7 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 				
 				this.tempo = location.getTime() - ultimoLocation.getTime();
 				
-				this.velocidade = (distancia)/((double) Math.abs(tempo/1000));
+				this.velocidade = (distancia)/Math.abs(tempo/1000);
 				
 				this.estatisticaGPS.setTempoPercorrido(tempo/1000);
 				
@@ -86,7 +86,7 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 				this.tempo = location.getTime() - ultimoLocation.getTime();
 				
 				if(this.tempo > 0)
-				this.velocidade = (distancia)/((double) Math.abs(tempo/1000));
+				this.velocidade = (distancia)/Math.abs(tempo/1000);
 				
 				this.estatisticaGPS.setDistancia(distancia);
 				//this.estatisticaGPS.setVelocidade(velocidade*3.6);

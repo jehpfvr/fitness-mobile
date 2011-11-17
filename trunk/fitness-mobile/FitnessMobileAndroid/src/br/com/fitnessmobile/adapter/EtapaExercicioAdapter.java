@@ -49,17 +49,17 @@ public class EtapaExercicioAdapter extends BaseAdapter{
 		TextView tv_aviso = (TextView) v.findViewById(R.id.avisoExercicioView);
 		
 		if (etapaExercicio.getFlag().equals(1)) {
-			img_exercicio.setVisibility(ImageView.VISIBLE);
-			tv_aviso.setVisibility(TextView.GONE);
+			img_exercicio.setVisibility(View.VISIBLE);
+			tv_aviso.setVisibility(View.GONE);
 		}
 		else {
-			img_exercicio.setVisibility(ImageView.GONE);
+			img_exercicio.setVisibility(View.GONE);
 			if(etapaExercicio.getExercicio().getTipo().equals("A")){
 				tv_aviso.setText(R.string.Marcar_gps);
-				tv_aviso.setVisibility(TextView.VISIBLE);
+				tv_aviso.setVisibility(View.VISIBLE);
 			}else{
 				tv_aviso.setText(R.string.Selecionar_exercicio);
-				tv_aviso.setVisibility(TextView.VISIBLE);
+				tv_aviso.setVisibility(View.VISIBLE);
 			}
 		}
 		return v;

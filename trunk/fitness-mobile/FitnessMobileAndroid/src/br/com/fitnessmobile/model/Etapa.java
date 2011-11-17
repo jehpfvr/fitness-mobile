@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import br.com.fitnessmobile.adapter.enums.EtapaCampos;
 
-public class Etapa implements Serializable{
+public class Etapa implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	

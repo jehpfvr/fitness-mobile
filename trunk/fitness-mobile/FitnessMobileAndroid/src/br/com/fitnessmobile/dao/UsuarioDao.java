@@ -215,7 +215,7 @@ public class UsuarioDao {
 		return count;
 	}
 	
-public Usuario getUsuarioByDate(String data) {
+public Usuario getUsuarioByDate(String data) throws Exception {
 		
 		Cursor c = db.query(true, NOME_TABELA, Usuario.colunas, UsuarioCampos.DATA.getCampo() + "=" + data, null, null, null, null, null);
 		
@@ -243,7 +243,7 @@ public Usuario getUsuarioByDate(String data) {
 			return usuario;
 		}
 		
-		return null;
+		throw new Exception();
 	}
 
 }

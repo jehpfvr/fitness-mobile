@@ -202,7 +202,7 @@ public class AddEtapa extends Activity implements OnClickListener,OnDateSetListe
 		Log.i("OnClickDialog","Laço OnClick");
 		
 		//Pega o evento do click do Alert e chama o menu com a Tab
-		if (which == AlertDialog.BUTTON_POSITIVE){
+		if (which == DialogInterface.BUTTON_POSITIVE){
 			Log.i("OnClickDialog","EtapaView");
 			//intent = new Intent(this,EtapaView.class).putExtra("programaID", programaID).putExtra("programaNome", programaNome).putExtra("programaDtInicio", programaDtInicio).putExtra("programaDtFim", programaDtFim);
 			//startActivity(intent);

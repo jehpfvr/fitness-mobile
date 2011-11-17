@@ -11,7 +11,7 @@ public class GraficoEvolutivoController {
 	private UsuarioDao usuarioDao;
 
 	/**
-	 * Musculos do gráfico frontal
+	 * Musculos do grï¿½fico frontal
 	 */
 	private MusculoGrafico trapezioInicial;
 	private MusculoGrafico ombroEsquerdoInicial;
@@ -60,7 +60,12 @@ public class GraficoEvolutivoController {
 		 */
 		Usuario usuarioMedidaInicial = new Usuario();
 
-		usuarioMedidaInicial = usuarioDao.getUsuarioByDate(dataDeInicio);
+		try {
+			usuarioMedidaInicial = usuarioDao.getUsuarioByDate(dataDeInicio);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Log.v("Teste", "Pegou!");
 		
 
@@ -129,7 +134,12 @@ public class GraficoEvolutivoController {
 		 */
 		Usuario usuarioMedidaFinal = new Usuario();
 
-		usuarioMedidaFinal = usuarioDao.getUsuarioByDate(dataDeFim);
+		try {
+			usuarioMedidaFinal = usuarioDao.getUsuarioByDate(dataDeFim);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		Log.v("data_de_fim", dataDeFim);
 

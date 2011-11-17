@@ -72,11 +72,9 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 		super.onResume();
 	}
 
-	
-	
-	
+
 	@Override
-	protected void onDestroy() {
+	public void onBackPressed() {
 		if(dados != null){
 			Intent intent = new Intent();
 			intent.putExtra("distancia", dados.getDistancia());
@@ -87,7 +85,8 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 		
 		if(controlador != null )this.controlador.removerOnControladorGPS(this);
 		unbindService(this);
-		super.onDestroy();
+		this.finish();
+		super.onBackPressed();
 	}
 	
 
@@ -136,7 +135,8 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 	}
 	
 	private Handler handler = new Handler() {
-        public void  handleMessage(Message msg) {
+        @Override
+		public void  handleMessage(Message msg) {
         	tv_distancia.setText(df.format(dados.getDistancia()));
     		tv_velocidade.setText(df.format(dados.getVelocidade()));
     		tv_duracao.setText(DateFormat.format("mm:ss", dados.getTempoEmAndamento()));

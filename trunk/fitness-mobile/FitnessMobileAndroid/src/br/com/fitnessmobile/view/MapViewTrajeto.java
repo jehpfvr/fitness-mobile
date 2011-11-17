@@ -113,8 +113,8 @@ public class MapViewTrajeto extends MapActivity implements ServiceConnection,OnC
 		     return true;
 		        
 	    case R.id.Opcoes:
-	    	//chame aqui a activity de configurações
-	    	Log.v("log", "activity configuração");
+	    	//chame aqui a activity de configuraï¿½ï¿½es
+	    	Log.v("log", "activity configuraï¿½ï¿½o");
 	        return true;
 	    default:
 	        return super.onOptionsItemSelected(item);
@@ -143,7 +143,8 @@ public class MapViewTrajeto extends MapActivity implements ServiceConnection,OnC
 	}
 	
 	private Handler handler = new Handler() {
-        public void  handleMessage(Message msg) {
+        @Override
+		public void  handleMessage(Message msg) {
         	tvDistancia.setText(df.format(dados.getDistancia()));
     		tvVelocidade.setText(df.format(dados.getVelocidade()));
     		tvDuracao.setText(DateFormat.format("mm:ss", dados.getTempoEmAndamento()));
