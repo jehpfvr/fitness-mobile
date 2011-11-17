@@ -6,7 +6,7 @@ import java.util.List;
 import br.com.fitnessmobile.adapter.enums.ExercicioCampos;
 import br.com.fitnessmobile.adapter.enums.Musculo;
 
-public class Exercicio implements Serializable{
+public class Exercicio implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -93,6 +93,7 @@ public class Exercicio implements Serializable{
 	}
 	
 	// Para o ListView
+	@Override
 	public String toString() {
 		return this.getNome();
 	}

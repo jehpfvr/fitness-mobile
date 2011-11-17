@@ -1,11 +1,11 @@
 package br.com.fitnessmobile.view;
 
-import br.com.fitnessmobile.R;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
+import br.com.fitnessmobile.R;
 
 public class TabEstatistica extends TabActivity implements OnTabChangeListener {
 
@@ -17,13 +17,13 @@ public class TabEstatistica extends TabActivity implements OnTabChangeListener {
         Intent intent;
         
         intent = new Intent(this, Estatistica.class);
-        mTabHost.addTab(mTabHost.newTabSpec("tab_home").setIndicator("Pizza",getResources().getDrawable(android.R.drawable.ic_dialog_dialer)).setContent(intent));
+        mTabHost.addTab(mTabHost.newTabSpec("tab_esta_exer").setIndicator("Exercicios",getResources().getDrawable(R.drawable.ico_tab_exer)).setContent(intent));
         
         intent = new Intent(this, EstatisticaBarraLinha.class).putExtra("type", "barra");
-        mTabHost.addTab(mTabHost.newTabSpec("tab_Programa").setIndicator("Barra",getResources().getDrawable(android.R.drawable.ic_menu_agenda)).setContent(intent));
+        mTabHost.addTab(mTabHost.newTabSpec("tab_esta_barra").setIndicator("Barra",getResources().getDrawable(android.R.drawable.ic_menu_agenda)).setContent(intent));
         
         intent = new Intent(this, EstatisticaBarraLinha.class).putExtra("type", "linha");
-        mTabHost.addTab(mTabHost.newTabSpec("tab_exercicios").setIndicator("Linha",getResources().getDrawable(R.drawable.ico_tab_exer)).setContent(intent));    
+        mTabHost.addTab(mTabHost.newTabSpec("tab_esta_linha").setIndicator("Linha",getResources().getDrawable(R.drawable.ico_tab_exer)).setContent(intent));    
 
         intent = new Intent(this, TabGraficoEvolutivo.class).putExtra("type", "linha");
         mTabHost.addTab(mTabHost.newTabSpec("tab_grafico_evolutivo").setIndicator("Grafico Evolutivo",getResources().getDrawable(R.drawable.ico_tab_exer)).setContent(intent));    
@@ -35,7 +35,7 @@ public class TabEstatistica extends TabActivity implements OnTabChangeListener {
 
     public void onTabChanged(String tabId) {
 		if(getTabHost().getCurrentTab() == 0){
-			System.out.println("Selecionou Grafico de Pizza");
+			System.out.println("Selecionou Estatisticas de Exercicios");
 		}
 		if(getTabHost().getCurrentTab() == 1){
 			System.out.println("Selecionou Grafico de Barra");

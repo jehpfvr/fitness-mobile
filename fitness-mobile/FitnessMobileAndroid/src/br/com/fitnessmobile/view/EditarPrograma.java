@@ -171,7 +171,7 @@ public class EditarPrograma extends Activity implements OnClickListener, OnDateS
 		Log.i("OnClickDialog","Laço OnClick");
 		
 		//Pega o evento do click do Alert e chama o menu com a Tab
-		if (which == AlertDialog.BUTTON_POSITIVE){
+		if (which == DialogInterface.BUTTON_POSITIVE){
 			Log.i("OnClickDialog","AddPRograma" );
 			//intent = new Intent(this,FitnessMobileTab.class).putExtra("aba", 1);
 			//startActivity(intent);

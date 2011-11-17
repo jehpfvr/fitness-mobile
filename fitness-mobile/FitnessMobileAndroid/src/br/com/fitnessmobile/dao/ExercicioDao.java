@@ -8,8 +8,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.util.Log;
+import br.com.fitnessmobile.adapter.enums.EtapaExercicioCampos;
 import br.com.fitnessmobile.adapter.enums.ExercicioCampos;
 import br.com.fitnessmobile.adapter.enums.Musculo;
+import br.com.fitnessmobile.model.EstaExercicio;
 import br.com.fitnessmobile.model.Exercicio;
 
 public class ExercicioDao extends Dao {
@@ -248,6 +250,47 @@ public class ExercicioDao extends Dao {
 		
 		Log.i(CATEGORIA, "Deletou ["+ count +" registros.");
 		
+		return count;
+	}
+	
+	public List<EstaExercicio> getEstatisticasByExer() {
+		Cursor c = getCursor();
+		
+		List<EstaExercicio> lista_estaexercicio = new ArrayList<EstaExercicio>();
+		
+		if (c.moveToFirst()) {
+			do {
+				EstaExercicio ee = new EstaExercicio();
+				ee.setId((c.getLong(c.getColumnIndex(ExercicioCampos.ID.getCampo()))));
+				ee.setNomeExercicio(c.getString(c.getColumnIndex(ExercicioCampos.NOME.getCampo())));
+				ee.setTotal(getCountTotalExercicio(ee.getId()));
+				ee.setFeitos(getCountFeitosExercicio(ee.getId()));
+				
+				Log.i("Exercicio ID", "" + ee.getId());
+				Log.i("Nome", ee.getNomeExercicio());
+				Log.i("Total", "" + ee.getTotal());
+				Log.i("Feitos", "" + ee.getFeitos());
+				
+				lista_estaexercicio.add(ee);
+
+			} while (c.moveToNext());
+		}
+		return lista_estaexercicio;
+	}
+
+	public int getCountTotalExercicio(long id) {
+		Cursor c = db.rawQuery("SELECT COUNT("+ EtapaExercicioCampos.EXERCICIO_ID.getCampo()+") from " + EtapaExercicioDao.NOME_TABELA + " WHERE "+ EtapaExercicioCampos.EXERCICIO_ID.getCampo()+" = " + id, null);
+		int count = -1;
+		c.moveToFirst();
+		count = c.getInt(0);
+		return count;
+	}
+	
+	public int getCountFeitosExercicio(long id) {
+		Cursor c = db.rawQuery("SELECT COUNT("+ EtapaExercicioCampos.EXERCICIO_ID.getCampo()+") from " + EtapaExercicioDao.NOME_TABELA + " WHERE "+ EtapaExercicioCampos.EXERCICIO_ID.getCampo()+" = " + id + " AND "+EtapaExercicioCampos.FLAG.getCampo()+" = 1", null);
+		int count = -1;
+		c.moveToFirst();
+		count = c.getInt(0);
 		return count;
 	}
 }

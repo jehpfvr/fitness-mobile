@@ -97,7 +97,7 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 		
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(R.string.Opcoes);
-		builder.setItems(items, (OnClickListener) this);
+		builder.setItems(items, this);
 		AlertDialog alert = builder.create();
 		alert.show();
 		
@@ -201,7 +201,7 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 	public void onClick(DialogInterface arg0, int arg1) {
 		// TODO Auto-generated method stub
 		if(arg0 == dlgAlert ){
-			if(arg1 == AlertDialog.BUTTON_POSITIVE){
+			if(arg1 == DialogInterface.BUTTON_POSITIVE){
 				Log.i("Entrou ","no if");
 				intent = new Intent(this,FitnessMobileTab.class).putExtra("aba", 1);
 				startActivity(intent);	

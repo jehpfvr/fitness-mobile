@@ -78,6 +78,7 @@
    	<string name="EAnaerobico_Peso">Peso</string>
    	<string name="EAnaerobico_Serie">Serie</string>
    	<string name="EAnaerobico_Repeticao">Repeticao</string>
+   	<string name="DiasSemana">Dias da Semana</string>
    	<string name="Preferencias">Escolha suas preferências</string>
    	<string name="Calorias">Calorias </string>
     
@@ -131,6 +132,16 @@
     <string-array name="array_tipo_exercicio">
 	   	<item>Aerobico</item>
 	   	<item>Anaerobico</item>
+    </string-array>
+    
+    <string-array name="dias_semanas">
+	   	<item>Segunda</item>
+	   	<item>Terca</item>
+	   	<item>Quarta</item>
+	   	<item>Quinta</item>
+	   	<item>Sexta</item>
+	   	<item>Sabado</item>
+	   	<item>Domingo</item>
     </string-array>
     
     

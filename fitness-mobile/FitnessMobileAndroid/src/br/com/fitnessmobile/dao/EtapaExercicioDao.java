@@ -146,5 +146,4 @@ public class EtapaExercicioDao extends Dao{
 		
 		return count;
 	}
-	
 }

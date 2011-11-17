@@ -2,26 +2,31 @@ package br.com.fitnessmobile.view;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.webkit.WebView;
+import android.widget.ListView;
+import br.com.fitnessmobile.R;
+import br.com.fitnessmobile.adapter.EstaExerAdapter;
+import br.com.fitnessmobile.dao.ExercicioDao;
 
-public class Estatistica extends Activity implements OnClickListener{
+public class Estatistica extends Activity {
 
+	private ExercicioDao exercicioDao;
+	private ListView listView;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		WebView googleChartView = new WebView(this);
-		setContentView(googleChartView);
-		String mUrl = "http://chart.apis.google.com/chart?cht=p3&chd=t:30,60&chs=320x120&chl=feito|programado";
-		googleChartView.loadUrl(mUrl);
-	}
-	
-	
-	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
+		setContentView(R.layout.programa);
 		
+		instanciarViews();
+		configurarViews();
 	}
 
+	private void instanciarViews() {
+		this.exercicioDao = new ExercicioDao(this);
+		this.listView = (ListView) findViewById(R.id.series_listview);
+	}
+
+	private void configurarViews() {
+		this.listView.setAdapter(new EstaExerAdapter(this, this.exercicioDao.getEstatisticasByExer()));
+	}
 }

@@ -53,9 +53,6 @@ public class ExercicioAnaerobicoView extends Activity implements OnClickListener
 		btn_salvar.setOnClickListener(this);
 		this.btn_cancelar = (Button) findViewById(R.id.btn_exercicio_cancelar);
 		btn_cancelar.setOnClickListener(this);
-		
-		anaerobicoDao = new AnaerobicoDao(this);
-		
 	}
 
 	public void onClick(View arg0) {
@@ -76,7 +73,10 @@ public class ExercicioAnaerobicoView extends Activity implements OnClickListener
 			anaerobico.setPeso(Float.parseFloat(peso));
 			anaerobico.setSerie(Integer.parseInt(serie));
 			anaerobico.setRepeticoes(Integer.parseInt(repeticao));
-			anaerobicoDao.inserir(anaerobico);
+			anaerobicoDao = new AnaerobicoDao(this);
+			anaerobicoDao.inserir(
+					anaerobico
+					);
 			
 			anaerobicoDao.Fechar();
 			//startActivity(new Intent(this, ExercicioViewTab.class).putExtra("etapaID", etapaID).putExtra("diaID", diaID));

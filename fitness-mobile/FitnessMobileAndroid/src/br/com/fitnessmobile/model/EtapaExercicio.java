@@ -1,9 +1,13 @@
 package br.com.fitnessmobile.model;
 
+import java.io.Serializable;
+
 import br.com.fitnessmobile.adapter.enums.EtapaExercicioCampos;
 
-public class EtapaExercicio {
+public class EtapaExercicio implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private Exercicio exercicio;
 	private Integer etapaid;
