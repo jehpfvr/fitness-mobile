@@ -108,6 +108,10 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 	    	Log.v("log", "activity configuracao");
 	    	startActivity(new Intent(this, Configuracao.class));
 	        return true;
+	    case R.id.Home:
+	    	Log.v("log", "activity Main");
+	    	this.finish();
+	    	startActivity(new Intent("fitnessmobile.home"));
 	    default:
 	        return super.onOptionsItemSelected(item);
 	    }

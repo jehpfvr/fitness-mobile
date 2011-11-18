@@ -58,7 +58,7 @@ public class ModoVisualizacao extends Activity implements OnClickListener {
 				toast2.show();
 
 				Util.mudarParaTema(this, Util.TEMA_NOITE);
-		        this.finish();
+				this.finish();
 				break;
 			case 1:
 				Context context4 = getApplicationContext();

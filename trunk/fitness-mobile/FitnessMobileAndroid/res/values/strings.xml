@@ -81,6 +81,8 @@
    	<string name="DiasSemana">Dias da Semana</string>
    	<string name="Preferencias">Escolha suas preferências</string>
    	<string name="Calorias">Calorias </string>
+   	
+   	<string name="Home">Home </string>
     
     <string-array name="array_opcoes">
     	<item>Selecionar</item>
