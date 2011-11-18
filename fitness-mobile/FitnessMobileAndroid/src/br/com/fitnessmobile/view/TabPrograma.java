@@ -24,13 +24,13 @@ import br.com.fitnessmobile.dao.ProgramaDao;
 import br.com.fitnessmobile.model.Programa;
 
 public class TabPrograma extends Activity {
-	
+
 	private ListView listView;
 	private ProgramaDao programaDao;
 	private Intent intent;
 	private Programa programa_selecionado;
 	private Context _context;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -45,10 +45,10 @@ public class TabPrograma extends Activity {
 		this.programaDao = new ProgramaDao(this);
 		this.listView = (ListView) findViewById(R.id.series_listview);
 	}
-	
+
 	private void configurarViews() {
 		this.listView.setAdapter(new ProgramaAdapter(this, this.programaDao.listarProgramas()));
-		
+
 		this.listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> adapter, View v, int pos, long id) {
 				Programa programa = (Programa) adapter.getAdapter().getItem(pos);
@@ -60,17 +60,17 @@ public class TabPrograma extends Activity {
 				Log.i("passando parametros", "programa dt inicio" + programa.getDataInicio());
 				Log.i("passando parametros", "programa dt fim" + programa.getDataFim());
 				startActivity(intent);
-				
+
 			}
 		});
-		
+
 		this.listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			public boolean onItemLongClick(AdapterView<?> adapter, View v, int pos, long id) {
 				final CharSequence[] items = getResources().getTextArray(R.array.array_opcoes);
 
 				programa_selecionado = (Programa)adapter.getAdapter().getItem(pos);
-				
+
 				AlertDialog.Builder builder = new AlertDialog.Builder(_context);
 				builder.setTitle(R.string.Opcoes);
 				builder.setItems(items, new OnClickListener() {
@@ -85,9 +85,9 @@ public class TabPrograma extends Activity {
 						}
 						else if (pos == 2){
 							Log.i("Programa","Excluir");
-							
+
 							remover(); // TODO Validacoes
-							
+
 							Toast.makeText(_context, "Seu programa foi excluido", 500).show();
 							startActivity(new Intent(getApplicationContext(),FitnessMobileTab.class).putExtra("aba", 1));
 						}
@@ -95,42 +95,46 @@ public class TabPrograma extends Activity {
 				});
 				AlertDialog alert = builder.create();
 				alert.show();
-				
+
 				return true;
 			}
-			
+
 		});
 	}
 
 	public void remover() { // TODO: Colocar validacoes
 		programaDao.excluir(programa_selecionado.getId());
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.menu_default, menu);
+		inflater.inflate(R.menu.menu_default, menu);
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		    case R.id.Novo:
-		    	Log.i("log", "activity AddPrograma");
-		        //chame aqui a activity de adicionar um programa
-		    	startActivity(new Intent(this, AddPrograma.class));
-		        return true;
-		    case R.id.Opcoes:
-		    	//chame aqui a activity de configuracoes
-		    	Log.v("log", "activity configuracao");
-		    	startActivity(new Intent(this, Configuracao.class));
-		        return true;
-		    default:
-		        return super.onOptionsItemSelected(item);
-	    }
+		case R.id.Novo:
+			Log.i("log", "activity AddPrograma");
+			//chame aqui a activity de adicionar um programa
+			startActivity(new Intent(this, AddPrograma.class));
+			return true;
+		case R.id.Opcoes:
+			//chame aqui a activity de configuracoes
+			Log.v("log", "activity configuracao");
+			startActivity(new Intent(this, Configuracao.class));
+			return true;
+		case R.id.Home:
+			Log.v("log", "activity Main");
+			startActivity(new Intent("fitnessmobile.home"));
+			this.finish();
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
-	
+
 	@Override
 	protected void onResume() {
 		this.listView.setAdapter(new ProgramaAdapter(this, programaDao.listarProgramas()));

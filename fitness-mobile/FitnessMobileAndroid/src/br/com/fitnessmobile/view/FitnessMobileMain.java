@@ -1,14 +1,13 @@
 package br.com.fitnessmobile.view;
 
-import br.com.fitnessmobile.controller.Util;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 import br.com.fitnessmobile.R;
+import br.com.fitnessmobile.controller.Util;
 
 public class FitnessMobileMain extends Activity implements OnClickListener {
 	
@@ -54,11 +53,4 @@ public class FitnessMobileMain extends Activity implements OnClickListener {
 		}
 	}
 	
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent it) {
-		if(resultCode ==1){
-			String resultadoTeste = "distancia: " + it.getDoubleExtra("distancia", 0)+"\n velocidade: "+ it.getDoubleExtra("velocidade", 0) + "\n Tempo: "+ it.getLongExtra("tempo", 0);
-			Toast.makeText(this, resultadoTeste, Toast.LENGTH_LONG).show();
-		}
-	}
 }
