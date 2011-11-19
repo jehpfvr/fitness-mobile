@@ -82,7 +82,7 @@
    	<string name="Preferencias">Escolha suas preferências</string>
    	<string name="Calorias">Calorias </string>
    	
-   	<string name="Home">Home </string>
+   	<string name="Home">Início </string>
     
     <string-array name="array_opcoes">
     	<item>Selecionar</item>
