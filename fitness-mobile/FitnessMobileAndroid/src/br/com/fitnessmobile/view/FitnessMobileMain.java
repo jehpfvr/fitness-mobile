@@ -47,7 +47,7 @@ public class FitnessMobileMain extends Activity implements OnClickListener {
 		}else if(v == btn_medidas){
 			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 3));
 		}else if(v == btn_configuracao){
-			startActivity(new Intent(this, Configuracao.class));
+			startActivity(new Intent(this, ModoVisualizacao.class));
 		}else if(v == btn_estatistica){
 			startActivity(new Intent(this, TabEstatistica.class));
 		}
