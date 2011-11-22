@@ -18,18 +18,18 @@ public enum Musculo {
 	ANTEBRACO (5, "Antebraco", R.drawable.antebracos),
 	
 	//Área central
-	PEITORAL (6, "Peitoral", R.drawable.icon),
-	ABDOMINAIS (7, "Abdominais", R.drawable.icon),
-	ABDOMINAIS_OBLIQUOS(8,"Abdominais_Obliquos",R.drawable.icon),
-	DORSAIS(9,"Dorsais",R.drawable.icon),
-	LOMBARES(10,"Lombares",R.drawable.icon),
+	PEITORAL (6, "Peitoral", R.drawable.peito),
+	ABDOMINAIS (7, "Abdominais", R.drawable.abdomen),
+	ABDOMINAIS_OBLIQUOS(8,"Abdominais_Obliquos",R.drawable.abdomen_lateral),
+	DORSAIS(9,"Dorsais",R.drawable.dorsal),
+	LOMBARES(10,"Lombares",R.drawable.lombar),
 	
 	//ÁREA baixa
-	GLUTEOS(11,"Gluteos",R.drawable.icon),
-	ADUTORES(12,"Adutores",R.drawable.icon),
-	QUADRICEPS (13, "Quadriceps", R.drawable.icon),
-	ISQUIOTIBIAIS(14,"Isquiotibiais",R.drawable.icon),
-	PANTURRILHA (15, "Panturrilha", R.drawable.icon);
+	GLUTEOS(11,"Gluteos",R.drawable.gluteo),
+	ADUTORES(12,"Adutores",R.drawable.adutores),
+	QUADRICEPS (13, "Quadriceps", R.drawable.quadriceps),
+	ISQUIOTIBIAIS(14,"Isquiotibiais",R.drawable.isquiotibiais),
+	PANTURRILHA (15, "Panturrilha", R.drawable.panturrilha);
 	
 	// Definicao das Constantes
 	private final int musculo_id;

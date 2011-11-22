@@ -58,6 +58,7 @@
 		<activity android:name=".view.EtapaView" />
 		<activity android:name=".view.ExercicioViewTab" />
 		<activity android:name=".view.ExercicioView" />
+		<activity android:name=".view.ExercicioDetalhesView" />
 		<activity android:name=".view.ExercicioAnaerobicoView" />
 		<activity android:name=".view.Configuracao" />
 		<activity android:name=".dao.UsuarioDao" />

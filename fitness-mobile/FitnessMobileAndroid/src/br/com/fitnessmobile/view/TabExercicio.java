@@ -90,14 +90,17 @@ public class TabExercicio extends Activity {
 		this.listView.setOnItemClickListener(new OnItemClickListener() {
 		    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		    	// Ao clicar, mostrar um Toast
-		    	String nome = parent.getItemAtPosition(position).toString();
 		    	Exercicio exercicio_clicado = (Exercicio)parent.getAdapter().getItem(position);
-		    	Toast.makeText(getApplicationContext(),
+		    	startActivity(new Intent(getApplicationContext(),ExercicioDetalhesView.class).putExtra("exercicio", exercicio_clicado));
+		    	
+		    	//String nome = parent.getItemAtPosition(position).toString();
+		    	/*Toast.makeText(getApplicationContext(),
 		    			"Ver detalhes do Exercicio: " + nome
 		    			+ "\nMusculo Principal: " + exercicio_clicado.getMusculoPrincipal().getMusculoNome()
 		    			+ "\nGrupo Musculares: " + exercicio_clicado.getGrupoMuscular().toString()
 		    			+ "\nDescricao: " + exercicio_clicado.getDescricao()
 		    			, Toast.LENGTH_LONG).show();
+		    	*/
 		    }
 		});
 		
