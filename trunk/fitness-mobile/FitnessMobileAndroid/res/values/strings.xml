@@ -29,8 +29,8 @@
     <string name="Spinner_musculo">Escolha um grupo muscular</string>
     <string name="btn_add_exercicio">Novo Exercicio</string>
     <string name="Exercicio_nome">Nome do Exercicio: </string>
-    <string name="Exercicio_indicecalorico">Indice Calorico </string>
-    <string name="Exercicio_Musculo_pri">Grupo Muscular Principal</string>
+    <string name="Exercicio_indicecalorico">Indice Calorico: </string>
+    <string name="Exercicio_Musculo_pri">Grupo Muscular Principal:</string>
     <string name="Exercicio_tipo">Tipo de Exercicio:</string>
     <string name="Exercicio_Musculo_sec">Grupos Músculares Secundários: </string>
     <string name="Exercicio_prompt_pri">Selecione o Grupo Muscular Primario </string>
@@ -53,6 +53,7 @@
     <string name="Dialog_exer_titulo">Exercicios por Etapa</string>
     <string name="Exercicio">Exercicio</string>
     <string name="Repeticao">Repetição</string>
+    <string name="Descricao">Descrição:</string>
     
     <string name="Km">km</string>
     <string name="Km_h">km/h</string>
