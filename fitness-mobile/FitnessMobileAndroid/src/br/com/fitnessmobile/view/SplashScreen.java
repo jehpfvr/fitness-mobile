@@ -16,10 +16,10 @@ public class SplashScreen extends Activity implements Runnable {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splash);
-
 		progressbar = (ProgressBar)findViewById(R.id.progressBar);
 		t = new Thread(SplashScreen.this);
 		t.start();
+		
 	}
 
 	private void chamaMain(){
@@ -31,7 +31,7 @@ public class SplashScreen extends Activity implements Runnable {
 		int i = 1;
 		try {
 			while (i<=100){
-				Thread.sleep(50);
+				Thread.sleep(30);
 				progressbar.setProgress(i++);
 				if(i >= 100){
 					chamaMain();

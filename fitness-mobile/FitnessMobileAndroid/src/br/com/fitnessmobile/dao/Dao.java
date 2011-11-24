@@ -146,5 +146,4 @@ public class Dao {
 				Dao.SCRIPT_DATABASE_CREATE, Dao.SCRIPT_DATABASE_DELETE);
 
 	}
-
 }

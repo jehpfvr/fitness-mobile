@@ -146,4 +146,12 @@ public class EtapaExercicioDao extends Dao{
 		
 		return count;
 	}
+	
+	public int getCountExercicioByID(long id) {
+		Cursor c = db.rawQuery("SELECT COUNT("+ EtapaExercicioCampos.ID.getCampo()+") from " + NOME_TABELA + " WHERE "+ EtapaExercicioCampos.EXERCICIO_ID.getCampo()+" = " + id, null);
+		int count = -1;
+		c.moveToFirst();
+		count = c.getInt(0);
+		return count;
+	}
 }
