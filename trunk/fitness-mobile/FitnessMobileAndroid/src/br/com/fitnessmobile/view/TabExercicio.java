@@ -1,8 +1,12 @@
 package br.com.fitnessmobile.view;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -16,6 +20,7 @@ import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.ExercicioAdapter;
 import br.com.fitnessmobile.adapter.enums.Musculo;
+import br.com.fitnessmobile.dao.EtapaExercicioDao;
 import br.com.fitnessmobile.dao.ExercicioDao;
 import br.com.fitnessmobile.model.Exercicio;
 
@@ -25,13 +30,14 @@ public class TabExercicio extends Activity {
 	private Spinner sp_GrupoMuscular;
 	private Button btn_addExercicio;
 	private ExercicioDao exercicioDao;
-
+	private Context _context;
 	private String nomeFiltro = "Todos"; // Padrao listar todos
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		this._context = this;
+		
 		// Definir Layout
 		setContentView(R.layout.exercicios);
 
@@ -108,11 +114,48 @@ public class TabExercicio extends Activity {
 		this.listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 				// Ao clicar, mostrar um Toast
-				String nome = parent.getItemAtPosition(position).toString();
-				Toast.makeText(getApplicationContext(), "Editar Exercicio: " + nome, Toast.LENGTH_SHORT).show();
-				return false;
+				final CharSequence[] items = getResources().getTextArray(R.array.array_opcoes);
+
+				final Exercicio exercicio_selecionado = (Exercicio)parent.getAdapter().getItem(position);
+
+				AlertDialog.Builder builder = new AlertDialog.Builder(_context);
+				builder.setTitle(R.string.Opcoes);
+				builder.setItems(items, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int pos) {
+						if(pos == 0) {
+							Log.i("Exercicio", "Atualizar");
+						
+						}
+						else if (pos == 1){
+							Log.i("Exercicio", "Excluir");
+							if (exercicio_selecionado.getSituacao().equals("A")) {
+								Toast.makeText(_context, "Impossível excluir Exercícios da Aplicação.", 500).show();
+								return;
+							}
+							remover(exercicio_selecionado.getId()); // TODO Validacoes
+						}
+					}
+				});
+				AlertDialog alert = builder.create();
+				alert.show();
+
+				return true;
 			}
 		});
+	}
+	public void remover(long id) {
+		EtapaExercicioDao etapaExercicioDao = new EtapaExercicioDao(this);
+		int count = etapaExercicioDao.getCountExercicioByID(id);
+		etapaExercicioDao.Fechar();
+		if (count > 0) {
+			Toast.makeText(this, "Impossível excluir. Este exercício está em uso.", 500).show();
+			return;
+		}
+		else {
+			//exercicioDao.excluir(id);
+			Toast.makeText(this, "Exercicio excluído com sucesso.", 500).show();
+			onResume();
+		}
 	}
 
 	@Override

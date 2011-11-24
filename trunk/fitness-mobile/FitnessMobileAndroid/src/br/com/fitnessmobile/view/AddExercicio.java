@@ -144,6 +144,7 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 				else
 					novoExercicio.setTipo("N");
 				novoExercicio.setSituacao("C");//Exercicio Custom
+				novoExercicio.setDescricao("Exercício adicionado pelo usuário"); //Descrição default para exercicios custom
 				
 				mensagemExercicio = "Novo Exercicio - Nome " + novoExercicio.getNome()
 						+ "\n Musc. Principal: " + novoExercicio.getMusculoPrincipal()
