@@ -41,11 +41,11 @@ public class FitnessMobileMain extends Activity implements OnClickListener {
 
 	public void onClick(View v) {
 		if(v == btn_programa){
-			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 1));
+			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 0));
 		}else if(v == btn_exercicio){
-			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 2));
+			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 1));
 		}else if(v == btn_medidas){
-			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 3));
+			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 2));
 		}else if(v == btn_configuracao){
 			startActivity(new Intent(this, ModoVisualizacao.class));
 		}else if(v == btn_estatistica){

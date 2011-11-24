@@ -143,6 +143,7 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 					novoExercicio.setTipo("A");	
 				else
 					novoExercicio.setTipo("N");
+				novoExercicio.setSituacao("C");//Exercicio Custom
 				
 				mensagemExercicio = "Novo Exercicio - Nome " + novoExercicio.getNome()
 						+ "\n Musc. Principal: " + novoExercicio.getMusculoPrincipal()
@@ -168,7 +169,7 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 		}else if(v == btn_exercicio_cancelar){
 			Toast.makeText(this, "Exercicio Cancelado", Toast.LENGTH_SHORT).show();
 			this.finish();
-			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 2));
+			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 1));
 		
 		}else if(v == btn_add_musc_sec){
 			this.showDialogMusculosSec();
