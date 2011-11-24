@@ -1,13 +1,7 @@
 package br.com.fitnessmobile.view;
 
 import java.text.DecimalFormat;
-import com.google.android.maps.MapActivity;
-import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.controller.Util;
-import br.com.fitnessmobile.service.ControladorGPS;
-import br.com.fitnessmobile.service.EstatisticaGPS;
-import br.com.fitnessmobile.service.OnControladorGPSListener;
-import br.com.fitnessmobile.service.ServiceGPS.LocalBinder;
+
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -17,10 +11,21 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import br.com.fitnessmobile.R;
+import br.com.fitnessmobile.controller.Util;
+import br.com.fitnessmobile.dao.AerobicoDao;
+import br.com.fitnessmobile.model.Aerobico;
+import br.com.fitnessmobile.service.ControladorGPS;
+import br.com.fitnessmobile.service.EstatisticaGPS;
+import br.com.fitnessmobile.service.OnControladorGPSListener;
+import br.com.fitnessmobile.service.ServiceGPS.LocalBinder;
+
+import com.google.android.maps.MapActivity;
 
 
 public class ExercicioAerobicoView extends MapActivity implements OnClickListener,ServiceConnection, OnControladorGPSListener{
@@ -35,42 +40,51 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 	private EstatisticaGPS dados;
 	private ControladorGPS controlador;
 	private DecimalFormat df;
-	
+
+	private AerobicoDao dao;
+	private int etapaExercicioID;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.exercicio_aerobico);
 
+		etapaExercicioID = getIntent().getIntExtra("etapaExercicioID", -1);
 		bindService(new Intent("SERVICO_GPS"), this, Context.BIND_AUTO_CREATE);
-		
+
 		this.instanciarViews();
 	}
- 
+
 
 	private void instanciarViews() {
 		this.dados = new EstatisticaGPS();
-		
+
 		this.df = new DecimalFormat("0.00");
 		this.tv_distancia = (TextView) findViewById(R.id.exer_aero_display_distancia);
 		this.tv_velocidade = (TextView) findViewById(R.id.exer_aero_display_velocidade);
 		this.tv_duracao = (TextView) findViewById(R.id.exer_aero_display_duracao);
-	
+
 		this.btn_iniciar = (Button) findViewById(R.id.exer_aero_btn_iniciar);
 		this.btn_parar = (Button) findViewById(R.id.exer_aero_btn_parar);
 		this.btn_mapa = (Button) findViewById(R.id.exer_aero_btn_mapa);
-		
+
 		this.btn_iniciar.setOnClickListener(this);
 		this.btn_parar.setOnClickListener(this);
 		this.btn_mapa.setOnClickListener(this);
-		
+
+		this.dao = new AerobicoDao(this);
+
+
 	}
-	
+
 	@Override
 	protected void onResume() {
 		if(controlador != null )this.controlador.setOnControladorGPS(this);
 		super.onResume();
 	}
+
+
 
 
 	@Override
@@ -81,19 +95,29 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 			intent.putExtra("tempo", dados.getTempoEmAndamento());
 			intent.putExtra("velocidade", dados.getVelocidadeMaxima());
 			setResult(1, intent);
+
+			Aerobico a = new Aerobico();
+			a.setDistancia(Double.parseDouble(String.valueOf(dados.getDistancia())));
+			a.setDuracao(dados.getTempoEmAndamento());
+			a.setVelocidade(Double.parseDouble(String.valueOf(dados.getVelocidadeMaxima())));
+			a.setId_exc(etapaExercicioID);
+			dao.inserir(a);
+			dao.Fechar();
+			Log.i("Dados ","Salvos");
+
 		}
-		
+
 		if(controlador != null )this.controlador.removerOnControladorGPS(this);
 		unbindService(this);
 		this.finish();
 		super.onBackPressed();
 	}
-	
+
 
 	public void onClick(View v) {
 
 		Button button = (Button) v;
-		
+
 		if(button.getText().equals(getString(R.string.Pausar))){
 			this.btn_iniciar.setText(R.string.Iniciar);
 			controlador.stopGPS(false);
@@ -127,22 +151,22 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 	public void onServiceDisconnected(ComponentName name) {
 		this.controlador = null;
 	}
-	
-	
+
+
 	public void onControladorGPS(EstatisticaGPS dados) {	
 		this.dados = dados;
 		handler.sendEmptyMessage(0);
 	}
-	
+
 	private Handler handler = new Handler() {
-        @Override
+		@Override
 		public void  handleMessage(Message msg) {
-        	tv_distancia.setText(df.format(dados.getDistancia()));
-    		tv_velocidade.setText(df.format(dados.getVelocidade()));
-    		tv_duracao.setText(DateFormat.format("mm:ss", dados.getTempoEmAndamento()));
-   
-        }
-   };
+			tv_distancia.setText(df.format(dados.getDistancia()));
+			tv_velocidade.setText(df.format(dados.getVelocidade()));
+			tv_duracao.setText(DateFormat.format("mm:ss", dados.getTempoEmAndamento()));
+
+		}
+	};
 
 	@Override
 	protected boolean isRouteDisplayed() {
