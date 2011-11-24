@@ -1,7 +1,6 @@
 package br.com.fitnessmobile.view;
 
 import android.app.Activity;
-import android.graphics.Movie;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,12 +15,9 @@ public class ExercicioDetalhesView extends Activity {
 	private TextView desc;
 	private TextView indice_calorico;
 	private ImageView icone;
-	private ImageView gif;
-	
+	private ImageView gif;	
 	private Exercicio exercicio;
-	
-	private Movie movie;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,13 +28,6 @@ public class ExercicioDetalhesView extends Activity {
 		instanciarViews();
 		configurarViews();
 	}
-	
-	
-	private void animacao(){
-		 
-	}
-	
-	
 
 	private void instanciarViews() {
 		this.nome = (TextView) findViewById(R.id.exer_det_textView1);

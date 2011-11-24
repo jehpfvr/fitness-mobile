@@ -12,15 +12,22 @@ public class Anaerobico implements Serializable {
 	private Integer serie;
 	private Integer idEta;
 	
+	public Anaerobico() {
+	}
+	
+	public Anaerobico(Integer repeticoes, float peso, Integer serie, Integer idEta) {
+		this.repeticoes = repeticoes;
+		this.peso = peso;
+		this.serie = serie;
+		this.idEta = idEta;
+	}
+
 	public Integer getIdEta() {
 		return idEta;
 	}
 
 	public void setIdEta(Integer idEta) {
 		this.idEta = idEta;
-	}
-
-	public Anaerobico() {
 	}
 
 	public Integer getId() {

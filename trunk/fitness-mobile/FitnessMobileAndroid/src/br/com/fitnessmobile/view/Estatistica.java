@@ -29,6 +29,4 @@ public class Estatistica extends Activity{
 	private void configurarViews() {
 		this.listView.setAdapter(new EstaExerAdapter(this, this.exercicioDao.getEstatisticasByExer()));
 	}
-
-
 }

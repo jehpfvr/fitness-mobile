@@ -43,17 +43,19 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 	}
 
 	private void instanciarViews() {
-		etapaExercicioDao = new EtapaExercicioDao(this);
 		this.listView = (ListView) findViewById(R.id.exercicio_listview);
 		this.btn_exercicio_salvar = (Button) findViewById(R.id.add_exercicio_salvar);
 		this.btn_exercicio_salvar.setOnClickListener(this);
 		
 		if(!etapaID.equals(-1)){
 			Log.i("fitness", "Listando Exercicios da Etapa com ID " + etapaID + " do dia com ID " + diaID);
+			this.etapaExercicioDao = new EtapaExercicioDao(this);
 			this.listView.setAdapter(new EtapaExercicioAdapter(this, etapaExercicioDao.listarEtapaExerciciosByDay(etapaID,diaID)));
 			this.listView.setOnItemClickListener(this);
 			this.listView.setOnItemLongClickListener(this);
+			this.etapaExercicioDao.Fechar();
 		}
+		
 	}
 
 	public void onItemClick(AdapterView<?> adapter, View view, int pos, long id) {
@@ -76,8 +78,10 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 				etapaExercicio.setFlag(0);
 			else{
 				etapaExercicio.setFlag(1);
+				etapaExercicioDao = new EtapaExercicioDao(this);
 				etapaExercicioDao.salvar(etapaExercicio);
-				startActivityForResult(new Intent(this, ExercicioAerobicoView.class).putExtra("etapaExercicioID", etapaExercicio.getDiaID()), 0);
+				etapaExercicioDao.Fechar();
+				startActivityForResult(new Intent(this, ExercicioAerobicoView.class).putExtra("etapaExercicioID", etapaExercicio.getId()), 0);
 			}
 		}
 		((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
@@ -123,16 +127,16 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 				Toast.makeText(getApplicationContext(), "So e possivel dar Baixa dos Exercicios da Data Atual.", Toast.LENGTH_LONG).show();
 				return;
 			}
-			
+			etapaExercicioDao = new EtapaExercicioDao(this);
 			ListAdapter list = this.listView.getAdapter();
 			for(int c=0;c<=list.getCount()-1;c++){
 				EtapaExercicio exercicio = (EtapaExercicio) list.getItem(c);
 				Date dataAtual = new Date(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 				exercicio.setDtBaixa(dataAtual.getTime());
-				etapaExercicioDao.salvar(exercicio);
-				
+				etapaExercicioDao.salvar(exercicio);	
 			}
-			Toast.makeText(this, "Exercicíos salvos!", 500);
+			Toast.makeText(this, "Exercicíos salvos!", 500).show();
+			etapaExercicioDao.Fechar();
 		}
 	}
 	
@@ -150,8 +154,9 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 	
 	@Override
 	protected void onResume() {
+		etapaExercicioDao = new EtapaExercicioDao(this);
 		this.listView.setAdapter(new EtapaExercicioAdapter(this, etapaExercicioDao.listarEtapaExerciciosByDay(etapaID,diaID)));
+		etapaExercicioDao.Fechar();
 		super.onResume();
 	}
-	
 }
