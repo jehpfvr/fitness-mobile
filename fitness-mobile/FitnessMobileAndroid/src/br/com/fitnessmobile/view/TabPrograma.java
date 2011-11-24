@@ -76,20 +76,17 @@ public class TabPrograma extends Activity {
 				builder.setItems(items, new OnClickListener() {
 					public void onClick(DialogInterface dialog, int pos) {
 						if(pos == 0) {
-							Log.i("Programa", "Selecionar");
-						}
-						else if(pos == 1) {
 							Log.i("Programa", "Atualizar");
 							intent = new Intent(_context,EditarPrograma.class).putExtra("Programa", programa_selecionado.getId());
 							startActivity(intent);
 						}
-						else if (pos == 2){
+						else if (pos == 1){
 							Log.i("Programa","Excluir");
 
 							remover(); // TODO Validacoes
 
 							Toast.makeText(_context, "Seu programa foi excluido", 500).show();
-							startActivity(new Intent(getApplicationContext(),FitnessMobileTab.class).putExtra("aba", 1));
+							startActivity(new Intent(getApplicationContext(),FitnessMobileTab.class).putExtra("aba", 0));
 						}
 					}
 				});

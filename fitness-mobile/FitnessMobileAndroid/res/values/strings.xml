@@ -88,7 +88,6 @@
    	<string name="Opcoes">Visualização</string>
     
     <string-array name="array_opcoes">
-    	<item>Selecionar</item>
     	<item>Editar</item>
     	<item>Excluir</item>
     </string-array>

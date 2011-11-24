@@ -15,9 +15,10 @@ public class FitnessMobileTab extends TabActivity implements OnTabChangeListener
 
         TabHost mTabHost = getTabHost();
         Intent intent;
-        
+       
+        /*
         intent = new Intent(this, TabHome.class);
-        mTabHost.addTab(mTabHost.newTabSpec("tab_home").setIndicator("Home",getResources().getDrawable(android.R.drawable.ic_dialog_dialer)).setContent(intent));
+        mTabHost.addTab(mTabHost.newTabSpec("tab_home").setIndicator("Home",getResources().getDrawable(android.R.drawable.ic_dialog_dialer)).setContent(intent));*/
         
         intent = new Intent(this, TabPrograma.class);
         mTabHost.addTab(mTabHost.newTabSpec("tab_Programa").setIndicator("Programa",getResources().getDrawable(android.R.drawable.ic_menu_agenda)).setContent(intent));
@@ -40,7 +41,7 @@ public class FitnessMobileTab extends TabActivity implements OnTabChangeListener
     public void onTabChanged(String tabId) {
 		if(getTabHost().getCurrentTab() == 0){
 			System.out.println("Selecionou Home");
-			startActivity(new Intent(this,FitnessMobileMain.class));
+			//startActivity(new Intent(this,FitnessMobileMain.class));
 		}
 		if(getTabHost().getCurrentTab() == 1){
 			System.out.println("Selecionou Programa");

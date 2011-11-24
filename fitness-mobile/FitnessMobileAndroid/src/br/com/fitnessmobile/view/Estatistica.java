@@ -7,8 +7,8 @@ import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.EstaExerAdapter;
 import br.com.fitnessmobile.dao.ExercicioDao;
 
-public class Estatistica extends Activity {
-
+public class Estatistica extends Activity{
+	
 	private ExercicioDao exercicioDao;
 	private ListView listView;
 	
@@ -29,4 +29,6 @@ public class Estatistica extends Activity {
 	private void configurarViews() {
 		this.listView.setAdapter(new EstaExerAdapter(this, this.exercicioDao.getEstatisticasByExer()));
 	}
+
+
 }

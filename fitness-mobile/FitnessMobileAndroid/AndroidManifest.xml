@@ -16,13 +16,16 @@
 			android:launchMode="singleInstance">
 
 			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-
-			<intent-filter>
 				<action android:name="fitnessmobile.home" />
 				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+
+		</activity>
+
+		<activity android:name=".view.SplashScreen">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 
 		</activity>
@@ -35,7 +38,7 @@
 		<activity android:name=".view.EditarEtapa" />
 		<activity android:name=".view.TabEstatistica" />
 		<activity android:name=".view.Estatistica" />
-		<activity android:name=".view.EstatisticaBarraLinha" />
+		
 
 		<activity android:name=".view.LoginView">
 
