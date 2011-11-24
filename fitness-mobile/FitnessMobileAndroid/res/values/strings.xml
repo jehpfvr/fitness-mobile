@@ -83,6 +83,8 @@
    	<string name="Preferencias">Escolha suas preferências</string>
    	<string name="Calorias">Calorias </string>
    	
+   	<string name="Carregando">Carregando... </string>
+   	
    	<string name="Home">Início </string>
    	<string name="Novo">Novo</string>
    	<string name="Opcoes">Visualização</string>
