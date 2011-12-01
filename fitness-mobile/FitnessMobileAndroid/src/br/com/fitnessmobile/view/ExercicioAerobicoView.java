@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.AerobicoDao;
@@ -34,12 +35,15 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 	private TextView tv_distancia;
 	private TextView tv_velocidade;
 	private TextView tv_duracao;
+	private TextView tv_caloria;
+	private TextView tv_velocidadeMedia;
 	private Button btn_iniciar;
 	private Button btn_mapa;
 	private Button btn_parar;
 	private EstatisticaGPS dados;
 	private ControladorGPS controlador;
 	private DecimalFormat df;
+	private double indiceCalorico;
 
 	private AerobicoDao dao;
 	private int etapaExercicioID;
@@ -63,7 +67,9 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 		this.df = new DecimalFormat("0.00");
 		this.tv_distancia = (TextView) findViewById(R.id.exer_aero_display_distancia);
 		this.tv_velocidade = (TextView) findViewById(R.id.exer_aero_display_velocidade);
+		this.tv_velocidadeMedia = (TextView) findViewById(R.id.exer_aero_display_velocidade_media);
 		this.tv_duracao = (TextView) findViewById(R.id.exer_aero_display_duracao);
+		this.tv_caloria = (TextView) findViewById(R.id.exer_aero_display_caloria);
 
 		this.btn_iniciar = (Button) findViewById(R.id.exer_aero_btn_iniciar);
 		this.btn_parar = (Button) findViewById(R.id.exer_aero_btn_parar);
@@ -72,9 +78,10 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 		this.btn_iniciar.setOnClickListener(this);
 		this.btn_parar.setOnClickListener(this);
 		this.btn_mapa.setOnClickListener(this);
-
+		
+		this.indiceCalorico = getIntent().getFloatExtra("indiceCalorico", 0);
+		
 		this.dao = new AerobicoDao(this);
-
 
 	}
 
@@ -83,10 +90,12 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 		if(controlador != null )this.controlador.setOnControladorGPS(this);
 		super.onResume();
 	}
-
-
-
-
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+	
 	@Override
 	public void onBackPressed() {
 		if(dados != null){
@@ -113,7 +122,6 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 		super.onBackPressed();
 	}
 
-
 	public void onClick(View v) {
 
 		Button button = (Button) v;
@@ -127,6 +135,7 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 			this.btn_iniciar.setEnabled(true);
 			this.btn_parar.setEnabled(false);
 			this.controlador.Zerar();
+			this.zerarViews();
 		}
 		else if(v == btn_parar){
 			this.btn_parar.setText(R.string.Zerar);
@@ -146,12 +155,13 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 		LocalBinder binder = (LocalBinder) service;
 		this.controlador = binder.getControlador();
 		this.controlador.setOnControladorGPS(this);
+		this.controlador.adicionarIndiceCalorico(this.indiceCalorico);
+		Toast.makeText(this, String.valueOf(this.indiceCalorico), Toast.LENGTH_LONG).show();
 	}
 
 	public void onServiceDisconnected(ComponentName name) {
 		this.controlador = null;
 	}
-
 
 	public void onControladorGPS(EstatisticaGPS dados) {	
 		this.dados = dados;
@@ -164,7 +174,8 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 			tv_distancia.setText(df.format(dados.getDistancia()));
 			tv_velocidade.setText(df.format(dados.getVelocidade()));
 			tv_duracao.setText(DateFormat.format("mm:ss", dados.getTempoEmAndamento()));
-
+			tv_velocidadeMedia.setText(df.format(dados.getVelocidadeMedia()));
+    		tv_caloria.setText(df.format(dados.getCalorias()));
 		}
 	};
 
@@ -173,6 +184,13 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 		return false;
 	}	
 
+	private void zerarViews() {
+		this.tv_distancia.setText("0.00");
+		this.tv_velocidade.setText("0.00");
+		this.tv_duracao.setText("00:00");
+		this.tv_velocidadeMedia.setText("0.00");
+		this.tv_caloria.setText("0.00");
+	}
 };
 
 
