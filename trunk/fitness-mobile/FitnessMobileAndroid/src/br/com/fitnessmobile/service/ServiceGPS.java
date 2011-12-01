@@ -60,7 +60,7 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 				
 				this.tempo = location.getTime() - ultimoLocation.getTime();
 				
-				this.velocidade = (distancia)/Math.abs(tempo/1000);
+				this.velocidade = (distancia) / ((double)Math.abs(tempo/1000));
 				
 				this.estatisticaGPS.setTempoPercorrido(tempo/1000);
 				
@@ -86,7 +86,7 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 				this.tempo = location.getTime() - ultimoLocation.getTime();
 				
 				if(this.tempo > 0)
-				this.velocidade = (distancia)/Math.abs(tempo/1000);
+				this.velocidade = (distancia) / ((double)Math.abs(tempo/1000));
 				
 				this.estatisticaGPS.setDistancia(distancia);
 				//this.estatisticaGPS.setVelocidade(velocidade*3.6);
