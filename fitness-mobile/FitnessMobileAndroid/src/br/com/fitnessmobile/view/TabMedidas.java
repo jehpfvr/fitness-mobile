@@ -15,20 +15,20 @@ import android.widget.ListView;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.UsuarioListAdapter;
 import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
-import br.com.fitnessmobile.dao.UsuarioDao;
+import br.com.fitnessmobile.dao.MedidasDao;
 import br.com.fitnessmobile.model.Usuario;
 
-public class TabUsuario extends ListActivity  {
+public class TabMedidas extends ListActivity  {
 	protected static final int INSERIR_EDITAR = 1;
 
-	public static UsuarioDao usuarioDao;
+	public static MedidasDao usuarioDao;
 
 	private List<Usuario> usuarios;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		usuarioDao = new UsuarioDao(this);
+		usuarioDao = new MedidasDao(this);
 
 		View header = getLayoutInflater().inflate(R.layout.usuario_lista_header, null);
 		ListView listView = getListView();
@@ -38,7 +38,7 @@ public class TabUsuario extends ListActivity  {
 	}
 
 	public void atualizaLista() {
-		usuarios = usuarioDao.listarUsuarios();
+		usuarios = usuarioDao.listarUsuario();
 
 		setListAdapter(new UsuarioListAdapter(this, usuarios));
 	}
@@ -66,7 +66,7 @@ public class TabUsuario extends ListActivity  {
 		case R.id.Novo:
 			Log.i("log", "activity AddEtapa");
 			//chame aqui a activity de adicionar uma etapa ao programa
-			startActivityForResult(new Intent(this, UsuarioInsertAltera.class), INSERIR_EDITAR);
+			startActivityForResult(new Intent(this, MedidasInsertAltera.class), INSERIR_EDITAR);
 			return true;
 		case R.id.Opcoes:
 			//chame aqui a activity de configuracoes
@@ -118,7 +118,7 @@ public class TabUsuario extends ListActivity  {
 		Usuario usuario = usuarios.get(posicao);
 
 		// Cria a intent para abrir a tela de edi��o de programa
-		Intent it = new Intent(this, UsuarioInsertAltera.class);
+		Intent it = new Intent(this, MedidasInsertAltera.class);
 
 		// Passa o id do programa como par�metro
 		it.putExtra(UsuarioCampos.ID.getCampo(), usuario.getId());

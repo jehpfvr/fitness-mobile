@@ -89,6 +89,8 @@
    	<string name="Novo">Novo</string>
    	<string name="Opcoes">Visualização</string>
     
+    <string name="Analisar">Analisar</string>
+    
     <string-array name="array_opcoes">
     	<item>Editar</item>
     	<item>Excluir</item>

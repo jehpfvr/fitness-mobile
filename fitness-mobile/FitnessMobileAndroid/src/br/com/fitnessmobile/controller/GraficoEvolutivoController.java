@@ -2,16 +2,16 @@ package br.com.fitnessmobile.controller;
 
 import android.content.Context;
 import android.util.Log;
-import br.com.fitnessmobile.dao.UsuarioDao;
+import br.com.fitnessmobile.dao.MedidasDao;
 import br.com.fitnessmobile.model.MusculoGrafico;
 import br.com.fitnessmobile.model.Usuario;
 
 public class GraficoEvolutivoController {
 
-	private UsuarioDao usuarioDao;
+	private MedidasDao usuarioDao;
 
 	/**
-	 * Musculos do gr�fico frontal
+	 * Musculos do gráfico frontal
 	 */
 	private MusculoGrafico trapezioInicial;
 	private MusculoGrafico ombroEsquerdoInicial;
@@ -50,7 +50,7 @@ public class GraficoEvolutivoController {
 	 * até então, não criado.
 	 */
 	public GraficoEvolutivoController(Context context) {
-		usuarioDao = new UsuarioDao(context);
+		usuarioDao = new MedidasDao(context);
 	}
 
 	public void geraRelatorio(String dataDeInicio, String dataDeFim) {
@@ -69,64 +69,64 @@ public class GraficoEvolutivoController {
 		Log.v("Teste", "Pegou!");
 		
 
-		if (usuarioMedidaInicial.getBicepsEsquerdo() != null) {
+		if ((Float) usuarioMedidaInicial.getBicepsEsquerdo() != null) {
 			this.bicepsEsquerdoInicial = new MusculoGrafico("Biceps Esquerdo",
-					92, 122, Float.parseFloat(usuarioMedidaInicial
-							.getBicepsEsquerdo()));
+					92, 122, usuarioMedidaInicial
+							.getBicepsEsquerdo());
 		}
 
-		if (usuarioMedidaInicial.getBicepsDireito() != null) {
+		if ((Float) usuarioMedidaInicial.getBicepsDireito() != null) {
 			this.bicepsDireitoInicial = new MusculoGrafico("Biceps Direito",
-					60, 122, Float.parseFloat(usuarioMedidaInicial
-							.getBicepsDireito()));
+					60, 122, usuarioMedidaInicial
+							.getBicepsDireito());
 		}
 
-		if (usuarioMedidaInicial.getPeitoral() != null) {
+		if ((Float) usuarioMedidaInicial.getPeitoral() != null) {
 			this.peitoralInicial = new MusculoGrafico("Peitoral", 68, 117,
-					Float.parseFloat(usuarioMedidaInicial.getPeitoral()));
+					usuarioMedidaInicial.getPeitoral());
 		}
 
-		if (usuarioMedidaInicial.getCintura() != null) {
+		if ((Float) usuarioMedidaInicial.getCintura() != null) {
 			this.abdomenInicial = new MusculoGrafico("Abdomen", 70, 125,
-					Float.parseFloat(usuarioMedidaInicial.getCintura()));
+					usuarioMedidaInicial.getCintura());
 		}
 
-		if (usuarioMedidaInicial.getCoxaEsquerda() != null) {
+		if ((Float) usuarioMedidaInicial.getCoxaEsquerda() != null) {
 			this.coxaEsquerdaInicial = new MusculoGrafico("Coxa Esquerda", 68,
-					148, Float.parseFloat(usuarioMedidaInicial
-							.getCoxaEsquerda()));
+					148,usuarioMedidaInicial
+							.getCoxaEsquerda());
 		}
 
-		if (usuarioMedidaInicial.getCoxaDireita() != null) {
+		if ((Float) usuarioMedidaInicial.getCoxaDireita() != null) {
 			this.coxaDireitaInicial = new MusculoGrafico("Coxa Direita", 83,
 					148,
-					Float.parseFloat(usuarioMedidaInicial.getCoxaDireita()));
+					usuarioMedidaInicial.getCoxaDireita());
 		}
 
-		if (usuarioMedidaInicial.getTricepsEsquerdo() != null) {
+		if ((Float) usuarioMedidaInicial.getTricepsEsquerdo() != null) {
 			this.tricepsEsquerdoInicial = new MusculoGrafico(
 					"Triceps Esquerdo", 127, 120,
-					Float.parseFloat(usuarioMedidaInicial.getTricepsEsquerdo()));
+					usuarioMedidaInicial.getTricepsEsquerdo());
 		}
 
-		if (usuarioMedidaInicial.getTricepsDireito() != null) {
+		if ((Float) usuarioMedidaInicial.getTricepsDireito() != null) {
 			this.tricepsDireitoInicial = new MusculoGrafico("Triceps Direito",
-					163, 120, Float.parseFloat(usuarioMedidaInicial
-							.getTricepsDireito()));
+					163, 120, usuarioMedidaInicial
+							.getTricepsDireito());
 		}
 
-		if (usuarioMedidaInicial.getPanturrilhaEsquerda() != null) {
+		if ((Float) usuarioMedidaInicial.getPanturrilhaEsquerda() != null) {
 			this.panturrilhaEsquerdaInicial = new MusculoGrafico(
 					"Panturrilha Esquerda", 154, 182,
-					Float.parseFloat(usuarioMedidaInicial
-							.getPanturrilhaEsquerda()));
+					usuarioMedidaInicial
+							.getPanturrilhaEsquerda());
 		}
 
-		if (usuarioMedidaInicial.getPanturrilhaDireita() != null) {
+		if ((Float) usuarioMedidaInicial.getPanturrilhaDireita() != null) {
 			this.panturrilhaDireitaInicial = new MusculoGrafico(
 					"Panturrilha Direita", 133, 182,
-					Float.parseFloat(usuarioMedidaInicial
-							.getPanturrilhaDireita()));
+					usuarioMedidaInicial
+							.getPanturrilhaDireita());
 		}
 
 		/**
@@ -141,65 +141,65 @@ public class GraficoEvolutivoController {
 			e.printStackTrace();
 		}
 
+		Log.v("medida do user", "" + usuarioMedidaFinal.getBicepsDireito());
 		Log.v("data_de_fim", dataDeFim);
 
-		if (usuarioMedidaFinal.getBicepsEsquerdo() != null) {
+		if ((Float) usuarioMedidaFinal.getBicepsEsquerdo() != null) {
 			this.bicepsEsquerdoFinal = new MusculoGrafico("Bíceps Esquerdo",
-					92, 122, Float.parseFloat(usuarioMedidaFinal
-							.getBicepsEsquerdo()));
+					92, 122, usuarioMedidaFinal
+							.getBicepsEsquerdo());
 		}
 
-		if (usuarioMedidaFinal.getBicepsDireito() != null) {
+		if ((Float) usuarioMedidaFinal.getBicepsDireito() != null) {
 			this.bicepsDireitoFinal = new MusculoGrafico("Bíceps Direito", 60,
 					122,
-					Float.parseFloat(usuarioMedidaFinal.getBicepsDireito()));
+					usuarioMedidaFinal.getBicepsDireito());
 		}
 
-		if (usuarioMedidaFinal.getPeitoral() != null) {
+		if ((Float) usuarioMedidaFinal.getPeitoral() != null) {
 			this.peitoralFinal = new MusculoGrafico("Peitoral", 68, 117,
-					Float.parseFloat(usuarioMedidaFinal.getPeitoral()));
+					usuarioMedidaFinal.getPeitoral());
 		}
 
-		if (usuarioMedidaFinal.getCintura() != null) {
+		if ((Float) usuarioMedidaFinal.getCintura() != null) {
 			this.abdomenFinal = new MusculoGrafico("Abdomen", 70, 125,
-					Float.parseFloat(usuarioMedidaFinal.getCintura()));
+					usuarioMedidaFinal.getCintura());
 		}
 
-		if (usuarioMedidaFinal.getCoxaEsquerda() != null) {
+		if ((Float) usuarioMedidaFinal.getCoxaEsquerda() != null) {
 			this.coxaEsquerdaFinal = new MusculoGrafico("Coxa Esquerda", 68,
-					148, Float.parseFloat(usuarioMedidaFinal.getCoxaEsquerda()));
+					148, usuarioMedidaFinal.getCoxaEsquerda());
 		}
 
-		if (usuarioMedidaFinal.getCoxaDireita() != null) {
+		if ((Float) usuarioMedidaFinal.getCoxaDireita() != null) {
 			this.coxaDireitaFinal = new MusculoGrafico("Coxa Direita", 83, 148,
-					Float.parseFloat(usuarioMedidaFinal.getCoxaDireita()));
+					usuarioMedidaFinal.getCoxaDireita());
 		}
 
-		if (usuarioMedidaFinal.getTricepsEsquerdo() != null) {
+		if ((Float) usuarioMedidaFinal.getTricepsEsquerdo() != null) {
 			this.tricepsEsquerdoFinal = new MusculoGrafico("Triceps Esquerdo",
-					127, 120, Float.parseFloat(usuarioMedidaFinal
-							.getTricepsEsquerdo()));
+					127, 120, usuarioMedidaFinal
+							.getTricepsEsquerdo());
 		}
 
-		if (usuarioMedidaFinal.getTricepsDireito() != null) {
+		if ((Float) usuarioMedidaFinal.getTricepsDireito() != null) {
 			this.tricepsDireitoFinal = new MusculoGrafico("Triceps Direito",
-					163, 120, Float.parseFloat(usuarioMedidaFinal
-							.getTricepsDireito()));
+					163, 120, usuarioMedidaFinal
+							.getTricepsDireito());
 		}
 
-		if (usuarioMedidaFinal.getPanturrilhaEsquerda() != null) {
+		if ((Float) usuarioMedidaFinal.getPanturrilhaEsquerda() != null) {
 			this.panturrilhaEsquerdaFinal = new MusculoGrafico(
 					"Panturrilha Esquerda", 154, 182,
-					Float.parseFloat(usuarioMedidaFinal
-							.getPanturrilhaEsquerda()));
+					usuarioMedidaFinal
+							.getPanturrilhaEsquerda());
 		}
 
-		if (usuarioMedidaFinal.getPanturrilhaDireita() != null) {
+		if ((Float) usuarioMedidaFinal.getPanturrilhaDireita() != null) {
 			this.panturrilhaDireitaFinal = new MusculoGrafico(
 					"Panturrilha Direita",
-					133,
-					182,
-					Float.parseFloat(usuarioMedidaFinal.getPanturrilhaDireita()));
+					133, 182,
+					usuarioMedidaFinal.getPanturrilhaDireita());
 		}
 
 		usuarioDao.Fechar();

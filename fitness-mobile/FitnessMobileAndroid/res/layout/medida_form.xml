@@ -13,11 +13,6 @@
 	</TableRow>
 	
 	<TableRow android:layout_width="wrap_content" android:layout_weight="1" android:layout_height="0dp">
-	<TextView android:text="Altura" style="?textTitle" android:padding="3dip" android:layout_weight="1"/>
-	<EditText android:id="@+id/edtAltura" android:padding="3dip" android:layout_weight="1" android:layout_width="0dp"/>
-	</TableRow>
-	
-	<TableRow android:layout_width="wrap_content" android:layout_weight="1" android:layout_height="0dp">
 	<TextView android:text="Biceps Esquerdo" style="?textTitle" android:padding="3dip" android:layout_weight="1"/>
 	<EditText android:id="@+id/edtBicepsEsquerdo" android:padding="3dip" android:layout_weight="1" android:layout_width="0dp"/>
 	</TableRow>

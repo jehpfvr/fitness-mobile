@@ -3,34 +3,32 @@ package br.com.fitnessmobile.model;
 import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
 
 public class Usuario {
-	private long id;
-	private String peso;
-	private String altura;
-	private String bicepsEsquerdo;
-	private String bicepsDireito;
-	private String tricepsEsquerdo;
-	private String tricepsDireito;
-	private String cintura;
-	private String peitoral;
-	private String coxaEsquerda;
-	private String coxaDireita;
-	private String panturrilhaEsquerda;
-	private String panturrilhaDireita;
-	private String quadril;
+	private Integer id;
+	private float peso;
+	private float bicepsEsquerdo;
+	private float bicepsDireito;
+	private float tricepsEsquerdo;
+	private float tricepsDireito;
+	private float cintura;
+	private float peitoral;
+	private float coxaEsquerda;
+	private float coxaDireita;
+	private float panturrilhaEsquerda;
+	private float panturrilhaDireita;
+	private float quadril;
 	private String data;
 	
 	public static String[] colunas = {
-		UsuarioCampos.ID.getCampo(), UsuarioCampos.PESO.getCampo(), UsuarioCampos.ALTURA.getCampo(), UsuarioCampos.BICEPS_ESQUERDO.getCampo(), UsuarioCampos.BICEPS_DIREITO.getCampo(), UsuarioCampos.TRICEPS_ESQUERDO.getCampo(), UsuarioCampos.TRICEPS_DIREITO.getCampo(), UsuarioCampos.CINTURA.getCampo(), UsuarioCampos.PEITORAL.getCampo(), UsuarioCampos.COXA_ESQUERDA.getCampo(), UsuarioCampos.COXA_DIREITA.getCampo(), UsuarioCampos.PANTURRILHA_ESQUERDA.getCampo(), UsuarioCampos.PANTURRILHA_DIREITA.getCampo(), UsuarioCampos.QUADRIL.getCampo(), UsuarioCampos.DATA.getCampo()
+		UsuarioCampos.ID.getCampo(), UsuarioCampos.PESO.getCampo(), UsuarioCampos.BICEPS_ESQUERDO.getCampo(), UsuarioCampos.BICEPS_DIREITO.getCampo(), UsuarioCampos.TRICEPS_ESQUERDO.getCampo(), UsuarioCampos.TRICEPS_DIREITO.getCampo(), UsuarioCampos.CINTURA.getCampo(), UsuarioCampos.PEITORAL.getCampo(), UsuarioCampos.COXA_ESQUERDA.getCampo(), UsuarioCampos.COXA_DIREITA.getCampo(), UsuarioCampos.PANTURRILHA_ESQUERDA.getCampo(), UsuarioCampos.PANTURRILHA_DIREITA.getCampo(), UsuarioCampos.QUADRIL.getCampo(), UsuarioCampos.DATA.getCampo()
 	};
 	
 	public Usuario(){
 		
 	}
 	
-	public Usuario(String peso, String altura, String bicepsEsquerdo, String bicepsDireito, String tricepsEsquerdo, String tricepsDireito, String cintura, String peitoral, String coxaEsquerda, String coxaDireita, String panturrilhaEsquerda, String panturrilhaDireita, String quadril, String data){
+	public Usuario(float peso, float bicepsEsquerdo, float bicepsDireito, float tricepsEsquerdo, float tricepsDireito, float cintura, float peitoral, float coxaEsquerda, float coxaDireita, float panturrilhaEsquerda, float panturrilhaDireita, float quadril, String data){
 		super();
 		this.peso = peso;
-		this.altura = altura;
 		this.bicepsEsquerdo = bicepsEsquerdo;
 		this.bicepsDireito = bicepsDireito;
 		this.tricepsEsquerdo = tricepsEsquerdo;
@@ -45,11 +43,10 @@ public class Usuario {
 		this.data = data;
 	}	
 	
-	public Usuario(long id, String peso, String altura, String bicepsEsquerdo, String bicepsDireito, String tricepsEsquerdo, String tricepsDireito, String cintura, String peitoral, String coxaEsquerda, String coxaDireita, String panturrilhaEsquerda, String panturrilhaDireita, String quadril, String data){
+	public Usuario(Integer id, float peso, float bicepsEsquerdo, float bicepsDireito, float tricepsEsquerdo, float tricepsDireito, float cintura, float peitoral, float coxaEsquerda, float coxaDireita, float panturrilhaEsquerda, float panturrilhaDireita, float quadril, String data){
 		super();
 		this.id = id;
 		this.peso = peso;
-		this.altura = altura;
 		this.bicepsEsquerdo = bicepsEsquerdo;
 		this.bicepsDireito = bicepsDireito;
 		this.tricepsEsquerdo = tricepsEsquerdo;
@@ -64,88 +61,82 @@ public class Usuario {
 		this.data = data;
 	}
 	
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}	
-	public String getPeso() {
+	public float getPeso() {
 		return peso;
 	}
-	public void setPeso(String peso) {
+	public void setPeso(float peso) {
 		this.peso = peso;
 	}
-	public String getAltura() {
-		return altura;
-	}
-	public void setAltura(String altura) {
-		this.altura = altura;
-	}
-	public String getBicepsEsquerdo() {
+	public float getBicepsEsquerdo() {
 		return bicepsEsquerdo;
 	}
-	public void setBicepsEsquerdo(String bicepsEsquerdo) {
+	public void setBicepsEsquerdo(float bicepsEsquerdo) {
 		this.bicepsEsquerdo = bicepsEsquerdo;
 	}
-	public String getBicepsDireito() {
+	public float getBicepsDireito() {
 		return bicepsDireito;
 	}
-	public void setBicepsDireito(String bicepsDireito) {
+	public void setBicepsDireito(float bicepsDireito) {
 		this.bicepsDireito = bicepsDireito;
 	}
-	public String getTricepsEsquerdo() {
+	public float getTricepsEsquerdo() {
 		return tricepsEsquerdo;
 	}
-	public void setTricepsEsquerdo(String tricepsEsquerdo) {
+	public void setTricepsEsquerdo(float tricepsEsquerdo) {
 		this.tricepsEsquerdo = tricepsEsquerdo;
 	}
-	public String getTricepsDireito() {
+	public float getTricepsDireito() {
 		return tricepsDireito;
 	}
-	public void setTricepsDireito(String tricepsDireito) {
+	public void setTricepsDireito(float tricepsDireito) {
 		this.tricepsDireito = tricepsDireito;
 	}
-	public String getCintura() {
+	public float getCintura() {
 		return cintura;
 	}
-	public void setCintura(String cintura) {
+	public void setCintura(float cintura) {
 		this.cintura = cintura;
 	}
-	public String getPeitoral() {
+	public float getPeitoral() {
 		return peitoral;
 	}
-	public void setPeitoral(String peitoral) {
+	public void setPeitoral(float peitoral) {
 		this.peitoral = peitoral;
 	}
-	public String getCoxaEsquerda() {
+	public float getCoxaEsquerda() {
 		return coxaEsquerda;
 	}
-	public void setCoxaEsquerda(String coxaEsquerda) {
+	public void setCoxaEsquerda(float coxaEsquerda) {
 		this.coxaEsquerda = coxaEsquerda;
 	}
-	public String getCoxaDireita() {
+	public float getCoxaDireita() {
 		return coxaDireita;
 	}
-	public void setCoxaDireita(String coxaDireita) {
+	public void setCoxaDireita(float coxaDireita) {
 		this.coxaDireita = coxaDireita;
 	}
-	public String getPanturrilhaEsquerda() {
+	public float getPanturrilhaEsquerda() {
 		return panturrilhaEsquerda;
 	}
-	public void setPanturrilhaEsquerda(String panturrilhaEsquerda) {
+	public void setPanturrilhaEsquerda(float panturrilhaEsquerda) {
 		this.panturrilhaEsquerda = panturrilhaEsquerda;
 	}
-	public String getPanturrilhaDireita() {
+	public float getPanturrilhaDireita() {
 		return panturrilhaDireita;
 	}
-	public void setPanturrilhaDireita(String panturrilhaDireita) {
+	public void setPanturrilhaDireita(float panturrilhaDireita) {
 		this.panturrilhaDireita = panturrilhaDireita;
 	}
-	public String getQuadril() {
+	public float getQuadril() {
 		return quadril;
 	}
-	public void setQuadril(String quadril) {
+	public void setQuadril(float quadril) {
 		this.quadril = quadril;
 	}
 	public String getData() {
