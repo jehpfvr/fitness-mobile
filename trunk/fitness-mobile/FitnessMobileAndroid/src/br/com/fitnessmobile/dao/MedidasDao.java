@@ -132,7 +132,7 @@ public class MedidasDao extends Dao {
 				usuario.getPanturrilhaEsquerda());
 		values.put(UsuarioCampos.PANTURRILHA_DIREITA.getCampo(),
 				usuario.getPanturrilhaDireita());
-		values.put(UsuarioCampos.CINTURA.getCampo(), usuario.getCintura());
+		values.put(UsuarioCampos.QUADRIL.getCampo(), usuario.getCintura());
 		values.put(UsuarioCampos.DATA.getCampo(), usuario.getData());
 
 		Integer id = (int) db.insert(NOME_TABELA, "", values); 
