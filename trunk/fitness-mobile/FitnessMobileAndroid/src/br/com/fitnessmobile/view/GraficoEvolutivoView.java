@@ -56,7 +56,7 @@ public class GraficoEvolutivoView extends View {
 		this.anatomiaCompleta = BitmapFactory.decodeResource(getResources(), R.drawable.anatomia);
 		Bitmap.createScaledBitmap(anatomiaCompleta, 500, 300, false);
 		
-		if (gec.getBicepsEsquerdoInicial().getTamanho() < gec.getBicepsDireitoFinal().getTamanho()) {
+		if (gec.getBicepsEsquerdoInicial().getTamanho() < gec.getBicepsEsquerdoFinal().getTamanho()) {
 			this.bicepsEsquerdo	= BitmapFactory.decodeResource(getResources(), R.drawable.bicepsesquerdo);
 		} else {
 			this.bicepsEsquerdo	= BitmapFactory.decodeResource(getResources(), R.drawable.bicepsesquerdovermelho);
