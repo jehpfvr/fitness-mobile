@@ -30,6 +30,8 @@
 
 		</activity>
 
+		<activity android:name=".view.CanvasActivity" />
+
 		<activity android:name=".view.AddExercicio" />
 		<activity android:name=".view.AddPrograma" />
 		<activity android:name=".view.AddEtapa" />
@@ -38,19 +40,19 @@
 		<activity android:name=".view.EditarEtapa" />
 		<activity android:name=".view.TabEstatistica" />
 		<activity android:name=".view.Estatistica" />
-		
+
 
 		<activity android:name=".view.LoginView">
 
 		</activity>
 
-		<activity android:name=".view.UsuarioInsertAltera" />
+		<activity android:name=".view.MedidasInsertAltera" />
 		<activity android:name=".view.TabGraficoEvolutivo" />
 		<activity android:name=".view.FitnessMobileTab" />
 		<activity android:name=".view.TabHome" />
 		<activity android:name=".view.TabPrograma" />
 		<activity android:name=".view.TabExercicio" />
-		<activity android:name=".view.TabUsuario" />
+		<activity android:name=".view.TabMedidas" />
 		<activity android:name=".view.ControleDeTempo" />
 
 		<activity android:name=".view.ModoVisualizacao" />
@@ -64,9 +66,9 @@
 		<activity android:name=".view.ExercicioDetalhesView" />
 		<activity android:name=".view.ExercicioAnaerobicoView" />
 		<activity android:name=".view.Configuracao" />
-		<activity android:name=".dao.UsuarioDao" />
+		<activity android:name=".dao.MedidasDao" />
 		<activity android:name=".view.UsuarioInsertAltera" />
-		<activity android:name=".view.UsuarioListActivity"
+		<activity android:name=".view.MedidasListActivity"
 			android:label="@string/app_name">
 
 		</activity>

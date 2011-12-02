@@ -21,7 +21,7 @@ import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.model.Usuario;
 
 
-public class UsuarioInsertAltera extends Activity implements OnClickListener, OnDateSetListener, android.content.DialogInterface.OnClickListener {
+public class MedidasInsertAltera extends Activity implements OnClickListener, OnDateSetListener, android.content.DialogInterface.OnClickListener {
 	   
 	    static final int DIALOG_DATA = 0;
 	    static final int RESULT_SALVAR = 1;
@@ -30,7 +30,6 @@ public class UsuarioInsertAltera extends Activity implements OnClickListener, On
     	// Campos texto
     	private Button btData;
     	private EditText edtPeso;
-    	private EditText edtAltura;
     	private EditText edtBicepsEsquerdo;
     	private EditText edtBicepsDireito;
     	private EditText edtTricepsEsquerdo;
@@ -44,7 +43,7 @@ public class UsuarioInsertAltera extends Activity implements OnClickListener, On
     	private EditText edtQuadril;
     	private TextView edtData;
     	private DatePickerDialog dialogData;
-    	private Long id;
+    	private Integer id;
     	private int dialogSelecionado;
     	Intent intent;
 
@@ -52,10 +51,9 @@ public class UsuarioInsertAltera extends Activity implements OnClickListener, On
     	protected void onCreate(Bundle icicle) {
     		super.onCreate(icicle);
     		Util.inicioActivitySetTema(this);
-    		setContentView(R.layout.usuario_form);
+    		setContentView(R.layout.medida_form);
 
     		edtPeso = (EditText) findViewById(R.id.edtPeso);
-    		edtAltura = (EditText) findViewById(R.id.edtAltura);
     		edtBicepsEsquerdo = (EditText) findViewById(R.id.edtBicepsEsquerdo);
     		edtBicepsDireito = (EditText) findViewById(R.id.edtBicepsDireito);
     		edtTricepsEsquerdo = (EditText) findViewById(R.id.edtTricepsEsquerdo);
@@ -76,26 +74,25 @@ public class UsuarioInsertAltera extends Activity implements OnClickListener, On
     		Bundle extras = getIntent().getExtras();
     		// Se for para Editar, recuperar os valores ...
     		if (extras != null) {
-    			id = extras.getLong(UsuarioCampos.ID.getCampo());
+    			id = extras.getInt(UsuarioCampos.ID.getCampo());
 
     			if (id != null) {
-    				// � uma edi��o, busca o programa...
+    				// é uma edição, busca o programa...
     				Usuario u = buscarUsuario(id);
     				
-    				edtPeso.setText(u.getPeso());
-    				edtAltura.setText(u.getAltura());
-    				edtBicepsEsquerdo.setText(u.getBicepsEsquerdo());
-    				edtBicepsDireito.setText(u.getBicepsDireito());
-    				edtTricepsEsquerdo.setText(u.getTricepsEsquerdo());
-    				edtTricepsDireito.setText(u.getTricepsDireito());
-    				edtCintura.setText(u.getCintura());
-    				edtPeitoral.setText(u.getPeitoral());
-    				edtCoxaEsquerdo.setText(u.getCoxaEsquerda());
-    				edtCoxaDireita.setText(u.getCoxaDireita());
-    				edtPanturrilhaEsquerda.setText(u.getPanturrilhaEsquerda());
-    				edtPanturrilhaDireita.setText(u.getPanturrilhaDireita());
-    				edtQuadril.setText(u.getQuadril());
-    				edtData.setText(u.getData());
+    				edtPeso.setText(String.valueOf(u.getPeso()));
+    				edtBicepsEsquerdo.setText(String.valueOf(u.getBicepsEsquerdo()));
+    				edtBicepsDireito.setText(String.valueOf(u.getBicepsDireito()));
+    				edtTricepsEsquerdo.setText(String.valueOf(u.getTricepsEsquerdo()));
+    				edtTricepsDireito.setText(String.valueOf(u.getTricepsDireito()));
+    				edtCintura.setText(String.valueOf(u.getCintura()));
+    				edtPeitoral.setText(String.valueOf(u.getPeitoral()));
+    				edtCoxaEsquerdo.setText(String.valueOf(u.getCoxaEsquerda()));
+    				edtCoxaDireita.setText(String.valueOf(u.getCoxaDireita()));
+    				edtPanturrilhaEsquerda.setText(String.valueOf(u.getPanturrilhaEsquerda()));
+    				edtPanturrilhaDireita.setText(String.valueOf(u.getPanturrilhaDireita()));
+    				edtQuadril.setText(String.valueOf(u.getQuadril()));
+    				edtData.setText(String.valueOf(u.getData()));
     			}
     		}
 
@@ -135,20 +132,20 @@ public class UsuarioInsertAltera extends Activity implements OnClickListener, On
     			// � uma atualiza��o
     			usuario.setId(id);
     		}
-    		usuario.setPeso(edtPeso.getText().toString());
-    		usuario.setAltura(edtAltura.getText().toString());
-    		usuario.setBicepsEsquerdo(edtBicepsEsquerdo.getText().toString());
-    		usuario.setBicepsDireito(edtBicepsDireito.getText().toString());
-    		usuario.setTricepsEsquerdo(edtTricepsEsquerdo.getText().toString());
-    		usuario.setTricepsDireito(edtTricepsDireito.getText().toString());
-    		usuario.setCintura(edtCintura.getText().toString());
-    		usuario.setPeitoral(edtPeitoral.getText().toString());
-    		usuario.setCoxaEsquerda(edtCoxaEsquerdo.getText().toString());
-    		usuario.setCoxaDireita(edtCoxaDireita.getText().toString());
-    		usuario.setPanturrilhaEsquerda(edtPanturrilhaEsquerda.getText().toString());
-    		usuario.setPanturrilhaDireita(edtPanturrilhaDireita.getText().toString());
-    		usuario.setQuadril(edtQuadril.getText().toString());
-    		usuario.setData(edtData.getText().toString());
+    		usuario.setPeso(Float.parseFloat(edtPeso.getText().toString()));
+    		usuario.setBicepsEsquerdo(Float.parseFloat(edtBicepsEsquerdo.getText().toString()));
+    		usuario.setBicepsDireito(Float.parseFloat(edtBicepsDireito.getText().toString()));
+    		usuario.setTricepsEsquerdo(Float.parseFloat(edtTricepsEsquerdo.getText().toString()));
+    		usuario.setTricepsDireito(Float.parseFloat(edtTricepsDireito.getText().toString()));
+    		usuario.setCintura(Float.parseFloat(edtCintura.getText().toString()));
+    		usuario.setPeitoral(Float.parseFloat(edtPeitoral.getText().toString()));
+    		usuario.setCoxaEsquerda(Float.parseFloat(edtCoxaEsquerdo.getText().toString()));
+    		usuario.setCoxaDireita(Float.parseFloat(edtCoxaDireita.getText().toString()));
+    		usuario.setPanturrilhaEsquerda(Float.parseFloat(edtPanturrilhaEsquerda.getText().toString()));
+    		usuario.setPanturrilhaDireita(Float.parseFloat(edtPanturrilhaDireita.getText().toString()));
+    		usuario.setQuadril(Float.parseFloat(edtQuadril.getText().toString()));
+    		usuario.setData((edtData.getText().toString()));
+    		
     		
     		// Salvar
     		salvarUsuario(usuario);
@@ -173,18 +170,18 @@ public class UsuarioInsertAltera extends Activity implements OnClickListener, On
     	}
 
     	// Buscar o programa pelo id
-    	protected Usuario buscarUsuario(long id) {
-    		return TabUsuario.usuarioDao.buscarUsuario(id);
+    	protected Usuario buscarUsuario(Integer id) {
+    		return TabMedidas.usuarioDao.buscarUsuario(id);
     	}
 
     	// Salvar o programa
     	protected void salvarUsuario(Usuario usuario) {
-    		TabUsuario.usuarioDao.salvar(usuario);
+    		TabMedidas.usuarioDao.salvar(usuario);
     	}
 
     	// Excluir o Programa
-    	protected void excluirUsuario(long id) {
-    		TabUsuario.usuarioDao.excluir(id);
+    	protected void excluirUsuario(Integer id) {
+    		TabMedidas.usuarioDao.excluir(id);
     	}
 
 		public void onClick(DialogInterface dialog, int which) {

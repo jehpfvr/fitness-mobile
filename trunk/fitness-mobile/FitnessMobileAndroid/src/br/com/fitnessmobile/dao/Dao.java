@@ -26,7 +26,7 @@ public class Dao {
 		"CREATE TABLE IF NOT EXISTS exercicio ('exe_id' INTEGER PRIMARY KEY, 'exe_nome' VARCHAR(45) NOT NULL, 'exe_descricao' VARCHAR(200) NULL, 'exe_situacao' CHAR(1) NOT NULL, 'exe_tipo' CHAR(1) NOT NULL, 'exe_indice_calorico' DECIMAL(5,2) NULL, 'exe_musculo' CHAR(1) NOT NULL, 'exe_grupomuscular' VARCHAR(45) NOT NULL);",
 		"CREATE TABLE IF NOT EXISTS programa ('pro_id' INTEGER PRIMARY KEY, 'pro_nome' VARCHAR(50) NOT NULL, 'pro_data_inicial' INTEGER  NOT NULL, 'pro_data_final' INTEGER  NOT NULL);",
 		"CREATE TABLE IF NOT EXISTS pessoa ('pes_id' INTEGER PRIMARY KEY, 'pes_nome' VARCHAR(45) NOT NULL, 'pes_data_nasc' INTEGER  NOT NULL, 'pes_peso' VARCHAR(45) NULL, 'pes_altura' VARCHAR(45) NULL, 'pes_sexo' VARCHAR(1) NOT NULL);",
-		"CREATE TABLE IF NOT EXISTS medida ('med_id' INTEGER, 'med_data_cadastro' INTEGER  NOT NULL, 'med_pes_id' INTEGER NOT NULL, 'med_musculo' INTEGER NOT NULL, PRIMARY KEY ('med_id', 'med_pes_id'), CONSTRAINT 'fk_medida_pessoa' FOREIGN KEY ('med_pes_id' ) REFERENCES pessoa ('pes_id'));",
+		"CREATE TABLE IF NOT EXISTS medida ('med_id' INTEGER, 'med_peso' DECIMAL(5,2) NOT NULL, 'med_biceps_esquerdo' DECIMAL(5,2) NOT NULL, 'med_biceps_direito' DECIMAL(5,2) NOT NULL, 'med_triceps_esquerdo' DECIMAL(5,2) NOT NULL, 'med_triceps_direito' DECIMAL(5,2) NOT NULL, 'med_cintura' DECIMAL(5,2) NOT NULL, 'med_peitoral' DECIMAL(5,2) NOT NULL, 'med_coxa_esquerda' DECIMAL(5,2) NOT NULL, 'med_coxa_direita' DECIMAL(5,2) NOT NULL, 'med_panturrilha_direita' DECIMAL(5,2) NOT NULL,'med_quadril' DECIMAL(5,2) NOT NULL, 'med_panturrilha_esquerda' DECIMAL(5,2) NOT NULL, 'med_data_cadastro' VARCHAR(45)  NOT NULL, 'med_pes_id' INTEGER NOT NULL, PRIMARY KEY ('med_id', 'med_pes_id'), CONSTRAINT 'fk_medida_pessoa' FOREIGN KEY ('med_pes_id' ) REFERENCES pessoa ('pes_id'));",
 		"CREATE TABLE IF NOT EXISTS configuracao ('con_id' INTEGER, 'con_metragem' VARCHAR(45) NOT NULL, 'con_kilometragem' VARCHAR(45) NOT NULL, 'con_pesagem' VARCHAR(45) NOT NULL, PRIMARY KEY ('con_id') );",
 		"CREATE TABLE IF NOT EXISTS etapa ('eta_id' INTEGER, 'eta_nome' VARCHAR(50) NOT NULL, 'eta_pro_id' INTEGER NOT NULL,'eta_data_inicial' INTEGER NOT NULL, 'eta_data_final' INTEGER NOT NULL, PRIMARY KEY ('eta_id'),  CONSTRAINT 'fk_etapa_programa' FOREIGN KEY ('eta_pro_id' ) REFERENCES programa ('pro_id' ));",
 		"CREATE TABLE IF NOT EXISTS etapa_exercicio ('ete_tipo_id' INTEGER NOT NULL,'ete_id' INTEGER, 'ete_eta_id' INTEGER NOT NULL, 'ete_exe_id' INTEGER NOT NULL,'ete_flag' CHAR(1),'ete_diaid' INTEGER NOT NULL,'ete_dtbaixa' INTEGER, PRIMARY KEY ('ete_id'), CONSTRAINT 'fk_ete_eta' FOREIGN KEY ('ete_eta_id' ) REFERENCES etapa ('eta_id' ), CONSTRAINT 'fk_ete_exe' FOREIGN KEY ('ete_exe_id' ) REFERENCES exercicio ('exe_id'));",
@@ -127,6 +127,12 @@ public class Dao {
 		"insert into exercicio(exe_nome,exe_descricao,exe_situacao,exe_tipo,exe_indice_calorico,exe_musculo,exe_grupomuscular) values('Extensão dos Pés sentado','Extensão dos Pés sentado.','A','N',4.0,15,'15')",
 		"insert into exercicio(exe_nome,exe_descricao,exe_situacao,exe_tipo,exe_indice_calorico,exe_musculo,exe_grupomuscular) values('Ankle strengthening','Ankle strengthening.','A','N',4.0,15,'15')",
 
+		//Medida
+		"insert into medida(med_id,med_peso,med_biceps_esquerdo,med_biceps_direito,med_triceps_esquerdo,med_triceps_direito,med_cintura,med_peitoral,med_coxa_esquerda,med_coxa_direita,med_panturrilha_direita,med_quadril,med_panturrilha_esquerda,med_data_cadastro,med_pes_id) values('1','1','1','1','1','1','1','1','1','1','1','1','1','2008-01-01','1')",
+		"insert into medida(med_id,med_peso,med_biceps_esquerdo,med_biceps_direito,med_triceps_esquerdo,med_triceps_direito,med_cintura,med_peitoral,med_coxa_esquerda,med_coxa_direita,med_panturrilha_direita,med_quadril,med_panturrilha_esquerda,med_data_cadastro,med_pes_id) values('2','1','1','3','4','1','2','1','51','1','10','1','2','2010-02-01','1')",
+
+		//Pessoa
+		"insert into pessoa(pes_id,pes_nome,pes_data_nasc,pes_peso,pes_altura,pes_sexo) values('1','User','1989','70','1,70','M')",
 	};	
 
 

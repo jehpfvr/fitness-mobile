@@ -13,7 +13,7 @@ import br.com.fitnessmobile.controller.GraficoEvolutivoController;
 public class GraficoEvolutivoView extends View {
 
 	private Paint paint;
-	
+
 	private Bitmap anatomiaCompleta;
 	private Bitmap bicepsEsquerdo;
 	private Bitmap bicepsDireito;
@@ -27,12 +27,14 @@ public class GraficoEvolutivoView extends View {
 	private Bitmap panturrilhaEsquerda;
 
 	GraficoEvolutivoController gec;
-	
-	public GraficoEvolutivoView(Context context) {
+
+	public GraficoEvolutivoView(Context context, String datainicio, String datafim) {
 		super(context);
 		this.paint = new Paint();
-		
+
 		this.gec = new GraficoEvolutivoController(context);
+		this.gec.geraRelatorio(datainicio, datafim);
+
 	}
 
 	@Override
@@ -43,79 +45,80 @@ public class GraficoEvolutivoView extends View {
 
 		paint.setColor(Color.rgb(220, 220, 220));
 
-		int pixels = 15;
+		/*int pixels = 15;
 
 		for (int i = 0; i < canvas.getHeight(); i += pixels) {
 			paint.setColor(Color.GREEN);
 			canvas.drawLine(i, 0, i, canvas.getHeight(), paint);
 			canvas.drawLine(0, i, canvas.getWidth(), i, paint);
 		}
-		
+		 */
 		this.anatomiaCompleta = BitmapFactory.decodeResource(getResources(), R.drawable.anatomia);
+		Bitmap.createScaledBitmap(anatomiaCompleta, 500, 300, false);
 		
 		if (gec.getBicepsEsquerdoInicial().getTamanho() < gec.getBicepsDireitoFinal().getTamanho()) {
 			this.bicepsEsquerdo	= BitmapFactory.decodeResource(getResources(), R.drawable.bicepsesquerdo);
 		} else {
 			this.bicepsEsquerdo	= BitmapFactory.decodeResource(getResources(), R.drawable.bicepsesquerdovermelho);
 		}
-		
+
 		if (gec.getBicepsDireitoInicial().getTamanho() < gec.getBicepsDireitoFinal().getTamanho()) {
 			this.bicepsDireito = BitmapFactory.decodeResource(getResources(), R.drawable.bicepsdireito);
 		} else {
 			this.bicepsDireito = BitmapFactory.decodeResource(getResources(), R.drawable.bicepsdireitovermelho);
 		}
-		
+
 		if (gec.getTricepsEsquerdoInicial().getTamanho() < gec.getTricepsEsquerdoFinal().getTamanho()) {
 			this.tricepsEsquerdo = BitmapFactory.decodeResource(getResources(), R.drawable.tricepsesquerdo);
 		} else {
 			this.tricepsEsquerdo = BitmapFactory.decodeResource(getResources(), R.drawable.tricepsesquerdovermelho);
 		}
-		
+
 		if (gec.getTricepsDireitoInicial().getTamanho() < gec.getTricepsDireitoFinal().getTamanho()) {
 			this.tricepsDireito	= BitmapFactory.decodeResource(getResources(), R.drawable.tricepsdireito);
 		} else {
 			this.tricepsDireito	= BitmapFactory.decodeResource(getResources(), R.drawable.tricepsdireitovermelho);
 		}
-		
+
 		if (gec.getPeitoralInicial().getTamanho() < gec.getPeitoralFinal().getTamanho()) {
-			this.peitoral = BitmapFactory.decodeResource(getResources(), R.drawable.peito);
+			this.peitoral = BitmapFactory.decodeResource(getResources(), R.drawable.peito_);
 		} else {
 			this.peitoral = BitmapFactory.decodeResource(getResources(), R.drawable.peitovermelho);
 		}
-		
+
 		if (gec.getAbdomenInicial().getTamanho() < gec.getAbdomenFinal().getTamanho()) {
-			this.abdomen = BitmapFactory.decodeResource(getResources(), R.drawable.abdomen);	
+			this.abdomen = BitmapFactory.decodeResource(getResources(), R.drawable.abdomen_);	
 		} else {
 			this.abdomen = BitmapFactory.decodeResource(getResources(), R.drawable.abdomenvermelho);
 		}
-		
+
 		if (gec.getCoxaEsquerdaInicial().getTamanho() < gec.getCoxaEsquerdaFinal().getTamanho()) {
 			this.coxaEsquerda = BitmapFactory.decodeResource(getResources(), R.drawable.coxaesquerda);
 		} else {
 			this.coxaEsquerda = BitmapFactory.decodeResource(getResources(), R.drawable.coxaesquerdavermelho);
 		}
-		
+
 		if (gec.getCoxaDireitaInicial().getTamanho() < gec.getCoxaDireitaFinal().getTamanho()) {
 			this.coxaDireita = BitmapFactory.decodeResource(getResources(), R.drawable.coxadireita);
 		} else {
 			this.coxaDireita = BitmapFactory.decodeResource(getResources(), R.drawable.coxadireitavermelho);
 		}
-		
+
 		if (gec.getPanturrilhaEsquerdaInicial().getTamanho() < gec.getPanturrilhaEsquerdaFinal().getTamanho()) {
 			this.panturrilhaDireita	= BitmapFactory.decodeResource(getResources(), R.drawable.panturrilhadireita);
 		} else {
 			this.panturrilhaDireita	= BitmapFactory.decodeResource(getResources(), R.drawable.panturrilhadireitavermelho);
 		}
-		
+
 		if (gec.getPanturrilhaDireitaInicial().getTamanho() < gec.getPanturrilhaDireitaFinal().getTamanho()) {
 			this.panturrilhaEsquerda = BitmapFactory.decodeResource(getResources(), R.drawable.panturrilhaesquerda);
 		} else {
 			this.panturrilhaEsquerda = BitmapFactory.decodeResource(getResources(), R.drawable.panturrilhaesquerda);
 		}
-		
+
 		// Imagem da anatomia absoluta
 		canvas.drawBitmap(anatomiaCompleta, 40, 90, null);
-		
+
 		// Imagens da parte da frente
 		canvas.drawBitmap(bicepsEsquerdo, 92, 122, null);
 		canvas.drawBitmap(bicepsDireito, 60, 122, null);
@@ -123,7 +126,7 @@ public class GraficoEvolutivoView extends View {
 		canvas.drawBitmap(abdomen, 70, 125, null);
 		canvas.drawBitmap(coxaEsquerda, 68, 148, null);
 		canvas.drawBitmap(coxaDireita, 83, 148, null);
-		
+
 		// Imagens da parte de trás
 		canvas.drawBitmap(tricepsEsquerdo, 127, 120, null);
 		canvas.drawBitmap(tricepsDireito, 163, 120, null);

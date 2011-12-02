@@ -1,21 +1,21 @@
 package br.com.fitnessmobile.adapter.enums;
 
 public enum UsuarioCampos {
-	ID ("_id"),
-	PESO ("peso"),
-	ALTURA ("altura"),
-	BICEPS_ESQUERDO ("biceps_esquerdo"), 
-	BICEPS_DIREITO ("biceps_direito"),
-	TRICEPS_ESQUERDO ("triceps_esquerdo"),
-	TRICEPS_DIREITO ("triceps_direito"),
-	CINTURA ("cintura"),
-	PEITORAL ("peitoral"),
-	COXA_ESQUERDA ("coxa_esquerda"),
-	COXA_DIREITA ("coxa_direita"),
-	PANTURRILHA_ESQUERDA ("panturrilha_esquerda"),
-	PANTURRILHA_DIREITA ("panturrilha_direita"),
-	QUADRIL ("quadril"),
-	DATA ("data");
+	ID ("med_id"),
+	PESO ("med_peso"),
+	BICEPS_ESQUERDO ("med_biceps_esquerdo"), 
+	BICEPS_DIREITO ("med_biceps_direito"),
+	TRICEPS_ESQUERDO ("med_triceps_esquerdo"),
+	TRICEPS_DIREITO ("med_triceps_direito"),
+	CINTURA ("med_cintura"),
+	PEITORAL ("med_peitoral"),
+	COXA_ESQUERDA ("med_coxa_esquerda"),
+	COXA_DIREITA ("med_coxa_direita"),
+	PANTURRILHA_ESQUERDA ("med_panturrilha_esquerda"),
+	PANTURRILHA_DIREITA ("med_panturrilha_direita"),
+	QUADRIL ("med_quadril"),
+	DATA ("med_data_cadastro"),
+	PESSOA_ID("med_pes_id");
 	
 	private String campo;
 	

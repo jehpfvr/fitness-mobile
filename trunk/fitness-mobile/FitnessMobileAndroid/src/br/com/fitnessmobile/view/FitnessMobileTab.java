@@ -23,7 +23,7 @@ public class FitnessMobileTab extends TabActivity {
         intent = new Intent(this,TabExercicio.class);
         mTabHost.addTab(mTabHost.newTabSpec("tab_exercicios").setIndicator("Exercicios",getResources().getDrawable(R.drawable.ico_tab_exer)).setContent(intent));    
      
-        intent = new Intent(this,TabUsuario.class);
+        intent = new Intent(this,TabMedidas.class);
         mTabHost.addTab(mTabHost.newTabSpec("tab_usuario").setIndicator("Medidas",getResources().getDrawable(R.drawable.ico_tab1)).setContent(intent));
  
         mTabHost.setCurrentTab(getIntent().getIntExtra("aba", 0));
