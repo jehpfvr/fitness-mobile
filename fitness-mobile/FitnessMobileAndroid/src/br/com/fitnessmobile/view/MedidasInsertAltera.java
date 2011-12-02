@@ -9,6 +9,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -129,7 +130,7 @@ public class MedidasInsertAltera extends Activity implements OnClickListener, On
     		Usuario usuario = new Usuario();
     		
     		if (id != null) {
-    			// � uma atualiza��o
+    			// é uma atualização
     			usuario.setId(id);
     		}
     		usuario.setPeso(Float.parseFloat(edtPeso.getText().toString()));
@@ -146,6 +147,7 @@ public class MedidasInsertAltera extends Activity implements OnClickListener, On
     		usuario.setQuadril(Float.parseFloat(edtQuadril.getText().toString()));
     		usuario.setData((edtData.getText().toString()));
     		
+    		Log.i("Salvando dados",""+usuario.getId());
     		
     		// Salvar
     		salvarUsuario(usuario);

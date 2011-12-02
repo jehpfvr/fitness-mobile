@@ -117,7 +117,7 @@ public class TabGraficoEvolutivo extends Activity implements OnClickListener, On
 	public void onClick(View v) {
 		if(v == btn){
 			
-			Intent it = new Intent(this, CanvasActivity.class).putExtra("DataInicio", tvDataInicial.getText().toString()).putExtra("DataFim", tvDataFinal.getText().toString());
+			Intent it = new Intent(this, CanvasActivity.class).putExtra("DataInicio", tvDataFinal.getText().toString()).putExtra("DataFim", tvDataInicial.getText().toString());
 			startActivity(it);
 			//gec.geraRelatorio(tvDataInicial.getText().toString(), tvDataFinal.getText().toString());
 			
