@@ -71,7 +71,7 @@ public class TabMedidas extends ListActivity  {
 		case R.id.Opcoes:
 			//chame aqui a activity de configuracoes
 			Log.v("log", "activity configuracao");
-			startActivity(new Intent(this, ModoVisualizacao.class));
+			startActivity(new Intent(this, Configuracao.class));
 			return true;
 		case R.id.Home:
 			Log.v("log", "activity Main");

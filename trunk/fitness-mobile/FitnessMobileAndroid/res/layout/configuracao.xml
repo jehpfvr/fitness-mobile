@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent" style="?whiteBackground">
+
+	<TableLayout android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+
+		<TextView style="?textTitle" android:text="@string/Preferencias"
+			android:id="@+id/tvPre" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></TextView>
+
+		<Button android:text="@string/Modo_v" android:id="@+id/btn_Modo"
+			style="?button" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></Button>
+
+		<Button android:text="@string/Sobre" android:id="@+id/btn_Sobre"
+			style="?button" android:layout_width="wrap_content"
+			android:layout_height="wrap_content"></Button>
+
+	</TableLayout>
+</LinearLayout>
