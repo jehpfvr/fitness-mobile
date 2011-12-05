@@ -1,24 +1,39 @@
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  style="?whiteBackground">
-  <LinearLayout android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical" android:layout_weight="1">
-    <TextView style="?textTitle" android:text="@string/Nome" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:textSize="20sp"/>
-    <EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/add_etapa_nome" />
-    <TextView style="?textTitle" android:text="@string/DataInicial" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:textSize="20sp"/>
-    <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:orientation="horizontal">
-        <TextView android:id="@+id/add_etapa_mostrardtinicial" style="@style/programaData" />
-        <Button android:text="@string/DataInicial" android:id="@+id/add_etapa_datainicial" style="?button" android:layout_width="150dp" android:layout_height="80dp" android:layout_margin="2sp" android:textSize="22sp" />
-    </LinearLayout>
-    <TextView style="?textTitle" android:text="@string/DataFinal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:textSize="20sp"/>
-    <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent">
-        <TextView android:id="@+id/add_etapa_mostrardtfinal" style="@style/programaData"/>
-        <Button android:text="@string/DataFinal" android:id="@+id/add_etapa_datafinal" style="?button" android:layout_width="150dp" android:layout_height="80dp" android:layout_margin="2sp" android:textSize="22sp" />
-    </LinearLayout>
-   </LinearLayout>
-   
-   <Button android:text="@string/Salvar" android:id="@+id/add_etapa_salvar" style="?button" android:layout_width="fill_parent" android:layout_height="70dp" android:textSize="30sp"/>
-  
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" style="?whiteBackground">
+	<LinearLayout android:layout_height="fill_parent"
+		android:layout_width="fill_parent" android:orientation="vertical"
+		android:layout_weight="1">
+		<TextView style="?textTitle" android:text="@string/Nome"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_margin="5dp" android:textSize="20sp" />
+		<EditText android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:id="@+id/add_etapa_nome" />
+		<TextView style="?textTitle" android:text="@string/DataInicial"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_margin="5dp" android:textSize="20sp" />
+		<LinearLayout android:layout_height="wrap_content"
+			android:layout_width="fill_parent" android:orientation="horizontal">
+			<TextView android:id="@+id/add_etapa_mostrardtinicial"
+				style="@style/programaData" />
+			<Button android:text="@string/DataInicial" android:id="@+id/add_etapa_datainicial"
+				style="?button" android:layout_width="150dp" android:layout_height="80dp"
+				android:layout_margin="2sp" android:textSize="22sp" />
+		</LinearLayout>
+		<TextView style="?textTitle" android:text="@string/DataFinal"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_margin="5dp" android:textSize="20sp" />
+		<LinearLayout android:layout_height="wrap_content"
+			android:layout_width="fill_parent">
+			<TextView android:id="@+id/add_etapa_mostrardtfinal" style="@style/programaData" />
+			<Button android:text="@string/DataFinal" android:id="@+id/add_etapa_datafinal"
+				style="?button" android:layout_width="150dp" android:layout_height="80dp"
+				android:layout_margin="2sp" android:textSize="22sp" />
+		</LinearLayout>
+	</LinearLayout>
+
+	<Button android:text="@string/Salvar" android:id="@+id/add_etapa_salvar"
+		style="?button" android:layout_width="fill_parent"
+		android:layout_height="70dp" android:textSize="30sp" />
+
 </LinearLayout>

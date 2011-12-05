@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -51,7 +52,7 @@ public class FitnessMobileMain extends Activity implements OnClickListener {
 			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 2));
 			Log.i("aba selecionada", "2");
 		}else if(v == btn_configuracao){
-			startActivity(new Intent(this, ModoVisualizacao.class));
+			startActivity(new Intent(this, Configuracao.class));
 		}else if(v == btn_estatistica){
 			startActivity(new Intent(this, TabEstatistica.class));
 		}

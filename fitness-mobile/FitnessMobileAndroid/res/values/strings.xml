@@ -80,16 +80,18 @@
    	<string name="EAnaerobico_Serie">Serie</string>
    	<string name="EAnaerobico_Repeticao">Repeticao</string>
    	<string name="DiasSemana">Dias da Semana</string>
-   	<string name="Preferencias">Escolha suas preferências</string>
+   	<string name="Preferencias">Escolha suas preferências:</string>
    	<string name="Calorias">Calorias </string>
    	
    	<string name="Carregando">Carregando... </string>
    	
    	<string name="Home">Início </string>
    	<string name="Novo">Novo</string>
-   	<string name="Opcoes">Visualização</string>
+   	<string name="Opcoes">Configuração</string>
     
     <string name="Analisar">Analisar</string>
+    
+    <string name="Sobre">Sobre</string>
     
     <string-array name="array_opcoes">
     	<item>Editar</item>
