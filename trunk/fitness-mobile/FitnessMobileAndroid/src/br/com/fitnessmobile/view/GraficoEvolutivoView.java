@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.View;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.controller.GraficoEvolutivoController;
@@ -34,7 +35,7 @@ public class GraficoEvolutivoView extends View {
 
 		this.gec = new GraficoEvolutivoController(context);
 		this.gec.geraRelatorio(datainicio, datafim);
-
+		
 	}
 
 	@Override
@@ -54,7 +55,7 @@ public class GraficoEvolutivoView extends View {
 		}
 		 */
 		this.anatomiaCompleta = BitmapFactory.decodeResource(getResources(), R.drawable.anatomia);
-		Bitmap.createScaledBitmap(anatomiaCompleta, 500, 300, false);
+		Bitmap.createScaledBitmap(anatomiaCompleta, 420, 640, false);
 		
 		if (gec.getBicepsEsquerdoInicial().getTamanho() < gec.getBicepsEsquerdoFinal().getTamanho()) {
 			this.bicepsEsquerdo	= BitmapFactory.decodeResource(getResources(), R.drawable.bicepsesquerdo);
@@ -116,22 +117,27 @@ public class GraficoEvolutivoView extends View {
 			this.panturrilhaEsquerda = BitmapFactory.decodeResource(getResources(), R.drawable.panturrilhaesquerdavermelho);
 		}
 
+		//Pegar informações da tela para fazer o dinâmico
+		int altura = 100;
+		int largura = 50;
+	
+		
 		// Imagem da anatomia absoluta
-		canvas.drawBitmap(anatomiaCompleta, 40, 90, null);
+		canvas.drawBitmap(anatomiaCompleta,largura ,altura, null);
 
 		// Imagens da parte da frente
-		canvas.drawBitmap(bicepsEsquerdo, 92, 122, null);
-		canvas.drawBitmap(bicepsDireito, 60, 122, null);
-		canvas.drawBitmap(peitoral, 68, 117, null);
-		canvas.drawBitmap(abdomen, 70, 125, null);
-		canvas.drawBitmap(coxaEsquerda, 68, 148, null);
-		canvas.drawBitmap(coxaDireita, 83, 148, null);
+		canvas.drawBitmap(bicepsEsquerdo, largura+52, altura+28, null);
+		canvas.drawBitmap(bicepsDireito, largura+22, altura+28, null);
+		canvas.drawBitmap(peitoral, largura+29, altura+23, null);
+		canvas.drawBitmap(abdomen, largura+31, altura+35, null);
+		canvas.drawBitmap(coxaEsquerda, largura+43, altura+58, null);
+		canvas.drawBitmap(coxaDireita, largura+28, altura+58, null);
 
 		// Imagens da parte de trás
-		canvas.drawBitmap(tricepsEsquerdo, 127, 120, null);
-		canvas.drawBitmap(tricepsDireito, 163, 120, null);
-		canvas.drawBitmap(panturrilhaEsquerda, 154, 182, null);
-		canvas.drawBitmap(panturrilhaDireita, 133, 182, null);
+		canvas.drawBitmap(tricepsEsquerdo, largura+87, altura+28, null);
+		canvas.drawBitmap(tricepsDireito, largura+121, altura+28, null);
+		canvas.drawBitmap(panturrilhaEsquerda, largura+117, altura+98, null);
+		canvas.drawBitmap(panturrilhaDireita, largura+91, altura+98, null);
 	}
 
 }

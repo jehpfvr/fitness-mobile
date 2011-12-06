@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,7 +38,7 @@ public class TabExercicio extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this._context = this;
-		
+
 		// Definir Layout
 		setContentView(R.layout.exercicios);
 
@@ -124,12 +125,13 @@ public class TabExercicio extends Activity {
 					public void onClick(DialogInterface dialog, int pos) {
 						if(pos == 0) {
 							Log.i("Exercicio", "Atualizar");
-						
+
 						}
 						else if (pos == 1){
 							Log.i("Exercicio", "Excluir");
 							if (exercicio_selecionado.getSituacao().equals("A")) {
 								Toast.makeText(_context, "Impossível excluir Exercícios da Aplicação.", 500).show();
+								vibrar();
 								return;
 							}
 							remover(exercicio_selecionado.getId()); // TODO Validacoes
@@ -149,13 +151,21 @@ public class TabExercicio extends Activity {
 		etapaExercicioDao.Fechar();
 		if (count > 0) {
 			Toast.makeText(this, "Impossível excluir. Este exercício está em uso.", 500).show();
+			vibrar();
 			return;
 		}
 		else {
-			//exercicioDao.excluir(id);
+			exercicioDao.excluir(id);
 			Toast.makeText(this, "Exercicio excluído com sucesso.", 500).show();
 			onResume();
 		}
+	}
+
+	public void vibrar(){
+		Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+		// Vibrate for 300 milliseconds
+		vb.vibrate(300);
 	}
 
 	@Override
