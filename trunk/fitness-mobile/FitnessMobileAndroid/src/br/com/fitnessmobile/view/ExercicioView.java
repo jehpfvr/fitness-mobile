@@ -140,17 +140,6 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 		}
 	}
 	
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(resultCode == 1 && requestCode == 0){
-			String result = "Distancia: "+ data.getDoubleExtra("distancia", 0) +"/n"+"Tempo: "+ new Date(data.getLongExtra("tempo", 0)).toString()+
-					        "Velocidade: "+data.getDoubleExtra("velocidade", 0);
-
-			// TODO: Criar AerobicoDao, criar Enum Aerobico Campos e salvar essas informações no BD
-			
-			Toast.makeText(this, result, Toast.LENGTH_LONG).show();
-		}
-	}
 	
 	@Override
 	protected void onResume() {

@@ -88,6 +88,10 @@
    	<string name="Home">Início </string>
    	<string name="Novo">Novo</string>
    	<string name="Opcoes">Configuração</string>
+   	
+   	<string name="Perg_GPS">Deseja ativar o GPS?</string>
+   	<string name="Desa_GPS">Não ativar</string>
+   	<string name="Ativar_GPS">Ativar GPS</string>
     
     <string name="Analisar">Analisar</string>
     
