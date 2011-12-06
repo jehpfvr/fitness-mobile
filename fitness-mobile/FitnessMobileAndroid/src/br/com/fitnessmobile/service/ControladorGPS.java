@@ -11,4 +11,5 @@ public interface ControladorGPS {
 	public List<Coordenada> getTrajeto();
 	public void Zerar();
 	public void adicionarIndiceCalorico(double indice);
+	public boolean verificarGPS();
 }

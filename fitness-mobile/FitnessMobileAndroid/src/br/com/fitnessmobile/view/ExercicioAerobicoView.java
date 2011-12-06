@@ -2,8 +2,10 @@ package br.com.fitnessmobile.view;
 
 import java.text.DecimalFormat;
 
+import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
@@ -16,7 +18,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.AerobicoDao;
@@ -51,6 +52,7 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.exercicio_aerobico);
 
@@ -125,6 +127,7 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 	public void onClick(View v) {
 
 		Button button = (Button) v;
+		
 
 		if(button.getText().equals(getString(R.string.Pausar))){
 			this.btn_iniciar.setText(R.string.Iniciar);
@@ -142,9 +145,9 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 			this.btn_iniciar.setEnabled(false);
 			controlador.stopGPS(true);
 		}else if(v == btn_iniciar){
-			this.btn_iniciar.setText(R.string.Pausar);
-			this.btn_parar.setEnabled(true);
-			controlador.startGPS();
+				this.btn_iniciar.setText(R.string.Pausar);
+				this.btn_parar.setEnabled(true);
+				controlador.startGPS();
 		}else if(v == btn_mapa){
 			startActivity(new Intent(this, MapViewTrajeto.class));
 		}
@@ -156,8 +159,32 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 		this.controlador = binder.getControlador();
 		this.controlador.setOnControladorGPS(this);
 		this.controlador.adicionarIndiceCalorico(this.indiceCalorico);
-		Toast.makeText(this, String.valueOf(this.indiceCalorico), Toast.LENGTH_LONG).show();
+		this.verificarGPS();
 	}
+
+	private void verificarGPS() {
+		if(!this.controlador.verificarGPS()){
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);  
+			builder.setMessage(R.string.Perg_GPS)  
+			     .setCancelable(false)  
+			     .setPositiveButton(R.string.Ativar_GPS,  
+			          new DialogInterface.OnClickListener(){  
+			          public void onClick(DialogInterface dialog, int id){  
+			        	  Intent gpsOptionsIntent = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);  
+			              startActivity(gpsOptionsIntent);  
+			          }  
+			     });  
+			     builder.setNegativeButton(R.string.Desa_GPS,  
+			          new DialogInterface.OnClickListener(){  
+			          public void onClick(DialogInterface dialog, int id){  
+			              finish();
+			          }  
+			     });  
+			AlertDialog alert = builder.create();  
+			alert.show();  
+		}	
+	}
+
 
 	public void onServiceDisconnected(ComponentName name) {
 		this.controlador = null;
@@ -191,6 +218,8 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 		this.tv_velocidadeMedia.setText("0.00");
 		this.tv_caloria.setText("0.00");
 	}
+	
+	
 };
 
 

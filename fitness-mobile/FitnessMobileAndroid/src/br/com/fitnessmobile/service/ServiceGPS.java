@@ -12,6 +12,7 @@ import android.location.LocationManager;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 
 public class ServiceGPS extends Service implements LocationListener,ControladorGPS,OnCronometroListener{
 	
@@ -64,6 +65,7 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 				
 				this.estatisticaGPS.setTempoPercorrido(tempo/1000);
 				
+				Log.v("distancia", distancia + " metros");
 				this.estatisticaGPS.setDistancia(distancia);
 				
 				if(!Double.isInfinite(velocidade) && !Double.isNaN(velocidade))
@@ -203,5 +205,10 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 
 	public void adicionarIndiceCalorico(double indice) {
 		this.indiceCaloria = indice;		
+	}
+
+
+	public boolean verificarGPS() {
+		return getLocationManager().isProviderEnabled(LocationManager.GPS_PROVIDER);
 	}
 }

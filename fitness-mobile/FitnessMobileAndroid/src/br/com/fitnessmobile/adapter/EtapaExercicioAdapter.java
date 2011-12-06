@@ -54,13 +54,13 @@ public class EtapaExercicioAdapter extends BaseAdapter{
 		}
 		else {
 			img_exercicio.setVisibility(View.GONE);
-			if(etapaExercicio.getExercicio().getTipo().equals("A")){
-				tv_aviso.setText(R.string.Marcar_gps);
-				tv_aviso.setVisibility(View.VISIBLE);
-			}else{
+			//if(etapaExercicio.getExercicio().getTipo().equals("A")){
+				//tv_aviso.setText(R.string.Marcar_gps);
+				//tv_aviso.setVisibility(View.VISIBLE);
+			//}else{
 				tv_aviso.setText(R.string.Selecionar_exercicio);
 				tv_aviso.setVisibility(View.VISIBLE);
-			}
+			//}
 		}
 		return v;
 	}
