@@ -6,9 +6,11 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,6 +18,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
 import br.com.fitnessmobile.controller.Util;
@@ -127,36 +130,56 @@ public class MedidasInsertAltera extends Activity implements OnClickListener, On
 
     	public void salvar() {
 
-    		Usuario usuario = new Usuario();
-    		
-    		if (id != null) {
-    			// é uma atualização
-    			usuario.setId(id);
+    		if ((edtPeso.getText().toString().equals("") || edtBicepsEsquerdo.getText().toString().equals("")
+    				|| edtBicepsDireito.getText().toString().equals("") || edtTricepsEsquerdo.getText().toString().equals("")
+    				|| edtTricepsDireito.getText().toString().equals("") || edtCintura.getText().toString().equals("")
+    				|| edtPeitoral.getText().toString().equals("") || edtCoxaEsquerdo.getText().toString().equals("")
+    				|| edtCoxaDireita.getText().toString().equals("") || edtPanturrilhaEsquerda.getText().toString().equals("")
+    				|| edtPanturrilhaDireita.getText().toString().equals("") || edtQuadril.getText().toString().equals("")
+    				|| edtData.getText().toString().equals(""))) {
+
+    				Toast.makeText(getApplicationContext(),  "N�o pode haver campos nulos.", Toast.LENGTH_SHORT).show();
+    				vibrar();
+    				return;
     		}
-    		usuario.setPeso(Float.parseFloat(edtPeso.getText().toString()));
-    		usuario.setBicepsEsquerdo(Float.parseFloat(edtBicepsEsquerdo.getText().toString()));
-    		usuario.setBicepsDireito(Float.parseFloat(edtBicepsDireito.getText().toString()));
-    		usuario.setTricepsEsquerdo(Float.parseFloat(edtTricepsEsquerdo.getText().toString()));
-    		usuario.setTricepsDireito(Float.parseFloat(edtTricepsDireito.getText().toString()));
-    		usuario.setCintura(Float.parseFloat(edtCintura.getText().toString()));
-    		usuario.setPeitoral(Float.parseFloat(edtPeitoral.getText().toString()));
-    		usuario.setCoxaEsquerda(Float.parseFloat(edtCoxaEsquerdo.getText().toString()));
-    		usuario.setCoxaDireita(Float.parseFloat(edtCoxaDireita.getText().toString()));
-    		usuario.setPanturrilhaEsquerda(Float.parseFloat(edtPanturrilhaEsquerda.getText().toString()));
-    		usuario.setPanturrilhaDireita(Float.parseFloat(edtPanturrilhaDireita.getText().toString()));
-    		usuario.setQuadril(Float.parseFloat(edtQuadril.getText().toString()));
-    		usuario.setData((edtData.getText().toString()));
-    		
-    		Log.i("Salvando dados",""+usuario.getId());
-    		
-    		// Salvar
-    		salvarUsuario(usuario);
+    		else {
+    			Usuario usuario = new Usuario();
 
-    		// OK
-    		setResult(RESULT_OK, new Intent());
+    			if (id != null) {
+    				usuario.setId(id);
+    			}
 
-    		// Fecha a tela
-    		finish();
+    			usuario.setPeso(Float.parseFloat(edtPeso.getText().toString()));
+    			usuario.setBicepsEsquerdo(Float.parseFloat(edtBicepsEsquerdo.getText().toString()));
+    			usuario.setBicepsDireito(Float.parseFloat(edtBicepsDireito.getText().toString()));
+    			usuario.setTricepsEsquerdo(Float.parseFloat(edtTricepsEsquerdo.getText().toString()));
+    			usuario.setTricepsDireito(Float.parseFloat(edtTricepsDireito.getText().toString()));
+    			usuario.setCintura(Float.parseFloat(edtCintura.getText().toString()));
+    			usuario.setPeitoral(Float.parseFloat(edtPeitoral.getText().toString()));
+    			usuario.setCoxaEsquerda(Float.parseFloat(edtCoxaEsquerdo.getText().toString()));
+    			usuario.setCoxaDireita(Float.parseFloat(edtCoxaDireita.getText().toString()));
+    			usuario.setPanturrilhaEsquerda(Float.parseFloat(edtPanturrilhaEsquerda.getText().toString()));
+    			usuario.setPanturrilhaDireita(Float.parseFloat(edtPanturrilhaDireita.getText().toString()));
+    			usuario.setQuadril(Float.parseFloat(edtQuadril.getText().toString()));
+    			usuario.setData((edtData.getText().toString()));
+
+    			Log.i("Salvando dados", "" + usuario.getId());
+
+    			// Salvar
+    			salvarUsuario(usuario);
+
+    			// OK
+    			setResult(RESULT_OK, new Intent());
+
+    			// Fecha a tela
+    			finish();
+    		}
+    	}
+
+    	public void vibrar(){
+    		Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+    		// Vibrate for 300 milliseconds
+    		vb.vibrate(300);
     	}
 
     	public void excluir() {
@@ -186,22 +209,12 @@ public class MedidasInsertAltera extends Activity implements OnClickListener, On
     		TabMedidas.usuarioDao.excluir(id);
     	}
 
-		public void onClick(DialogInterface dialog, int which) {
-			/*Log.i("OnClickDialog","Laço OnClick");
-			
-			//Pega o evento do click do Alert e chama o menu com a Tab
-			if (which == AlertDialog.BUTTON_POSITIVE){
-				Log.i("OnClickDialog","TESTE" );
-				intent = new Intent(this,FitnessMobileTab.class).putExtra("aba", 2);
-				startActivity(intent);
-			}*/
-			
+		public void onClick(DialogInterface dialog, int which) {		
 		}
 
 		public void onDateSet(DatePicker dialog, int year, int month, int day) {
 			if(this.dialogSelecionado == DIALOG_DATA){
 				this.edtData.setText(String.valueOf(day)+"-"+String.valueOf(dialog.getMonth()+1)+"-"+String.valueOf(year));
-				//this.data = new Date(year, month, day);	
 			}
 		}
 
