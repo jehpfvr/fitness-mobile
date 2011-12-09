@@ -42,6 +42,7 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 	private ExercicioDao exercicioDao;
 	Intent intent;
 	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -57,7 +58,6 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 		this.btn_exercicio_salvar = (Button) findViewById(R.id.btn_exercicio_salvar);
 		this.btn_exercicio_cancelar = (Button) findViewById(R.id.btn_exercicio_cancelar);
 		this.btn_add_musc_sec = (Button) findViewById(R.id.btn_exercicio_add_mus_sec);
-		
 		this.sp_musculo_pri = (Spinner) findViewById(R.id.exercicio_musc_pri);
 		this.sp_tipo = (Spinner) findViewById(R.id.exercicio_tipo);
 		
@@ -176,13 +176,14 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 			this.showDialogMusculosSec();
 		}
 	}
-	
-	public void vibrar(){
+
+	public void vibrar() {
 		Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
 		// Vibrate for 300 milliseconds
 		vb.vibrate(300);
 	}
-
+	
 	private void validarCampos() {
 		// TODO Auto-generated method stub
 		

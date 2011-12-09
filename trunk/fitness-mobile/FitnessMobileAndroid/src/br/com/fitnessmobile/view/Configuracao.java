@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import br.com.fitnessmobile.R;
+import br.com.fitnessmobile.controller.Util;
 
 public class Configuracao extends Activity implements OnClickListener{
 	
@@ -16,6 +17,7 @@ public class Configuracao extends Activity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.configuracao);
 		
 		this.instanciarViews();

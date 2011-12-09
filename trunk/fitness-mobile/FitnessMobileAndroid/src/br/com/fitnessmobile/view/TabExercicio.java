@@ -33,6 +33,7 @@ public class TabExercicio extends Activity {
 	private ExercicioDao exercicioDao;
 	private Context _context;
 	private String nomeFiltro = "Todos"; // Padrao listar todos
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +45,13 @@ public class TabExercicio extends Activity {
 
 		/// Instanciar Views (Componentes da Tela)
 		instanciarViews();
+		
+		
 	}
 
 	// Instancia os Componentes de Tela e atribui os Eventos as mesmas.
 	private void instanciarViews() {
-		exercicioDao = new ExercicioDao(this);
-
+		this.exercicioDao = new ExercicioDao(this);
 		this.listView = (ListView) findViewById(R.id.list_view_exercicio);
 		this.sp_GrupoMuscular = (Spinner) findViewById(R.id.sp_grupo_muscular);
 		this.btn_addExercicio = (Button) findViewById(R.id.btn_add_exercicio);
@@ -110,6 +112,8 @@ public class TabExercicio extends Activity {
 				 */
 			}
 		});
+		
+		
 
 		// Evento de Segurar Click
 		this.listView.setOnItemLongClickListener(new OnItemLongClickListener() {
@@ -161,13 +165,13 @@ public class TabExercicio extends Activity {
 		}
 	}
 
-	public void vibrar(){
+	public void vibrar() {
 		Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
 		// Vibrate for 300 milliseconds
 		vb.vibrate(300);
 	}
-
+	
 	@Override
 	protected void onResume() {
 		if (nomeFiltro.equals("Todos"))

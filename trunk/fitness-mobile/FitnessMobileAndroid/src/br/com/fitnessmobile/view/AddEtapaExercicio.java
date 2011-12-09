@@ -49,8 +49,6 @@ public class AddEtapaExercicio extends Activity  {
 			
 			this.etapaExercicioDao = new EtapaExercicioDao(this);
 			
-			
-			
 			// Evento de Clicar uma vez no Exercicio
 			this.listView.setOnItemClickListener(new OnItemClickListener() {
 			    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

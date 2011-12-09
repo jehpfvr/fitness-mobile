@@ -59,7 +59,6 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 	private void instanciarViews() {
 		this.programa = new Programa();
 		this.programaDao = new ProgramaDao(this);
-		
 		this.etNome = (EditText) findViewById(R.id.add_programa_nome);
 		this.tvDataInicial = (TextView) findViewById(R.id.add_programa_mostrardtinicial);
 		this.tvDataFinal = (TextView) findViewById(R.id.add_programa_mostrardtfinal);
@@ -78,10 +77,11 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 		dataAtual = Calendar.getInstance();
 		dataAtual.set(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH)-1);
 	}
+
 	
-	public void vibrar(){
+	public void vibrar() {
 		Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-		 
+
 		// Vibrate for 300 milliseconds
 		vb.vibrate(300);
 	}
@@ -97,6 +97,12 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 			}
 			if (dataInicio.getTimeInMillis() > dataFim.getTimeInMillis()) { // TODO adicionar ao casos de uso
 				Toast.makeText(getApplicationContext(), "Data Inicial nao pode ser maior do que a Data Final.", Toast.LENGTH_SHORT).show();
+				vibrar();
+				return;
+			}
+			
+			if(etNome.getText().length() < 1){
+				Toast.makeText(getApplicationContext(), "Preencha o nome do programa", Toast.LENGTH_SHORT).show();
 				vibrar();
 				return;
 			}
