@@ -57,24 +57,8 @@ public class MedidasInsertAltera extends Activity implements OnClickListener, On
     		Util.inicioActivitySetTema(this);
     		setContentView(R.layout.medida_form);
 
-    		edtPeso = (EditText) findViewById(R.id.edtPeso);
-    		edtBicepsEsquerdo = (EditText) findViewById(R.id.edtBicepsEsquerdo);
-    		edtBicepsDireito = (EditText) findViewById(R.id.edtBicepsDireito);
-    		edtTricepsEsquerdo = (EditText) findViewById(R.id.edtTricepsEsquerdo);
-    		edtTricepsDireito = (EditText) findViewById(R.id.edtTricepsDireito);
-    		edtCintura = (EditText) findViewById(R.id.edtCintura);
-    		edtPeitoral = (EditText) findViewById(R.id.edtPeitoral);
-    		edtCoxaEsquerdo = (EditText) findViewById(R.id.edtCoxaEsquerda);
-    		edtCoxaDireita = (EditText) findViewById(R.id.edtCoxaDireita);
-    		edtPanturrilhaEsquerda = (EditText) findViewById(R.id.edtPanturrilhaEsquerda);
-    		edtPanturrilhaDireita = (EditText) findViewById(R.id.edtPanturrilhaDireita);
-    		edtQuadril = (EditText) findViewById(R.id.edtQuadril);
-    		edtData = (TextView) findViewById(R.id.edtData);
-    		id = null;
+    		this.instanciarViews();
     		
-    		this.btData = (Button) findViewById(R.id.add_data_usuario);
-    		this.btData.setOnClickListener(this);
-
     		Bundle extras = getIntent().getExtras();
     		// Se for para Editar, recuperar os valores ...
     		if (extras != null) {
@@ -118,7 +102,29 @@ public class MedidasInsertAltera extends Activity implements OnClickListener, On
     		});
     	}
 
-    	@Override
+    	private void instanciarViews() {
+			// TODO Auto-generated method stub
+    		edtPeso = (EditText) findViewById(R.id.edtPeso);
+    		edtBicepsEsquerdo = (EditText) findViewById(R.id.edtBicepsEsquerdo);
+    		edtBicepsDireito = (EditText) findViewById(R.id.edtBicepsDireito);
+    		edtTricepsEsquerdo = (EditText) findViewById(R.id.edtTricepsEsquerdo);
+    		edtTricepsDireito = (EditText) findViewById(R.id.edtTricepsDireito);
+    		edtCintura = (EditText) findViewById(R.id.edtCintura);
+    		edtPeitoral = (EditText) findViewById(R.id.edtPeitoral);
+    		edtCoxaEsquerdo = (EditText) findViewById(R.id.edtCoxaEsquerda);
+    		edtCoxaDireita = (EditText) findViewById(R.id.edtCoxaDireita);
+    		edtPanturrilhaEsquerda = (EditText) findViewById(R.id.edtPanturrilhaEsquerda);
+    		edtPanturrilhaDireita = (EditText) findViewById(R.id.edtPanturrilhaDireita);
+    		edtQuadril = (EditText) findViewById(R.id.edtQuadril);
+    		edtData = (TextView) findViewById(R.id.edtData);
+    		id = null;
+    		
+    		this.btData = (Button) findViewById(R.id.add_data_usuario);
+    		this.btData.setOnClickListener(this);
+
+		}
+
+		@Override
     	protected void onPause() {
     		super.onPause();
     		// Cancela para nï¿½o ficar nada na tela pendente
@@ -127,6 +133,13 @@ public class MedidasInsertAltera extends Activity implements OnClickListener, On
     		// Fecha a tela
     		finish();
     	}
+		
+		public void vibrar() {
+			Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+			// Vibrate for 300 milliseconds
+			vb.vibrate(300);
+		}
 
     	public void salvar() {
 
@@ -138,7 +151,7 @@ public class MedidasInsertAltera extends Activity implements OnClickListener, On
     				|| edtPanturrilhaDireita.getText().toString().equals("") || edtQuadril.getText().toString().equals("")
     				|| edtData.getText().toString().equals(""))) {
 
-    				Toast.makeText(getApplicationContext(),  "Não pode haver campos nulos.", Toast.LENGTH_SHORT).show();
+    				Toast.makeText(getApplicationContext(),  "NÃ£o podem haver campos nulos.", Toast.LENGTH_SHORT).show();
     				vibrar();
     				return;
     		}
@@ -174,12 +187,6 @@ public class MedidasInsertAltera extends Activity implements OnClickListener, On
     			// Fecha a tela
     			finish();
     		}
-    	}
-
-    	public void vibrar(){
-    		Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-    		// Vibrate for 300 milliseconds
-    		vb.vibrate(300);
     	}
 
     	public void excluir() {

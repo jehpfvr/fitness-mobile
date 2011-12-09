@@ -70,8 +70,9 @@ public class ExercicioAnaerobicoView extends Activity implements OnClickListener
 		}
 	}
 	
-	private void vibrar(){
+	public void vibrar() {
 		Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
 		// Vibrate for 300 milliseconds
 		vb.vibrate(300);
 	}

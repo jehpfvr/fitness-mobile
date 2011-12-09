@@ -6,11 +6,9 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -65,12 +63,6 @@ public class TabGraficoEvolutivo extends Activity implements OnClickListener, On
 		dataAtual.set(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH)-1);
 	}
 
-    
-	public void vibrar(){
-		Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-
-		vb.vibrate(300);
-	}
 	
 	@Override
 	protected Dialog onCreateDialog(int id) {

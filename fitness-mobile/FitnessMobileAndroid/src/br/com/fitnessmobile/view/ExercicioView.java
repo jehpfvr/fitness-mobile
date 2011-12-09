@@ -4,8 +4,10 @@ import java.util.Calendar;
 import java.util.Date;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,6 +35,7 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 	private Integer diaID;
 	private EtapaExercicioDao etapaExercicioDao; 
 	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -57,12 +60,20 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 		}
 		
 	}
+	
+	public void vibrar() {
+		Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+		// Vibrate for 300 milliseconds
+		vb.vibrate(300);
+	}
 
 	public void onItemClick(AdapterView<?> adapter, View view, int pos, long id) {
 		
 		// nao dar baixa em exercicio que nao for do dia atual
 		if (diaID != EtapaView.getIntDay()) { // TODO: adicionar aos casos de uso
-			Toast.makeText(getApplicationContext(), "So e possivel dar Baixa dos Exercicios da Data Atual.", Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(), "Só e possivel dar Baixa dos Exercicios da Data Atual.", Toast.LENGTH_LONG).show();
+			vibrar();
 			return;
 		}
 		

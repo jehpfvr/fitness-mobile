@@ -53,7 +53,7 @@ public class AddEtapa extends Activity implements OnClickListener,OnDateSetListe
 	private DatePickerDialog dialogDataFim;
 	Intent intent;
 	private Calendar validarDtFim;
-
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +76,6 @@ public class AddEtapa extends Activity implements OnClickListener,OnDateSetListe
 		tvDataInicial = (TextView) findViewById(R.id.add_etapa_mostrardtinicial);
 		tvDataFinal = (TextView) findViewById(R.id.add_etapa_mostrardtfinal);
 		
-		
 		this.btDatainicial.setOnClickListener(this);
 		this.btDataFinal.setOnClickListener(this);
 		btn_salvar.setOnClickListener(this);
@@ -89,17 +88,15 @@ public class AddEtapa extends Activity implements OnClickListener,OnDateSetListe
 		validarDtFim.setTimeInMillis(programaDtFim);
 		validarDtFim.set(Calendar.DAY_OF_MONTH, validarDtFim.get(Calendar.DAY_OF_MONTH)+1);
 	}
-	
-	public void vibrar(){
-		Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-		 
-		// Vibrate for 300 milliseconds
-		vb.vibrate(300);
-	}
-	
+		
 
 	public void onClick(View v) {
 		if (v == btn_salvar) {
+			if(editview.getText().length() < 1){
+				Toast.makeText(getApplicationContext(), "Preencha o nome da etapa", Toast.LENGTH_LONG).show();
+				vibrar();
+				return;
+			}
 			if (editview.length() >1) {
 				
 				if (dataInicio.getTimeInMillis() < programaDtInicio) { // TODO: mostrar mensagem de erro e adicionar ao caso de uso
@@ -156,6 +153,14 @@ public class AddEtapa extends Activity implements OnClickListener,OnDateSetListe
 			this.dialogSelecionado = DIALOG_DATA_FINAL;
 			showDialog(DIALOG_DATA_FINAL);
 		}
+	}
+	
+	
+	public void vibrar() {
+		Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+		// Vibrate for 300 milliseconds
+		vb.vibrate(300);
 	}
 	
     @Override
