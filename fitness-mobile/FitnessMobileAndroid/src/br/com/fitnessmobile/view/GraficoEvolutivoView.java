@@ -6,8 +6,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.controller.GraficoEvolutivoController;
 
@@ -29,13 +30,16 @@ public class GraficoEvolutivoView extends View {
 
 	GraficoEvolutivoController gec;
 
+	private Context contexto;
+
 	public GraficoEvolutivoView(Context context, String datainicio, String datafim) {
 		super(context);
 		this.paint = new Paint();
 
+		this.contexto = context;
 		this.gec = new GraficoEvolutivoController(context);
 		this.gec.geraRelatorio(datainicio, datafim);
-		
+
 	}
 
 	@Override
@@ -43,7 +47,6 @@ public class GraficoEvolutivoView extends View {
 
 		paint.setColor(Color.BLACK);
 		canvas.drawPaint(paint);
-
 		paint.setColor(Color.rgb(220, 220, 220));
 
 		/*int pixels = 15;
@@ -54,9 +57,10 @@ public class GraficoEvolutivoView extends View {
 			canvas.drawLine(0, i, canvas.getWidth(), i, paint);
 		}
 		 */
+
 		this.anatomiaCompleta = BitmapFactory.decodeResource(getResources(), R.drawable.anatomia);
 		Bitmap.createScaledBitmap(anatomiaCompleta, 420, 640, false);
-		
+
 		if (gec.getBicepsEsquerdoInicial().getTamanho() < gec.getBicepsEsquerdoFinal().getTamanho()) {
 			this.bicepsEsquerdo	= BitmapFactory.decodeResource(getResources(), R.drawable.bicepsesquerdo);
 		} else {
@@ -118,26 +122,31 @@ public class GraficoEvolutivoView extends View {
 		}
 
 		//Pegar informações da tela para fazer o dinâmico
-		int altura = 100;
-		int largura = 50;
-	
+
+//		Display display = ((WindowManager) contexto.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+//		int altura = display.getWidth();
+//		int largura = altura * anatomiaCompleta.getHeight()/anatomiaCompleta.getWidth();
+
+		float altura = Math.round(canvas.getWidth()/2);
+		float largura = Math.round(canvas.getHeight()/4);
 		
+
 		// Imagem da anatomia absoluta
-		canvas.drawBitmap(anatomiaCompleta,largura ,altura, null);
+		canvas.drawBitmap(anatomiaCompleta,largura ,altura, paint);
 
 		// Imagens da parte da frente
-		canvas.drawBitmap(bicepsEsquerdo, largura+52, altura+28, null);
-		canvas.drawBitmap(bicepsDireito, largura+22, altura+28, null);
-		canvas.drawBitmap(peitoral, largura+29, altura+23, null);
-		canvas.drawBitmap(abdomen, largura+31, altura+35, null);
-		canvas.drawBitmap(coxaEsquerda, largura+43, altura+58, null);
-		canvas.drawBitmap(coxaDireita, largura+28, altura+58, null);
+		canvas.drawBitmap(bicepsEsquerdo, anatomiaCompleta.getHeight()-30f, anatomiaCompleta.getWidth()+1f, null);
+		canvas.drawBitmap(bicepsDireito, anatomiaCompleta.getHeight()-60f, anatomiaCompleta.getWidth()+1f, null);
+//		canvas.drawBitmap(peitoral, anatomiaCompleta.getHeight()+29f, anatomiaCompleta.getWidth()+23f, paint);
+//		canvas.drawBitmap(abdomen, anatomiaCompleta.getHeight()+31f, anatomiaCompleta.getWidth()+35f, paint);
+//		canvas.drawBitmap(coxaEsquerda, anatomiaCompleta.getHeight()+43f, anatomiaCompleta.getWidth()+58f, paint);
+//		canvas.drawBitmap(coxaDireita, anatomiaCompleta.getHeight()+28f, anatomiaCompleta.getWidth()+58f, paint);
 
 		// Imagens da parte de trás
-		canvas.drawBitmap(tricepsEsquerdo, largura+87, altura+28, null);
-		canvas.drawBitmap(tricepsDireito, largura+121, altura+28, null);
-		canvas.drawBitmap(panturrilhaEsquerda, largura+117, altura+98, null);
-		canvas.drawBitmap(panturrilhaDireita, largura+91, altura+98, null);
+//		canvas.drawBitmap(tricepsEsquerdo, anatomiaCompleta.getHeight()+87f, anatomiaCompleta.getWidth()+28f, null);
+//		canvas.drawBitmap(tricepsDireito, anatomiaCompleta.getHeight()+121f, anatomiaCompleta.getWidth()+28f, null);
+//		canvas.drawBitmap(panturrilhaEsquerda, anatomiaCompleta.getHeight()+117f, anatomiaCompleta.getWidth()+98f, null);
+//		canvas.drawBitmap(panturrilhaDireita, anatomiaCompleta.getHeight()+91f, anatomiaCompleta.getWidth()+98f, null);
 	}
 
 }
