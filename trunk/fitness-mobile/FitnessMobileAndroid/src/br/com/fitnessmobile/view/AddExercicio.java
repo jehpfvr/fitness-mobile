@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.enums.Musculo;
@@ -32,6 +33,7 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 	private Button btn_add_musc_sec;
 	private Spinner sp_musculo_pri;
 	private Spinner sp_tipo;
+	private TextView tv_indice_calorico;
 	private CharSequence musculoPriSelect;
 	private CharSequence tipoExerSelect;
 	private CharSequence[] arrayMusculos;
@@ -58,6 +60,8 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 		this.btn_exercicio_salvar = (Button) findViewById(R.id.btn_exercicio_salvar);
 		this.btn_exercicio_cancelar = (Button) findViewById(R.id.btn_exercicio_cancelar);
 		this.btn_add_musc_sec = (Button) findViewById(R.id.btn_exercicio_add_mus_sec);
+		this.tv_indice_calorico = (TextView) findViewById(R.id.tv_indice_calorico);
+		
 		this.sp_musculo_pri = (Spinner) findViewById(R.id.exercicio_musc_pri);
 		this.sp_tipo = (Spinner) findViewById(R.id.exercicio_tipo);
 		
@@ -96,6 +100,17 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 		this.sp_tipo.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 				tipoExerSelect = (CharSequence)parent.getItemAtPosition(pos);
+				
+				String tipo = tipoExerSelect.toString();
+				
+				if(tipo.equals("Aerobico")){
+					et_indice_calorico.setVisibility(View.VISIBLE);
+					tv_indice_calorico.setVisibility(View.VISIBLE);
+				}
+				else{ 
+					et_indice_calorico.setVisibility(View.GONE);
+					tv_indice_calorico.setVisibility(View.GONE);
+				}
 			}
 			public void onNothingSelected(AdapterView<?> adapter) { }
 		});

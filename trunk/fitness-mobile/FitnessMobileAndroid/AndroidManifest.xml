@@ -75,6 +75,8 @@
 		<activity android:name=".view.ExercicioView" />
 		<activity android:name=".view.ExercicioDetalhesView" />
 		<activity android:name=".view.ExercicioAnaerobicoView" />
+		<activity android:name=".view.ExercicioAerobicoManual"/>
+		
 
 		<service android:name=".service.ServiceGPS">
 			<intent-filter>
