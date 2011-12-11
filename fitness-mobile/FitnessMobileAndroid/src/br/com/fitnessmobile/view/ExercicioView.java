@@ -4,7 +4,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 import android.app.Activity;
+<<<<<<< .mine
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+=======
 import android.content.Context;
+>>>>>>> .r309
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -92,10 +97,38 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 				etapaExercicioDao = new EtapaExercicioDao(this);
 				etapaExercicioDao.salvar(etapaExercicio);
 				etapaExercicioDao.Fechar();
-				startActivityForResult(new Intent(this, ExercicioAerobicoView.class).putExtra("etapaExercicioID", etapaExercicio.getId()), 0);
+				this.escolherModoAerobico(etapaExercicio);
+				//startActivityForResult(new Intent(this, ExercicioAerobicoView.class).putExtra("etapaExercicioID", etapaExercicio.getId()), 0);
 			}
 		}
 		((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
+	}
+
+	private void escolherModoAerobico(final EtapaExercicio etapaExercicio) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);  
+		builder.setMessage(R.string.Perg_Modo_Aero)  
+		     .setCancelable(false)  
+		     .setPositiveButton(R.string.Manual,  
+		          new DialogInterface.OnClickListener(){  
+		          public void onClick(DialogInterface dialog, int id){  
+		        	  Intent intent = new Intent(ExercicioView.this, ExercicioAerobicoManual.class);
+		        	  intent.putExtra("etapaExercicioID", etapaExercicio.getId());
+		        	  intent.putExtra("indiceCalorico", etapaExercicio.getExercicio().getIndiceCalorico());
+		        	 startActivity(intent);
+		          }  
+		     });  
+		     builder.setNegativeButton(R.string.Modo_Corrida,  
+		          new DialogInterface.OnClickListener(){  
+		          public void onClick(DialogInterface dialog, int id){ 
+		        	  Intent intent = new Intent(ExercicioView.this, ExercicioAerobicoView.class);
+		        	  intent.putExtra("etapaExercicioID", etapaExercicio.getId());
+		        	  intent.putExtra("indiceCalorico", etapaExercicio.getExercicio().getIndiceCalorico());
+		             startActivity(intent);
+		          }  
+		     });  
+		AlertDialog alert = builder.create();  
+		alert.show();  
+		
 	}
 
 	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
