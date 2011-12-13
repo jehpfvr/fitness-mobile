@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:orientation="horizontal"
   android:layout_width="fill_parent"
-  android:layout_height="wrap_content" android:weightSum="1" style="?whiteBackground">
+  android:layout_height="wrap_content" android:weightSum="1" >
   
   <ImageView android:id="@+id/adapter_addexercicio_imagem" android:layout_height="wrap_content" android:layout_width="wrap_content" android:background="@drawable/icon" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:layout_marginTop="15dp" android:layout_marginBottom="15dp"/>
   <LinearLayout android:layout_height="fill_parent" android:orientation="vertical" android:gravity="center" android:layout_width="224dp" android:layout_weight="1" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:layout_marginTop="15dp" android:layout_marginBottom="15dp">

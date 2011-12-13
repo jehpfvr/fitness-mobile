@@ -129,8 +129,8 @@ public class Dao {
 		"insert into exercicio(exe_nome,exe_descricao,exe_situacao,exe_tipo,exe_indice_calorico,exe_musculo,exe_grupomuscular) values('Ankle strengthening','Ankle strengthening.','A','N',4.0,15,'15')",
 
 		//Medida
-		//"insert into medida(med_id,med_peso,med_biceps_esquerdo,med_biceps_direito,med_triceps_esquerdo,med_triceps_direito,med_cintura,med_peitoral,med_coxa_esquerda,med_coxa_direita,med_panturrilha_direita,med_quadril,med_panturrilha_esquerda,med_data_cadastro,med_pes_id) values('1','1','1','1','1','1','1','1','1','1','1','1','1','2008-01-01','1')",
-		//"insert into medida(med_id,med_peso,med_biceps_esquerdo,med_biceps_direito,med_triceps_esquerdo,med_triceps_direito,med_cintura,med_peitoral,med_coxa_esquerda,med_coxa_direita,med_panturrilha_direita,med_quadril,med_panturrilha_esquerda,med_data_cadastro,med_pes_id) values('2','1','1','3','4','1','2','1','51','1','10','1','2','2010-02-01','1')",
+		"insert into medida(med_id,med_peso,med_biceps_esquerdo,med_biceps_direito,med_triceps_esquerdo,med_triceps_direito,med_cintura,med_peitoral,med_coxa_esquerda,med_coxa_direita,med_panturrilha_direita,med_quadril,med_panturrilha_esquerda,med_data_cadastro) values('1','1','1','1','1','1','1','1','1','1','1','1','1','15-12-2011')",
+		"insert into medida(med_id,med_peso,med_biceps_esquerdo,med_biceps_direito,med_triceps_esquerdo,med_triceps_direito,med_cintura,med_peitoral,med_coxa_esquerda,med_coxa_direita,med_panturrilha_direita,med_quadril,med_panturrilha_esquerda,med_data_cadastro) values('2','1','1','3','4','1','2','1','51','1','10','1','2','16-12-2011')",
 
 		//Pessoa
 		"insert into pessoa(pes_id,pes_nome,pes_data_nasc,pes_peso,pes_altura,pes_sexo) values('1','User','1989','70','1,70','M')",

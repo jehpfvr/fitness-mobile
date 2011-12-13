@@ -55,7 +55,7 @@ public class MedidasListActivity extends ListActivity  {
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
     	switch (item.getItemId()) {
 			case INSERIR_EDITAR:
-				// Abre a tela com o formul�rio para adicionar
+				// Abre a tela com o formulário para adicionar
 				startActivityForResult(new Intent(this, TabMedidas.class), INSERIR_EDITAR);
 				Toast.makeText(this, "Dados de usuario inserido!", 5);
 				break;
