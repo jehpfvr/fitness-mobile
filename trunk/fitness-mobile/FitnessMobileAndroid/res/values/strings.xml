@@ -95,7 +95,7 @@
    	<string name="Perg_GPS">Deseja ativar o GPS?</string>
    	<string name="Perg_Modo_Aero">Deseja usar o Modo Corrida?</string>
    	<string name="Manual">Modo Manual</string>
-   	<string name="Modo_Corrida">Modo Corrida</string>
+   	<string name="Modo_Corrida">Modo GPS</string>
    	<string name="Desa_GPS">Não ativar</string>
    	<string name="Ativar_GPS">Ativar GPS</string>
     
