@@ -7,7 +7,6 @@ import android.widget.ProgressBar;
 import br.com.fitnessmobile.R;
 
 public class SplashScreen extends Activity implements Runnable {
-	/** Called when the activity is first created. */
 
 	private ProgressBar progressbar;
 	private Thread t;
@@ -19,7 +18,6 @@ public class SplashScreen extends Activity implements Runnable {
 		progressbar = (ProgressBar)findViewById(R.id.progressBar);
 		t = new Thread(SplashScreen.this);
 		t.start();
-		
 	}
 
 	private void chamaMain(){
@@ -37,8 +35,6 @@ public class SplashScreen extends Activity implements Runnable {
 					chamaMain();
 				}
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		} catch (Exception e) { e.printStackTrace(); }
 	}
 }

@@ -29,7 +29,7 @@ public class TabMedidas extends ListActivity  {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		usuarioDao = new MedidasDao(this);
-
+		getListView().setBackgroundResource(R.drawable.background);
 		View header = getLayoutInflater().inflate(R.layout.usuario_lista_header, null);
 		ListView listView = getListView();
 		listView.addHeaderView(header, null, false);
