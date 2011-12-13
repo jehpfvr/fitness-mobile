@@ -12,6 +12,5 @@
 			<TextView android:layout_width="90dip" android:layout_height="35dip" android:text="Data" 
 				android:gravity="center_vertical" android:textColor="#DDD" android:textStyle="bold" />
 		</TableRow>
-	</TableLayout>
-    
+	</TableLayout>    
 </LinearLayout>
