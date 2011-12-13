@@ -1,8 +1,6 @@
 package br.com.fitnessmobile.view;
 
-
 import java.util.Calendar;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -154,13 +152,13 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 
 	public void onDateSet(DatePicker dialog, int year, int month, int day) {
 		if(this.dialogSelecionado == DIALOG_DATA_INICIO){
-			this.tvDataInicial.setText(String.valueOf(day)+"-"+String.valueOf(dialog.getMonth()+1)+"-"+String.valueOf(year));
+			this.tvDataInicial.setText(String.valueOf(day)+"/"+String.valueOf(dialog.getMonth()+1)+"/"+String.valueOf(year));
 			this.dataInicio.set(Calendar.YEAR, year);
 			this.dataInicio.set(Calendar.MONTH, month);
 			this.dataInicio.set(Calendar.DAY_OF_MONTH, day);
 			
 		}else if(this.dialogSelecionado == DIALOG_DATA_FINAL){
-			this.tvDataFinal.setText(String.valueOf(day)+"-"+String.valueOf(dialog.getMonth()+1)+"-"+String.valueOf(year));
+			this.tvDataFinal.setText(String.valueOf(day)+"/"+String.valueOf(dialog.getMonth()+1)+"/"+String.valueOf(year));
 			this.dataFim.set(Calendar.YEAR, year);
 			this.dataFim.set(Calendar.MONTH, month);
 			this.dataFim.set(Calendar.DAY_OF_MONTH, day);
@@ -173,9 +171,6 @@ public class AddPrograma extends Activity implements OnClickListener, OnDateSetL
 		
 		//Pega o evento do click do Alert e chama o menu com a Tab
 		if (which == DialogInterface.BUTTON_POSITIVE){
-			Log.i("OnClickDialog","AddPRograma" );
-			//intent = new Intent(this,FitnessMobileTab.class).putExtra("aba", 1);
-			//startActivity(intent);
 			this.finish();
 		}
 	}

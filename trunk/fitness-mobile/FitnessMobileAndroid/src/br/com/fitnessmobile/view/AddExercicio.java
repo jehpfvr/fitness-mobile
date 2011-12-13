@@ -48,7 +48,6 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.add_exercicio);
 		
 		this.instanciarViews();

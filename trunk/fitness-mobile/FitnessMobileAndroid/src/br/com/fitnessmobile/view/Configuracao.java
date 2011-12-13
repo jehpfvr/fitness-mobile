@@ -24,7 +24,6 @@ public class Configuracao extends Activity implements OnClickListener{
 	}
 
 	private void instanciarViews() {
-		// TODO Auto-generated method stub
 		this.btn_Modo = (Button)findViewById(R.id.btn_Modo);
 		btn_Modo.setOnClickListener(this);
 		
@@ -34,11 +33,7 @@ public class Configuracao extends Activity implements OnClickListener{
 	}
 
 	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
-		if(arg0.equals(btn_Modo)){
-			startActivity(new Intent(this, ModoVisualizacao.class));
-		}
-		else if(arg0.equals(btn_Sobre)){
+		if(arg0.equals(btn_Sobre)){
 			startActivity(new Intent(this, Sobre.class));
 		}
 	}

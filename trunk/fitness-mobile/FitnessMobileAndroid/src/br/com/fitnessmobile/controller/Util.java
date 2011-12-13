@@ -21,12 +21,10 @@ public class Util extends Activity{
 	{
 		switch (sTheme)
 		{
+		/*
 		case TEMA_DIA:
 			activity.setTheme(R.style.TemaDia);	 
-			break;
-		case TEMA_NOITE:
-			activity.setTheme(R.style.TemaNoite);
-			break;
+			break; */
 		}
 	}
 	
