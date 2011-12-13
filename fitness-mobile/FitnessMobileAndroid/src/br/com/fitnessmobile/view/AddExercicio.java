@@ -141,6 +141,7 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 
 	public void onClick(View v) {
 		String mensagemExercicio = null;
+		String TipoExe = null;
 		if(v == btn_exercicio_salvar){
 			validarCampos();
 			//TODO fazer validações
@@ -150,18 +151,21 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 			if(!selectedMusculo.isEmpty()){
 				Exercicio novoExercicio = new Exercicio();
 				novoExercicio.setNome(et_nome_exercicio.getText().toString());
-				novoExercicio.setIndiceCalorico(Float.parseFloat(et_indice_calorico.getText().toString()));
 				novoExercicio.setMusculoPrincipal(Musculo.getEnumByNome(musculoPriSelect.toString()));
-				if (tipoExerSelect.toString().equals("Aerobico"))
+				if (tipoExerSelect.toString().equals("Aerobico")){
 					novoExercicio.setTipo("A");	
-				else
+					novoExercicio.setIndiceCalorico(Float.parseFloat(et_indice_calorico.getText().toString()));
+				}else
 					novoExercicio.setTipo("N");
 				novoExercicio.setSituacao("C");//Exercicio Custom
 				novoExercicio.setDescricao("Exercício adicionado pelo usuário"); //Descrição default para exercicios custom
 
-				mensagemExercicio = "Novo Exercicio - Nome " + novoExercicio.getNome()
+				if(novoExercicio.getTipo() == "A")TipoExe = "Aerobico";
+				else TipoExe = "Anaerobico";
+				mensagemExercicio = "Novo Exercicio " 
+						+ "\n Nome: " + novoExercicio.getNome()
 						+ "\n Musc. Principal: " + novoExercicio.getMusculoPrincipal()
-						+ "\n Tipo:" + novoExercicio.getTipo()
+						+ "\n Tipo: " + TipoExe
 						+ "\n Muscs. Secs\n";
 				ArrayList<Musculo> grupo_muscular = new ArrayList<Musculo>();
 				for(CharSequence i: selectedMusculo){
@@ -205,10 +209,12 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 			vibrar();
 			return;
 		}
-		if(et_indice_calorico.getText().length() == 0){
-			Toast.makeText(this, "Informe o índice calórico!", 500).show();
-			vibrar();
-			return;
+		if(tipoExerSelect.toString().equals("Aerobico")){
+			if(et_indice_calorico.getText().length() == 0){
+				Toast.makeText(this, "Informe o índice calórico!", 500).show();
+				vibrar();
+				return;
+			}
 		}
 		if(selectedMusculo.isEmpty()){
 			Toast.makeText(this, "Selecione pelo menos um musculo secundário!", 500).show();

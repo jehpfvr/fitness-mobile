@@ -7,9 +7,7 @@
   
   	<TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:background="#333" style="@style/background">
 		<TableRow>
-			<TextView android:layout_width="145dip" android:layout_height="35dip" android:text="ID" 
-				android:gravity="center_vertical" android:textColor="#DDD" android:textStyle="bold" />
-			<TextView android:layout_width="90dip" android:layout_height="35dip" android:text="Data" 
+			<TextView android:layout_width="90dip" android:layout_height="35dip" android:text="@string/Data" 
 				android:gravity="center_vertical" android:textColor="#DDD" android:textStyle="bold" />
 		</TableRow>
 	</TableLayout>    

@@ -104,7 +104,6 @@
         android:id="@+id/add_etapa_salvar"
         style="@style/button"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Salvar"/>
+        android:text="@string/Salvar" android:layout_height="68dp"/>
 
 </LinearLayout>
