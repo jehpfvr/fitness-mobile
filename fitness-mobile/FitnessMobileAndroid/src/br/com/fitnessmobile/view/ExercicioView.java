@@ -2,14 +2,10 @@ package br.com.fitnessmobile.view;
 
 import java.util.Calendar;
 import java.util.Date;
-
 import android.app.Activity;
-<<<<<<< .mine
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-=======
 import android.content.Context;
->>>>>>> .r309
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -154,7 +150,7 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 	    case R.id.Opcoes:
 	    	//chame aqui a activity de configuracoes
 	    	Log.v("log", "activity configuracao");
-	    	startActivity(new Intent(this, ModoVisualizacao.class));
+	    	startActivity(new Intent(this, Configuracao.class));
 	        return true;
 	    case R.id.Home:
 	    	Log.v("log", "activity Main");

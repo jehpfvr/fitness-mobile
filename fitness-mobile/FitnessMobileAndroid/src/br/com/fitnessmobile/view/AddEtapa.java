@@ -1,8 +1,6 @@
 package br.com.fitnessmobile.view;
 
-
 import java.util.Calendar;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -39,7 +37,6 @@ public class AddEtapa extends Activity implements OnClickListener,OnDateSetListe
 	AlertDialog.Builder dlgAlert;
 	
 	private Integer programaID;
-	private String programaNome;
 	private long programaDtInicio;
 	private long programaDtFim;
 	private int dialogSelecionado;
@@ -61,7 +58,6 @@ public class AddEtapa extends Activity implements OnClickListener,OnDateSetListe
 		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.add_etapa);
 		programaID = getIntent().getIntExtra("programaID", -1);
-		programaNome = getIntent().getStringExtra("programaNome");
 		programaDtInicio = getIntent().getLongExtra("programaDtInicio",-1);
 		programaDtFim = getIntent().getLongExtra("programaDtFim",-1);
 		this.instanciarViews();
@@ -99,26 +95,26 @@ public class AddEtapa extends Activity implements OnClickListener,OnDateSetListe
 			}
 			if (editview.length() >1) {
 				
-				if (dataInicio.getTimeInMillis() < programaDtInicio) { // TODO: mostrar mensagem de erro e adicionar ao caso de uso
+				if (dataInicio.getTimeInMillis() < programaDtInicio) {
 					Toast.makeText(getApplicationContext(), "Data inicial da Etapa nao pode ser menor do que a Data Inicial do Programa.", Toast.LENGTH_LONG).show();
 					vibrar();
 					return;
 				}
 				
-				if (dataInicio.getTimeInMillis() > validarDtFim.getTimeInMillis()) { // TODO: mostrar mensagem de erro e adicionar ao caso de uso
+				if (dataInicio.getTimeInMillis() > validarDtFim.getTimeInMillis()) { 
 					Toast.makeText(getApplicationContext(), "Data inicial da Etapa nao pode ser maior do que a Data Final do Programa.", Toast.LENGTH_LONG).show();
 					vibrar();
 					return;
 				}
 				
 				
-				if (dataFim.getTimeInMillis() > validarDtFim.getTimeInMillis()) { // TODO: mostrar mensagem de erro e adicionar ao caso de uso
+				if (dataFim.getTimeInMillis() > validarDtFim.getTimeInMillis()) { 
 					Toast.makeText(getApplicationContext(), "Data Final da Etapa nao pode ser maior do que a Data Final do Programa.", Toast.LENGTH_LONG).show();
 					vibrar();
 					return;
 				}
 				
-				if (dataFim.getTimeInMillis() < dataInicio.getTimeInMillis()) { // TODO: mostrar mensagem de erro e adicionar ao caso de uso
+				if (dataFim.getTimeInMillis() < dataInicio.getTimeInMillis()) { 
 					Toast.makeText(getApplicationContext(), "Data Final da Etapa nao pode ser menor do que a Data Inicial da Etapa.", Toast.LENGTH_LONG).show();
 					vibrar();
 					return;
@@ -132,14 +128,7 @@ public class AddEtapa extends Activity implements OnClickListener,OnDateSetListe
 				novaEtapa.setDataFim(dataFim.getTimeInMillis());
 				
 				etapaDao.salvar(novaEtapa);
-				
-				Log.i("Etapa","Salva");
-				
-				/*
-				Toast.makeText(this, "Sua Etapa foi adicionada com sucesso", 500).show();
-				intent = new Intent(this,EtapaView.class).putExtra("programaID", programaID).putExtra("programaNome",programaNome);
-				startActivity(intent);
-				*/
+			
 				dlgAlert.setMessage("Sua Etapa foi adicionada com sucesso");
 				dlgAlert.setTitle("Etapa adicionada");
 				dlgAlert.setPositiveButton("OK", this);
@@ -190,12 +179,12 @@ public class AddEtapa extends Activity implements OnClickListener,OnDateSetListe
 
 	public void onDateSet(DatePicker dialog, int year, int month, int day) {
 		if(this.dialogSelecionado == DIALOG_DATA_INICIO){
-			this.tvDataInicial.setText(String.valueOf(day)+"-"+String.valueOf(dialog.getMonth()+1)+"-"+String.valueOf(year));
+			this.tvDataInicial.setText(String.valueOf(day)+"/"+String.valueOf(dialog.getMonth()+1)+"/"+String.valueOf(year));
 			this.dataInicio.set(Calendar.YEAR, year);
 			this.dataInicio.set(Calendar.MONTH, month);
 			this.dataInicio.set(Calendar.DAY_OF_MONTH, day);
 		}else if(this.dialogSelecionado == DIALOG_DATA_FINAL){
-			this.tvDataFinal.setText(String.valueOf(day)+"-"+String.valueOf(dialog.getMonth()+1)+"-"+String.valueOf(year));
+			this.tvDataFinal.setText(String.valueOf(day)+"/"+String.valueOf(dialog.getMonth()+1)+"/"+String.valueOf(year));
 			this.dataFim.set(Calendar.YEAR, year);
 			this.dataFim.set(Calendar.MONTH, month);
 			this.dataFim.set(Calendar.DAY_OF_MONTH, day);
@@ -208,9 +197,6 @@ public class AddEtapa extends Activity implements OnClickListener,OnDateSetListe
 		
 		//Pega o evento do click do Alert e chama o menu com a Tab
 		if (which == DialogInterface.BUTTON_POSITIVE){
-			Log.i("OnClickDialog","EtapaView");
-			//intent = new Intent(this,EtapaView.class).putExtra("programaID", programaID).putExtra("programaNome", programaNome).putExtra("programaDtInicio", programaDtInicio).putExtra("programaDtFim", programaDtFim);
-			//startActivity(intent);
 			this.finish();
 		}
 	}

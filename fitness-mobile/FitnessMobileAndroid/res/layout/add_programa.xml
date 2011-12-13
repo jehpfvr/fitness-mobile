@@ -1,25 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  style="?whiteBackground">
-  <LinearLayout android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical" android:layout_weight="1">
-    <TextView style="?textTitle" android:text="@string/Nome" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:textSize="20sp"/>
-    <EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/add_programa_nome" />
-    <TextView style="?textTitle" android:text="@string/DataInicial" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:textSize="20sp"/>
-    <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:orientation="horizontal">
-        <TextView android:id="@+id/add_programa_mostrardtinicial" style="@style/programaData" />
-        <Button android:layout_width="150dp" android:layout_height="80dp" android:layout_margin="2dp" android:textSize="22sp" android:text="@string/DataInicial" android:id="@+id/add_programa_datainicial" style="?button" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/background"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="8dp" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="right"
+            android:src="@drawable/ic_programa_invert" />
+
+        <TextView
+            style="?textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/Nome"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/add_programa_nome"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_fundo_branco" 
+            android:paddingLeft="20dp"/>
+
+        <TextView
+            style="?textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/DataInicial"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_fundo_branco"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/add_programa_mostrardtinicial"
+                    style="@style/programaData"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/add_programa_datainicial"
+                style="@style/button"
+                android:layout_margin="2dp"
+                android:text="@string/DataInicial" />
+        </LinearLayout>
+
+        <TextView
+            style="?textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/DataFinal"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_fundo_branco"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/add_programa_mostrardtfinal"
+                    style="@style/programaData"
+                    android:background="@drawable/ic_fundo_branco" 
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/add_programa_datafinal"
+                style="@style/button"
+                android:layout_margin="2dp"
+                android:text="@string/DataFinal" />
+        </LinearLayout>
     </LinearLayout>
-    <TextView style="?textTitle" android:text="@string/DataFinal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:textSize="20sp"/>
-    <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent">
-        <TextView android:id="@+id/add_programa_mostrardtfinal" style="@style/programaData"/>
-        <Button android:layout_width="150dp" android:layout_height="80dp" android:layout_margin="2dp" android:textSize="22sp" android:text="@string/DataFinal" android:id="@+id/add_programa_datafinal" style="?button" />
-    </LinearLayout>
-   </LinearLayout>
-   
-   <Button android:text="@string/Salvar" android:id="@+id/add_programa_salvar" android:layout_width="fill_parent" android:layout_height="70dp" android:textSize="30sp" style="?button"/>
-  
+
+    <Button
+        android:id="@+id/add_programa_salvar"
+        style="@style/button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Salvar" />
+
 </LinearLayout>

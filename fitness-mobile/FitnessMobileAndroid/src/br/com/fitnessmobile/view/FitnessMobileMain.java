@@ -21,7 +21,6 @@ public class FitnessMobileMain extends Activity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.main);
 		
 		this.btn_programa = (Button) findViewById(R.id.btn_main_programa);
@@ -32,9 +31,6 @@ public class FitnessMobileMain extends Activity implements OnClickListener {
 		
 		this.btn_exercicio = (Button) findViewById(R.id.btn_main_exercicio);
 		this.btn_exercicio.setOnClickListener(this);
-		
-		this.btn_configuracao = (Button) findViewById(R.id.btn_main_conf);
-		this.btn_configuracao.setOnClickListener(this);
 		
 		this.btn_estatistica = (Button)findViewById(R.id.btn_main_estatistica);
 		this.btn_estatistica.setOnClickListener(this);

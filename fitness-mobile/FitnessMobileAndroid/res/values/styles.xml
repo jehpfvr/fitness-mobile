@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<style name="white_background_wh">
+	<style name="background">
 		<item name="android:background">@drawable/background</item>
-	</style>
-
-	<style name="white_background_bl">
-		<item name="android:background">@drawable/background_noite</item>
 	</style>
 
 	<style name="text_title_wh">
@@ -36,28 +32,20 @@
 		<item name="android:cacheColorHint">#fff</item>
 	</style>
 
-	<style name="ButtonDia">
-		<item name="android:textColor">#FFFFFFFF</item>
-	    <item name="android:shadowColor">#FF000000</item>
-		<item name="android:textSize">16dip</item>
-		<item name="android:textStyle">bold</item>
-		<item name="android:background">@drawable/ic_btn_verde</item>
-		<item name="android:focusable">true</item>
-		<item name="android:clickable">true</item>
-		<item name="android:height">40dp</item>
-		<item name="android:width">130dp</item>
-	</style>
-
-	<style name="ButtonNoite">
-		<item name="android:textColor">#FFFFFFFF</item>
-		<item name="android:shadowColor">#FF000000</item>
-		<item name="android:textSize">16dip</item>
-		<item name="android:textStyle">bold</item>
-		<item name="android:background">@drawable/ic_btn_noite</item>
-		<item name="android:focusable">true</item>
-		<item name="android:clickable">true</item>
-		<item name="android:height">40dp</item>
-		<item name="android:width">130dp</item>
+	<style name="button" parent="@android:style/Widget.Button">
+	    <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:shadowColor">#FF000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">-1</item>
+        <item name="android:shadowRadius">0.2</item>
+        <item name="android:textSize">16dip</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+	    <item name="android:background">@drawable/btn_custom</item>
+	    <item name="android:layout_width">150dp</item>
+		<item name="android:layout_height">80dp</item>
 	</style>
 
 	<style name="default_wrap_content">

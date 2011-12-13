@@ -18,13 +18,13 @@ public class FitnessMobileTab extends TabActivity {
         Intent intent;
 
         intent = new Intent(this, TabPrograma.class);
-        mTabHost.addTab(mTabHost.newTabSpec("tab_Programa").setIndicator("Programa",getResources().getDrawable(android.R.drawable.ic_menu_agenda)).setContent(intent));
+        mTabHost.addTab(mTabHost.newTabSpec("tab_Programa").setIndicator("Programa",getResources().getDrawable(R.drawable.ic_programa)).setContent(intent));
         
         intent = new Intent(this,TabExercicio.class);
-        mTabHost.addTab(mTabHost.newTabSpec("tab_exercicios").setIndicator("Exercicios",getResources().getDrawable(R.drawable.ico_tab_exer)).setContent(intent));    
+        mTabHost.addTab(mTabHost.newTabSpec("tab_exercicios").setIndicator("Exercicios",getResources().getDrawable(R.drawable.ic_tab_exer)).setContent(intent));    
      
         intent = new Intent(this,TabMedidas.class);
-        mTabHost.addTab(mTabHost.newTabSpec("tab_usuario").setIndicator("Medidas",getResources().getDrawable(R.drawable.ico_tab1)).setContent(intent));
+        mTabHost.addTab(mTabHost.newTabSpec("tab_medidas").setIndicator("Medidas",getResources().getDrawable(R.drawable.ic_tab_medidas)).setContent(intent));
  
         mTabHost.setCurrentTab(getIntent().getIntExtra("aba", 0));
     }
