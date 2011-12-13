@@ -2,10 +2,12 @@
 <resources>
     <string name="hello">Hello World, FitnessMobileActivity!</string>
     <string name="app_name">FitnessMobile</string>
-    <string name="programa">Programa</string>
-    <string name="exercicio">Exercicio</string>
-    <string name="Medidas">Medidas</string>
+    <string name="programa">Programas</string>
+    <string name="exercicio">Exercicios</string>
+    <string name="Medida">Medidas</string>
     <string name="Configuracao">Configuração</string>
+    <string name="Estatística">Estatísticas</string>
+    
     <string name="Altura">Altura</string>
     <string name="Peso">Peso</string>
     <string name="Biceps_esq">Bíceps Esq</string>
@@ -88,7 +90,7 @@
    	
    	<string name="Home">Início </string>
    	<string name="Novo">Novo</string>
-   	<string name="Opcoes">Configuração</string>
+   	<string name="Opcoes">Opções</string>
    	
    	<string name="Perg_GPS">Deseja ativar o GPS?</string>
    	<string name="Perg_Modo_Aero">Deseja usar o Modo Corrida?</string>
