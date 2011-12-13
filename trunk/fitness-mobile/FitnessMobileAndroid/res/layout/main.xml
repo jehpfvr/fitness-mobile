@@ -44,14 +44,14 @@
                 <Button
                     android:id="@+id/btn_main_medidas"
                     style="@style/button"
-                    android:text="@string/Medidas" >
+                    android:text="@string/Medida" >
                 </Button>
 
                 <Button
                     android:id="@+id/btn_main_estatistica"
                     style="@style/button"
                     android:layout_marginLeft="8dp"
-                    android:text="Estatisticas" />
+                    android:text="@string/Estatística" />
             </TableRow>
         </TableLayout>
     </LinearLayout>
