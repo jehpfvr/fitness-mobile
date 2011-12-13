@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="1" style="?whiteBackground"> 
+  android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="1" style="@style/background"> 
   <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:stretchColumns="1"
   android:layout_width="fill_parent"
@@ -73,13 +73,13 @@
 	</TextView>	
 	</TableRow>
 	
-	<Button android:text="Data" android:id="@+id/add_data_usuario" style="?button" android:padding="3dip" android:layout_weight="1" />	
+	<Button android:text="Data" android:id="@+id/add_data_usuario" style="@style/button" android:padding="3dip" android:layout_weight="1" />	
 
 	<LinearLayout android:layout_height="fill_parent" android:layout_width="fill_parent" android:layout_weight="1">
-		<Button android:text="Salvar" android:id="@+id/btnSalvar" style="?button"
+		<Button android:text="Salvar" android:id="@+id/btnSalvar" style="@style/button"
 			android:layout_height="wrap_content" android:layout_width="wrap_content"
 		/>
-		<Button android:text="Cancelar" android:id="@+id/btnCancelar" style="?button"
+		<Button android:text="Cancelar" android:id="@+id/btnCancelar" style="@style/button"
 			android:layout_height="wrap_content" android:layout_width="wrap_content"
 		/>
 	</LinearLayout>

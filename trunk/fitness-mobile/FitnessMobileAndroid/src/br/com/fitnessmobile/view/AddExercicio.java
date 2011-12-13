@@ -21,7 +21,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.enums.Musculo;
-import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.ExercicioDao;
 import br.com.fitnessmobile.model.Exercicio;
 
@@ -43,13 +42,13 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 	private boolean[] checkedMusculo;
 	private ExercicioDao exercicioDao;
 	Intent intent;
-	
-	
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_exercicio);
-		
+
 		this.instanciarViews();
 		this.configurarViews();
 	}
@@ -60,30 +59,30 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 		this.btn_exercicio_cancelar = (Button) findViewById(R.id.btn_exercicio_cancelar);
 		this.btn_add_musc_sec = (Button) findViewById(R.id.btn_exercicio_add_mus_sec);
 		this.tv_indice_calorico = (TextView) findViewById(R.id.tv_indice_calorico);
-		
+
 		this.sp_musculo_pri = (Spinner) findViewById(R.id.exercicio_musc_pri);
 		this.sp_tipo = (Spinner) findViewById(R.id.exercicio_tipo);
-		
+
 		this.et_indice_calorico = (EditText) findViewById(R.id.exercicio_indicecalorico);
 		this.et_nome_exercicio = (EditText) findViewById(R.id.exercicio_nome);
-		
+
 		lista_musculos = new ArrayList<String>();
 		for (Musculo m : EnumSet.allOf(Musculo.class)) {
 			lista_musculos.add(m.getMusculoNome());
 		}
-		
+
 		this.arrayMusculos = this.getResources().getTextArray(R.array.array_grupo_muscular);
 		this.selectedMusculo = new ArrayList<CharSequence>();
 	}
-	
+
 	private void configurarViews() {
 		btn_exercicio_salvar.setOnClickListener(this);
 		btn_exercicio_cancelar.setOnClickListener(this);
 		btn_add_musc_sec.setOnClickListener(this);
-		
+
 		ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.array_grupo_muscular, android.R.layout.simple_spinner_item);
 		arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		
+
 		this.sp_musculo_pri.setAdapter(arrayAdapter);
 		this.sp_musculo_pri.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -91,17 +90,17 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 			}
 			public void onNothingSelected(AdapterView<?> adapter) { }
 		});
-		
+
 		ArrayAdapter<CharSequence> arrayAdapterTipo = ArrayAdapter.createFromResource(this, R.array.array_tipo_exercicio, android.R.layout.simple_spinner_item);
 		arrayAdapterTipo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		
+
 		this.sp_tipo.setAdapter(arrayAdapterTipo);
 		this.sp_tipo.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 				tipoExerSelect = (CharSequence)parent.getItemAtPosition(pos);
-				
+
 				String tipo = tipoExerSelect.toString();
-				
+
 				if(tipo.equals("Aerobico")){
 					et_indice_calorico.setVisibility(View.VISIBLE);
 					tv_indice_calorico.setVisibility(View.VISIBLE);
@@ -114,29 +113,29 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 			public void onNothingSelected(AdapterView<?> adapter) { }
 		});
 	}
-	
+
 	public void showDialogMusculosSec(){
 		checkedMusculo = new boolean[this.lista_musculos.size()]; 
-		
+
 		for(int i = 0; i < this.lista_musculos.size(); i++)
 			checkedMusculo[i] = this.selectedMusculo.contains(this.lista_musculos.get(i));
-		 
-		  DialogInterface.OnMultiChoiceClickListener musculoDialogListener = new DialogInterface.OnMultiChoiceClickListener() {
-		   public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-		      if(isChecked)
-		    	  selectedMusculo.add(lista_musculos.get(which));
-		      else
-		    	  selectedMusculo.remove(lista_musculos.get(which));
-		    }
-		   };
-		 
-		  AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		  builder.setTitle(R.string.Exercicio_adicionar_musc_sec);
-		  builder.setMultiChoiceItems(arrayMusculos, checkedMusculo, musculoDialogListener);
-		  builder.setPositiveButton(R.string.Selecionar, sp_musculo_pri );
-		 
-		  dialogMusc = builder.create();
-		  dialogMusc.show();
+
+		DialogInterface.OnMultiChoiceClickListener musculoDialogListener = new DialogInterface.OnMultiChoiceClickListener() {
+			public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+				if(isChecked)
+					selectedMusculo.add(lista_musculos.get(which));
+				else
+					selectedMusculo.remove(lista_musculos.get(which));
+			}
+		};
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(R.string.Exercicio_adicionar_musc_sec);
+		builder.setMultiChoiceItems(arrayMusculos, checkedMusculo, musculoDialogListener);
+		builder.setPositiveButton(R.string.Selecionar, sp_musculo_pri );
+
+		dialogMusc = builder.create();
+		dialogMusc.show();
 	}
 
 
@@ -147,7 +146,7 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 			//TODO fazer validações
 			if (musculoPriSelect == null) return;
 			if (et_indice_calorico.getText() == null) return;
-			
+
 			if(!selectedMusculo.isEmpty()){
 				Exercicio novoExercicio = new Exercicio();
 				novoExercicio.setNome(et_nome_exercicio.getText().toString());
@@ -159,7 +158,7 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 					novoExercicio.setTipo("N");
 				novoExercicio.setSituacao("C");//Exercicio Custom
 				novoExercicio.setDescricao("Exercício adicionado pelo usuário"); //Descrição default para exercicios custom
-				
+
 				mensagemExercicio = "Novo Exercicio - Nome " + novoExercicio.getNome()
 						+ "\n Musc. Principal: " + novoExercicio.getMusculoPrincipal()
 						+ "\n Tipo:" + novoExercicio.getTipo()
@@ -174,18 +173,18 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 				this.et_nome_exercicio.setText("");
 				this.sp_musculo_pri.setSelection(0);
 				this.sp_tipo.setSelection(0);
-				
+
 				this.zerarSelecaoMuscSec();
 				Toast.makeText(this, mensagemExercicio, Toast.LENGTH_LONG).show();
 				//startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 2));
 				this.finish();
 			}
-			
+
 		}else if(v == btn_exercicio_cancelar){
 			Toast.makeText(this, "Exercicio Cancelado", Toast.LENGTH_SHORT).show();
 			this.finish();
 			startActivity(new Intent(this,FitnessMobileTab.class).putExtra("aba", 1));
-		
+
 		}else if(v == btn_add_musc_sec){
 			this.showDialogMusculosSec();
 		}
@@ -197,10 +196,10 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 		// Vibrate for 300 milliseconds
 		vb.vibrate(300);
 	}
-	
+
 	private void validarCampos() {
 		// TODO Auto-generated method stub
-		
+
 		if(et_nome_exercicio.getText().length() == 0){
 			Toast.makeText(this, "Informe o nome do exercicio!", 500).show();
 			vibrar();
@@ -221,7 +220,7 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 	private void zerarSelecaoMuscSec() {
 		this.selectedMusculo.clear();
 		checkedMusculo = new boolean[this.lista_musculos.size()]; 
-		
+
 		for(int i = 0; i < this.lista_musculos.size(); i++)
 			checkedMusculo[i] = this.selectedMusculo.contains(this.lista_musculos.get(i));
 	}

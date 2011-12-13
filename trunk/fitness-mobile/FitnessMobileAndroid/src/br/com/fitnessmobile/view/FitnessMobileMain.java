@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.controller.Util;
 
 public class FitnessMobileMain extends Activity implements OnClickListener {
 	

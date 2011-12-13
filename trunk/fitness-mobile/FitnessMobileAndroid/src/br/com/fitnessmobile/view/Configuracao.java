@@ -11,7 +11,6 @@ import br.com.fitnessmobile.controller.Util;
 
 public class Configuracao extends Activity implements OnClickListener{
 	
-	private Button btn_Modo;
 	private Button btn_Sobre;
 	
 	@Override
@@ -24,9 +23,7 @@ public class Configuracao extends Activity implements OnClickListener{
 	}
 
 	private void instanciarViews() {
-		this.btn_Modo = (Button)findViewById(R.id.btn_Modo);
-		btn_Modo.setOnClickListener(this);
-		
+
 		this.btn_Sobre = (Button)findViewById(R.id.btn_Sobre);
 		this.btn_Sobre.setOnClickListener(this);
 		
