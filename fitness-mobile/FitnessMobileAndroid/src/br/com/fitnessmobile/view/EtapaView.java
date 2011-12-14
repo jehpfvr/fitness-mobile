@@ -27,8 +27,9 @@ import br.com.fitnessmobile.dao.EtapaDao;
 import br.com.fitnessmobile.model.Etapa;
 
 public class EtapaView extends Activity implements OnItemClickListener, OnItemLongClickListener, OnLongClickListener,DialogInterface.OnClickListener{
-	private TextView textView;
+	private TextView tvNomeEtapa;
 	private TextView tvDtProg;
+	private TextView tvDtProg2;
 	private ListView listView;
 	private Integer programaID;
 	private String programaNome;
@@ -63,16 +64,17 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 		dtFim.setTimeInMillis(programaDtFim);
 
 		this.etapaDao = new EtapaDao(this);
-		this.textView = (TextView) findViewById(R.id.etapa_textview);
-		this.textView.setText("Etapas do Programa: " + programaNome);
+		this.tvNomeEtapa = (TextView) findViewById(R.id.etapa_textview);
+		this.tvNomeEtapa.setText("" + programaNome);
 		this.tvDtProg = (TextView) findViewById(R.id.Dtetapa_textview);
+		this.tvDtProg2 = (TextView) findViewById(R.id.Dtetapa2_textview);
 
 		int monthInicio = dtInicio.get(Calendar.MONTH)+1;
 		int monthFim = dtFim.get(Calendar.MONTH)+1;
 
 		this.tvDtProg.setText("De: "
-				+dtInicio.get(Calendar.DAY_OF_MONTH)+"/"+monthInicio+"/"+dtInicio.get(Calendar.YEAR)+" "
-				+ "Ate: "
+				+dtInicio.get(Calendar.DAY_OF_MONTH)+"/"+monthInicio+"/"+dtInicio.get(Calendar.YEAR));
+		this.tvDtProg2.setText("Até: "		
 				+dtFim.get(Calendar.DAY_OF_MONTH)+"/"+monthFim+"/"+dtFim.get(Calendar.YEAR));
 
 		this.listView = (ListView) findViewById(R.id.etapa_listview);

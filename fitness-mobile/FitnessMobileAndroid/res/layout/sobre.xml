@@ -5,8 +5,7 @@
   android:layout_width="fill_parent"
   android:layout_height="fill_parent" style="@style/background">
   
-    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imageView1" android:src="@drawable/logo"></ImageView>
-  
+    <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/imageView1" android:src="@drawable/logo"></ImageView>
     <TextView style="?textTitle" android:text="@string/Sobre" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
     <ListView android:id="@+id/listView1" android:layout_height="wrap_content" android:layout_width="fill_parent"></ListView>
     

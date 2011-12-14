@@ -36,8 +36,8 @@ public class Dao {
 		"CREATE TABLE IF NOT EXISTS exercicio_aerobico_realizado ('ear_id' INTEGER, 'ear_duracao' INTEGER NOT NULL, 'ear_distancia' DECIMAL(5,2) NOT NULL, 'ear_velocidade' DECIMAL(5,2) NOT NULL, 'ear_exr_id' INTEGER NOT NULL, PRIMARY KEY ('ear_id'), CONSTRAINT 'fk_Exercicio_Aerobico_Realizado_Exercicio_realizado1' FOREIGN KEY ('ear_exr_id' ) REFERENCES etapa_exercicio ('ete_id'));",
 
 		//Programas de exercicio
-		"insert into programa(pro_nome,pro_data_inicial,pro_data_final) values('Ganhar massa',1320125230800,1320125230800);",
-		"insert into programa(pro_nome,pro_data_inicial,pro_data_final) values('Perder peso',1320125230800,1320125230800);",
+		"insert into programa(pro_nome,pro_data_inicial,pro_data_final) values('Ganhar massa',1323891573000,1324064373000);",
+		"insert into programa(pro_nome,pro_data_inicial,pro_data_final) values('Perder peso',1323891573000,1324064373000);",
 
 		//Etapas
 		"insert into etapa(eta_nome,eta_pro_id,eta_data_inicial,eta_data_final) values('Basico',1,1320125230800,1320125230800);",

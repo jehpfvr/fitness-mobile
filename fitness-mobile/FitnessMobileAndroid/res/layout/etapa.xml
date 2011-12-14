@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  style="@style/background">
-  <TextView android:layout_height="wrap_content" style="?textTitle" android:id="@+id/etapa_textview" android:text="Etapas" android:layout_width="wrap_content" />
-  <TextView android:layout_height="wrap_content" style="?textTitle" android:id="@+id/Dtetapa_textview" android:text="Datas" android:layout_width="wrap_content" />
-  <ListView android:layout_height="wrap_content" android:id="@+id/etapa_listview" android:layout_width="fill_parent" android:layout_weight="1"/>
-    
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" style="@style/background">
+	<TableLayout android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:background="#333"
+		style="@style/background">
+		<TableRow>
+			<TextView android:text="Etapas do Programa: "
+				android:gravity="center_vertical" android:textColor="#DDD"
+				android:textStyle="bold" android:layout_width="150dip"
+				android:layout_height="20dip" />
+
+			<TextView android:id="@+id/etapa_textview" android:text="@string/Etapas"
+				android:gravity="center_vertical" android:textColor="#DDD"
+				android:textStyle="bold" android:layout_width="150dip"
+				android:layout_height="20dip" />
+
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/Dtetapa_textview" android:text="@string/Data"
+				android:gravity="center_vertical" android:textColor="#DDD"
+				android:textStyle="bold" android:layout_width="150dip"
+				android:layout_height="20dip" />
+
+			<TextView android:id="@+id/Dtetapa2_textview" android:text="@string/Data"
+				android:gravity="center_vertical" android:textColor="#DDD"
+				android:textStyle="bold" android:layout_width="150dip"
+				android:layout_height="20dip" />
+		</TableRow>
+	</TableLayout>
+
+	<ListView android:layout_height="wrap_content" android:id="@+id/etapa_listview"
+		android:layout_width="fill_parent" android:layout_weight="1" />
+
 </LinearLayout>
