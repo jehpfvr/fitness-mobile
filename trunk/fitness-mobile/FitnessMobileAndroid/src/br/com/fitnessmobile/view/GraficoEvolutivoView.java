@@ -43,7 +43,7 @@ public class GraficoEvolutivoView extends View {
 	}
 
 	public Boolean verificarHdpi(int largura, int altura){
-		if(largura == 100 && altura == 240 || largura == 60 && altura == 427){
+		if(largura == 100 && altura == 240 || largura == 60 && altura == 427 ){
 			return true;
 		}
 		else
@@ -66,6 +66,15 @@ public class GraficoEvolutivoView extends View {
 			return false;
 	}
 
+	public Boolean verificarXDHPI(int largura, int altura){
+		if(largura == 106 && altura == 240){
+			return true;
+		}
+		else
+			return false;
+	}
+	
+	
 	//Ajuste LDPI resoluções largura == 240 && altura == 320 || largura == 240 && altura == 400 || largura == 240 && altura == 432
 	private void ajusteLdpi(Canvas canvas){
 		// Imagens da parte da frente
@@ -102,7 +111,6 @@ public class GraficoEvolutivoView extends View {
 
 	//Ajuste para HDPI resoluções largura == 480 && altura == 800 || largura == 480 && altura == 854
 	private void ajusteHdpi(Canvas canvas){
-		Log.i("Chegou",  "Resolução Grande");
 		
 		// Imagens da parte da frente
 		canvas.drawBitmap(bicepsEsquerdo, anatomiaCompleta.getHeight()-60f, anatomiaCompleta.getWidth()+1f, null);
@@ -119,6 +127,24 @@ public class GraficoEvolutivoView extends View {
 		canvas.drawBitmap(panturrilhaDireita, anatomiaCompleta.getHeight()+20f, anatomiaCompleta.getWidth()+128f, null);
 	}
 
+	//Ajuste para LXHDPI resoluções 848 x 480
+	private void ajusteXDHPI(Canvas canvas){
+			
+			// Imagens da parte da frente
+			canvas.drawBitmap(bicepsEsquerdo, anatomiaCompleta.getHeight()-58f, anatomiaCompleta.getWidth()+1f, null);
+			canvas.drawBitmap(bicepsDireito, anatomiaCompleta.getHeight()-118f, anatomiaCompleta.getWidth()+1f, null);
+			canvas.drawBitmap(peitoral, anatomiaCompleta.getHeight()-103f, anatomiaCompleta.getWidth()-7f, paint);
+			canvas.drawBitmap(abdomen, anatomiaCompleta.getHeight()-100f, anatomiaCompleta.getWidth()+12f, paint);
+			canvas.drawBitmap(coxaEsquerda, anatomiaCompleta.getHeight()-105f, anatomiaCompleta.getWidth()+61f, paint);
+			canvas.drawBitmap(coxaDireita, anatomiaCompleta.getHeight()-73f, anatomiaCompleta.getWidth()+61f, paint);
+
+			// Imagens da parte de trás
+			canvas.drawBitmap(tricepsEsquerdo, anatomiaCompleta.getHeight()+15f, anatomiaCompleta.getWidth()+2f, null);
+			canvas.drawBitmap(tricepsDireito, anatomiaCompleta.getHeight()+85f, anatomiaCompleta.getWidth()+2f, null);
+			canvas.drawBitmap(panturrilhaEsquerda, anatomiaCompleta.getHeight()+70f, anatomiaCompleta.getWidth()+128f, null);
+			canvas.drawBitmap(panturrilhaDireita, anatomiaCompleta.getHeight()+26f, anatomiaCompleta.getWidth()+128f, null);
+		}
+	
 	//Ajuste default
 	private void ajuste(Canvas canvas){
 		// Imagens da parte da frente
@@ -234,6 +260,9 @@ public class GraficoEvolutivoView extends View {
 		else if (verificarLdpi(largura, altura).equals(true)){
 			ajusteLdpi(canvas);
 
+		}
+		else if (verificarXDHPI(largura, altura).equals(true)){
+			ajusteXDHPI(canvas);
 		}
 		else ajuste(canvas);
 	}
