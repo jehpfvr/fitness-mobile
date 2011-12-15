@@ -2,7 +2,6 @@ package br.com.fitnessmobile.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -184,17 +183,16 @@ public class ServiceGPS extends Service implements LocationListener,ControladorG
 
 	public void Zerar() {
 		this.trajeto.clear();
+		this.estatisticaGPS = new EstatisticaGPS();
+		this.ultimoLocation = null;
+		this.cronometro = new Cronometro();
+		this.cronometro.setOnCronometroListener(this);
 	}
 	
 	private double calcularCalorias(){	
 		if(!Double.isNaN(this.indiceCaloria)){
 			Double tempo = (Double.valueOf(estatisticaGPS.getTempoEmAndamento())/1000)/60;
 			Double result = ((this.indiceCaloria * this.peso)/50) * tempo;
-			/*Log.v("caloria", "tempo percorrido "+estatisticaGPS.getTempoPercorrido());
-			Log.v("caloria", "tempo "+tempo);
-			Log.v("caloria", "Peso "+peso);
-			Log.v("caloria", "indice "+indiceCaloria);
-			Log.v("caloria", "caloria "+result);*/
 			return result;
 		}
 		else 

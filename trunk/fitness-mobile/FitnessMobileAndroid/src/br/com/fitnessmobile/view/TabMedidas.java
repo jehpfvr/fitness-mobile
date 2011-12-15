@@ -1,8 +1,6 @@
 package br.com.fitnessmobile.view;
 
-
 import java.util.List;
-
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,7 +27,6 @@ public class TabMedidas extends ListActivity  {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		usuarioDao = new MedidasDao(this);
-		getListView().setBackgroundResource(R.drawable.background);
 		View header = getLayoutInflater().inflate(R.layout.usuario_lista_header, null);
 		ListView listView = getListView();
 		listView.addHeaderView(header, null, false);
@@ -42,15 +39,6 @@ public class TabMedidas extends ListActivity  {
 
 		setListAdapter(new UsuarioListAdapter(this, usuarios));
 	}
-
-	/*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-    	super.onCreateOptionsMenu(menu);
-
-    	menu.add(0, INSERIR_EDITAR, 0, "Inserir Novo");
-
-    	return true;
-    }*/
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -82,20 +70,6 @@ public class TabMedidas extends ListActivity  {
 		}
 	}
 
-	/*
-    @Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item) {
-    	switch (item.getItemId()) {
-			case INSERIR_EDITAR:
-				// Abre a tela com o formul�rio para adicionar
-				startActivityForResult(new Intent(this, UsuarioInsertAltera.class), INSERIR_EDITAR);
-				Toast.makeText(this, "Dados de usuario inserido!", 2000);
-				break;
-    	}
-
-    	return true;
-    }
-	 */
 
 	@Override
 	protected void onActivityResult(int codigo, int codigoRetorno, Intent it) {

@@ -1,67 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:id="@+id/layout_aerobico"
-  style="@style/background">
-  <ScrollView android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_weight="1">
-    <TableLayout android:layout_height="wrap_content" android:layout_width="fill_parent" >
-        <TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp">
-        
-	        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">     
-		        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" style="?textTitle" android:text="@string/Duracao" />
-		        <TextView android:text="00" android:id="@+id/exer_aero_display_duracao" style="?textTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="50sp"/>	
-		    </LinearLayout>
-			
-        </TableRow>
-        <TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp">
-        
-        	<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:layout_weight="1">
-				<TextView android:layout_width="wrap_content" style="?textTitle" android:layout_height="wrap_content" android:text="@string/Distancia" />
-			    	<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
-			       		<TextView android:id="@+id/exer_aero_display_distancia" style="?textTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="35sp" android:text="0.00"/>
-			            <TextView android:text="@string/Km" android:layout_width="wrap_content" style="?textTitle" android:layout_height="wrap_content" android:textSize="18sp" android:gravity="bottom"/>
-			        </LinearLayout>
-			</LinearLayout>
-			
-			<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:layout_gravity="right" android:layout_weight="1">
-		        <TextView android:layout_width="wrap_content" style="?textTitle" android:layout_height="wrap_content" android:text="@string/Calorias" />
-		         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
-		        	<TextView android:id="@+id/exer_aero_display_caloria" style="?textTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="35sp" android:text="0.00"/>
-		            <TextView android:text="@string/Kcal" style="?textTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="18sp" android:gravity="bottom"/>
-		         </LinearLayout>
-		    </LinearLayout>
-			
-        </TableRow>
-        <TableRow android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp">
-        
-        	<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_weight="1">
-	        	<TextView android:layout_width="wrap_content" style="?textTitle" android:layout_height="wrap_content" android:text="@string/Velocidade" />
-	         		<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" >
-	       	 			<TextView android:id="@+id/exer_aero_display_velocidade" style="?textTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="35sp" android:text="0.00"/>
-	         			<TextView android:text="@string/Km_h" style="?textTitle" android:textSize="18sp" android:layout_height="fill_parent" android:layout_width="fill_parent" android:gravity="bottom"/>
-	        		</LinearLayout>
-	    	</LinearLayout>
-	    	
-	    	<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginRight="5dp" android:layout_weight="1">
-	        	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" style="?textTitle" android:text="@string/VelocidadeMedia" />
-	         		<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" >
-	       	 			<TextView android:id="@+id/exer_aero_display_velocidade_media" style="?textTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="35sp" android:text="0.00"/>
-	         			<TextView android:text="@string/Km_h" style="?textTitle" android:layout_width="fill_parent" android:layout_height="fill_parent" android:textSize="18sp" android:gravity="bottom"/>
-	        		</LinearLayout>
-	    	</LinearLayout>
-	    	
-        </TableRow>
-    </TableLayout>
-        </ScrollView>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_aerobico"
+    style="@style/background"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-    <Button style="?button" android:text="@string/Mostrar_mapa" android:id="@+id/exer_aero_btn_mapa" android:layout_width="fill_parent" android:layout_height="70dp" android:layout_margin="5dp" android:textSize="20sp" android:gravity="center" />
-    
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center|bottom" android:layout_marginBottom="3dp">
-        <Button android:text="@string/Iniciar" android:id="@+id/exer_aero_btn_iniciar" style="?button" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1" android:textSize="15sp"/>
-        <Button android:text="@string/Parar" android:id="@+id/exer_aero_btn_parar" style="?button" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1" android:textSize="15sp"/>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="?textTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Duracao" />
+
+                    <TextView
+                        android:id="@+id/exer_aero_display_duracao"
+                        style="?textTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00"
+                        android:textSize="50sp" />
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="?textTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Distancia" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/exer_aero_display_distancia"
+                            style="?textTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.00"
+                            android:textSize="35sp" />
+
+                        <TextView
+                            style="?textTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom"
+                            android:text="@string/Km"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="?textTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Calorias" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/exer_aero_display_caloria"
+                            style="?textTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.00"
+                            android:textSize="35sp" />
+
+                        <TextView
+                            style="?textTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom"
+                            android:text="@string/Kcal"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="?textTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Velocidade" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/exer_aero_display_velocidade"
+                            style="?textTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.00"
+                            android:textSize="35sp" />
+
+                        <TextView
+                            style="?textTitle"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:gravity="bottom"
+                            android:text="@string/Km_h"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="?textTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/VelocidadeMedia" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/exer_aero_display_velocidade_media"
+                            style="?textTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.00"
+                            android:textSize="35sp" />
+
+                        <TextView
+                            style="?textTitle"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:gravity="bottom"
+                            android:text="@string/Km_h"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/exer_aero_btn_mapa"
+        style="@style/button"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:text="@string/Mostrar_mapa" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:gravity="center|bottom"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/exer_aero_btn_iniciar"
+            style="@style/button"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/Iniciar" />
+
+        <Button
+            android:id="@+id/exer_aero_btn_parar"
+            style="@style/button"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="@string/Parar"/>
     </LinearLayout>
-   
+
 </LinearLayout>

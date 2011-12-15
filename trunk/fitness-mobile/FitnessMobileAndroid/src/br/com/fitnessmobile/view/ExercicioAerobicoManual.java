@@ -1,24 +1,16 @@
 package br.com.fitnessmobile.view;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Timer;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.dao.AerobicoDao;
 import br.com.fitnessmobile.model.Aerobico;
-import br.com.fitnessmobile.model.Exercicio;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class ExercicioAerobicoManual extends Activity implements OnClickListener{

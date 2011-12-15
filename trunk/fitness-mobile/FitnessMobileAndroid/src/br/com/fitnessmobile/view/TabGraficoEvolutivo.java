@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.controller.Util;
 
 public class TabGraficoEvolutivo extends Activity implements OnClickListener, OnDateSetListener {
 
@@ -38,7 +37,6 @@ public class TabGraficoEvolutivo extends Activity implements OnClickListener, On
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.grafico_evolutivo);
 		this.instanciarViews();
 	}

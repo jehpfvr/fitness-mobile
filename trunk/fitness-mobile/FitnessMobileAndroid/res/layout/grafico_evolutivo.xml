@@ -1,38 +1,68 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent" style="@style/background">
-	<LinearLayout android:layout_height="fill_parent"
-		android:layout_width="fill_parent" android:orientation="vertical"
-		android:layout_weight="1">
-		
-		<TextView style="?textTitle" android:id="@+id/tvDataInicial"
-			android:text="@string/DataInicial" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:layout_margin="5dp"
-			android:textSize="20sp" />
-		<LinearLayout android:layout_height="wrap_content"
-			android:layout_width="fill_parent" android:orientation="horizontal">
-			<TextView android:id="@+id/add_programa_mostrardtinicial"
-				style="@style/programaData" />
-			<Button android:layout_width="150dp" android:layout_height="80dp"
-				android:layout_margin="2dp" android:textSize="22sp" android:text="@string/DataInicial"
-				android:id="@+id/analise_datainicial" style="?button" />
-		</LinearLayout>
-		<TextView style="?textTitle" android:id="@+id/tvDataFinal"
-			android:text="@string/DataFinal" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:layout_margin="5dp"
-			android:textSize="20sp" />
-		<LinearLayout android:layout_height="wrap_content"
-			android:layout_width="fill_parent">
-			<TextView android:id="@+id/add_programa_mostrardtfinal"
-				style="@style/programaData" />
-			<Button android:layout_width="150dp" android:layout_height="80dp"
-				android:layout_margin="2dp" android:textSize="22sp" android:text="@string/DataFinal"
-				android:id="@+id/analise_datafinal" style="?button" />
-		</LinearLayout>
-	</LinearLayout>
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-	<Button android:text="@string/Analisar" android:id="@+id/btnAnalisar"
-		android:layout_width="fill_parent" android:layout_height="70dp"
-		android:textSize="30sp" style="?button" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvDataInicial"
+            style="?textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/DataInicial"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/add_programa_mostrardtinicial"
+                style="@style/programaData" />
+
+            <Button
+                android:id="@+id/analise_datainicial"
+                style="@style/button"
+                android:layout_margin="2dp"
+                android:text="@string/DataInicial" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvDataFinal"
+            style="?textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/DataFinal"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/add_programa_mostrardtfinal"
+                style="@style/programaData" />
+
+            <Button
+                android:id="@+id/analise_datafinal"
+                style="@style/button"
+                android:layout_margin="2dp"
+                android:text="@string/DataFinal" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnAnalisar"
+        style="@style/button"
+        android:layout_height="70dp"
+        android:text="@string/Analisar"/>
 
 </LinearLayout>

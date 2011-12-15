@@ -1,7 +1,6 @@
 package br.com.fitnessmobile.view;
 
 import java.text.DecimalFormat;
-
 import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
@@ -19,7 +18,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.AerobicoDao;
 import br.com.fitnessmobile.model.Aerobico;
 import br.com.fitnessmobile.service.ControladorGPS;
@@ -52,8 +50,7 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		Util.inicioActivitySetTema(this);
+
 		setContentView(R.layout.exercicio_aerobico);
 
 		etapaExercicioID = getIntent().getIntExtra("etapaExercicioID", -1);
@@ -75,6 +72,7 @@ public class ExercicioAerobicoView extends MapActivity implements OnClickListene
 
 		this.btn_iniciar = (Button) findViewById(R.id.exer_aero_btn_iniciar);
 		this.btn_parar = (Button) findViewById(R.id.exer_aero_btn_parar);
+		this.btn_parar.setEnabled(false);
 		this.btn_mapa = (Button) findViewById(R.id.exer_aero_btn_mapa);
 
 		this.btn_iniciar.setOnClickListener(this);

@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent" style="@style/background">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/background"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-	<TableLayout android:layout_width="fill_parent"
-		android:layout_height="fill_parent">
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
-		<TextView style="?textTitle" android:text="@string/Preferencias"
-			android:id="@+id/tvPre" android:layout_width="wrap_content"
-			android:layout_height="wrap_content"></TextView>
+        <TextView
+            android:id="@+id/tvPre"
+            style="?textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Preferencias" >
+        </TextView>
 
-		<Button android:text="@string/Sobre" android:id="@+id/btn_Sobre"
-			style="@style/button" android:layout_width="wrap_content"
-			android:layout_height="wrap_content"></Button>
+        <Button
+            android:id="@+id/btn_Sobre"
+            style="@style/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Sobre" >
+        </Button>
+    </TableLayout>
 
-	</TableLayout>
 </LinearLayout>

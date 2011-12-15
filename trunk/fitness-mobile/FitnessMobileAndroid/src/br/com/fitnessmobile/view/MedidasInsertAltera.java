@@ -1,7 +1,6 @@
 package br.com.fitnessmobile.view;
 
 import java.util.Calendar;
-
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -21,7 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
-import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.model.Usuario;
 
 
@@ -54,7 +52,6 @@ public class MedidasInsertAltera extends Activity implements OnClickListener, On
     	@Override
     	protected void onCreate(Bundle icicle) {
     		super.onCreate(icicle);
-    		Util.inicioActivitySetTema(this);
     		setContentView(R.layout.medida_form);
 
     		this.instanciarViews();
