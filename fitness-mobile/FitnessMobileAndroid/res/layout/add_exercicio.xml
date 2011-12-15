@@ -1,51 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_height="wrap_content"
-	android:layout_width="fill_parent" style="@style/background">
-	<LinearLayout android:layout_height="wrap_content"
-		android:layout_width="wrap_content" android:orientation="vertical"
-		android:layout_margin="5dp">
-		<TextView style="?textTitle" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="@string/Exercicio_nome"></TextView>
-		<EditText android:layout_height="wrap_content" android:id="@+id/exercicio_nome"
-			android:layout_width="fill_parent">
-			<requestFocus></requestFocus>
-		</EditText>
-		<TextView style="?textTitle" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="@string/Exercicio_Musculo_pri"></TextView>
-		<Spinner android:layout_height="wrap_content" android:id="@+id/exercicio_musc_pri"
-			android:layout_width="fill_parent"></Spinner>
-		<TextView style="?textTitle" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="@string/Exercicio_tipo"></TextView>
-		<Spinner android:layout_height="wrap_content" android:id="@+id/exercicio_tipo"
-			android:layout_width="fill_parent"></Spinner>
-		<TextView style="?textTitle" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="@string/Exercicio_Musculo_sec"></TextView>
+    style="@style/background"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="8dp" >
 
-		<Button style="?button" android:layout_height="wrap_content"
-			android:text="@string/Exercicio_adicionar_musc_sec" android:id="@+id/btn_exercicio_add_mus_sec"
-			android:layout_width="314dp"></Button>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="5dp"
+        android:orientation="vertical" >
 
-		<TextView android:id="@+id/tv_indice_calorico" style="?textTitle"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/Exercicio_indicecalorico">
-		</TextView>
-		<EditText android:layout_height="wrap_content"
-			android:numeric="decimal" android:id="@+id/exercicio_indicecalorico"
-			android:layout_width="fill_parent">
-		</EditText>
+        <TextView
+            style="?textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Exercicio_nome" >
+        </TextView>
 
-		<LinearLayout android:id="@+id/linearLayout1"
-			android:layout_height="wrap_content" android:layout_width="fill_parent"
-			android:orientation="horizontal" android:gravity="center">
-			<Button style="?button" android:text="Salvar"
-				android:id="@+id/btn_exercicio_salvar" android:layout_width="100dp"
-				android:layout_height="wrap_content"></Button>
-			<Button style="?button" android:text="Cancelar"
-				android:id="@+id/btn_exercicio_cancelar" android:layout_width="100dp"
-				android:layout_height="wrap_content"></Button>
-		</LinearLayout>
+        <EditText
+            android:id="@+id/exercicio_nome"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
 
-	</LinearLayout>
+            <requestFocus >
+            </requestFocus>
+        </EditText>
+
+        <TextView
+            style="?textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Exercicio_Musculo_pri" >
+        </TextView>
+
+        <Spinner
+            android:id="@+id/exercicio_musc_pri"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+        </Spinner>
+
+        <TextView
+            style="?textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Exercicio_tipo" >
+        </TextView>
+
+        <Spinner
+            android:id="@+id/exercicio_tipo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+        </Spinner>
+
+        <TextView
+            style="?textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Exercicio_Musculo_sec" >
+        </TextView>
+
+        <Button
+            android:id="@+id/btn_exercicio_add_mus_sec"
+            style="@style/button"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/Exercicio_adicionar_musc_sec" >
+        </Button>
+
+        <TextView
+            android:id="@+id/tv_indice_calorico"
+            style="?textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Exercicio_indicecalorico" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/exercicio_indicecalorico"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:numeric="decimal" >
+        </EditText>
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:layout_weight="1" >
+
+            <Button
+                android:id="@+id/btn_exercicio_salvar"
+                style="@style/button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Salvar" >
+            </Button>
+
+            <Button
+                android:id="@+id/btn_exercicio_cancelar"
+                style="@style/button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cancelar" >
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>
-

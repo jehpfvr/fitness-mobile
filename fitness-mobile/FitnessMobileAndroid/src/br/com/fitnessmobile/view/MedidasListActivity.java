@@ -13,7 +13,6 @@ import android.widget.Toast;
 import br.com.fitnessmobile.R;
 import br.com.fitnessmobile.adapter.UsuarioListAdapter;
 import br.com.fitnessmobile.adapter.enums.UsuarioCampos;
-import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.dao.MedidasDao;
 import br.com.fitnessmobile.model.Usuario;
 
@@ -28,7 +27,6 @@ public class MedidasListActivity extends ListActivity  {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         usuarioDao = new MedidasDao(this);
-        Util.inicioActivitySetTema(this);
         View header = getLayoutInflater().inflate(R.layout.usuario_lista_header, null);
         ListView listView = getListView();
         listView.addHeaderView(header, null, false);

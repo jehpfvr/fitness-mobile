@@ -174,8 +174,8 @@
     
     <Button
        android:id="@+id/eam_bt_calcular"
+       style="@style/button"
        android:layout_width="fill_parent"
-       android:layout_height="wrap_content"
        android:text="@string/Calcular" />
 
     <LinearLayout
@@ -184,15 +184,15 @@
 
         <Button
             android:id="@+id/eam_bt_salvar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/button"
+            android:layout_width="fill_parent"
             android:layout_weight="1"
             android:text="@string/Salvar" />
 
         <Button
             android:id="@+id/eam_bt_cancelar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/button"
+            android:layout_width="fill_parent"
             android:layout_weight="1"
             android:text="@string/Cancelar" />
 

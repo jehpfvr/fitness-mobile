@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  style="?whiteBackground">
-    <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:orientation="horizontal" android:gravity="center">
-        <TextView android:text="@string/Exercicio" style="?textTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="20dp"/>
-        <TextView android:text="@string/Repeticao" style="?textTitle" android:layout_width="wrap_content" android:layout_height="wrap_content"  android:layout_margin="20dp"/>
-        <TextView android:text="@string/Peso" style="?textTitle" android:layout_width="wrap_content" android:layout_height="wrap_content"  android:layout_margin="20dp"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="?textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/Exercicio" />
+
+        <TextView
+            style="?textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/Repeticao" />
+
+        <TextView
+            style="?textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/Peso" />
     </LinearLayout>
-    <ListView android:layout_height="wrap_content" android:id="@+id/dialog_exer_listview" android:layout_width="fill_parent"></ListView>
+
+    <ListView
+        android:id="@+id/dialog_exer_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+
 </LinearLayout>

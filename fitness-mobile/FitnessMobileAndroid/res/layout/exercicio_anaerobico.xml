@@ -1,33 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_height="fill_parent"
-	android:layout_width="fill_parent" android:weightSum="1" style="@style/background">
-	<LinearLayout android:layout_height="fill_parent"
-		android:orientation="vertical" android:layout_margin="5dp" android:layout_width="248dp" android:weightSum="1">
-		<TextView android:layout_height="wrap_content" android:layout_width="fill_parent" style="?textTitle" android:text="@string/EAnaerobico_Serie"></TextView>
-		<EditText android:layout_height="wrap_content" android:numeric="integer" android:id="@+id/EAnaerobico_Serie"
-			android:layout_width="fill_parent">
-			<requestFocus></requestFocus>
-		</EditText>
-		<TextView android:layout_height="wrap_content" android:layout_width="fill_parent" style="?textTitle" android:text="@string/EAnaerobico_Repeticao"></TextView>
-		<EditText android:layout_height="wrap_content" android:numeric="integer" android:id="@+id/EAnaerobico_Repeticao"
-			android:layout_width="fill_parent">
-		</EditText>
-		<TextView android:layout_height="wrap_content" android:layout_width="fill_parent" style="?textTitle" android:text="@string/EAnaerobico_Peso"></TextView>
-		<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:stretchColumns="1"
-  		android:layout_width="wrap_content"
-  		android:layout_height="wrap_content">
-		<TableRow android:layout_width="wrap_content" android:layout_weight="1" android:layout_height="0dp">
-		<EditText android:layout_height="wrap_content" android:numeric="decimal" android:id="@+id/EAnaerobico_Peso" android:layout_width="165dp"></EditText>
-		<TextView android:text="@string/Kg" style="?textTitle" android:padding="30dip" android:layout_weight="1"/>
-		</TableRow>
-		</TableLayout>
-		<LinearLayout android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:layout_width="fill_parent" android:orientation="horizontal" android:gravity="center" android:layout_weight="0.19">
-			<Button android:text="Salvar" android:id="@+id/btn_exercicio_salvar" style="?button" android:layout_width="100dp" android:layout_height="wrap_content"></Button>
-			<Button android:text="Cancelar" android:id="@+id/btn_exercicio_cancelar" style="?button" android:layout_width="100dp" android:layout_height="wrap_content"></Button>
-		</LinearLayout>
-		
-	</LinearLayout>
-	<Button android:text="Button" android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+    style="@style/background"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="1" >
+
+    <LinearLayout
+        android:layout_width="248dp"
+        android:layout_height="fill_parent"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:weightSum="1" 
+        android:layout_gravity="center">
+
+        <TextView
+            style="?textTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/EAnaerobico_Serie" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/EAnaerobico_Serie"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:numeric="integer"
+			android:background="@drawable/ic_fundo_branco"
+			android:paddingLeft="20dp">
+
+            <requestFocus >
+            </requestFocus>
+        </EditText>
+
+        <TextView
+            style="?textTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/EAnaerobico_Repeticao" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/EAnaerobico_Repeticao"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:numeric="integer"
+            android:background="@drawable/ic_fundo_branco"
+			android:paddingLeft="20dp" >
+        </EditText>
+
+        <TextView
+            style="?textTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/EAnaerobico_Peso" >
+        </TextView>
+
+        <TableLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1" >
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1" >
+
+                <EditText
+                    android:id="@+id/EAnaerobico_Peso"
+                    android:layout_width="165dp"
+                    android:layout_height="50dp"
+                    android:numeric="decimal"
+                    android:background="@drawable/ic_fundo_branco"
+					android:paddingLeft="20dp" >
+                </EditText>
+
+                <TextView
+                    style="?textTitle"
+                    android:layout_weight="1"
+                    android:padding="30dip"
+                    android:text="@string/Kg" />
+            </TableRow>
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_exercicio_salvar"
+                style="@style/button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Salvar" >
+            </Button>
+
+            <Button
+                android:id="@+id/btn_exercicio_cancelar"
+                 style="@style/button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cancelar" >
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

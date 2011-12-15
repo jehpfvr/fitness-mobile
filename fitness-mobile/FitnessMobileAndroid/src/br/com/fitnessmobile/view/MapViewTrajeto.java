@@ -16,7 +16,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.controller.Util;
 import br.com.fitnessmobile.service.ControladorGPS;
 import br.com.fitnessmobile.service.EstatisticaGPS;
 import br.com.fitnessmobile.service.MapOverlay;
@@ -45,7 +44,6 @@ public class MapViewTrajeto extends MapActivity implements ServiceConnection,OnC
 	@Override
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
-		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.map_view_trajeto);
 		
 		bindService(new Intent("SERVICO_GPS"), this, Context.BIND_AUTO_CREATE);

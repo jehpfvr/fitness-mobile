@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android" 
-		android:layout_height="fill_parent"
-		android:layout_width="fill_parent"  
-		android:id="@+id/adapter_default_text" 
-		android:text="TextView" 
-		android:textSize="20sp"
-		android:padding="15dp"
-		style="?textTitle"/>
-
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/adapter_default_text"
+    style="?textTitle"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="15dp"
+    android:text="TextView"
+    android:textSize="20sp" />

@@ -1,36 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent" style="@style/background">
-	<TableLayout android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:background="#333"
-		style="@style/background">
-		<TableRow>
-			<TextView android:text="Etapas do Programa: "
-				android:gravity="center_vertical" android:textColor="#DDD"
-				android:textStyle="bold" android:layout_width="150dip"
-				android:layout_height="20dip" />
+    style="@style/background"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-			<TextView android:id="@+id/etapa_textview" android:text="@string/Etapas"
-				android:gravity="center_vertical" android:textColor="#DDD"
-				android:textStyle="bold" android:layout_width="150dip"
-				android:layout_height="20dip" />
+    <TableLayout
+        style="@style/background"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#333" >
 
-		</TableRow>
-		<TableRow>
-			<TextView android:id="@+id/Dtetapa_textview" android:text="@string/Data"
-				android:gravity="center_vertical" android:textColor="#DDD"
-				android:textStyle="bold" android:layout_width="150dip"
-				android:layout_height="20dip" />
+        <TableRow >
 
-			<TextView android:id="@+id/Dtetapa2_textview" android:text="@string/Data"
-				android:gravity="center_vertical" android:textColor="#DDD"
-				android:textStyle="bold" android:layout_width="150dip"
-				android:layout_height="20dip" />
-		</TableRow>
-	</TableLayout>
+            <TextView
+                android:layout_width="150dip"
+                android:layout_height="20dip"
+                android:gravity="center_vertical"
+                android:text="Etapas do Programa: "
+                android:textColor="#DDD"
+                android:textStyle="bold" />
 
-	<ListView android:layout_height="wrap_content" android:id="@+id/etapa_listview"
-		android:layout_width="fill_parent" android:layout_weight="1" />
+            <TextView
+                android:id="@+id/etapa_textview"
+                android:layout_width="150dip"
+                android:layout_height="20dip"
+                android:gravity="center_vertical"
+                android:text="@string/Etapas"
+                android:textColor="#DDD"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow >
+
+            <TextView
+                android:id="@+id/Dtetapa_textview"
+                android:layout_width="150dip"
+                android:layout_height="20dip"
+                android:gravity="center_vertical"
+                android:text="@string/Data"
+                android:textColor="#DDD"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/Dtetapa2_textview"
+                android:layout_width="150dip"
+                android:layout_height="20dip"
+                android:gravity="center_vertical"
+                android:text="@string/Data"
+                android:textColor="#DDD"
+                android:textStyle="bold" />
+        </TableRow>
+    </TableLayout>
+
+    <ListView
+        android:id="@+id/etapa_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
 </LinearLayout>

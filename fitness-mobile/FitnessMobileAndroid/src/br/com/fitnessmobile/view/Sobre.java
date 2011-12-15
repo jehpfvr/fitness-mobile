@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import br.com.fitnessmobile.R;
-import br.com.fitnessmobile.controller.Util;
 
 public class Sobre extends Activity {
 
@@ -30,7 +29,6 @@ public class Sobre extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Util.inicioActivitySetTema(this);
 		setContentView(R.layout.sobre);
 
 		this.instanciarViews();
