@@ -29,6 +29,8 @@ public class TabMedidas extends ListActivity  {
 		usuarioDao = new MedidasDao(this);
 		View header = getLayoutInflater().inflate(R.layout.usuario_lista_header, null);
 		ListView listView = getListView();
+		listView.setCacheColorHint(0);
+		getListView().setBackgroundResource(R.drawable.background);
 		listView.addHeaderView(header, null, false);
 
 		atualizaLista();

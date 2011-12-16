@@ -59,6 +59,7 @@ public class Sobre extends Activity {
 		// TODO Auto-generated method stub
 		text = (TextView)findViewById(R.id.textView1);
 		list = (ListView)findViewById(R.id.listView1);
+		list.setCacheColorHint(0);
 
 	}
 

@@ -24,6 +24,7 @@ public class Estatistica extends Activity{
 	private void instanciarViews() {
 		this.exercicioDao = new ExercicioDao(this);
 		this.listView = (ListView) findViewById(R.id.series_listview);
+		listView.setCacheColorHint(0);
 	}
 
 	private void configurarViews() {

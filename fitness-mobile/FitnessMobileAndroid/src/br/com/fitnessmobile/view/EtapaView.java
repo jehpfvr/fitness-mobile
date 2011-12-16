@@ -75,6 +75,7 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 				+dtFim.get(Calendar.DAY_OF_MONTH)+"/"+monthFim+"/"+dtFim.get(Calendar.YEAR));
 
 		this.listView = (ListView) findViewById(R.id.etapa_listview);
+		listView.setCacheColorHint(0);
 		this.dlgAlert = new AlertDialog.Builder(this);
 
 		if(!programaID.equals(-1)){

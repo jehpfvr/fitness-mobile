@@ -42,6 +42,7 @@ public class AddEtapaExercicio extends Activity  {
 		this.textView.setText("Adicionar Exercicios a Etapa");
 
 		this.listView = (ListView) findViewById(R.id.etapa_listview);
+		listView.setCacheColorHint(0);
 		if (!etapaID.equals(-1)) {
 			this.exercicioDao = new ExercicioDao(this);
 			this.listView.setAdapter(new AddEtapaExercicioAdapter(this, this.exercicioDao.listarExercicios()));
