@@ -42,6 +42,7 @@ public class TabPrograma extends Activity {
 	private void instanciarViews() {
 		this.programaDao = new ProgramaDao(this);
 		this.listView = (ListView) findViewById(R.id.series_listview);
+		listView.setCacheColorHint(0);
 	}
 
 	private void configurarViews() {

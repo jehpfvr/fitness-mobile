@@ -48,6 +48,7 @@ public class ExercicioView extends Activity implements OnItemLongClickListener, 
 
 	private void instanciarViews() {
 		this.listView = (ListView) findViewById(R.id.exercicio_listview);
+		listView.setCacheColorHint(0);
 		this.btn_exercicio_salvar = (Button) findViewById(R.id.add_exercicio_salvar);
 		this.btn_exercicio_salvar.setOnClickListener(this);
 		

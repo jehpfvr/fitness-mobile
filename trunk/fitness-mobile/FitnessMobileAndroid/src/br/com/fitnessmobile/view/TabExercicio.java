@@ -53,6 +53,7 @@ public class TabExercicio extends Activity {
 	private void instanciarViews() {
 		this.exercicioDao = new ExercicioDao(this);
 		this.listView = (ListView) findViewById(R.id.list_view_exercicio);
+		listView.setCacheColorHint(0);
 		this.sp_GrupoMuscular = (Spinner) findViewById(R.id.sp_grupo_muscular);
 		this.btn_addExercicio = (Button) findViewById(R.id.btn_add_exercicio);
 

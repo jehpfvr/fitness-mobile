@@ -29,7 +29,11 @@ public class MedidasListActivity extends ListActivity  {
         usuarioDao = new MedidasDao(this);
         View header = getLayoutInflater().inflate(R.layout.usuario_lista_header, null);
         ListView listView = getListView();
+        
+        listView.setCacheColorHint(0);
         listView.addHeaderView(header, null, false);
+        
+       
         
         atualizaLista();
     }
@@ -75,20 +79,20 @@ public class MedidasListActivity extends ListActivity  {
     @Override
     protected void onListItemClick(ListView l, View v, int posicao, long id) {
     	super.onListItemClick(l, v, posicao, id);
-    	editarPrograma(--posicao);
+    	editarMedidas(--posicao);
     }
     
-    protected void editarPrograma(int posicao) {
+    protected void editarMedidas(int posicao) {
     	// Recupera o programa selecionado
     	Usuario usuario = usuarios.get(posicao);
     	
-    	// Cria a intent para abrir a tela de edi��o de programa
+    	// Cria a intent para abrir a tela de edição das medidas
     	Intent it = new Intent(this, TabMedidas.class);
     	
-    	// Passa o id do programa como par�metro
+    	// Passa o id do programa como parâmetro
     	it.putExtra(UsuarioCampos.ID.getCampo(), usuario.getId());
     	
-    	// Abre a tela de edi��o
+    	// Abre a tela de edição
     	startActivityForResult(it, INSERIR_EDITAR);
     }
     
