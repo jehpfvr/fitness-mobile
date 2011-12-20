@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -24,7 +25,7 @@ import br.com.fitnessmobile.adapter.enums.Musculo;
 import br.com.fitnessmobile.dao.ExercicioDao;
 import br.com.fitnessmobile.model.Exercicio;
 
-public class AddExercicio extends Activity implements android.view.View.OnClickListener {
+public class EditarExercicio extends Activity implements android.view.View.OnClickListener {
 	private EditText et_nome_exercicio;
 	private EditText et_indice_calorico;
 	private Button btn_exercicio_salvar;
@@ -42,19 +43,24 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 	private boolean[] checkedMusculo;
 	private ExercicioDao exercicioDao;
 	Intent intent;
+	private int exercicioId;
+	Exercicio exercicio;
 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_exercicio);
-
+		exercicioId = getIntent().getIntExtra("Exercicio",-1);
+		Log.i("Recebido exercicio do id",""+exercicioId);
 		this.instanciarViews();
 		this.configurarViews();
 	}
 
 	private void instanciarViews() {
 		exercicioDao = new ExercicioDao(this);
+		exercicio = exercicioDao.buscarExercicio(exercicioId);
+		
 		this.btn_exercicio_salvar = (Button) findViewById(R.id.btn_exercicio_salvar);
 		this.btn_exercicio_cancelar = (Button) findViewById(R.id.btn_exercicio_cancelar);
 		this.btn_add_musc_sec = (Button) findViewById(R.id.btn_exercicio_add_mus_sec);
@@ -80,6 +86,12 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 		btn_exercicio_cancelar.setOnClickListener(this);
 		btn_add_musc_sec.setOnClickListener(this);
 
+		//Preencher os valores do Banco na tela
+		this.et_nome_exercicio.setText(exercicio.getNome());
+		String indice = String.valueOf(exercicio.getIndiceCalorico()); 
+		this.et_indice_calorico.setText(indice);
+		
+		
 		ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.array_grupo_muscular, android.R.layout.simple_spinner_item);
 		arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -173,7 +185,7 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 					mensagemExercicio += Musculo.getEnumByNome(i.toString())+" \n";
 				}
 				novoExercicio.setGrupoMuscular(grupo_muscular);
-				exercicioDao.salvar(novoExercicio);
+				exercicioDao.atualizarExercicio(novoExercicio);
 				this.et_nome_exercicio.setText("");
 				this.sp_musculo_pri.setSelection(0);
 				this.sp_tipo.setSelection(0);
@@ -202,6 +214,7 @@ public class AddExercicio extends Activity implements android.view.View.OnClickL
 	}
 
 	private void validarCampos() {
+
 		if(et_nome_exercicio.getText().length() == 0){
 			Toast.makeText(this, "Informe o nome do exercicio!", 500).show();
 			vibrar();

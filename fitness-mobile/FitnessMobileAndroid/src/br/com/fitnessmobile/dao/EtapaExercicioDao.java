@@ -41,7 +41,6 @@ public class EtapaExercicioDao extends Dao{
 	// Retorna uma lista com os exercicio da etapa
 	public List<EtapaExercicio> listarEtapaExerciciosByDay(Integer ete_id, Integer ete_diaid) {
 		
-		//TODO Erro aqui.
 		Cursor c = db.query(true, NOME_TABELA, EtapaExercicio.colunas, EtapaExercicioCampos.ETAPA_ID.getCampo() + "=" + ete_id + " and " + EtapaExercicioCampos.DIA_ID.getCampo() +"="+ ete_diaid, null, null, null, null, null);
 		Log.i("Chegou " , "Aqui Lista de exercicios da etapa");
 		List<EtapaExercicio> etapa_exercicios = new ArrayList<EtapaExercicio>();

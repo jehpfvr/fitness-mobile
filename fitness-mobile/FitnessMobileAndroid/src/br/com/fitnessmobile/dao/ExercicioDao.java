@@ -16,11 +16,8 @@ import br.com.fitnessmobile.model.Exercicio;
 
 public class ExercicioDao extends Dao {
 
-
 	// Nome da tabela
 	public static final String NOME_TABELA = "exercicio";
-
-	
 	
 	// Cria o banco de dados com um script SQL
 	public ExercicioDao(Context ctx) {
@@ -127,7 +124,6 @@ public class ExercicioDao extends Dao {
 		return exercicios;
 	}
 	
-
 	// Salva o exercicio, insere um novo ou atualiza
 	public Integer salvar(Exercicio exercicio) {
 		Integer id = exercicio.getId();
@@ -170,8 +166,8 @@ public class ExercicioDao extends Dao {
 	}
 	
 	// Atualiza o exercicio com os valores abaixo
-	// A cl�usula where � utilizada para identificar o exercicio a ser atualizado
-	private int atualizarExercicio(Exercicio exercicio) {
+	// A clausula where e utilizada para identificar o exercicio a ser atualizado
+	public int atualizarExercicio(Exercicio exercicio) {
 		ContentValues values = new ContentValues();
 		
 		values.put(ExercicioCampos.NOME.getCampo(), exercicio.getNome());

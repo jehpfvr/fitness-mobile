@@ -36,7 +36,6 @@ public class Sobre extends Activity {
 	}
 
 	private void configurarViews() {
-		// TODO Auto-generated method stub
 		text.setText("\n  Fitness Mobile - O seu personal Trainer! \n" +
 				" Projeto de conclusão de curso da turma \n " +
 				" ADS 2009.1 da faculdade iDEZ. \n" +
@@ -56,7 +55,6 @@ public class Sobre extends Activity {
 	}
 
 	private void instanciarViews() {
-		// TODO Auto-generated method stub
 		text = (TextView)findViewById(R.id.textView1);
 		list = (ListView)findViewById(R.id.listView1);
 		list.setCacheColorHint(0);

@@ -63,7 +63,6 @@ public class GraficoEvolutivoController {
 		try {
 			usuarioMedidaInicial = usuarioDao.getUsuarioByDate(dataDeInicio);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Log.v("Teste", "Pegou!");
@@ -137,7 +136,6 @@ public class GraficoEvolutivoController {
 		try {
 			usuarioMedidaFinal = usuarioDao.getUsuarioByDate(dataDeFim);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
