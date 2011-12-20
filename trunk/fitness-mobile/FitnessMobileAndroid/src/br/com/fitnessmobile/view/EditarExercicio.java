@@ -60,7 +60,7 @@ public class EditarExercicio extends Activity implements android.view.View.OnCli
 	private void instanciarViews() {
 		exercicioDao = new ExercicioDao(this);
 		exercicio = exercicioDao.buscarExercicio(exercicioId);
-		
+
 		this.btn_exercicio_salvar = (Button) findViewById(R.id.btn_exercicio_salvar);
 		this.btn_exercicio_cancelar = (Button) findViewById(R.id.btn_exercicio_cancelar);
 		this.btn_add_musc_sec = (Button) findViewById(R.id.btn_exercicio_add_mus_sec);
@@ -90,12 +90,15 @@ public class EditarExercicio extends Activity implements android.view.View.OnCli
 		this.et_nome_exercicio.setText(exercicio.getNome());
 		String indice = String.valueOf(exercicio.getIndiceCalorico()); 
 		this.et_indice_calorico.setText(indice);
-		
-		
+		int tipo;
+		if(exercicio.getTipo().equals("A"))tipo = 0;
+		else tipo = 1;
+
 		ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.array_grupo_muscular, android.R.layout.simple_spinner_item);
 		arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		this.sp_musculo_pri.setAdapter(arrayAdapter);
+		this.sp_musculo_pri.setSelection(exercicio.getMusculoPrincipal().getMusculoId()-1);
 		this.sp_musculo_pri.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 				musculoPriSelect = (CharSequence)parent.getItemAtPosition(pos);
@@ -107,6 +110,7 @@ public class EditarExercicio extends Activity implements android.view.View.OnCli
 		arrayAdapterTipo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		this.sp_tipo.setAdapter(arrayAdapterTipo);
+		this.sp_tipo.setSelection(tipo);
 		this.sp_tipo.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 				tipoExerSelect = (CharSequence)parent.getItemAtPosition(pos);
@@ -124,6 +128,10 @@ public class EditarExercicio extends Activity implements android.view.View.OnCli
 			}
 			public void onNothingSelected(AdapterView<?> adapter) { }
 		});
+
+		for(int i=0; i < exercicio.getGrupoMuscular().size(); i++ ){
+				selectedMusculo.add(String.valueOf(exercicio.getGrupoMuscular().get(i).getMusculoNome()));
+		}
 	}
 
 	public void showDialogMusculosSec(){
@@ -131,6 +139,7 @@ public class EditarExercicio extends Activity implements android.view.View.OnCli
 
 		for(int i = 0; i < this.lista_musculos.size(); i++)
 			checkedMusculo[i] = this.selectedMusculo.contains(this.lista_musculos.get(i));
+
 
 		DialogInterface.OnMultiChoiceClickListener musculoDialogListener = new DialogInterface.OnMultiChoiceClickListener() {
 			public void onClick(DialogInterface dialog, int which, boolean isChecked) {
@@ -156,27 +165,26 @@ public class EditarExercicio extends Activity implements android.view.View.OnCli
 		String TipoExe = null;
 		if(v == btn_exercicio_salvar){
 			validarCampos();
-			
+
 			if (musculoPriSelect == null) return;
 			if (et_indice_calorico.getText() == null) return;
 
 			if(!selectedMusculo.isEmpty()){
-				Exercicio novoExercicio = new Exercicio();
-				novoExercicio.setNome(et_nome_exercicio.getText().toString());
-				novoExercicio.setMusculoPrincipal(Musculo.getEnumByNome(musculoPriSelect.toString()));
+				exercicio.setNome(et_nome_exercicio.getText().toString());
+				exercicio.setMusculoPrincipal(Musculo.getEnumByNome(musculoPriSelect.toString()));
 				if (tipoExerSelect.toString().equals("Aerobico")){
-					novoExercicio.setTipo("A");	
-					novoExercicio.setIndiceCalorico(Float.parseFloat(et_indice_calorico.getText().toString()));
+					exercicio.setTipo("A");	
+					exercicio.setIndiceCalorico(Float.parseFloat(et_indice_calorico.getText().toString()));
 				}else
-					novoExercicio.setTipo("N");
-				novoExercicio.setSituacao("C");//Exercicio Custom
-				novoExercicio.setDescricao("Exercício adicionado pelo usuário"); //Descrição default para exercicios custom
+					exercicio.setTipo("N");
+				exercicio.setSituacao("C");//Exercicio Custom
+				exercicio.setDescricao("Exercício adicionado pelo usuário"); //Descrição default para exercicios custom
 
-				if(novoExercicio.getTipo() == "A")TipoExe = "Aerobico";
+				if(exercicio.getTipo() == "A")TipoExe = "Aerobico";
 				else TipoExe = "Anaerobico";
 				mensagemExercicio = "Novo Exercicio " 
-						+ "\n Nome: " + novoExercicio.getNome()
-						+ "\n Musc. Principal: " + novoExercicio.getMusculoPrincipal()
+						+ "\n Nome: " + exercicio.getNome()
+						+ "\n Musc. Principal: " + exercicio.getMusculoPrincipal()
 						+ "\n Tipo: " + TipoExe
 						+ "\n Muscs. Secs\n";
 				ArrayList<Musculo> grupo_muscular = new ArrayList<Musculo>();
@@ -184,8 +192,8 @@ public class EditarExercicio extends Activity implements android.view.View.OnCli
 					grupo_muscular.add(Musculo.getEnumByNome(i.toString()));
 					mensagemExercicio += Musculo.getEnumByNome(i.toString())+" \n";
 				}
-				novoExercicio.setGrupoMuscular(grupo_muscular);
-				exercicioDao.atualizarExercicio(novoExercicio);
+				exercicio.setGrupoMuscular(grupo_muscular);
+				exercicioDao.salvar(exercicio);
 				this.et_nome_exercicio.setText("");
 				this.sp_musculo_pri.setSelection(0);
 				this.sp_tipo.setSelection(0);
@@ -203,6 +211,7 @@ public class EditarExercicio extends Activity implements android.view.View.OnCli
 
 		}else if(v == btn_add_musc_sec){
 			this.showDialogMusculosSec();
+
 		}
 	}
 
