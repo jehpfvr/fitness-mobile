@@ -116,12 +116,12 @@ public class EditarPrograma extends Activity implements OnClickListener, OnDateS
 
 			// programa nao pode ter data inicial menor do que a data atual
 			if (dataInicio.getTimeInMillis() < dataAtual.getTimeInMillis()) { // TODO adicionar ao casos de uso
-				Toast.makeText(getApplicationContext(), "Data Inicial nao pode ser menor do que a Data de Atual.", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "Data Inicial não pode ser menor do que a Data de Atual.", Toast.LENGTH_SHORT).show();
 				vibrar();
 				return;
 			}
 			if (dataInicio.getTimeInMillis() > dataFim.getTimeInMillis()) { // TODO adicionar ao casos de uso
-				Toast.makeText(getApplicationContext(), "Data Inicial nao pode ser maior do que a Data Final.", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "Data Inicial não pode ser maior do que a Data Final.", Toast.LENGTH_SHORT).show();
 				vibrar();
 				return;
 			}

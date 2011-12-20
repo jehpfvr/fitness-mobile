@@ -127,7 +127,7 @@ public class ExercicioDao extends Dao {
 	// Salva o exercicio, insere um novo ou atualiza
 	public Integer salvar(Exercicio exercicio) {
 		Integer id = exercicio.getId();
-		
+		Log.i("Exercicio id",""+id);
 		if (id != null)
 			atualizarExercicio(exercicio);
 		else
@@ -167,7 +167,7 @@ public class ExercicioDao extends Dao {
 	
 	// Atualiza o exercicio com os valores abaixo
 	// A clausula where e utilizada para identificar o exercicio a ser atualizado
-	public int atualizarExercicio(Exercicio exercicio) {
+	private int atualizarExercicio(Exercicio exercicio) {
 		ContentValues values = new ContentValues();
 		
 		values.put(ExercicioCampos.NOME.getCampo(), exercicio.getNome());
