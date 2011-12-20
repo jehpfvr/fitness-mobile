@@ -102,7 +102,6 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 		return true;
 	}
 
-	// TODO Abrir a Activity contendo os exercicios da etapa Clicada
 	public void onItemClick(AdapterView<?> adapter, View v, int pos, long id) {
 		Etapa etapa_clicada = (Etapa)adapter.getAdapter().getItem(pos);
 		//Pegar dia de Hj e transformar em um int de 0 a 6 (seg a dom)
@@ -189,7 +188,6 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 	}
 
 	public boolean onLongClick(View v) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -203,7 +201,6 @@ public class EtapaView extends Activity implements OnItemClickListener, OnItemLo
 
 
 	public void onClick(DialogInterface arg0, int arg1) {
-		// TODO Auto-generated method stub
 		if(arg0 == dlgAlert ){
 			if(arg1 == DialogInterface.BUTTON_POSITIVE){
 				Log.i("Entrou ","no if");

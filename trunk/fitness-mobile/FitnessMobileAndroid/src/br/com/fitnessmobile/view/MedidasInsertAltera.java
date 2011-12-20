@@ -100,7 +100,6 @@ public class MedidasInsertAltera extends Activity implements OnClickListener, On
     	}
 
     	private void instanciarViews() {
-			// TODO Auto-generated method stub
     		edtPeso = (EditText) findViewById(R.id.edtPeso);
     		edtBicepsEsquerdo = (EditText) findViewById(R.id.edtBicepsEsquerdo);
     		edtBicepsDireito = (EditText) findViewById(R.id.edtBicepsDireito);

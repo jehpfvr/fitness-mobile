@@ -77,7 +77,6 @@ public class MapViewTrajeto extends MapActivity implements ServiceConnection,OnC
 
 	@Override
 	protected boolean isRouteDisplayed() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	

@@ -13,7 +13,6 @@ public class AerobicoDao extends Dao{
 
 	public AerobicoDao(Context ctx) {
 		super(ctx);
-		// TODO Auto-generated constructor stub
 		db = dbHelper.getWritableDatabase();
 	}
 

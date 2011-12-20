@@ -33,6 +33,8 @@ public class TabExercicio extends Activity {
 	private ExercicioDao exercicioDao;
 	private Context _context;
 	private String nomeFiltro = "Todos"; // Padrao listar todos
+	private Intent intent;
+	private Exercicio exercicio_selecionado;
 	
 
 	@Override
@@ -100,8 +102,8 @@ public class TabExercicio extends Activity {
 		this.listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				// Ao clicar, mostrar um Toast
-				Exercicio exercicio_clicado = (Exercicio)parent.getAdapter().getItem(position);
-				startActivity(new Intent(getApplicationContext(),ExercicioDetalhesView.class).putExtra("exercicio", exercicio_clicado));
+				exercicio_selecionado = (Exercicio)parent.getAdapter().getItem(position);
+				startActivity(new Intent(getApplicationContext(),ExercicioDetalhesView.class).putExtra("exercicio", exercicio_selecionado));
 
 				//String nome = parent.getItemAtPosition(position).toString();
 				/*Toast.makeText(getApplicationContext(),
@@ -130,7 +132,13 @@ public class TabExercicio extends Activity {
 					public void onClick(DialogInterface dialog, int pos) {
 						if(pos == 0) {
 							Log.i("Exercicio", "Atualizar");
-
+							if (exercicio_selecionado.getSituacao().equals("A")) {
+								Toast.makeText(_context, "Impossível editar Exercícios da Aplicação.", 500).show();
+								vibrar();
+								return;
+							}
+							intent = new Intent(_context,EditarExercicio.class).putExtra("Exercicio", exercicio_selecionado.getId());
+							startActivity(intent);
 						}
 						else if (pos == 1){
 							Log.i("Exercicio", "Excluir");
@@ -139,7 +147,7 @@ public class TabExercicio extends Activity {
 								vibrar();
 								return;
 							}
-							remover(exercicio_selecionado.getId()); // TODO Validacoes
+							remover(exercicio_selecionado.getId()); 
 						}
 					}
 				});
